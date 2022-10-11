@@ -1,0 +1,27 @@
+{
+  "id": "producer",
+  "label": "Producer",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "origin": {
+        "type": "Link",
+        "config": {
+          "label": "Origin",
+          "select": "document",
+          "customtypes": [
+            "origin"
+          ]
+        }
+      }
+    }
+  }
+}

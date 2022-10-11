@@ -5,7 +5,7 @@ import { Bounded } from "../../components/Bounded";
 
 const Text = ({ slice }) => {
   return (
-    <Bounded as="section" className="bg-white leading-relaxed">
+    <Bounded as="section" className="text-center">
       <div
         className={clsx(
           slice.variation === "twoColumns" && "md:columns-2 md:gap-6"

@@ -3,8 +3,11 @@ import { Header } from "./Header";
 export const Layout = ({ navigation, settings, children }) => {
   return (
     <div className="text-slate-800">
-      <Header navigation={navigation} settings={settings} />
+      <header className="fixed top-8 left-8 text-6xl tracking-tight">
+        Bodega Import
+      </header>
       <main>{children}</main>
+      <Header navigation={navigation} settings={settings} />
     </div>
   );
 };

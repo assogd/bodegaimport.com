@@ -6,15 +6,20 @@ import { createClient } from "../prismicio";
 import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
+import { Heading } from "../components/Heading";
+
 const Page = ({ page, navigation, settings }) => {
   return (
     <Layout navigation={navigation} settings={settings}>
       <Head>
         <title>
-          {prismicH.asText(page.data.title)} |{" "}
-          {prismicH.asText(settings.data.siteTitle)}
+          {prismicH.asText(settings.data.siteTitle)}:{" "}
+          {prismicH.asText(page.data.title)}
         </title>
       </Head>
+      <header className="sticky inset-x-0 top-0 p-8 text-center">
+        <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
+      </header>
       <SliceZone slices={page.data.slices} components={components} />
     </Layout>
   );

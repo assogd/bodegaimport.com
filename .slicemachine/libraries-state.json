@@ -1,6 +1,98 @@
 {
   "slices": {
     "components": {
+      "producer": {
+        "library": "slices",
+        "id": "producer",
+        "name": "Producer",
+        "description": "Producer",
+        "model": {
+          "id": "producer",
+          "type": "SharedSlice",
+          "name": "Producer",
+          "description": "Producer",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Producer",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                },
+                "reference": {
+                  "type": "Link",
+                  "config": {
+                    "label": "reference",
+                    "select": "document",
+                    "customtypes": [
+                      "producer"
+                    ]
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Simple",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Laboris quis amet ex laborum laborum esse irure deserunt ipsum. Laborum voluptate minim est laboris deserunt nisi consequat occaecat est enim. Ullamco ullamco et duis culpa est laboris deserunt nostrud adipisicing dolor cupidatat aute.",
+                  "spans": []
+                }
+              ],
+              "reference": {
+                "id": "mock_document_id",
+                "link_type": "Document",
+                "type": "producer",
+                "tags": [],
+                "lang": "en-us",
+                "slug": null,
+                "first_publication_date": "1970-01-01T00:00:01+0000",
+                "last_publication_date": "1970-01-01T01:00:00+0000"
+              }
+            },
+            "slice_type": "producer"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "hero": {
         "library": "slices",
         "id": "hero",
@@ -99,7 +191,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Hero/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Hero/default/preview.png",
             "width": 800,
             "height": 694
           }
@@ -201,12 +293,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Image/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Image/default/preview.png",
             "width": 800,
             "height": 530
           },
           "banner": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Image/banner/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Image/banner/preview.png",
             "width": 800,
             "height": 363
           }
@@ -397,7 +489,7 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/ImageCards/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/ImageCards/default/preview.png",
             "width": 800,
             "height": 1167
           }
@@ -467,11 +559,105 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Quote/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Quote/default/preview.png",
             "width": 800,
             "height": 392
           }
         }
+      },
+      "region": {
+        "library": "slices",
+        "id": "region",
+        "name": "Region",
+        "description": "Region",
+        "model": {
+          "id": "region",
+          "type": "SharedSlice",
+          "name": "Region",
+          "description": "Region",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Region",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {
+                "producer": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Producer",
+                    "select": "document",
+                    "customtypes": [
+                      "producer"
+                    ]
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "producer": {
+                  "id": "mock_document_id",
+                  "link_type": "Document",
+                  "type": "producer",
+                  "tags": [],
+                  "lang": "en-us",
+                  "slug": null,
+                  "first_publication_date": "1970-01-01T00:00:01+0000",
+                  "last_publication_date": "1970-01-01T01:00:00+0000"
+                }
+              }
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Nearly",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Eiusmod labore eiusmod mollit veniam aute tempor.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "region"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
       },
       "text": {
         "library": "slices",
@@ -579,12 +765,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Text/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Text/default/preview.png",
             "width": 800,
             "height": 516
           },
           "twoColumns": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/Text/twoColumns/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/Text/twoColumns/preview.png",
             "width": 800,
             "height": 276
           }
@@ -743,12 +929,12 @@
         },
         "screenshotPaths": {
           "default": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/TextWithImage/default/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/TextWithImage/default/preview.png",
             "width": 800,
             "height": 656
           },
           "withButton": {
-            "path": "/Users/angeloashmore/projects/prismic/nextjs-starter-prismic-multi-page/.slicemachine/assets/slices/TextWithImage/withButton/preview.png",
+            "path": "/Users/mathias/Sites/bodegaimport/.slicemachine/assets/slices/TextWithImage/withButton/preview.png",
             "width": 800,
             "height": 424
           }

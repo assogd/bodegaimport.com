@@ -9,8 +9,8 @@ export const Heading = ({
   return (
     <Comp
       className={clsx(
-        "font-semibold leading-tight tracking-tight md:leading-tight",
-        size === "xl" && "text-5xl md:text-7xl",
+        "leading-tight tracking-tight",
+        size === "xl" && "text-5xl md:text-6xl",
         size === "lg" && "text-4xl md:text-5xl",
         size === "md" && "text-3xl md:text-4xl",
         size === "sm" && "text-xl md:text-2xl",

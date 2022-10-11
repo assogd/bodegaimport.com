@@ -1,0 +1,24 @@
+{
+  "id": "origin",
+  "label": "Origin",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "region": {
+        "type": "Text",
+        "config": {
+          "label": "Region",
+          "placeholder": ""
+        }
+      },
+      "country": {
+        "type": "Text",
+        "config": {
+          "label": "Country",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

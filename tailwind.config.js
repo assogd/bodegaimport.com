@@ -2,9 +2,23 @@ module.exports = {
   content: ["./pages/**/*.js", "./components/**/*.js", "./slices/**/*.js"],
   theme: {
     fontFamily: {
-      sans: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      serif: '"Times New Roman", Times, serif',
     },
     extend: {},
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      white: "#ffffff",
+      gray: {
+        100: "#F8F8F8",
+      },
+      purple: "#E4C1E7",
+    },
+    extend: {
+      lineHeight: {
+        regular: "1.15",
+      },
+    },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
 };

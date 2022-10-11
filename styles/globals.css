@@ -5,3 +5,9 @@
 [data-collapsible="true"].bg-white + [data-collapsible="true"].bg-white {
   @apply pt-0 md:pt-0;
 }
+
+@layer base {
+  html {
+    @apply font-serif;
+  }
+}

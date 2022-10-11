@@ -81,6 +81,16 @@
         },
         "items": {}
       }
+    },
+    "Producer": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "Region": {
+      "default": {
+        "items": {}
+      }
     }
   },
   "_cts": {
@@ -93,6 +103,8 @@
       }
     },
     "navigation": {},
-    "settings": {}
+    "settings": {},
+    "producer": {},
+    "origin": {}
   }
 }

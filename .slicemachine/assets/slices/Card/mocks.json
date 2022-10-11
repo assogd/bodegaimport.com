@@ -9,14 +9,14 @@
       "title": [
         {
           "type": "heading4",
-          "text": "Smallest",
+          "text": "Measure",
           "spans": []
         }
       ],
       "body": [
         {
           "type": "paragraph",
-          "text": "Non fugiat adipisicing pariatur consectetur ipsum aute eu excepteur dolor.",
+          "text": "Minim consectetur qui elit nulla non qui do deserunt magna. Occaecat tempor cupidatat anim ullamco deserunt incididunt magna laborum consequat anim ipsum duis elit occaecat.",
           "spans": []
         }
       ]
@@ -37,7 +37,7 @@
         },
         "alt": null,
         "copyright": null,
-        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
         "md": {
           "dimensions": {
             "width": 750,
@@ -45,7 +45,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa"
+          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
         },
         "sm": {
           "dimensions": {
@@ -54,16 +54,36 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764"
         }
       },
       "caption": [
         {
           "type": "paragraph",
-          "text": "Anim laborum ut incididunt non amet occaecat cillum adipisicing sunt ex qui proident reprehenderit. Dolore irure ex aliquip in eu est. Ullamco culpa culpa cillum enim nostrud.",
+          "text": "Incididunt laboris laborum minim velit deserunt nostrud est cillum laborum exercitation do enim. Magna culpa occaecat deserunt enim. Minim eu magna exercitation sint et do nisi pariatur sint ea laboris incididunt adipisicing quis minim.",
           "spans": []
         }
       ]
+    },
+    "slice_type": "card"
+  },
+  {
+    "variation": "wine",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "reference": {
+        "id": "mock_document_id",
+        "link_type": "Document",
+        "type": "wine",
+        "tags": [],
+        "lang": "en-us",
+        "slug": null,
+        "first_publication_date": "1970-01-01T00:00:01+0000",
+        "last_publication_date": "1970-01-01T01:00:00+0000"
+      }
     },
     "slice_type": "card"
   }

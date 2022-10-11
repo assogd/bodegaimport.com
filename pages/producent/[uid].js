@@ -16,10 +16,10 @@ const Page = ({ page, navigation, settings }) => {
           {prismicH.asText(settings.data.siteTitle)}: {page.data.title}
         </title>
       </Head>
-      <header className="sticky inset-x-0 top-0 p-8 text-center">
+      <header className="sticky inset-x-0 top-0 z-0 pt-8 text-center">
         <Heading size="xl">{page.data.title}</Heading>
       </header>
-      <section className="cards grid grid-cols-2 gap-8 p-16">
+      <section className="cards relative grid gap-4 p-8 md:grid-cols-2 md:px-12">
         <SliceZone slices={page.data.slices} components={components} />
       </section>
     </Layout>
@@ -33,6 +33,16 @@ export async function getStaticProps({ params, locale, previewData }) {
 
   const page = await client.getByUID("producer", params.uid, {
     lang: locale,
+    fetchLinks: [
+      "wine.title",
+      "wine.origin",
+      "wine.grape_composition",
+      "wine.soil",
+      "wine.method",
+      "wine.hl_ha",
+      "wine.alcohol",
+      "wine.resellers",
+    ],
   });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });

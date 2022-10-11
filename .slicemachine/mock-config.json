@@ -119,8 +119,12 @@
             }
           }
         }
+      },
+      "wine": {
+        "primary": {}
       }
-    }
+    },
+    "Bottle": {}
   },
   "_cts": {
     "page": {
@@ -134,6 +138,16 @@
     "navigation": {},
     "settings": {},
     "producer": {},
-    "origin": {}
+    "origin": {},
+    "wine": {
+      "grape_composition": {},
+      "method": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
+    "grape": {}
   }
 }

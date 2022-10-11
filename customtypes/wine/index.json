@@ -1,0 +1,140 @@
+{
+  "id": "wine",
+  "label": "Wine",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "producer": {
+        "type": "Link",
+        "config": {
+          "label": "Producer",
+          "select": "document",
+          "customtypes": [
+            "producer"
+          ]
+        }
+      },
+      "origin": {
+        "type": "Text",
+        "config": {
+          "label": "Origin",
+          "placeholder": ""
+        }
+      },
+      "grape_composition": {
+        "type": "Group",
+        "config": {
+          "label": "Grape Composition",
+          "fields": {
+            "density": {
+              "type": "Number",
+              "config": {
+                "label": "Density (%)",
+                "placeholder": ""
+              }
+            },
+            "grape": {
+              "type": "Link",
+              "config": {
+                "label": "Grape",
+                "select": "document",
+                "customtypes": [
+                  "grape"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "soil": {
+        "type": "Text",
+        "config": {
+          "label": "Soil",
+          "placeholder": ""
+        }
+      },
+      "method": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Method",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,em"
+        }
+      },
+      "hl_ha": {
+        "type": "Text",
+        "config": {
+          "label": "HL/HA",
+          "placeholder": ""
+        }
+      },
+      "alcohol": {
+        "type": "Text",
+        "config": {
+          "label": "Alcohol",
+          "placeholder": ""
+        }
+      },
+      "resellers": {
+        "type": "Group",
+        "config": {
+          "label": "Reseller(s)",
+          "fields": {
+            "reseller": {
+              "type": "Text",
+              "config": {
+                "label": "Reseller",
+                "placeholder": ""
+              }
+            },
+            "art_no": {
+              "type": "Text",
+              "config": {
+                "label": "Art No.",
+                "placeholder": ""
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "URL",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "volume": {
+              "type": "Number",
+              "config": {
+                "label": "Volume (ml)",
+                "placeholder": ""
+              }
+            },
+            "price": {
+              "type": "Number",
+              "config": {
+                "label": "Price (SEK)",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

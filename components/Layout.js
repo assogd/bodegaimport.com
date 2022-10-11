@@ -3,7 +3,7 @@ import { Header } from "./Header";
 export const Layout = ({ navigation, settings, children }) => {
   return (
     <div className="text-slate-800">
-      <header className="fixed top-8 left-8 text-6xl tracking-tight">
+      <header className="fixed top-8 left-8 text-xl tracking-tight">
         Bodega Import
       </header>
       <main>{children}</main>

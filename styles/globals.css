@@ -7,7 +7,24 @@
 }
 
 @layer base {
+  @font-face {
+    font-family: Panama;
+    font-weight: 400;
+    src: url(/fonts/PanamaMonospaceRegular.woff) format("woff");
+  }
+
   html {
     @apply font-serif;
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    line-height: 1rem;
+  }
+
+  .card h4 {
+    border-bottom: 1px dashed;
+    padding-bottom: 0.5em;
   }
 }

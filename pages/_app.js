@@ -31,6 +31,7 @@ const richTextComponents = {
       {children}
     </Heading>
   ),
+  heading5: ({ children }) => <h5 className="mb-2 underline">{children}</h5>,
   paragraph: ({ children }) => <p className="mb-7 last:mb-0">{children}</p>,
   oList: ({ children }) => (
     <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>

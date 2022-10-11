@@ -10,10 +10,10 @@ export const Heading = ({
     <Comp
       className={clsx(
         "leading-tight tracking-tight",
-        size === "xl" && "text-5xl md:text-6xl",
-        size === "lg" && "text-4xl md:text-5xl",
-        size === "md" && "text-3xl md:text-4xl",
-        size === "sm" && "text-xl md:text-2xl",
+        size === "xl" && "text-xl md:text-xl",
+        size === "lg" && "text-xl md:text-xl",
+        size === "md" && "text-xl md:text-xl",
+        size === "sm" && "text-xl md:text-xl",
         className
       )}
     >

@@ -1,0 +1,65 @@
+{
+  "id": "mock-doc-id",
+  "uid": "anything",
+  "url": "/anything",
+  "type": "wine",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": "clock",
+    "producer": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "producer",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    },
+    "origin": "tool",
+    "grape_composition": [
+      {
+        "density": 42,
+        "grape": {
+          "id": "mock_document_id",
+          "link_type": "Document",
+          "type": "grape",
+          "tags": [],
+          "lang": "en-us",
+          "slug": null,
+          "first_publication_date": "1970-01-01T00:00:01+0000",
+          "last_publication_date": "1970-01-01T01:00:00+0000"
+        }
+      }
+    ],
+    "soil": "clock",
+    "method": [
+      {
+        "type": "paragraph",
+        "text": "Anim velit cupidatat mollit irure proident proident esse fugiat sit elit. Veniam mollit ea fugiat cupidatat aute in occaecat duis minim dolor veniam proident id dolore. Cillum culpa tempor elit cupidatat do occaecat sunt esse consequat do et quis aliqua amet.",
+        "spans": []
+      }
+    ],
+    "hl_ha": "familiar",
+    "alcohol": "pack",
+    "resellers": [
+      {
+        "reseller": "glass",
+        "art_no": "common",
+        "url": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        },
+        "volume": 52,
+        "price": 11
+      }
+    ]
+  }
+}

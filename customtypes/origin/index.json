@@ -1,6 +1,6 @@
 {
   "id": "origin",
-  "label": "Origin",
+  "label": "Region",
   "repeatable": true,
   "status": true,
   "json": {

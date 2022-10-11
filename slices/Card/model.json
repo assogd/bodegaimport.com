@@ -1,0 +1,79 @@
+{
+  "id": "card",
+  "type": "SharedSlice",
+  "name": "Card",
+  "description": "Card",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Card",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "For example: Biografi",
+            "allowTargetBlank": true,
+            "single": "heading4,em"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading5,em,list-item"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "image",
+      "name": "Image",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Card",
+      "primary": {
+        "file": {
+          "type": "Image",
+          "config": {
+            "label": "File",
+            "constraint": {
+              "width": 1500,
+              "height": 1900
+            },
+            "thumbnails": [
+              {
+                "name": "md",
+                "width": 750,
+                "height": 1000
+              },
+              {
+                "name": "sm",
+                "width": 350,
+                "height": 550
+              }
+            ]
+          }
+        },
+        "caption": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Caption",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "em"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

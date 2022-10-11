@@ -12,14 +12,32 @@
           "placeholder": ""
         }
       },
-      "origin": {
+      "region": {
         "type": "Link",
         "config": {
-          "label": "Origin",
+          "label": "Region",
           "select": "document",
           "customtypes": [
             "origin"
           ]
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "card": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

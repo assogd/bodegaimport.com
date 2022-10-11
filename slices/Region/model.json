@@ -12,19 +12,20 @@
       "description": "Region",
       "primary": {
         "title": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
-            "single": "heading1",
             "label": "Title",
-            "placeholder": "This is where it all begins..."
+            "placeholder": ""
           }
         },
-        "description": {
-          "type": "StructuredText",
+        "reference": {
+          "type": "Link",
           "config": {
-            "single": "paragraph",
-            "label": "Description",
-            "placeholder": "A nice description of your feature"
+            "label": "Reference",
+            "select": "document",
+            "customtypes": [
+              "origin"
+            ]
           }
         }
       },

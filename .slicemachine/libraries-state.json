@@ -1,6 +1,166 @@
 {
   "slices": {
     "components": {
+      "card": {
+        "library": "slices",
+        "id": "card",
+        "name": "Card",
+        "description": "Card",
+        "model": {
+          "id": "card",
+          "type": "SharedSlice",
+          "name": "Card",
+          "description": "Card",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Card",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": "For example: Biografi",
+                    "allowTargetBlank": true,
+                    "single": "heading4,em"
+                  }
+                },
+                "body": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Body",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,heading5,em,list-item"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "image",
+              "name": "Image",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Card",
+              "primary": {
+                "file": {
+                  "type": "Image",
+                  "config": {
+                    "label": "File",
+                    "constraint": {
+                      "width": 1500,
+                      "height": 1900
+                    },
+                    "thumbnails": [
+                      {
+                        "name": "md",
+                        "width": 750,
+                        "height": 1000
+                      },
+                      {
+                        "name": "sm",
+                        "width": 350,
+                        "height": 550
+                      }
+                    ]
+                  }
+                },
+                "caption": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Caption",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "em"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading4",
+                  "text": "Smallest",
+                  "spans": []
+                }
+              ],
+              "body": [
+                {
+                  "type": "paragraph",
+                  "text": "Non fugiat adipisicing pariatur consectetur ipsum aute eu excepteur dolor.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "card"
+          },
+          "image": {
+            "variation": "image",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "file": {
+                "dimensions": {
+                  "width": 1500,
+                  "height": 1900
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                "md": {
+                  "dimensions": {
+                    "width": 750,
+                    "height": 1000
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa"
+                },
+                "sm": {
+                  "dimensions": {
+                    "width": 350,
+                    "height": 550
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+                }
+              },
+              "caption": [
+                {
+                  "type": "paragraph",
+                  "text": "Anim laborum ut incididunt non amet occaecat cillum adipisicing sunt ex qui proident reprehenderit. Dolore irure ex aliquip in eu est. Ullamco culpa culpa cillum enim nostrud.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "card"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "producer": {
         "library": "slices",
         "id": "producer",
@@ -584,19 +744,20 @@
               "description": "Region",
               "primary": {
                 "title": {
-                  "type": "StructuredText",
+                  "type": "Text",
                   "config": {
-                    "single": "heading1",
                     "label": "Title",
-                    "placeholder": "This is where it all begins..."
+                    "placeholder": ""
                   }
                 },
-                "description": {
-                  "type": "StructuredText",
+                "reference": {
+                  "type": "Link",
                   "config": {
-                    "single": "paragraph",
-                    "label": "Description",
-                    "placeholder": "A nice description of your feature"
+                    "label": "Reference",
+                    "select": "document",
+                    "customtypes": [
+                      "origin"
+                    ]
                   }
                 }
               },
@@ -635,20 +796,17 @@
               }
             ],
             "primary": {
-              "title": [
-                {
-                  "type": "heading1",
-                  "text": "Nearly",
-                  "spans": []
-                }
-              ],
-              "description": [
-                {
-                  "type": "paragraph",
-                  "text": "Eiusmod labore eiusmod mollit veniam aute tempor.",
-                  "spans": []
-                }
-              ]
+              "title": "bar",
+              "reference": {
+                "id": "mock_document_id",
+                "link_type": "Document",
+                "type": "origin",
+                "tags": [],
+                "lang": "en-us",
+                "slug": null,
+                "first_publication_date": "1970-01-01T00:00:01+0000",
+                "last_publication_date": "1970-01-01T01:00:00+0000"
+              }
             },
             "slice_type": "region"
           }

@@ -1,31 +1,28 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
+import React from "react";
+import { PrismicRichText } from "@prismicio/react";
+import { Heading } from "../../components/Heading";
 
-const Region = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section>
-)
+const Region = ({ slice }) => {
+  const { title, reference } = slice.primary;
+  console.log(slice);
+  return (
+    <section className="region">
+      <header className="sticky top-4 right-4 inline-block">
+        <Heading as="h2" size="xl">
+          {title}
+        </Heading>
+      </header>
+      {slice.items.map(({ producer }, i) => (
+        <section className="producer" key={i}>
+          <header className="sticky top-4 right-4 inline-block">
+            <Heading as="h3" size="xl">
+              {producer.data.title}
+            </Heading>
+          </header>
+        </section>
+      ))}
+    </section>
+  );
+};
 
-export default Region
+export default Region;

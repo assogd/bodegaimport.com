@@ -19,7 +19,9 @@ const Page = ({ page, navigation, settings }) => {
       <header className="sticky inset-x-0 top-0 p-8 text-center">
         <Heading size="xl">{page.data.title}</Heading>
       </header>
-      <SliceZone slices={page.data.slices} components={components} />
+      <section className="cards grid grid-cols-2 gap-8 p-16">
+        <SliceZone slices={page.data.slices} components={components} />
+      </section>
     </Layout>
   );
 };

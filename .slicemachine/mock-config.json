@@ -146,6 +146,11 @@
           "patternType": "PARAGRAPH",
           "blocks": 1
         }
+      },
+      "resellers": {
+        "link": {
+          "content": "https://www.systembolaget.se"
+        }
       }
     },
     "grape": {}

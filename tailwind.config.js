@@ -17,6 +17,8 @@ module.exports = {
       current: "currentColor",
       white: "#ffffff",
       black: "rgb(0, 0, 0)",
+      red: "#E2908D",
+      champagne: "#fff2d0",
       gray: {
         100: "#F8F8F8",
       },

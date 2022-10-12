@@ -1,10 +1,12 @@
 import React from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import extractDomain from "extract-domain";
+import Button from "../../components/Button";
 
 export const Default = ({ data }) => {
   return (
-    <article className="font-mono text-sm">
+    <article className="font-mono h-full text-sm">
       <header className="font-serif z-2 sticky top-0 left-0 bg-white py-4 pb-2 text-base">
         <PrismicRichText field={data.primary.title} />
       </header>
@@ -28,9 +30,10 @@ export const Image = ({ data }) => {
   );
 };
 
-export const Wine = ({ data }) => {
+export const Wine = ({ data, bgColor }) => {
   const {
     alcohol,
+    color,
     grape_composition,
     hl_ha,
     method,
@@ -40,17 +43,70 @@ export const Wine = ({ data }) => {
     title,
   } = data.primary.reference.data;
 
-  console.log(data.primary);
-
   return (
     <div>
-      <header className="font-serif z-2 sticky top-0 left-0 bg-white py-4 pb-2 text-base">
+      <header
+        className={`font-serif z-2 sticky top-0 left-0 ${bgColor} py-4 pb-2 text-base`}
+      >
         <h4>{title}</h4>
       </header>
-      <div>
-        <h5>Jord</h5>
-        {soil}
+      <ul>
+        <ListItem title="Ursprung" body={origin} />
+        <ListItem title="Jord" body={soil} />
+        <ListItem type="grapes" title="Druvor" body={grape_composition} />
+        <ListItem type="richText" title="Metod" body={method} />
+        <ListItem title="HL/HA" body={hl_ha} />
+        <ListItem title="Alkohol" body={alcohol} />
+        <ListItem type="resellers" title="Återförsäljare" body={resellers} />
+      </ul>
+    </div>
+  );
+};
+
+const ListItem = ({ title, body, type }) => {
+  if (!body) return null;
+
+  const resellers =
+    type === "resellers"
+      ? body.map((plate, i) => <Plate key={i} data={plate} />)
+      : null;
+
+  const grapes =
+    type === "grapes"
+      ? body
+          .map((grape) => `${grape.density}% ${grape.grape.data.title}`)
+          .join(", ")
+      : null;
+
+  const richText =
+    type === "richText" ? <PrismicRichText field={body} /> : null;
+
+  return (
+    <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
+      <h5 className="text-sm leading-relaxed">{title}</h5>
+      <div className="font-mono text-sm">
+        {resellers ?? grapes ?? richText ?? body}
       </div>
+    </li>
+  );
+};
+
+const Plate = ({ data }) => {
+  const { reseller, art_no, link, volume, price } = data;
+  console.log(link);
+  return (
+    <div className="mt-2 grid gap-2 rounded bg-white/60 p-4">
+      <div className="flex justify-between">
+        <div>{reseller}</div>
+        <div className="border-1">{volume} ml</div>
+      </div>
+      <div className="flex justify-between">
+        <div>Artikelnr {art_no}</div>
+        <div>{price} SEK</div>
+      </div>
+      <Button href={link.url} className="bg-red/50 font-serif w-full">
+        Beställ från {extractDomain(link.url)}
+      </Button>
     </div>
   );
 };

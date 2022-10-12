@@ -22,6 +22,17 @@
           ]
         }
       },
+      "color": {
+        "type": "Select",
+        "config": {
+          "label": "Color",
+          "placeholder": "",
+          "options": [
+            "Champagne",
+            "Red"
+          ]
+        }
+      },
       "origin": {
         "type": "Text",
         "config": {
@@ -103,11 +114,12 @@
                 "placeholder": ""
               }
             },
-            "url": {
+            "link": {
               "type": "Link",
               "config": {
-                "label": "URL",
+                "label": "Link",
                 "placeholder": "",
+                "allowTargetBlank": false,
                 "select": null
               }
             },

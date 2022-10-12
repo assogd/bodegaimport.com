@@ -36,12 +36,14 @@ export async function getStaticProps({ params, locale, previewData }) {
     fetchLinks: [
       "wine.title",
       "wine.origin",
+      "wine.color",
       "wine.grape_composition",
       "wine.soil",
       "wine.method",
       "wine.hl_ha",
       "wine.alcohol",
       "wine.resellers",
+      "grape.title",
     ],
   });
   const navigation = await client.getSingle("navigation", { lang: locale });

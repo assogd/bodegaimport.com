@@ -20,6 +20,8 @@
     "@prismicio/react": "^2.5.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "clsx": "^1.2.1",
+    "extract-domain": "^2.4.8",
+    "framer-motion": "^7.5.3",
     "next": "^12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

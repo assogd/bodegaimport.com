@@ -1,7 +1,7 @@
 {
   "id": "mock-doc-id",
-  "uid": "anything",
-  "url": "/anything",
+  "uid": "accident",
+  "url": "/accident",
   "type": "wine",
   "href": null,
   "tags": [],
@@ -12,7 +12,7 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "clock",
+    "title": "reach",
     "producer": {
       "id": "mock_document_id",
       "link_type": "Document",
@@ -23,10 +23,11 @@
       "first_publication_date": "1970-01-01T00:00:01+0000",
       "last_publication_date": "1970-01-01T01:00:00+0000"
     },
-    "origin": "tool",
+    "color": "Champagne",
+    "origin": "roof",
     "grape_composition": [
       {
-        "density": 42,
+        "density": 74,
         "grape": {
           "id": "mock_document_id",
           "link_type": "Document",
@@ -39,26 +40,26 @@
         }
       }
     ],
-    "soil": "clock",
+    "soil": "snow",
     "method": [
       {
         "type": "paragraph",
-        "text": "Anim velit cupidatat mollit irure proident proident esse fugiat sit elit. Veniam mollit ea fugiat cupidatat aute in occaecat duis minim dolor veniam proident id dolore. Cillum culpa tempor elit cupidatat do occaecat sunt esse consequat do et quis aliqua amet.",
+        "text": "Reprehenderit aliqua velit Lorem irure. Consequat nulla ipsum adipisicing incididunt exercitation qui sit dolor irure aliquip elit aliqua voluptate aute. Occaecat duis do dolore esse.",
         "spans": []
       }
     ],
-    "hl_ha": "familiar",
-    "alcohol": "pack",
+    "hl_ha": "police",
+    "alcohol": "somehow",
     "resellers": [
       {
-        "reseller": "glass",
-        "art_no": "common",
-        "url": {
+        "reseller": "particles",
+        "art_no": "flew",
+        "link": {
           "link_type": "Web",
-          "url": "http://twitter.com"
+          "url": "https://www.systembolaget.se"
         },
-        "volume": 52,
-        "price": 11
+        "volume": 61,
+        "price": 21
       }
     ]
   }

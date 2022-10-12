@@ -6,7 +6,7 @@ export const Layout = ({ navigation, settings, children }) => {
       <header className="fixed top-8 left-8 text-xl tracking-tight">
         Bodega Import
       </header>
-      <main>{children}</main>
+      <main className="pb-16">{children}</main>
       <Header navigation={navigation} settings={settings} />
     </div>
   );

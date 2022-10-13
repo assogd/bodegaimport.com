@@ -12,13 +12,13 @@
           "placeholder": ""
         }
       },
-      "region": {
+      "region_ref": {
         "type": "Link",
         "config": {
           "label": "Region",
           "select": "document",
           "customtypes": [
-            "origin"
+            "region"
           ]
         }
       },

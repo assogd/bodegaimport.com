@@ -1,9 +1,9 @@
 import { PrismicLink, PrismicText, PrismicRichText } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 
 export const Header = ({ navigation, settings, marquee }) => {
-  console.log(marquee);
   return (
     <header className="fixed inset-x-0 bottom-0 z-50">
       <nav className="bg-purple">
@@ -20,7 +20,7 @@ export const Header = ({ navigation, settings, marquee }) => {
           ))}
         </ul>
       </nav>
-      <div className="bg-yellow">
+      <motion.div className="bg-yellow" layoutId={"marquee"}>
         <Marquee pauseOnHover gradient={false}>
           {marquee.data?.messages.map((item, i) => (
             <div key={i} className="py-2 px-4">
@@ -28,7 +28,7 @@ export const Header = ({ navigation, settings, marquee }) => {
             </div>
           ))}
         </Marquee>
-      </div>
+      </motion.div>
     </header>
   );
 };

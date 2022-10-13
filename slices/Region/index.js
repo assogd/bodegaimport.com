@@ -6,7 +6,7 @@ const Region = ({ slice }) => {
   const { title, reference } = slice.primary;
   console.log(slice);
   return (
-    <section className="region">
+    <section className="region relative">
       <header className="sticky top-4 right-4 inline-block">
         <Heading as="h2" size="xl">
           {title}

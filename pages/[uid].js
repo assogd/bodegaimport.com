@@ -8,7 +8,8 @@ import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
 
-const Page = ({ page, navigation, marquee, settings }) => {
+const Page = ({ page, regions, producers, navigation, marquee, settings }) => {
+  console.log(regions);
   return (
     <Layout navigation={navigation} marquee={marquee} settings={settings}>
       <Head>
@@ -32,8 +33,10 @@ export async function getStaticProps({ params, locale, previewData }) {
 
   const page = await client.getByUID("page", params.uid, {
     lang: locale,
-    fetchLinks: ["producer.title", "producer.items"],
+    fetchLinks: ["producer.title", "producer.region", "card.caption"],
   });
+  const regions = await client.getAllByType("region");
+  const producers = await client.getAllByType("producer");
   const navigation = await client.getSingle("navigation", { lang: locale });
   const marquee = await client.getSingle("marquee", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
@@ -41,6 +44,8 @@ export async function getStaticProps({ params, locale, previewData }) {
   return {
     props: {
       page,
+      regions,
+      producers,
       navigation,
       marquee,
       settings,

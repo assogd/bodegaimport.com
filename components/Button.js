@@ -1,8 +1,12 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Button = ({ children, className, onTap, href }) => {
-  const classes = clsx("rounded p-2", className);
+  const classes = clsx(
+    "inline-flex items-center justify-center gap-1 rounded p-2",
+    className
+  );
 
   return (
     <A href={href}>
@@ -13,6 +17,14 @@ const Button = ({ children, className, onTap, href }) => {
         onTap={onTap}
       >
         {children}
+        {href && (
+          <Image
+            src={"/icons/launch.svg"}
+            alt={"External link"}
+            width="16"
+            height="16"
+          />
+        )}
       </motion.button>
     </A>
   );
@@ -24,7 +36,7 @@ const A = ({ children, href }) => {
   if (!href) return children;
 
   return (
-    <a href={href} target="_blank" className="block">
+    <a href={href} target="_blank">
       {children}
     </a>
   );

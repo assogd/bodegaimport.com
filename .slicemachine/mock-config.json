@@ -153,6 +153,16 @@
         }
       }
     },
-    "grape": {}
+    "grape": {},
+    "marquee": {
+      "messages": {
+        "body": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      }
+    }
   }
 }

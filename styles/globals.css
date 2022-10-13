@@ -15,12 +15,23 @@
 
   html {
     @apply font-serif;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   h4 {
     font-size: 1.2rem;
     line-height: 1rem;
+  }
+
+  a:link,
+  a:visited {
+    text-decoration-color: rgba(0, 0, 255, 0.7);
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    text-decoration-color: rgba(0, 0, 255, 1);
   }
 
   .card h4 {

@@ -8,9 +8,9 @@ import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
 
-const Page = ({ page, navigation, settings }) => {
+const Page = ({ page, navigation, marquee, settings }) => {
   return (
-    <Layout navigation={navigation} settings={settings}>
+    <Layout navigation={navigation} marquee={marquee} settings={settings}>
       <Head>
         <title>
           {prismicH.asText(settings.data.siteTitle)}:{" "}
@@ -35,12 +35,14 @@ export async function getStaticProps({ params, locale, previewData }) {
     fetchLinks: ["producer.title", "producer.items"],
   });
   const navigation = await client.getSingle("navigation", { lang: locale });
+  const marquee = await client.getSingle("marquee", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
 
   return {
     props: {
       page,
       navigation,
+      marquee,
       settings,
     },
   };

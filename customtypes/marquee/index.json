@@ -1,0 +1,27 @@
+{
+  "id": "marquee",
+  "label": "Marquee",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "messages": {
+        "type": "Group",
+        "config": {
+          "label": "Messages",
+          "fields": {
+            "body": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Body",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "single": "em,hyperlink"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

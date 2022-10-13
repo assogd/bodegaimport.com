@@ -3,10 +3,11 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import extractDomain from "extract-domain";
 import Button from "../../components/Button";
+import { motion } from "framer-motion";
 
 export const Default = ({ data }) => {
   return (
-    <article className="font-mono h-full text-sm">
+    <article className="font-mono text-monoBase h-full">
       <header className="font-serif z-2 sticky top-0 left-0 bg-white py-4 pb-2 text-base">
         <PrismicRichText field={data.primary.title} />
       </header>
@@ -83,8 +84,8 @@ const ListItem = ({ title, body, type }) => {
 
   return (
     <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
-      <h5 className="text-sm leading-relaxed">{title}</h5>
-      <div className="font-mono text-sm">
+      <h5 className="text-monoBase leading-relaxed">{title}</h5>
+      <div className="font-mono text-monoBase">
         {resellers ?? grapes ?? richText ?? body}
       </div>
     </li>
@@ -93,20 +94,20 @@ const ListItem = ({ title, body, type }) => {
 
 const Plate = ({ data }) => {
   const { reseller, art_no, link, volume, price } = data;
-  console.log(link);
+
   return (
-    <div className="mt-2 grid gap-2 rounded bg-white/60 p-4">
+    <motion.div className="mt-2 grid gap-1 rounded bg-white/60 p-4">
       <div className="flex justify-between">
         <div>{reseller}</div>
-        <div className="border-1">{volume} ml</div>
+        <div>{volume} ml</div>
       </div>
       <div className="flex justify-between">
         <div>Artikelnr {art_no}</div>
         <div>{price} SEK</div>
       </div>
-      <Button href={link.url} className="bg-red/50 font-serif w-full">
+      <Button href={link.url} className="bg-red/50 font-serif mt-2 w-full">
         Beställ från {extractDomain(link.url)}
       </Button>
-    </div>
+    </motion.div>
   );
 };

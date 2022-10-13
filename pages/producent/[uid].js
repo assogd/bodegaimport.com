@@ -8,9 +8,9 @@ import { Layout } from "../../components/Layout";
 
 import { Heading } from "../../components/Heading";
 
-const Page = ({ page, navigation, settings }) => {
+const Page = ({ page, navigation, marquee, settings }) => {
   return (
-    <Layout navigation={navigation} settings={settings}>
+    <Layout navigation={navigation} marquee={marquee} settings={settings}>
       <Head>
         <title>
           {prismicH.asText(settings.data.siteTitle)}: {page.data.title}
@@ -19,7 +19,7 @@ const Page = ({ page, navigation, settings }) => {
       <header className="sticky inset-x-0 top-0 z-0 pt-8 text-center">
         <Heading size="xl">{page.data.title}</Heading>
       </header>
-      <section className="cards relative grid gap-4 p-8 md:grid-cols-2 md:px-12">
+      <section className="cards relative mx-auto grid max-w-screen-2xl items-stretch gap-4 p-8 md:grid-cols-2 md:px-12">
         <SliceZone slices={page.data.slices} components={components} />
       </section>
     </Layout>
@@ -47,12 +47,14 @@ export async function getStaticProps({ params, locale, previewData }) {
     ],
   });
   const navigation = await client.getSingle("navigation", { lang: locale });
+  const marquee = await client.getSingle("marquee", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
 
   return {
     props: {
       page,
       navigation,
+      marquee,
       settings,
     },
   };

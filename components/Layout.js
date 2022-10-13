@@ -1,13 +1,13 @@
 import { Header } from "./Header";
 
-export const Layout = ({ navigation, settings, children }) => {
+export const Layout = ({ navigation, marquee, settings, children }) => {
   return (
     <div className="text-slate-800">
       <header className="fixed top-8 left-8 text-xl tracking-tight">
         Bodega Import
       </header>
       <main className="pb-16">{children}</main>
-      <Header navigation={navigation} settings={settings} />
+      <Header navigation={navigation} settings={settings} marquee={marquee} />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { Default, Image, Wine } from "./variations";
 import clsx from "clsx";
 import { camelCase } from "../../lib/utils/text";
+import { AnimateInView as Animation } from "../../components/Animations/";
 
 const Card = ({ slice }) => {
   const { variation } = slice;
@@ -11,7 +12,9 @@ const Card = ({ slice }) => {
   const isText = variation === "default" || variation === "wine";
   const bgColor = slice?.primary?.reference?.data?.color
     ? `bg-${camelCase(slice?.primary?.reference?.data?.color)}`
-    : "bg-white";
+    : isText
+    ? "bg-white"
+    : "bg-transparent";
 
   const cardClasses = clsx(
     "card rounded relative z-20",
@@ -21,7 +24,7 @@ const Card = ({ slice }) => {
   );
 
   return (
-    <section className={cardClasses}>
+    <Animation className={cardClasses}>
       {variation === "default" ? (
         <Default data={slice} />
       ) : variation === "image" ? (
@@ -29,7 +32,7 @@ const Card = ({ slice }) => {
       ) : variation === "wine" ? (
         <Wine data={slice} bgColor={bgColor} />
       ) : null}
-    </section>
+    </Animation>
   );
 };
 

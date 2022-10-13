@@ -1,0 +1,26 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "marquee",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "messages": [
+      {
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Ea ullamco consequat Lorem nisi minim est voluptate laborum voluptate ut amet eu nisi. Esse exercitation deserunt laboris sit dolor aliqua pariatur culpa proident reprehenderit deserunt eiusmod enim aliqua.",
+            "spans": []
+          }
+        ]
+      }
+    ]
+  }
+}

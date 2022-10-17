@@ -4,7 +4,7 @@ import { Heading } from "../../components/Heading";
 
 const Region = ({ slice }) => {
   const { title, reference } = slice.primary;
-  console.log(slice);
+
   return (
     <section className="region relative">
       <header className="sticky top-4 right-4 inline-block">

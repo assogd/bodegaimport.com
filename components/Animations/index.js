@@ -8,8 +8,6 @@ export const AnimateInView = ({
   duration = 0.5,
   element,
 }) => {
-  console.log(className);
-
   return (
     <motion.section
       className={className}

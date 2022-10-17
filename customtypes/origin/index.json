@@ -1,5 +1,5 @@
 {
-  "id": "region",
+  "id": "origin",
   "label": "Region",
   "repeatable": true,
   "status": true,

@@ -1,37 +1,9 @@
-import React from "react";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
 import extractDomain from "extract-domain";
-import Button from "../../components/Button";
+import Button from "../../Button";
 import { motion } from "framer-motion";
 
-export const Default = ({ data }) => {
-  return (
-    <article className="font-mono text-monoBase h-full">
-      <header className="font-serif z-2 sticky top-0 left-0 bg-white py-4 pb-2 text-base">
-        <PrismicRichText field={data.primary.title} />
-      </header>
-      <PrismicRichText field={data.primary.body} />
-    </article>
-  );
-};
-
-export const Image = ({ data }) => {
-  const { file, caption } = data.primary;
-
-  return (
-    <figure className="sticky top-14 overflow-hidden rounded">
-      <PrismicNextImage field={file} layout="responsive" />
-      {caption && (
-        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm text-gray-100">
-          <PrismicRichText field={caption} />
-        </figcaption>
-      )}
-    </figure>
-  );
-};
-
-export const Wine = ({ data, bgColor }) => {
+const Wine = ({ data, bgColor, size }) => {
   const {
     alcohol,
     color,
@@ -55,10 +27,14 @@ export const Wine = ({ data, bgColor }) => {
         <ListItem title="Ursprung" body={origin} />
         <ListItem title="Jord" body={soil} />
         <ListItem type="grapes" title="Druvor" body={grape_composition} />
-        <ListItem type="richText" title="Metod" body={method} />
-        <ListItem title="HL/HA" body={hl_ha} />
+        {size != "sm" && (
+          <ListItem type="richText" title="Metod" body={method} />
+        )}
+        {size != "sm" && <ListItem title="HL/HA" body={hl_ha} />}
         <ListItem title="Alkohol" body={alcohol} />
-        <ListItem type="resellers" title="Återförsäljare" body={resellers} />
+        {size != "sm" && (
+          <ListItem type="resellers" title="Återförsäljare" body={resellers} />
+        )}
       </ul>
     </div>
   );
@@ -111,3 +87,5 @@ const Plate = ({ data }) => {
     </motion.div>
   );
 };
+
+export default Wine;

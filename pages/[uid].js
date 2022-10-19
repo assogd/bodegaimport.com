@@ -8,6 +8,7 @@ import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
 import Card from "../components/Card/";
+import Carousel from "../components/Carousel";
 
 const Page = ({ page, list, navigation, marquee, settings }) => {
   return (
@@ -38,11 +39,11 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
                     {producer.data.title}
                   </Heading>
                 </header>
-                <section className="cards relative mx-auto flex max-w-screen-2xl items-stretch gap-4">
+                <Carousel>
                   {producer.data.slices.map((card) => (
-                    <Card key={card.id} data={card} size="sm" />
+                    <Card key={card.id} data={card} size="sm" animate={false} />
                   ))}
-                </section>
+                </Carousel>
               </section>
             ))}
           </section>

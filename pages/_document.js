@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="sv">
       <Head />
-      <body className="overflow-x-hidden bg-gray-100 leading-tight antialiased">
+      <body className="overflow-x-hidden scroll-smooth bg-gray-100 antialiased">
         <Main />
         <NextScript />
       </body>

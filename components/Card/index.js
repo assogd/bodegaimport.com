@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { camelCase } from "../../lib/utils/text";
 import { AnimateInView as Animation } from "../Animations/";
 
-export default function Card({ data, size }) {
+export default function Card({ data, size, animate = true }) {
   const { variation } = data;
 
   const isText = variation === "default" || variation === "wine";
@@ -18,10 +18,10 @@ export default function Card({ data, size }) {
 
   const cardClasses = clsx(
     "card rounded relative z-20",
-    isText && "px-8 pt-2 pb-8",
+    isText && size != "sm" && "px-8 pt-2 pb-8",
     variation === "images" && "overflow-hidden",
     bgColor,
-    size === "sm" && "basis-96"
+    size === "sm" && "basis-auto shrink-0 snap-center scroll-ml-12 w-96 "
   );
 
   const DynamicComponent = dynamic(
@@ -30,8 +30,17 @@ export default function Card({ data, size }) {
   );
 
   return (
-    <Animation className={cardClasses}>
-      <DynamicComponent data={data} size={size} bgColor={bgColor} />
+    <Animation className={cardClasses} skip={!animate}>
+      <AspectRatio render={size === "sm"}>
+        <DynamicComponent data={data} size={size} bgColor={bgColor} />
+      </AspectRatio>
     </Animation>
   );
 }
+
+const AspectRatio = ({ render, children }) =>
+  render ? (
+    <div className="relative h-0 overflow-hidden pb-[135%]">{children}</div>
+  ) : (
+    children
+  );

@@ -7,7 +7,10 @@ export const AnimateInView = ({
   delay = 0,
   duration = 0.5,
   element,
+  skip,
 }) => {
+  if (skip) return <section className={className}>{children}</section>;
+
   return (
     <motion.section
       className={className}

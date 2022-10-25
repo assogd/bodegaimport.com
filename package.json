@@ -19,6 +19,7 @@
     "@prismicio/next": "^0.1.5",
     "@prismicio/react": "^2.5.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
+    "@react-hook/window-size": "^3.1.1",
     "clsx": "^1.2.1",
     "extract-domain": "^2.4.8",
     "framer-motion": "^7.5.3",

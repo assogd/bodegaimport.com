@@ -1,4 +1,5 @@
-import { Header } from "./Header";
+import Broadcast from "./Broadcast";
+import Navigation from "./Navigation/main/";
 
 export const Layout = ({ navigation, marquee, settings, children }) => {
   return (
@@ -6,8 +7,9 @@ export const Layout = ({ navigation, marquee, settings, children }) => {
       <header className="fixed top-8 left-8 text-xl tracking-tight">
         Bodega Import
       </header>
+      <Navigation links={navigation.data?.links} />
       <main className="pb-16">{children}</main>
-      <Header navigation={navigation} settings={settings} marquee={marquee} />
+      <Broadcast marquee={marquee} />
     </div>
   );
 };

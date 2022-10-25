@@ -1,0 +1,23 @@
+import { PrismicRichText } from "@prismicio/react";
+import * as prismicH from "@prismicio/helpers";
+import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
+
+export const Broadcast = ({ navigation, settings, marquee }) => {
+  return (
+    <motion.div
+      className="fixed inset-x-0 bottom-0 z-20 bg-yellow/100"
+      layoutId={"marquee"}
+    >
+      <Marquee pauseOnHover gradient={false}>
+        {marquee.data?.messages.map((item, i) => (
+          <div key={i} className="py-2 px-4">
+            <PrismicRichText field={item.body} />
+          </div>
+        ))}
+      </Marquee>
+    </motion.div>
+  );
+};
+
+export default Broadcast;

@@ -11,9 +11,14 @@ module.exports = {
       base: ["1rem", "1.2em"],
       monoBase: ["0.85rem", "1.2em"],
       lg: ["1.2rem", "1.2em"],
-      xl: ["4vw", "1em"],
+      xl: ["clamp(2em, 4vw, 10em)", "1em"],
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        glow: "0 0 12px 4px rgba(255, 255, 255, .5)",
+        easeTop: "0 -24px 24px 0px rgba(255, 255, 255, 1)",
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",

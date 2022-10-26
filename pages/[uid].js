@@ -10,6 +10,10 @@ import { Heading } from "../components/Heading";
 import Card from "../components/Card/";
 import Carousel from "../components/Carousel";
 
+import useScrollDirection from "../lib/hooks/useScrollDirection";
+import { motion } from "framer-motion";
+import clsx from "clsx";
+
 const Page = ({ page, list, navigation, marquee, settings }) => {
   return (
     <Layout navigation={navigation} marquee={marquee} settings={settings}>
@@ -19,9 +23,7 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <header className="sticky inset-x-0 top-0 p-8 text-center">
-        <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
-      </header>
+      <Header>{prismicH.asText(page.data.title)}</Header>
       <SliceZone slices={page.data.slices} components={components} />
       {list
         .filter((a) => a.producers.length > 0)
@@ -53,6 +55,28 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
 };
 
 export default Page;
+
+const Header = ({ children }) => {
+  const [isScrollingUp] = useScrollDirection();
+
+  const variants = {
+    outsideView: { y: "-2.25em" },
+    inView: { y: 0 },
+  };
+
+  const headerClasses = clsx("sticky inset-x-0 text-center md:top-0 top-14");
+
+  return (
+    <motion.header
+      className={headerClasses}
+      animate={isScrollingUp ? "inView" : "outsideView"}
+      variants={variants}
+      transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
+    >
+      <Heading size="xl">{children}</Heading>
+    </motion.header>
+  );
+};
 
 export async function getStaticProps({ params, locale, previewData }) {
   const client = createClient({ previewData });

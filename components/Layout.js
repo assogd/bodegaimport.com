@@ -4,7 +4,7 @@ import Navigation from "./Navigation/main/";
 export const Layout = ({ navigation, marquee, settings, children }) => {
   return (
     <div className="text-slate-800">
-      <header className="fixed top-8 left-8 text-xl tracking-tight">
+      <header className="fixed left-[50%] top-8 translate-x-[-50%] text-xl tracking-tight md:left-8">
         Bodega Import
       </header>
       <Navigation links={navigation.data?.links} />

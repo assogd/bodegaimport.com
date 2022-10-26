@@ -36,7 +36,7 @@ const A = ({ children, href }) => {
   if (!href) return children;
 
   return (
-    <a href={href} target="_blank">
+    <a href={href} target="_blank" rel="noreferrer noopener">
       {children}
     </a>
   );

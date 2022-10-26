@@ -21,7 +21,7 @@ export const Collapsible = ({ links }) => {
   return (
     <nav className={navClasses}>
       <Button
-        className="shadow-glow rounded-lg bg-white px-8 py-3 font-mono uppercase"
+        className="rounded-lg bg-white px-8 py-3 font-mono uppercase shadow-glow"
         onTap={() => setOpen(!isOpen)}
       >
         Meny ///

@@ -21,7 +21,7 @@ const Image = ({ data, size }) => {
         objectFit={objectFit}
       />
       {caption && size != "sm" && (
-        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm text-gray-100">
+        <figcaption className="text-neutral-100 absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm">
           <PrismicRichText field={caption} />
         </figcaption>
       )}

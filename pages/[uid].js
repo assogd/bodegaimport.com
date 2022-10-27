@@ -7,7 +7,6 @@ import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
-import Card from "../components/Card/";
 import Carousel from "../components/Carousel";
 
 import useScrollDirection from "../lib/hooks/useScrollDirection";
@@ -23,29 +22,29 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <Header>{prismicH.asText(page.data.title)}</Header>
-      <SliceZone slices={page.data.slices} components={components} />
+      <section className="introduction relative">
+        <Header className="sticky inset-x-0 top-14 text-center md:fixed md:top-0">
+          <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
+        </Header>
+        <SliceZone slices={page.data.slices} components={components} />
+      </section>
       {list
         .filter((a) => a.producers.length > 0)
         .map((item) => (
           <section key={item.slug} className="region h-[200em] w-full">
-            <header className="sticky top-0 right-0 w-full p-8 text-right">
+            <Header className="sticky top-14 right-0 w-full px-4 text-center md:top-0 md:p-8 md:text-right">
               <Heading as="h2" size="xl">
                 {item.origin.region}, {item.origin.country}
               </Heading>
-            </header>
+            </Header>
             {item.producers.map((producer) => (
               <section key={producer.id} className="producer h-[200em]">
-                <header className="sticky inset-x-0 top-12 p-8 text-center">
+                <Header className="sticky inset-x-0 top-[3.75em] p-8 text-center md:top-12">
                   <Heading as="h2" size="xl">
                     {producer.data.title}
                   </Heading>
-                </header>
-                <Carousel>
-                  {producer.data.slices.map((card) => (
-                    <Card key={card.id} data={card} size="sm" animate={false} />
-                  ))}
-                </Carousel>
+                </Header>
+                <Carousel data={producer.data.slices} />
               </section>
             ))}
           </section>
@@ -56,7 +55,7 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
 
 export default Page;
 
-const Header = ({ children }) => {
+const Header = ({ children, className }) => {
   const [isScrollingUp] = useScrollDirection();
 
   const variants = {
@@ -64,7 +63,29 @@ const Header = ({ children }) => {
     inView: { y: 0 },
   };
 
-  const headerClasses = clsx("sticky inset-x-0 text-center md:top-0 top-14");
+  return (
+    <motion.header
+      className={className}
+      animate={isScrollingUp ? "inView" : "outsideView"}
+      variants={variants}
+      transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
+    >
+      {children}
+    </motion.header>
+  );
+};
+
+const RegionHeader = ({ children }) => {
+  const [isScrollingUp] = useScrollDirection();
+
+  const variants = {
+    outsideView: { y: "-2.25em" },
+    inView: { y: 0 },
+  };
+
+  const headerClasses = clsx(
+    "sticky top-14 md:top-0 right-0 w-full px-4 text-center md:p-8 md:text-right"
+  );
 
   return (
     <motion.header
@@ -73,7 +94,9 @@ const Header = ({ children }) => {
       variants={variants}
       transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
     >
-      <Heading size="xl">{children}</Heading>
+      <Heading as="h2" size="xl">
+        {children}
+      </Heading>
     </motion.header>
   );
 };

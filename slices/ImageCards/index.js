@@ -12,7 +12,7 @@ const ImageCard = ({ item }) => {
   return (
     <li className="grid gap-8">
       {prismicH.isFilled.image(image) && (
-        <div className="bg-gray-100">
+        <div className="bg-neutral-100">
           <ConditionalWrap
             condition={prismicH.isFilled.link(item.buttonLink)}
             wrap={({ children }) => (

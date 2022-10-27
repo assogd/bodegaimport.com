@@ -21,7 +21,7 @@ export default function Card({ data, size, animate = true }) {
     isText && size != "sm" && "px-8 pt-2 pb-8",
     variation === "images" && "overflow-hidden",
     bgColor,
-    size === "sm" && "basis-auto shrink-0 snap-center scroll-ml-12 w-96 "
+    size === "sm" && " "
   );
 
   const DynamicComponent = dynamic(

@@ -17,9 +17,9 @@ const Wine = ({ data, bgColor, size }) => {
   } = data.primary.reference.data;
 
   return (
-    <div>
+    <div className="px-6 py-2 md:px-8">
       <header
-        className={`font-serif z-2 sticky top-0 left-0 ${bgColor} py-4 pb-2 text-base`}
+        className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}
       >
         <h4>{title}</h4>
       </header>
@@ -81,7 +81,7 @@ const Plate = ({ data }) => {
         <div>Artikelnr {art_no}</div>
         <div>{price} SEK</div>
       </div>
-      <Button href={link.url} className="bg-red/50 font-serif mt-2 w-full">
+      <Button href={link.url} className="mt-2 w-full bg-red/50 font-serif">
         Beställ från {extractDomain(link.url)}
       </Button>
     </motion.div>

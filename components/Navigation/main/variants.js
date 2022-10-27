@@ -21,10 +21,10 @@ export const Collapsible = ({ links }) => {
   return (
     <nav className={navClasses}>
       <Button
-        className="rounded-lg bg-white px-8 py-3 font-mono uppercase shadow-glow"
+        className="rounded-lg bg-white px-4 py-2  shadow-glow"
         onTap={() => setOpen(!isOpen)}
       >
-        Meny ///
+        Öppna meny
       </Button>
       <AnimatePresence>
         {isOpen && (

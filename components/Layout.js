@@ -7,7 +7,7 @@ export const Layout = ({ navigation, marquee, settings, children }) => {
     <div className="text-slate-800">
       <Header />
       <Navigation links={navigation.data?.links} />
-      <main className="pb-16">{children}</main>
+      <main className="pt-12 pb-16 md:pt-4">{children}</main>
       <Broadcast marquee={marquee} />
     </div>
   );

@@ -8,14 +8,46 @@ import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
 import Carousel from "../components/Carousel";
+import Overlay from "../components/Overlay/card";
 
 import useScrollDirection from "../lib/hooks/useScrollDirection";
 import { motion } from "framer-motion";
+
 import clsx from "clsx";
+import slugify from "slugify";
+
+import { useRouter } from "next/router";
 
 const Page = ({ page, list, navigation, marquee, settings }) => {
+  const router = useRouter();
+
+  const overlay = list.filter(
+    (r) =>
+      slugify(r.origin.region, { lower: true }) === router.query?.region &&
+      r.producers.find((p) => p.uid === router.query?.producer)
+  );
+
+  const params = {
+    region: {
+      slug: router.query.region,
+      title: list.find((r) => r.slug === router.query.region)?.origin,
+    },
+    producer: {
+      slug: router.query.producer,
+      title: overlay[0]?.producers[0]?.data?.title,
+    },
+    card: { slug: router.query.cardId },
+  };
+
+  const isOverlay = overlay && overlay.length && params.card.slug;
+
   return (
-    <Layout navigation={navigation} marquee={marquee} settings={settings}>
+    <Layout
+      navigation={navigation}
+      marquee={marquee}
+      settings={settings}
+      disableScroll={isOverlay}
+    >
       <Head>
         <title>
           {prismicH.asText(settings.data.siteTitle)}:{" "}
@@ -44,11 +76,30 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
                     {producer.data.title}
                   </Heading>
                 </Header>
-                <Carousel data={producer.data.slices} />
+                <Carousel
+                  data={producer.data.slices}
+                  params={{
+                    region: {
+                      title: `${item.origin.region}, ${item.origin.country}`,
+                      slug: item.slug,
+                    },
+                    producer: {
+                      title: producer.data.title,
+                      slug: producer.uid,
+                    },
+                  }}
+                />
               </section>
             ))}
           </section>
         ))}
+      {isOverlay && (
+        <Overlay
+          data={overlay[0].producers[0].data.slices}
+          size="lg"
+          params={params}
+        />
+      )}
     </Layout>
   );
 };
@@ -71,32 +122,6 @@ const Header = ({ children, className }) => {
       transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
     >
       {children}
-    </motion.header>
-  );
-};
-
-const RegionHeader = ({ children }) => {
-  const [isScrollingUp] = useScrollDirection();
-
-  const variants = {
-    outsideView: { y: "-2.25em" },
-    inView: { y: 0 },
-  };
-
-  const headerClasses = clsx(
-    "sticky top-14 md:top-0 right-0 w-full px-4 text-center md:p-8 md:text-right"
-  );
-
-  return (
-    <motion.header
-      className={headerClasses}
-      animate={isScrollingUp ? "inView" : "outsideView"}
-      variants={variants}
-      transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
-    >
-      <Heading as="h2" size="xl">
-        {children}
-      </Heading>
     </motion.header>
   );
 };

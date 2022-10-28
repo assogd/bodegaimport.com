@@ -10,6 +10,14 @@ const nextConfig = async () => {
   const locales = repository.languages.map((lang) => lang.id);
 
   return {
+    async rewrites() {
+      return [
+        {
+          source: "/sortiment/:region/:producer",
+          destination: "/sortiment?region=:region&producer=:producer",
+        },
+      ];
+    },
     reactStrictMode: true,
     i18n: {
       // These are all the locales you want to support in
@@ -22,4 +30,19 @@ const nextConfig = async () => {
   };
 };
 
-module.exports = nextConfig;
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/sortiment/:region/:producer/:cardId",
+        destination:
+          "/sortiment?region=:region&producer=:producer&cardId=:cardId",
+      },
+    ];
+  },
+  i18n: {
+    locales: ["en-us"],
+    defaultLocale: "en-us",
+  },
+  reactStrictMode: true,
+};

@@ -1,8 +1,11 @@
 import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
 import Button from "../../Button";
+import Link from "next/link";
+import * as prismicH from "@prismicio/helpers";
+import slugify from "slugify";
 
-const Default = ({ data, size }) => {
+const Default = ({ data, size, params }) => {
   const containerClasses = clsx(
     "font-mono text-monoBase",
     size != "sm" && "h-full",
@@ -11,17 +14,51 @@ const Default = ({ data, size }) => {
 
   return (
     <article className={containerClasses}>
-      <header className="z-2 sticky top-0 left-0 bg-white py-4 pb-2 font-serif text-base">
+      <header className="z-2 sticky top-0 left-0 bg-white pt-6 pb-2 font-serif text-base">
         <PrismicRichText field={data.primary.title} />
       </header>
       <PrismicRichText field={data.primary.body} />
-      <nav className="absolute inset-x-0 bottom-0 rounded bg-gradient-to-t from-white py-4 px-4 text-center md:px-10 md:py-8">
-        <Button className="w-full border-0 border-solid bg-yellow font-serif text-base">
-          Öppna
-        </Button>
-      </nav>
+      {params && <Expand params={params} data={data} />}
+      {size === "lg" && <Close />}
     </article>
   );
 };
 
 export default Default;
+
+const Expand = ({ params, data }) => {
+  const getCardId =
+    slugify(prismicH.asText(data.primary.title), { lower: true }) +
+    "-" +
+    data.id.slice(-4);
+
+  return (
+    <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
+      <Link
+        href={`/sortiment?region=${params.region.slug}&producer=${params.producer.slug}&cardId=${getCardId}`}
+        as={`/sortiment/${params.region.slug}/${params.producer.slug}/${getCardId}`}
+        shallow={true}
+      >
+        <a>
+          <Button className="w-full border-0 border-solid bg-yellow font-serif text-base">
+            Öppna
+          </Button>
+        </a>
+      </Link>
+    </nav>
+  );
+};
+
+const Close = ({ params }) => {
+  return (
+    <nav className="fixed inset-x-4 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
+      <Link href={`/sortiment`} shallow={true}>
+        <a>
+          <Button className="w-full border border-solid bg-white font-serif text-base">
+            Stäng
+          </Button>
+        </a>
+      </Link>
+    </nav>
+  );
+};

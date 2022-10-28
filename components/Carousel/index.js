@@ -5,11 +5,9 @@ import Button from "../Button";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
 
-export default function Carousel({ data }) {
+export default function Carousel({ data, params }) {
   const [active, setActive] = useState([]);
   const refs = useRef([]);
-
-  console.log(active);
 
   const scrollTo = (i) =>
     refs.current[i].scrollIntoView({
@@ -31,7 +29,13 @@ export default function Carousel({ data }) {
             className="w-3/4 shrink-0 basis-auto snap-center scroll-mx-12 md:w-96"
           >
             <Observer state={[active, setActive]} i={i}>
-              <Card key={card.id} data={card} size="sm" animate={false} />
+              <Card
+                key={card.id}
+                data={card}
+                size="sm"
+                animate={false}
+                params={params}
+              />
             </Observer>
           </div>
         ))}

@@ -35,8 +35,7 @@ module.exports = {
     return [
       {
         source: "/sortiment/:region/:producer/:cardId",
-        destination:
-          "/sortiment?region=:region&producer=:producer&cardId=:cardId",
+        destination: "/sortiment",
       },
     ];
   },

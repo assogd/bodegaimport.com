@@ -4,6 +4,7 @@ import Button from "../../Button";
 import Link from "next/link";
 import * as prismicH from "@prismicio/helpers";
 import slugify from "slugify";
+import { useRouter } from "next/router";
 
 const Default = ({ data, size, params }) => {
   const containerClasses = clsx(
@@ -27,6 +28,9 @@ const Default = ({ data, size, params }) => {
 export default Default;
 
 const Expand = ({ params, data }) => {
+  const { push } = useRouter();
+  console.log(useRouter());
+
   const getCardId =
     slugify(prismicH.asText(data.primary.title), { lower: true }) +
     "-" +
@@ -34,31 +38,33 @@ const Expand = ({ params, data }) => {
 
   return (
     <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
-      <Link
-        href={`/sortiment?region=${params.region.slug}&producer=${params.producer.slug}&cardId=${getCardId}`}
-        as={`/sortiment/${params.region.slug}/${params.producer.slug}/${getCardId}`}
-        shallow={true}
+      <Button
+        onTap={() =>
+          push(
+            `/sortiment/${params.region.slug}/${params.producer.slug}/${getCardId}`,
+            undefined,
+            { shallow: true }
+          )
+        }
+        className="w-full border-0 border-solid bg-yellow font-serif text-base"
       >
-        <a>
-          <Button className="w-full border-0 border-solid bg-yellow font-serif text-base">
-            Öppna
-          </Button>
-        </a>
-      </Link>
+        Öppna
+      </Button>
     </nav>
   );
 };
 
 const Close = ({ params }) => {
+  const { push } = useRouter();
+
   return (
     <nav className="fixed inset-x-4 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
-      <Link href={`/sortiment`} shallow={true}>
-        <a>
-          <Button className="w-full border border-solid bg-white font-serif text-base">
-            Stäng
-          </Button>
-        </a>
-      </Link>
+      <Button
+        className="w-full border border-solid bg-white font-serif text-base"
+        onTap={() => push(`/sortiment`, undefined, { shallow: true })}
+      >
+        Stäng
+      </Button>
     </nav>
   );
 };

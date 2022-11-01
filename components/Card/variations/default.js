@@ -5,11 +5,12 @@ import Link from "next/link";
 import * as prismicH from "@prismicio/helpers";
 import slugify from "slugify";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const Default = ({ data, size, params }) => {
   const containerClasses = clsx(
     "font-mono text-monoBase",
-    size != "sm" && "h-full",
+    size != "sm" && "relative min-h-full",
     size === "sm" && "absolute inset-0 px-6 md:px-8 pt-2 pb-8"
   );
 
@@ -29,7 +30,6 @@ export default Default;
 
 const Expand = ({ params, data }) => {
   const { push } = useRouter();
-  console.log(useRouter());
 
   const getCardId =
     slugify(prismicH.asText(data.primary.title), { lower: true }) +
@@ -58,7 +58,7 @@ const Close = ({ params }) => {
   const { push } = useRouter();
 
   return (
-    <nav className="fixed inset-x-4 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
+    <nav className="sticky inset-x-4 bottom-0 rounded bg-white px-0 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
       <Button
         className="w-full border border-solid bg-white font-serif text-base"
         onTap={() => push(`/sortiment`, undefined, { shallow: true })}

@@ -2,10 +2,12 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const Button = ({ children, className, onTap, href }) => {
+const Button = ({ children, className, onTap, href, size = "md" }) => {
   const classes = clsx(
-    "inline-flex items-center justify-center gap-1 rounded p-2 select-none",
-    className
+    "inline-flex items-center justify-center gap-1 rounded select-none",
+    className,
+    size == "md" && "p-2",
+    size == "lg" && "p-3 w-full"
   );
 
   return (

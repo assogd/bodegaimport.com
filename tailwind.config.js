@@ -10,13 +10,14 @@ module.exports = {
       sm: ["0.8rem", "1.2em"],
       base: ["1rem", "1.2em"],
       monoBase: ["0.85rem", "1.2em"],
-      lg: ["1.2rem", "1.2em"],
+      lg: ["1.25rem", "1.2em"],
       xl: ["clamp(2em, 4vw, 10em)", "1em"],
     },
     extend: {
       boxShadow: {
         glow: "0 0 12px 4px rgba(255, 255, 255, .5)",
         easeTop: "0 -24px 24px 0px rgba(255, 255, 255, 1)",
+        easeTopPink: "0 -24px 24px 0px rgb(249, 226, 255, 1)",
       },
     },
     colors: {
@@ -37,6 +38,7 @@ module.exports = {
         800: "rgb(38 38 38)",
         900: "rgb(23 23 23)",
       },
+      pink: "#F9E2FF",
       purple: "#E4C1E7",
       yellow: "rgb(255, 255, 144)",
     },

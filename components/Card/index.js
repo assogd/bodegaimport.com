@@ -24,7 +24,7 @@ export default function Card({
 
   const cardClasses = clsx(
     "card relative z-20",
-    isText && size != "sm" && "px-8 pb-16",
+    isText && size != "sm" && "px-6 md:px-8",
     variation === "images" && "overflow-hidden",
     bgColor,
     size === "sm" && " ",

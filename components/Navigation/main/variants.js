@@ -4,6 +4,7 @@ import { useState } from "react";
 import clsx from "clsx";
 import Button from "../../Button";
 import { AnimatePresence, motion } from "framer-motion";
+import Backdrop from "../../Backdrop";
 
 export const Collapsible = ({ links }) => {
   const [isOpen, setOpen] = useState(false);
@@ -28,11 +29,7 @@ export const Collapsible = ({ links }) => {
       </Button>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="fixed inset-0 z-50 overscroll-contain"
-            onTap={() => setOpen(false)}
-          >
-            <Cover onTap={() => setOpen(false)} />
+          <Backdrop onTap={() => setOpen(false)}>
             <motion.ul
               key={"ul"}
               className={ulClasses}
@@ -48,7 +45,7 @@ export const Collapsible = ({ links }) => {
                   initial={{ opacity: 0, y: ".25em" }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: ".25em" }}
-                  transition={{ type: "tween", delay: 0.25, duration: 0.5 }}
+                  transition={{ type: "tween", delay: 0, duration: 0.5 }}
                 >
                   <PrismicLink field={item.link} className="block w-full p-6">
                     <PrismicText field={item.label} />
@@ -70,20 +67,9 @@ export const Collapsible = ({ links }) => {
             >
               <Button onTap={() => setOpen(false)}>[Stäng]</Button>
             </motion.div>
-          </motion.div>
+          </Backdrop>
         )}
       </AnimatePresence>
     </nav>
   );
 };
-
-const Cover = ({ onTap }) => (
-  <motion.div
-    key={"cover"}
-    className="absolute inset-0 -z-10 bg-black/60"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    onTap={onTap}
-  />
-);

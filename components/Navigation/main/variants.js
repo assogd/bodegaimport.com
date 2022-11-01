@@ -10,8 +10,6 @@ import Link from "next/link";
 export const Collapsible = ({ links }) => {
   const [isOpen, setOpen] = useState(false);
 
-  console.log(links);
-
   const navClasses =
     "fixed inset-x-0 bottom-12 z-30 flex justify-center select-none";
 

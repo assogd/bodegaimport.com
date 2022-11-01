@@ -13,7 +13,7 @@ export const Collapsible = ({ links }) => {
   console.log(links);
 
   const navClasses =
-    "fixed inset-x-0 bottom-10 z-30 flex justify-center select-none";
+    "fixed inset-x-0 bottom-12 z-30 flex justify-center select-none";
 
   const ulClasses = clsx(
     "absolute bottom-0 inset-x-0 text-center mx-auto justify-center gap-4 rounded-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"

@@ -11,7 +11,7 @@ export const Broadcast = ({ navigation, settings, marquee }) => {
     >
       <Marquee pauseOnHover gradient={false}>
         {marquee.data?.messages.map((item, i) => (
-          <div key={i} className="py-2 px-4">
+          <div key={i} className="py-3 px-4">
             <PrismicRichText field={item.body} />
           </div>
         ))}

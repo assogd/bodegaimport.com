@@ -26,7 +26,7 @@ export const Collapsible = ({ links }) => {
     <nav className={navClasses}>
       <div className="flex items-center rounded-lg bg-white px-2 shadow-glow">
         {links.slice(0, 3).map((link, i) => (
-          <div>
+          <div key={i}>
             <Link href={link.link.url}>
               <Button className="relative py-4 px-4">
                 <PrismicText field={link.label} />

@@ -72,7 +72,7 @@ const Observer = ({ state, children, i }) => {
     } else if (!inView && active.some((a) => a === i)) {
       setActive(active.filter((a) => a != i));
     }
-  }, [inView, active]);
+  }, [inView, active, i, setActive]);
 
   return <div ref={ref}>{children}</div>;
 };

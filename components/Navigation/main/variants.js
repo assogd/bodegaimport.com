@@ -5,9 +5,12 @@ import clsx from "clsx";
 import Button from "../../Button";
 import { AnimatePresence, motion } from "framer-motion";
 import Backdrop from "../../Backdrop";
+import Link from "next/link";
 
 export const Collapsible = ({ links }) => {
   const [isOpen, setOpen] = useState(false);
+
+  console.log(links);
 
   const navClasses =
     "fixed inset-x-0 bottom-10 z-30 flex justify-center select-none";
@@ -21,12 +24,22 @@ export const Collapsible = ({ links }) => {
 
   return (
     <nav className={navClasses}>
-      <Button
-        className="rounded-lg bg-white px-4 py-2  shadow-glow"
-        onTap={() => setOpen(!isOpen)}
-      >
-        Öppna meny
-      </Button>
+      <div className="flex items-center rounded-lg bg-white px-2 shadow-glow">
+        {links.slice(0, 3).map((link, i) => (
+          <div>
+            <Link href={link.link.url}>
+              <Button className="relative py-4 px-4">
+                <PrismicText field={link.label} />
+              </Button>
+            </Link>
+          </div>
+        ))}
+        <div className="flex items-center">
+          <Button onTap={() => setOpen(!isOpen)}>
+            <ExpandIcon />
+          </Button>
+        </div>
+      </div>
       <AnimatePresence>
         {isOpen && (
           <Backdrop onTap={() => setOpen(false)}>
@@ -73,3 +86,11 @@ export const Collapsible = ({ links }) => {
     </nav>
   );
 };
+
+const ExpandIcon = () => (
+  <div className="flex h-4 w-8 flex-col justify-between px-2">
+    <div className="h-[1px] w-full bg-black" />
+    <div className="h-[1px] w-full bg-black" />
+    <div className="h-[1px] w-full bg-black" />
+  </div>
+);

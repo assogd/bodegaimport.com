@@ -44,4 +44,7 @@ module.exports = {
     defaultLocale: "en-us",
   },
   reactStrictMode: true,
+  images: {
+    domains: ["images.prismic.io"],
+  },
 };

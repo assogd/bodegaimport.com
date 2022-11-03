@@ -1193,54 +1193,95 @@
               },
               "items": {},
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "mono",
+              "name": "Mono",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Text",
+              "primary": {
+                "text": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Text",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,heading3,strong,em,hyperlink,list-item,o-list-item"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
         },
         "mocks": {
           "default": {
             "variation": "default",
-            "name": "Default",
-            "slice_type": "text",
-            "items": [],
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
             "primary": {
               "text": [
                 {
                   "type": "paragraph",
-                  "text": "Officia tempor quis ut id officia. Nulla id irure eiusmod reprehenderit excepteur enim voluptate fugiat do elit ipsum nostrud Lorem Lorem aute.",
+                  "text": "Cillum enim ea ipsum enim. Velit magna magna ipsum adipisicing enim mollit.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "In anim aliqua cupidatat aute commodo elit exercitation Lorem anim sunt eiusmod labore aliquip sit eiusmod. Nisi velit sit Lorem exercitation reprehenderit duis nulla dolor pariatur aliqua tempor ex exercitation. Laboris officia cupidatat laborum cupidatat minim.",
+                  "text": "Non est quis ut eu voluptate culpa nisi dolore tempor excepteur magna. Occaecat incididunt id adipisicing qui pariatur ea elit sunt aute sit ipsum culpa sunt pariatur pariatur.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Incididunt eiusmod consequat proident consequat. Dolor qui incididunt esse mollit incididunt et.",
+                  "text": "Ex fugiat ut in culpa do elit dolor nisi minim consectetur qui eu nostrud commodo.",
                   "spans": []
                 },
                 {
                   "type": "paragraph",
-                  "text": "Elit in ullamco enim dolore consectetur ipsum voluptate nostrud voluptate magna ullamco dolor. Ex consequat voluptate irure mollit ut reprehenderit proident enim exercitation enim laboris.",
+                  "text": "Ut dolor laboris mollit ad sint enim. Elit eu ea cupidatat proident reprehenderit cillum reprehenderit veniam in fugiat.",
                   "spans": []
                 }
               ]
-            }
+            },
+            "slice_type": "text"
           },
           "twoColumns": {
             "variation": "twoColumns",
-            "name": "Two Columns",
-            "slice_type": "text",
-            "items": [],
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
             "primary": {
               "text": [
                 {
                   "type": "paragraph",
-                  "text": "Velit aliquip dolore labore sint fugiat qui consequat. Ad eiusmod do adipisicing Lorem laborum id laborum dolore esse duis do velit.",
+                  "text": "Ullamco deserunt anim elit duis proident laborum dolor reprehenderit qui sunt proident.",
                   "spans": []
                 }
               ]
-            }
+            },
+            "slice_type": "text"
+          },
+          "mono": {
+            "variation": "mono",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "text": [
+                {
+                  "type": "paragraph",
+                  "text": "Elit velit id sunt pariatur quis veniam nisi incididunt consectetur et cillum deserunt et pariatur esse.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "text"
           }
         },
         "meta": {

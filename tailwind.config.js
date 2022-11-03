@@ -10,7 +10,7 @@ module.exports = {
       sm: ["0.8rem", "1.2em"],
       base: ["1rem", "1.2em"],
       monoBase: ["0.85rem", "1.2em"],
-      lg: ["1.25rem", "1.2em"],
+      lg: ["1.35rem", "1.2em"],
       xl: ["clamp(2em, 4vw, 10em)", "1em"],
     },
     extend: {
@@ -19,6 +19,13 @@ module.exports = {
         easeTop: "0 -24px 24px 0px rgba(255, 255, 255, 1)",
         easeTopPink: "0 -24px 24px 0px rgb(249, 226, 255, 1)",
       },
+    },
+    listStyleType: {
+      none: "none",
+      disc: "circle",
+      decimal: "decimal",
+      square: "square",
+      roman: "upper-roman",
     },
     colors: {
       transparent: "transparent",
@@ -41,6 +48,7 @@ module.exports = {
       pink: "#F9E2FF",
       purple: "#E4C1E7",
       yellow: "rgb(255, 255, 144)",
+      paleYellow: "#FEFFD6",
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],

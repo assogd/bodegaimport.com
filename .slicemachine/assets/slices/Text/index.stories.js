@@ -5,8 +5,11 @@ export default {
 }
 
 
-export const _Default = () => <MyComponent slice={{"variation":"default","name":"Default","slice_type":"text","items":[],"primary":{"text":[{"type":"paragraph","text":"Officia tempor quis ut id officia. Nulla id irure eiusmod reprehenderit excepteur enim voluptate fugiat do elit ipsum nostrud Lorem Lorem aute.","spans":[]},{"type":"paragraph","text":"In anim aliqua cupidatat aute commodo elit exercitation Lorem anim sunt eiusmod labore aliquip sit eiusmod. Nisi velit sit Lorem exercitation reprehenderit duis nulla dolor pariatur aliqua tempor ex exercitation. Laboris officia cupidatat laborum cupidatat minim.","spans":[]},{"type":"paragraph","text":"Incididunt eiusmod consequat proident consequat. Dolor qui incididunt esse mollit incididunt et.","spans":[]},{"type":"paragraph","text":"Elit in ullamco enim dolore consectetur ipsum voluptate nostrud voluptate magna ullamco dolor. Ex consequat voluptate irure mollit ut reprehenderit proident enim exercitation enim laboris.","spans":[]}]},"id":"_Default"}} />
-_Default.storyName = 'Default'
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"text":[{"type":"paragraph","text":"Cillum enim ea ipsum enim. Velit magna magna ipsum adipisicing enim mollit.","spans":[]},{"type":"paragraph","text":"Non est quis ut eu voluptate culpa nisi dolore tempor excepteur magna. Occaecat incididunt id adipisicing qui pariatur ea elit sunt aute sit ipsum culpa sunt pariatur pariatur.","spans":[]},{"type":"paragraph","text":"Ex fugiat ut in culpa do elit dolor nisi minim consectetur qui eu nostrud commodo.","spans":[]},{"type":"paragraph","text":"Ut dolor laboris mollit ad sint enim. Elit eu ea cupidatat proident reprehenderit cillum reprehenderit veniam in fugiat.","spans":[]}]},"slice_type":"text","id":"_Default"}} />
+_Default.storyName = ''
 
-export const _TwoColumns = () => <MyComponent slice={{"variation":"twoColumns","name":"Two Columns","slice_type":"text","items":[],"primary":{"text":[{"type":"paragraph","text":"Velit aliquip dolore labore sint fugiat qui consequat. Ad eiusmod do adipisicing Lorem laborum id laborum dolore esse duis do velit.","spans":[]}]},"id":"_TwoColumns"}} />
-_TwoColumns.storyName = 'Two Columns'
+export const _TwoColumns = () => <MyComponent slice={{"variation":"twoColumns","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"text":[{"type":"paragraph","text":"Ullamco deserunt anim elit duis proident laborum dolor reprehenderit qui sunt proident.","spans":[]}]},"slice_type":"text","id":"_TwoColumns"}} />
+_TwoColumns.storyName = ''
+
+export const _Mono = () => <MyComponent slice={{"variation":"mono","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"text":[{"type":"paragraph","text":"Elit velit id sunt pariatur quis veniam nisi incididunt consectetur et cillum deserunt et pariatur esse.","spans":[]}]},"slice_type":"text","id":"_Mono"}} />
+_Mono.storyName = ''

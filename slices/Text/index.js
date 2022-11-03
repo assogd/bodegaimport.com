@@ -4,16 +4,17 @@ import clsx from "clsx";
 import { Bounded } from "../../components/Bounded";
 
 const Text = ({ slice }) => {
+  const { variation } = slice;
+
   return (
-    <Bounded as="section" className="hyphens mx-auto max-w-4xl text-center">
-      <div
-        className={clsx(
-          slice.variation === "twoColumns" && "md:columns-2 md:gap-6"
-        )}
-      >
-        <PrismicRichText field={slice.primary.text} />
-      </div>
-    </Bounded>
+    <section
+      className={clsx(
+        "hyphens mx-auto max-w-4xl p-4 text-center",
+        variation === "mono" && "font-mono"
+      )}
+    >
+      <PrismicRichText field={slice.primary.text} />
+    </section>
   );
 };
 

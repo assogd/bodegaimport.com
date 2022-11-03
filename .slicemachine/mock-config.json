@@ -22,6 +22,16 @@
             }
           }
         }
+      },
+      "mono": {
+        "primary": {
+          "text": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     },
     "Image": {

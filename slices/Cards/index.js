@@ -1,8 +1,8 @@
 import React from "react";
 import { PrismicRichText } from "@prismicio/react";
+import ContactCard from "./contact";
 
 const Cards = ({ slice }) => {
-  console.log(slice);
   return (
     <section className={`cards ${slice.variation}`}>
       <header className="text-center">
@@ -13,6 +13,10 @@ const Cards = ({ slice }) => {
           </div>
         )}
       </header>
+      <div className="mx-auto mt-4 grid max-w-5xl justify-center gap-4 p-4 sm:grid-cols-3 md:px-[5%]">
+        {slice.variation === "contact" &&
+          slice.items.map((item, i) => <ContactCard key={i} data={item} />)}
+      </div>
     </section>
   );
 };

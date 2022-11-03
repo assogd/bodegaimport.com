@@ -6,8 +6,8 @@ const Button = ({ children, className, onTap, href, size = "md" }) => {
   const classes = clsx(
     "inline-flex items-center justify-center gap-1 rounded select-none",
     className,
-    size == "md" && "p-2",
-    size == "lg" && "p-3 w-full"
+    size === "md" && "p-2",
+    size === "lg" && "p-3 w-full"
   );
 
   return (

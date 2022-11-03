@@ -6,12 +6,13 @@ import Button from "../../Button";
 import { AnimatePresence, motion } from "framer-motion";
 import Backdrop from "../../Backdrop";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export const Collapsible = ({ links }) => {
+export const Collapsible = ({ links, itemsToShow }) => {
   const [isOpen, setOpen] = useState(false);
 
   const navClasses =
-    "fixed inset-x-0 bottom-12 z-30 flex justify-center select-none";
+    "fixed inset-x-2 bottom-12 z-30 flex justify-center select-none";
 
   const ulClasses = clsx(
     "absolute bottom-0 inset-x-0 text-center mx-auto justify-center gap-4 rounded-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"
@@ -22,21 +23,19 @@ export const Collapsible = ({ links }) => {
 
   return (
     <nav className={navClasses}>
-      <div className="flex items-center rounded-lg bg-white px-2 shadow-glow">
-        {links.slice(0, 3).map((link, i) => (
-          <div key={i}>
-            <Link href={link.link.url}>
-              <Button className="relative py-4 px-4">
-                <PrismicText field={link.label} />
-              </Button>
-            </Link>
-          </div>
-        ))}
-        <div className="flex items-center">
-          <Button onTap={() => setOpen(!isOpen)}>
-            <ExpandIcon />
-          </Button>
+      <div className="flex items-center rounded-lg bg-white px-4 shadow-glow">
+        <div className="flex h-12 flex-wrap items-center justify-around overflow-hidden rounded-lg bg-white shadow-glow">
+          {links.slice(0, itemsToShow).map((link, i) => (
+            <Item key={i} link={link} />
+          ))}
         </div>
+        {itemsToShow <= links.length && (
+          <div className="flex h-12 items-center">
+            <Button size="sm" onTap={() => setOpen(!isOpen)}>
+              <ExpandIcon />
+            </Button>
+          </div>
+        )}
       </div>
       <AnimatePresence>
         {isOpen && (
@@ -86,9 +85,31 @@ export const Collapsible = ({ links }) => {
 };
 
 const ExpandIcon = () => (
-  <div className="flex h-4 w-8 flex-col justify-between px-2">
-    <div className="h-[1px] w-full bg-black" />
+  <div className="flex h-[0.5em] w-10 translate-y-[2px] flex-col justify-between px-3">
     <div className="h-[1px] w-full bg-black" />
     <div className="h-[1px] w-full bg-black" />
   </div>
 );
+
+const Item = ({ link }) => {
+  const { asPath } = useRouter();
+  const isActive = link.link.url === asPath;
+
+  return (
+    <div className="relative flex h-12 items-center justify-center">
+      {isActive && (
+        <motion.div
+          layoutId="active"
+          className="absolute inset-x-2 bottom-3 h-[1px] bg-black md:inset-x-4"
+        />
+      )}
+      <Link href={link.link.url}>
+        <a>
+          <Button size="sm" className="relative py-4 px-2 md:px-4">
+            <PrismicText field={link.label} />
+          </Button>
+        </a>
+      </Link>
+    </div>
+  );
+};

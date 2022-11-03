@@ -27,7 +27,7 @@ const richTextComponents = {
     </Heading>
   ),
   heading3: ({ children }) => (
-    <Heading as="h3" size="sm" className="mb-7 mt-12 first:mt-0 last:mb-0">
+    <Heading as="h3" size="md" className="mb-4 mt-12 first:mt-0 last:mb-0">
       {children}
     </Heading>
   ),
@@ -46,7 +46,7 @@ const richTextComponents = {
     <li className="mb-1 list-disc pl-1 last:mb-0 md:pl-2">{children}</li>
   ),
   preformatted: ({ children }) => (
-    <pre className="mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg">
+    <pre className="bg-slate-100 mb-7 rounded p-4 text-sm last:mb-0 md:p-8 md:text-lg">
       <code>{children}</code>
     </pre>
   ),

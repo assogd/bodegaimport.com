@@ -2,6 +2,7 @@
 
 import Bottle from './Bottle';
 import Card from './Card';
+import Cards from './Cards';
 import Carousel from './Carousel';
 import Hero from './Hero';
 import Image from './Image';
@@ -15,6 +16,7 @@ import TextWithImage from './TextWithImage';
 export {
 	Bottle,
 	Card,
+	Cards,
 	Carousel,
 	Hero,
 	Image,
@@ -29,6 +31,7 @@ export {
 export const components = {
 	bottle: Bottle,
 	card: Card,
+	cards: Cards,
 	producer: Carousel,
 	hero: Hero,
 	image: Image,

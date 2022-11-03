@@ -11,7 +11,7 @@ export default function Navigation({ links }) {
   const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => setWindowWidth(onlyWidth), [onlyWidth]);
 
-  const itemMultiplicator = Math.round((windowWidth - 450) / 80 + 3);
+  const itemMultiplicator = Math.round((windowWidth - 350) / 80 + 3);
   const itemsToShow = itemMultiplicator;
 
   const ulClasses = clsx(

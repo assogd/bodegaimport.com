@@ -24,7 +24,7 @@ export const Collapsible = ({ links, itemsToShow }) => {
   return (
     <nav className={navClasses}>
       <div className="flex items-center rounded-lg bg-white px-4 shadow-glow">
-        <div className="flex h-12 flex-wrap items-center justify-around overflow-hidden rounded-lg bg-white shadow-glow">
+        <div className="flex h-12 items-center justify-around rounded-lg bg-white shadow-glow">
           {links.slice(0, itemsToShow).map((link, i) => (
             <Item key={i} link={link} />
           ))}

@@ -1,0 +1,88 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "title": [
+        {
+          "type": "heading2",
+          "text": "Laugh",
+          "spans": []
+        }
+      ],
+      "introduction": [
+        {
+          "type": "paragraph",
+          "text": "Dolor dolor officia in reprehenderit qui enim ullamco cupidatat do ea officia eiusmod in. Cillum laborum quis tempor dolor reprehenderit.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "cards"
+  },
+  {
+    "variation": "contact",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {
+        "picture": {
+          "dimensions": {
+            "width": 350,
+            "height": 400
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72"
+        },
+        "name": [
+          {
+            "type": "paragraph",
+            "text": "Dolor duis culpa labore nisi exercitation anim. Ea qui irure ut consectetur quis ut ullamco proident laboris sit. Quis sunt magna est minim aute ut irure culpa mollit non est excepteur aliqua tempor.",
+            "spans": []
+          }
+        ],
+        "district": [
+          {
+            "type": "paragraph",
+            "text": "Qui ipsum duis excepteur esse Lorem irure veniam laboris occaecat ipsum aliquip nulla. Laborum dolor dolore ad aliquip sint occaecat sunt ex voluptate excepteur officia anim. Ipsum nostrud ut laboris.",
+            "spans": []
+          }
+        ],
+        "phone": [
+          {
+            "type": "paragraph",
+            "text": "Dolor sint consectetur nulla reprehenderit excepteur. Incididunt qui officia duis id eiusmod aliquip proident incididunt deserunt quis in fugiat qui eu commodo. Duis quis magna ullamco cillum occaecat amet velit.",
+            "spans": []
+          }
+        ],
+        "email": [
+          {
+            "type": "paragraph",
+            "text": "Eu dolore deserunt exercitation ex excepteur laborum qui ut Lorem velit laboris. Enim id culpa sunt aliqua consequat exercitation sit deserunt ullamco tempor laboris deserunt sint Lorem est.",
+            "spans": []
+          }
+        ]
+      }
+    ],
+    "primary": {
+      "title": [
+        {
+          "type": "heading3",
+          "text": "Universe",
+          "spans": []
+        }
+      ],
+      "introduction": [
+        {
+          "type": "paragraph",
+          "text": "Officia nulla eu cillum minim ad ipsum est irure nostrud dolore reprehenderit consequat officia deserunt culpa. Laborum in id est dolor ea ullamco in irure duis deserunt adipisicing laborum. Excepteur et proident aliquip non.",
+          "spans": []
+        }
+      ]
+    },
+    "slice_type": "cards"
+  }
+]

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import Backdrop from "../components/Backdrop";
+import copy from "copy-to-clipboard";
 
 const Button = ({
   children,
@@ -11,7 +12,7 @@ const Button = ({
   size = "md",
   type,
   onTap,
-  copy,
+  copyText,
   whileTap = { scale: 1, y: 2 },
   disabled,
 }) => {
@@ -23,8 +24,6 @@ const Button = ({
     size === "md" && "p-2",
     size === "lg" && "p-3 w-full"
   );
-
-  console.log(disabled);
 
   return (
     <>
@@ -44,7 +43,7 @@ const Button = ({
               height="16"
             />
           )}
-          {copy && (
+          {copyText && (
             <Image
               src={"/icons/copy.svg"}
               alt={"Copy"}
@@ -57,10 +56,31 @@ const Button = ({
       <AnimatePresence>
         {openCopy && (
           <Backdrop
-            backdropStyles="bg-white/30"
-            onTap={() => setOpenCopy(false)}
+            backdropStyles="bg-white/60"
+            onTap={() => {
+              copy(copyText);
+              setOpenCopy(false);
+            }}
           >
-            <div>{copy}</div>
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="flex max-w-lg flex-col gap-4">
+                <div className="text-lg">{copyText}</div>
+                <Button size="lg" className="bg-paleYellow">
+                  Kopiera
+                  <Image
+                    src={"/icons/copy.svg"}
+                    alt={"Copy"}
+                    width="16"
+                    height="16"
+                  />
+                </Button>
+              </div>
+            </motion.div>
           </Backdrop>
         )}
       </AnimatePresence>

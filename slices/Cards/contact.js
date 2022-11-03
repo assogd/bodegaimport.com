@@ -6,8 +6,6 @@ import * as prismicH from "@prismicio/helpers";
 export default function ContactCard({ data }) {
   const { district, email, name, phone, picture } = data;
 
-  console.log({ hej: phone });
-
   return (
     <div className="contact card bg-paleYellow grid max-w-xs gap-6 rounded-md p-4 text-center">
       <Image
@@ -30,7 +28,7 @@ export default function ContactCard({ data }) {
       <nav className="grid gap-2">
         <Button
           size="lg"
-          copy={prismicH.asText(phone)}
+          copyText={prismicH.asText(phone)}
           disabled={!prismicH.asText(phone)}
           className="flex-row justify-start bg-yellow"
         >
@@ -39,7 +37,7 @@ export default function ContactCard({ data }) {
         <Button
           size="lg"
           className="bg-yellow"
-          copy={prismicH.asText(email)}
+          copyText={prismicH.asText(email)}
           disabled={!prismicH.asText(email)}
         >
           <div className="mono-base font-mono">Epost</div>

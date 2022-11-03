@@ -31,7 +31,11 @@ export const Collapsible = ({ links, itemsToShow }) => {
         </div>
         {itemsToShow <= links.length && (
           <div className="flex h-12 items-center">
-            <Button size="sm" onTap={() => setOpen(!isOpen)}>
+            <Button
+              size="sm"
+              onTap={() => setOpen(!isOpen)}
+              whileHover={{ scale: 1 }}
+            >
               <ExpandIcon />
             </Button>
           </div>

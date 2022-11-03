@@ -2,7 +2,14 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const Button = ({ children, className, onTap, href, size = "md" }) => {
+const Button = ({
+  children,
+  className,
+  href,
+  size = "md",
+  onTap,
+  whileTap = { scale: 1, y: 2 },
+}) => {
   const classes = clsx(
     "inline-flex items-center justify-center gap-1 rounded select-none",
     className,
@@ -12,12 +19,7 @@ const Button = ({ children, className, onTap, href, size = "md" }) => {
 
   return (
     <A href={href}>
-      <motion.button
-        className={classes}
-        whileHover={{ y: 0, scale: 1.0125 }}
-        whileTap={{ scale: 1, y: 2 }}
-        onTap={onTap}
-      >
+      <motion.button className={classes} whileTap={whileTap} onTap={onTap}>
         {children}
         {href && (
           <Image

@@ -21,6 +21,7 @@ const ImageWithInternalLink = ({ data, size }) => {
         width={file.dimensions.width}
         height={file.dimensions.height}
         className="rounded-md"
+        alt={file.alt ?? link.data.title}
       />
       <Figcaption link={link} />
     </figure>

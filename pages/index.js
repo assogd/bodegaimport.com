@@ -18,7 +18,7 @@ const Index = ({ page, navigation, marquee, settings }) => {
       marquee={marquee}
       settings={settings}
       className="min-h-[400vh] p-4 md:p-8"
-      logotypeInView={mainLogotypeInView}
+      logotype={{ alwaysCentered: true, inView: mainLogotypeInView }}
     >
       <Head>
         <title>Bodega Import</title>

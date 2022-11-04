@@ -97,8 +97,8 @@ const ExpandIcon = () => (
 
 const Item = ({ link }) => {
   const { asPath } = useRouter();
-  const isActive =
-    link.link.url === asPath || (asPath === "/" && link.link.url === "/hem");
+  const isHem = link.link.url === "/hem";
+  const isActive = link.link.url === asPath || (asPath === "/" && isHem);
 
   return (
     <div className="relative flex h-12 items-center justify-center">
@@ -108,7 +108,7 @@ const Item = ({ link }) => {
           className="absolute inset-x-2 bottom-3 h-[1px] bg-black md:inset-x-4"
         />
       )}
-      <Link href={link.link.url}>
+      <Link href={isHem ? "/" : link.link.url}>
         <a>
           <Button size="sm" className="relative py-4 px-2 md:px-4">
             <PrismicText field={link.label} />

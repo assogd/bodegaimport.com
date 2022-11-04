@@ -32,6 +32,22 @@
             }
           }
         }
+      },
+      "block": {
+        "primary": {
+          "heading": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          },
+          "text": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     },
     "Image": {

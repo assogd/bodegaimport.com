@@ -4,6 +4,7 @@ import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
 import { useInView } from "react-intersection-observer";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
+import useBreakpoints from "../../../lib/hooks/useBreakpoints";
 
 export function Header() {
   return (
@@ -12,10 +13,10 @@ export function Header() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5 }}
-      className="pointer-events-none fixed inset-x-4 top-0 h-[50vw] select-none sm:relative"
+      className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none sm:relative sm:inset-0 sm:h-full"
     >
-      <div className="sticky top-0 sm:h-[100vh]">
-        <div className="flex h-full translate-y-[1em] flex-col items-center justify-center gap-[8vw] py-16 md:translate-y-[-2em] md:gap-[4vw]">
+      <div className="sticky top-[50%] max-h-screen translate-y-[-50%]">
+        <div className="flex h-full flex-col items-center justify-center gap-[8vw] sm:h-full md:translate-y-[-2em] md:gap-[4vw]">
           <Image
             src={Logotype}
             alt={"CFHILL"}
@@ -36,8 +37,10 @@ export const Observer = ({
   mainLogotypeInView,
   setMainLogotypeInView,
 }) => {
+  const isSm = useBreakpoints([]).some((n) => n === "sm");
+
   const { ref, inView, entry } = useInView({
-    threshold: 0.5,
+    threshold: isSm ? 0 : 0.5,
   });
 
   useEffect(
@@ -45,12 +48,13 @@ export const Observer = ({
     [inView, mainLogotypeInView, setMainLogotypeInView]
   );
 
-  console.log(inView);
-
   return (
     <div className="relative">
-      <AnimatePresence>{inView && children}</AnimatePresence>
-      <div ref={ref} className="observer h-[50vh]" />
+      <AnimatePresence>{(inView || isSm) && children}</AnimatePresence>
+      <div
+        ref={ref}
+        className="observer inset-0 h-[50vh] sm:h-auto md:absolute"
+      />
     </div>
   );
 };

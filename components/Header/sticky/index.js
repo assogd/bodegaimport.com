@@ -8,7 +8,6 @@ const StickyHeader = ({ children, className, secondLevel }) => {
   const isMd = useBreakpoints([]).some((n) => n === "md");
 
   const yannick = secondLevel ? "-2.75em" : "-200%";
-  console.log(isMd);
 
   const variants = {
     outsideView: { y: isMd ? yannick : "-2.25em" },

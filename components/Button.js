@@ -21,7 +21,7 @@ const Button = ({
   const classes = clsx(
     "inline-flex gap-1 rounded select-none justify-center items-center",
     className,
-    size === "md" && "p-2",
+    size === "md" && "py-3 px-5",
     size === "lg" && "p-3 w-full"
   );
 

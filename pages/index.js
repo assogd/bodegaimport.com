@@ -17,11 +17,11 @@ const Index = ({ page, navigation, marquee, settings }) => {
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      className="min-h-[400vh] py-0 px-4 md:px-8"
+      className="min-h-[400vh] p-4 md:p-8"
       logotypeInView={mainLogotypeInView}
     >
       <Head>
-        <title>{prismicH.asText(page.data.title)}</title>
+        <title>Bodega Import</title>
       </Head>
       <div className="grid gap-4 md:grid-cols-2">
         <Observer

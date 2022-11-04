@@ -1,10 +1,19 @@
 import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
+import Block from "./block";
 
 import { Bounded } from "../../components/Bounded";
 
 const Text = ({ slice }) => {
   const { variation } = slice;
+
+  if (variation === "block") {
+    return (
+      <Block data={slice.primary}>
+        <PrismicRichText field={slice.primary.text} />
+      </Block>
+    );
+  }
 
   return (
     <section

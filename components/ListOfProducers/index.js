@@ -7,14 +7,17 @@ export default function ListOfProducers({ list }) {
     .filter((a) => a.producers.length > 0)
     .map((item) => (
       <section key={item.slug} className="region h-[200em] w-full">
-        <Header className="sticky top-14 right-0 w-full px-4 text-center md:top-0 md:p-8 md:text-right">
+        <Header className="sticky top-14 right-0 w-full px-4 text-center md:top-6 md:text-right">
           <Heading as="h2" size="xl">
             {item.origin.region}, {item.origin.country}
           </Heading>
         </Header>
         {item.producers.map((producer) => (
           <section key={producer.id} className="producer h-[200em]">
-            <Header className="sticky inset-x-0 top-[3.75em] p-8 text-center md:top-12">
+            <Header
+              className="sticky inset-x-0 top-[3.75em] p-8 text-center md:top-8"
+              secondLevel={true}
+            >
               <Heading as="h2" size="xl">
                 {producer.data.title}
               </Heading>

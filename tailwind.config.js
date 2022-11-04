@@ -11,7 +11,7 @@ module.exports = {
       base: ["1rem", "1.2em"],
       monoBase: ["0.85rem", "1.2em"],
       lg: ["1.35rem", "1.2em"],
-      xl: ["clamp(2em, 4vw, 10em)", "1em"],
+      xl: ["clamp(2em, 3vw, 8em)", "1em"],
     },
     extend: {
       boxShadow: {

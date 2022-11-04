@@ -55,7 +55,7 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
         </title>
       </Head>
       <section className="introduction relative">
-        <Header className="sticky inset-x-0 top-14 text-center md:fixed md:top-0">
+        <Header className="sticky inset-x-0 top-14 text-center md:fixed md:top-6">
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
         <SliceZone slices={page.data.slices} components={components} />

@@ -22,7 +22,7 @@ export const Layout = ({
     <div className={containerClasses}>
       <Header />
       <Navigation links={navigation.data?.links} />
-      <main className="pt-12 pb-16 md:pt-4">{children}</main>
+      <main className="pt-12 pb-16">{children}</main>
       <Broadcast marquee={marquee} />
       <Alerts />
     </div>

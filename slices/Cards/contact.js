@@ -18,7 +18,7 @@ export default function ContactCard({ data }) {
       />
 
       <header className="">
-        <div className="mono-base font-mono">
+        <div className="font-mono">
           <PrismicRichText field={district} />
         </div>
         <h5 className="text-lg">
@@ -32,7 +32,7 @@ export default function ContactCard({ data }) {
           disabled={!prismicH.asText(phone)}
           className="flex-row justify-start bg-yellow"
         >
-          <div className="mono-base font-mono">Telefon</div>
+          <div className="font-mono">Telefon</div>
         </Button>
         <Button
           size="lg"
@@ -40,7 +40,7 @@ export default function ContactCard({ data }) {
           copyText={prismicH.asText(email)}
           disabled={!prismicH.asText(email)}
         >
-          <div className="mono-base font-mono">Epost</div>
+          <div className="font-mono">Epost</div>
         </Button>
       </nav>
     </div>

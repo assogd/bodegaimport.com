@@ -31,7 +31,7 @@ const Button = ({
         <motion.button
           className={classes}
           whileTap={whileTap}
-          onTap={copy ? () => setOpenCopy(!openCopy) : onTap}
+          onTap={copyText ? () => setOpenCopy(!openCopy) : onTap}
           disabled={disabled}
         >
           {children}

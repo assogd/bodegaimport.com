@@ -9,7 +9,7 @@ const Text = ({ slice }) => {
   return (
     <section
       className={clsx(
-        "hyphens mx-auto max-w-4xl p-4 text-center",
+        "hyphens mx-auto max-w-4xl py-20 px-4 text-center",
         variation === "mono" && "font-mono"
       )}
     >

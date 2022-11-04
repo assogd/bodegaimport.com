@@ -6,7 +6,7 @@ export default function Header() {
   const [isScrollingUp] = useScrollDirection();
 
   const headerClasses = clsx(
-    "fixed top-6 md:top-8 translate-x-[-50%] left-8 md:right-auto right-8",
+    "fixed top-4 md:top-6 translate-x-[-50%] left-6 md:right-auto right-6 z-30",
     "text-xl tracking-tight text-center"
   );
 

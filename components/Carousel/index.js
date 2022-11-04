@@ -62,7 +62,7 @@ export default function Carousel({ data, params }) {
 
 const Observer = ({ state, children, i }) => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.75,
+    threshold: 0.9,
   });
   const [active, setActive] = state;
 

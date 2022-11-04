@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import Link from "next/link";
 
 export default function Header({ inView }) {
   const headerClasses = clsx(
@@ -21,7 +22,9 @@ export default function Header({ inView }) {
       transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
       className={headerClasses}
     >
-      Bodega Import
+      <Link href="/">
+        <a>Bodega Import</a>
+      </Link>
     </motion.header>
   );
 }

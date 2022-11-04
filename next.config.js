@@ -16,6 +16,10 @@ const nextConfig = async () => {
           source: "/sortiment/:region/:producer",
           destination: "/sortiment?region=:region&producer=:producer",
         },
+        {
+          source: "/hem",
+          destination: "/",
+        },
       ];
     },
     reactStrictMode: true,

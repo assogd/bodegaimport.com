@@ -97,7 +97,8 @@ const ExpandIcon = () => (
 
 const Item = ({ link }) => {
   const { asPath } = useRouter();
-  const isActive = link.link.url === asPath;
+  const isActive =
+    link.link.url === asPath || (asPath === "/" && link.link.url === "/hem");
 
   return (
     <div className="relative flex h-12 items-center justify-center">

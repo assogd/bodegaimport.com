@@ -11,6 +11,8 @@ export const Layout = ({
   settings,
   children,
   disableScroll,
+  className = "pt-12 pb-16",
+  logotypeInView = true,
 }) => {
   const [preferences, setPreferences] = useAssoCookie();
   const containerClasses = clsx(
@@ -20,9 +22,9 @@ export const Layout = ({
 
   return (
     <div className={containerClasses}>
-      <Header />
+      <Header inView={logotypeInView} />
       <Navigation links={navigation.data?.links} />
-      <main className="pt-12 pb-16">{children}</main>
+      <main className={className}>{children}</main>
       <Broadcast marquee={marquee} />
       <Alerts />
     </div>

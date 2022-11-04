@@ -11,6 +11,8 @@ import Overlay from "../components/Overlay/card";
 import ListOfProducers from "../components/ListOfProducers";
 import Header from "../components/Header/sticky/";
 
+import useScrollDirection from "../lib/hooks/useScrollDirection";
+
 import clsx from "clsx";
 import slugify from "slugify";
 
@@ -18,6 +20,7 @@ import { useRouter } from "next/router";
 
 const Page = ({ page, list, navigation, marquee, settings }) => {
   const router = useRouter();
+  const [isScrollingUp] = useScrollDirection();
 
   const overlay =
     list &&
@@ -47,6 +50,7 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
       marquee={marquee}
       settings={settings}
       disableScroll={isOverlay}
+      logotypeInView={isScrollingUp}
     >
       <Head>
         <title>

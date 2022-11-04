@@ -95,6 +95,50 @@
       },
       "items": {},
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "imageWithInternalLink",
+      "name": "Image with Internal Link",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Card",
+      "primary": {
+        "file": {
+          "type": "Image",
+          "config": {
+            "label": "File",
+            "constraint": {
+              "width": 1500,
+              "height": 1900
+            },
+            "thumbnails": [
+              {
+                "name": "md",
+                "width": 750,
+                "height": 1000
+              },
+              {
+                "name": "sm",
+                "width": 350,
+                "height": 550
+              }
+            ]
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "select": "document",
+            "customtypes": [
+              "producer",
+              "page"
+            ]
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]
 }

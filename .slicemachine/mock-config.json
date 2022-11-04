@@ -132,6 +132,9 @@
       },
       "wine": {
         "primary": {}
+      },
+      "imageWithInternalLink": {
+        "primary": {}
       }
     },
     "Bottle": {},

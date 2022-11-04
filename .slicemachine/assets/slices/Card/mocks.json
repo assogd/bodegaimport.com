@@ -9,14 +9,14 @@
       "title": [
         {
           "type": "heading4",
-          "text": "Measure",
+          "text": "Teeth",
           "spans": []
         }
       ],
       "body": [
         {
           "type": "paragraph",
-          "text": "Minim consectetur qui elit nulla non qui do deserunt magna. Occaecat tempor cupidatat anim ullamco deserunt incididunt magna laborum consequat anim ipsum duis elit occaecat.",
+          "text": "Laboris tempor nulla veniam excepteur amet irure culpa id eu esse sit tempor duis reprehenderit. Aute in ipsum consequat occaecat eu dolor mollit.",
           "spans": []
         }
       ]
@@ -37,7 +37,7 @@
         },
         "alt": null,
         "copyright": null,
-        "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
+        "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
         "md": {
           "dimensions": {
             "width": 750,
@@ -45,7 +45,7 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+          "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482"
         },
         "sm": {
           "dimensions": {
@@ -54,13 +54,13 @@
           },
           "alt": null,
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764"
+          "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482"
         }
       },
       "caption": [
         {
           "type": "paragraph",
-          "text": "Incididunt laboris laborum minim velit deserunt nostrud est cillum laborum exercitation do enim. Magna culpa occaecat deserunt enim. Minim eu magna exercitation sint et do nisi pariatur sint ea laboris incididunt adipisicing quis minim.",
+          "text": "Ipsum ad esse dolore cupidatat excepteur pariatur exercitation velit esse.",
           "spans": []
         }
       ]
@@ -78,6 +78,53 @@
         "id": "mock_document_id",
         "link_type": "Document",
         "type": "wine",
+        "tags": [],
+        "lang": "en-us",
+        "slug": null,
+        "first_publication_date": "1970-01-01T00:00:01+0000",
+        "last_publication_date": "1970-01-01T01:00:00+0000"
+      }
+    },
+    "slice_type": "card"
+  },
+  {
+    "variation": "imageWithInternalLink",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "file": {
+        "dimensions": {
+          "width": 1500,
+          "height": 1900
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+        "md": {
+          "dimensions": {
+            "width": 750,
+            "height": 1000
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c"
+        },
+        "sm": {
+          "dimensions": {
+            "width": 350,
+            "height": 550
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+        }
+      },
+      "link": {
+        "id": "mock_document_id",
+        "link_type": "Document",
+        "type": "producer",
         "tags": [],
         "lang": "en-us",
         "slug": null,

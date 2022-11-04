@@ -4,15 +4,29 @@ import * as prismicH from "@prismicio/helpers";
 
 import { createClient } from "../prismicio";
 import { components } from "../slices/";
+
 import { Layout } from "../components/Layout";
+import Header from "../components/Header/chunky";
 
 const Index = ({ page, navigation, marquee, settings }) => {
   return (
-    <Layout navigation={navigation} marquee={marquee} settings={settings}>
+    <Layout
+      navigation={navigation}
+      marquee={marquee}
+      settings={settings}
+      className="min-h-[200vh] py-0 px-8"
+      logotypeInView={false}
+    >
       <Head>
         <title>{prismicH.asText(page.data.title)}</title>
       </Head>
-      <SliceZone slices={page.data.slices} components={components} />
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="relative">
+          <Header />
+          <div className="observer" />
+        </div>
+        <SliceZone slices={page.data.slices} components={components} />
+      </div>
     </Layout>
   );
 };

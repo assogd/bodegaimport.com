@@ -50,7 +50,7 @@ const Page = ({ page, list, navigation, marquee, settings }) => {
       marquee={marquee}
       settings={settings}
       disableScroll={isOverlay}
-      logotypeInView={isScrollingUp}
+      logotype={{ inView: isScrollingUp, alwaysCentered: false }}
     >
       <Head>
         <title>

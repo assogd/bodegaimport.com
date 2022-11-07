@@ -14,8 +14,6 @@ export default function Header({ settings }) {
     inView: { opacity: 1, y: 0 },
   };
 
-  console.log(settings?.inView);
-
   return (
     <motion.header
       layoutId="mainHeader"

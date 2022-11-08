@@ -5,7 +5,7 @@ import Button from "../Button";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
 
-export default function Carousel({ data, params }) {
+export default function Carousel({ data, params, className }) {
   const [active, setActive] = useState([]);
   const refs = useRef([]);
 
@@ -17,8 +17,8 @@ export default function Carousel({ data, params }) {
     });
 
   return (
-    <section className="carousel">
-      <div className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-scroll">
+    <section className={clsx("carousel", className)}>
+      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll">
         <div className="basis-40 snap-center" />
         {data.map((card, i) => (
           <div
@@ -29,13 +29,7 @@ export default function Carousel({ data, params }) {
             className="w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 md:w-96"
           >
             <Observer state={[active, setActive]} i={i}>
-              <Card
-                key={card.id}
-                data={card}
-                size="sm"
-                animate={false}
-                params={params}
-              />
+              <Card data={card} size="sm" animate={false} params={params} />
             </Observer>
           </div>
         ))}
@@ -62,7 +56,7 @@ export default function Carousel({ data, params }) {
 
 const Observer = ({ state, children, i }) => {
   const { ref, inView, entry } = useInView({
-    threshold: 0.9,
+    threshold: 0.5,
   });
   const [active, setActive] = state;
 

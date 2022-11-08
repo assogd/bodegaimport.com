@@ -89,7 +89,7 @@ export const Collapsible = ({ links, itemsToShow }) => {
 };
 
 const ExpandIcon = () => (
-  <div className="flex h-[0.5em] w-10 translate-y-[2px] flex-col justify-between px-3">
+  <div className="flex h-[0.5em] w-6 translate-y-[2px] flex-col justify-between pl-2">
     <div className="h-[1px] w-full bg-black" />
     <div className="h-[1px] w-full bg-black" />
   </div>

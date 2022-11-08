@@ -10,8 +10,9 @@ import { Header, Observer } from "../components/Header/chunky";
 
 import { useState } from "react";
 
-const Index = ({ page, navigation, marquee, settings }) => {
+const Index = ({ page, navigation, marquee, settings, wines }) => {
   const [mainLogotypeInView, setMainLogotypeInView] = useState(false);
+
   return (
     <Layout
       navigation={navigation}
@@ -30,7 +31,11 @@ const Index = ({ page, navigation, marquee, settings }) => {
         >
           <Header />
         </Observer>
-        <SliceZone slices={page.data.slices} components={components} />
+        <SliceZone
+          slices={page.data.slices}
+          components={components}
+          context={{ wines: wines }}
+        />
       </div>
     </Layout>
   );
@@ -45,6 +50,10 @@ export async function getStaticProps({ locale, previewData }) {
     lang: locale,
     fetchLinks: ["producer.title"],
   });
+  const wines = await client.getAllByType("wine", {
+    lang: locale,
+    fetchLinks: ["grape.title"],
+  });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const marquee = await client.getSingle("marquee", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
@@ -55,6 +64,7 @@ export async function getStaticProps({ locale, previewData }) {
       navigation,
       marquee,
       settings,
+      wines,
     },
   };
 }

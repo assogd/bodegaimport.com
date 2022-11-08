@@ -3,7 +3,25 @@ import { PrismicRichText } from "@prismicio/react";
 import Button from "../../components/Button";
 import * as prismicH from "@prismicio/helpers";
 
-export default function ContactCard({ data }) {
+export const Container = ({ children, slice }) => {
+  return (
+    <section className={`cards ${slice.variation}`}>
+      <header className="text-center">
+        {slice.primary.title && <PrismicRichText field={slice.primary.title} />}
+        {slice.primary.introduction && (
+          <div className="hyphens mx-auto max-w-4xl">
+            <PrismicRichText field={slice.primary.introduction} />
+          </div>
+        )}
+      </header>
+      <div className="mx-auto mt-4 grid max-w-5xl justify-center gap-4 p-4 sm:grid-cols-3 md:px-[5%]">
+        {children}
+      </div>
+    </section>
+  );
+};
+
+export const Card = ({ data }) => {
   const { district, email, name, phone, picture } = data;
 
   return (
@@ -45,4 +63,4 @@ export default function ContactCard({ data }) {
       </nav>
     </div>
   );
-}
+};

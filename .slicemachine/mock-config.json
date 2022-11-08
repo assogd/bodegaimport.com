@@ -52,10 +52,27 @@
     },
     "Image": {
       "default": {
-        "primary": {}
+        "primary": {
+          "caption": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       },
       "banner": {
         "primary": {}
+      },
+      "landscape": {
+        "primary": {
+          "caption": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        }
       }
     },
     "Quote": {
@@ -211,6 +228,14 @@
       "wines": {
         "primary": {},
         "items": {}
+      }
+    },
+    "Landscape": {
+      "default": {
+        "primary": {}
+      },
+      "banner": {
+        "primary": {}
       }
     }
   },

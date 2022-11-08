@@ -2,6 +2,8 @@ import { PrismicRichText } from "@prismicio/react";
 import extractDomain from "extract-domain";
 import Button from "../../Button";
 import { motion } from "framer-motion";
+import clsx from "clsx";
+import { camelCase } from "../../../lib/utils/text";
 
 const Wine = ({ data, bgColor, size }) => {
   const {
@@ -14,19 +16,29 @@ const Wine = ({ data, bgColor, size }) => {
     resellers,
     soil,
     title,
-  } = data.primary.reference.data;
+  } = data.data;
+
+  const compSum = grape_composition
+    .map((d) => d.density)
+    .reduce((partialSum, a) => partialSum + a, 0);
 
   return (
     <div className="px-6 py-2 md:px-8">
+      <Color composition={grape_composition} compSum={compSum} />
       <header
         className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}
       >
         <h4>{title}</h4>
       </header>
-      <ul>
+      <ul className="relative">
         <ListItem title="Ursprung" body={origin} />
         <ListItem title="Jord" body={soil} />
-        <ListItem type="grapes" title="Druvor" body={grape_composition} />
+        <ListItem
+          type="grapes"
+          title="Druvor"
+          body={grape_composition}
+          compSum={compSum}
+        />
         {size != "sm" && (
           <ListItem type="richText" title="Metod" body={method} />
         )}
@@ -40,7 +52,25 @@ const Wine = ({ data, bgColor, size }) => {
   );
 };
 
-const ListItem = ({ title, body, type }) => {
+const Color = ({ composition, compSum }) => {
+  if (!composition) return null;
+
+  const layout = "absolute inset-0 rounded-md";
+
+  const opacity = (x) => (x / compSum) * 100;
+
+  return composition.map((color, i) => (
+    <div
+      key={i}
+      className={clsx(
+        layout,
+        `bg-wine-${camelCase(color.grape.data.title)}/${opacity(color.density)}`
+      )}
+    />
+  ));
+};
+
+const ListItem = ({ title, body, type, compSum }) => {
   if (!body) return null;
 
   const resellers =
@@ -51,7 +81,10 @@ const ListItem = ({ title, body, type }) => {
   const grapes =
     type === "grapes"
       ? body
-          .map((grape) => `${grape.density}% ${grape.grape.data.title}`)
+          .map(
+            (grape) =>
+              `${(grape.density / compSum) * 100}% ${grape.grape.data.title}`
+          )
           .join(", ")
       : null;
 

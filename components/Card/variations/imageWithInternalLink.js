@@ -43,7 +43,7 @@ const Figcaption = ({ link }) => {
       </h3>
       <Link href={url}>
         <a>
-          <Button className="border">Läs mer</Button>
+          <Button className="whitespace-nowrap border">Läs mer</Button>
         </a>
       </Link>
     </figcaption>

@@ -12,12 +12,16 @@ export default function Card({
   params,
   className,
 }) {
-  const { variation } = data;
+  const { variation, type } = data;
 
   const isText = variation === "default" || variation === "wine";
 
-  const bgColor = data?.primary?.reference?.data?.color
-    ? `bg-${camelCase(data?.primary?.reference?.data?.color)}`
+  const refinedData = variation === "wine" ? data.primary.reference : data;
+
+  console.log(refinedData);
+
+  const bgColor = refinedData?.color
+    ? `bg-${camelCase(refinedData?.color)}`
     : isText
     ? "bg-white"
     : "bg-transparent";
@@ -32,18 +36,21 @@ export default function Card({
   );
 
   const DynamicComponent = dynamic(
-    () => import(`./variations/${data.variation}`),
-    { ssr: false }
+    () => import(`./variations/${variation ?? type}`),
+    {
+      ssr: false,
+    }
   );
 
   return (
     <Animation className={cardClasses} skip={!animate}>
       <AspectRatio render={size === "sm"}>
         <DynamicComponent
-          data={data}
+          data={refinedData}
           size={size}
           bgColor={bgColor}
           params={params}
+          id={data?.id}
         />
       </AspectRatio>
     </Animation>

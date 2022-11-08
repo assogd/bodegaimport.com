@@ -81,7 +81,6 @@ export default Page;
 export async function getStaticProps({ params, locale, previewData }) {
   const client = createClient({ previewData });
   const fetchProducers = params.uid === "sortiment";
-  console.log({ hej: fetchProducers });
 
   const page = await client.getByUID("page", params.uid, {
     lang: locale,

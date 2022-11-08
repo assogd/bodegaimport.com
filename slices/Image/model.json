@@ -15,8 +15,31 @@
           "type": "Image",
           "config": {
             "label": "Image",
-            "constraint": {},
-            "thumbnails": []
+            "constraint": {
+              "width": 1500,
+              "height": 1900
+            },
+            "thumbnails": [
+              {
+                "name": "md",
+                "width": 750,
+                "height": 1000
+              },
+              {
+                "name": "sm",
+                "width": 350,
+                "height": 550
+              }
+            ]
+          }
+        },
+        "caption": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Caption",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,em"
           }
         }
       },
@@ -24,8 +47,8 @@
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     },
     {
-      "id": "banner",
-      "name": "Banner",
+      "id": "landscape",
+      "name": "Landscape",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
       "description": "Image",
@@ -35,10 +58,30 @@
           "config": {
             "label": "Image",
             "constraint": {
-              "width": 3000,
-              "height": 1000
+              "width": 2500,
+              "height": 1400
             },
-            "thumbnails": []
+            "thumbnails": [
+              {
+                "name": "md",
+                "width": 1250,
+                "height": 800
+              },
+              {
+                "name": "sm",
+                "width": 625,
+                "height": 450
+              }
+            ]
+          }
+        },
+        "caption": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Caption",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,em"
           }
         }
       },

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
+import * as prismic from "@prismicio/client";
 
 import { createClient } from "../prismicio";
 import { components } from "../slices";
@@ -18,9 +19,11 @@ import slugify from "slugify";
 
 import { useRouter } from "next/router";
 
-const Page = ({ page, list, navigation, marquee, settings }) => {
+const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
+
+  console.log(articles);
 
   const overlay =
     list &&
@@ -81,31 +84,48 @@ export default Page;
 export async function getStaticProps({ params, locale, previewData }) {
   const client = createClient({ previewData });
   const fetchProducers = params.uid === "sortiment";
+  const fetchNews = params.uid === "nyheter";
+
+  const links = {
+    page: ["producer.title", "producer.region", "card.caption"],
+    producers: [
+      "wine.title",
+      "wine.origin",
+      "wine.color",
+      "wine.grape_composition",
+      "wine.soil",
+      "wine.method",
+      "wine.hl_ha",
+      "wine.alcohol",
+      "wine.resellers",
+      "grape.title",
+    ],
+  };
+
+  const navigation = await client.getSingle("navigation", { lang: locale });
+  const marquee = await client.getSingle("marquee", { lang: locale });
+  const settings = await client.getSingle("settings", { lang: locale });
+
+  const articles = await client.getAllByType("article", {
+    orderings: {
+      field: "document.date_published",
+      direction: "desc",
+    },
+    lang: locale,
+    predicates: [prismic.predicate.at("my.article.type", "News")],
+  });
 
   const page = await client.getByUID("page", params.uid, {
     lang: locale,
-    fetchLinks: ["producer.title", "producer.region", "card.caption"],
+    fetchLinks: links.page,
   });
+
   const origins = fetchProducers && (await client.getAllByType("origin"));
   const producers =
     fetchProducers &&
     (await client.getAllByType("producer", {
-      fetchLinks: [
-        "wine.title",
-        "wine.origin",
-        "wine.color",
-        "wine.grape_composition",
-        "wine.soil",
-        "wine.method",
-        "wine.hl_ha",
-        "wine.alcohol",
-        "wine.resellers",
-        "grape.title",
-      ],
+      fetchLinks: links.producers,
     }));
-  const navigation = await client.getSingle("navigation", { lang: locale });
-  const marquee = await client.getSingle("marquee", { lang: locale });
-  const settings = await client.getSingle("settings", { lang: locale });
 
   const list =
     fetchProducers &&
@@ -127,6 +147,7 @@ export async function getStaticProps({ params, locale, previewData }) {
       navigation,
       marquee,
       settings,
+      articles,
     },
   };
 }

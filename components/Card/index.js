@@ -18,8 +18,6 @@ export default function Card({
 
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
-  console.log(refinedData);
-
   const bgColor = refinedData?.color
     ? `bg-${camelCase(refinedData?.color)}`
     : isText

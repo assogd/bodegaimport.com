@@ -10,6 +10,7 @@ import { Layout } from "../components/Layout";
 import { Heading } from "../components/Heading";
 import Overlay from "../components/Overlay/card";
 import ListOfProducers from "../components/ListOfProducers";
+import Articles from "../components/Articles";
 import Header from "../components/Header/sticky/";
 
 import useScrollDirection from "../lib/hooks/useScrollDirection";
@@ -22,8 +23,6 @@ import { useRouter } from "next/router";
 const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
-
-  console.log(articles);
 
   const overlay =
     list &&
@@ -68,6 +67,7 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
         <SliceZone slices={page.data.slices} components={components} />
       </section>
       {list && list.length && <ListOfProducers list={list} />}
+      {articles && articles.length && <Articles articles={articles} />}
       {isOverlay && (
         <Overlay
           data={overlay[0].producers[0].data.slices}

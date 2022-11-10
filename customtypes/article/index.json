@@ -11,7 +11,7 @@
           "label": "Title",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "paragraph,heading1,em"
+          "single": "paragraph,em"
         }
       },
       "hero_image": {

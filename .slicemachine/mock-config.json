@@ -287,6 +287,13 @@
         }
       }
     },
-    "article": {}
+    "article": {
+      "title": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    }
   }
 }

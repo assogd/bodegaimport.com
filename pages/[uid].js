@@ -8,7 +8,6 @@ import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
-import Overlay from "../components/Overlay/card";
 import ListOfProducers from "../components/ListOfProducers";
 import Articles from "../components/Articles";
 import Header from "../components/Header/sticky/";
@@ -20,11 +19,16 @@ import slugify from "slugify";
 
 import { useRouter } from "next/router";
 
+import OverlayCard from "../components/Overlay/card";
+import OverlayArticle from "../components/Overlay/article";
+
 const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
 
-  const overlay =
+  console.log(router);
+
+  const overlayCard =
     list &&
     list.filter(
       (r) =>
@@ -39,19 +43,21 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
     },
     producer: {
       slug: router.query.producer,
-      title: overlay[0]?.producers[0]?.data?.title,
+      title: overlayCard[0]?.producers[0]?.data?.title,
     },
     card: { slug: router.query.cardId },
   };
 
-  const isOverlay = overlay && overlay.length && params?.card?.slug;
+  const isOverlayCard = overlayCard && overlayCard.length && params?.card?.slug;
+
+  const isOverlayArticle = router.query.aid && articles;
 
   return (
     <Layout
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      disableScroll={isOverlay}
+      disableScroll={isOverlayCard || isOverlayArticle}
       logotype={{ inView: isScrollingUp, alwaysCentered: false }}
     >
       <Head>
@@ -68,12 +74,15 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
       </section>
       {list && list.length && <ListOfProducers list={list} />}
       {articles && articles.length && <Articles articles={articles} />}
-      {isOverlay && (
-        <Overlay
-          data={overlay[0].producers[0].data.slices}
+      {isOverlayCard && (
+        <OverlayCard
+          data={overlayCard[0].producers[0].data.slices}
           size="lg"
           params={params}
         />
+      )}
+      {isOverlayArticle && (
+        <OverlayArticle articles={articles} params={router.query} />
       )}
     </Layout>
   );

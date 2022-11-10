@@ -41,6 +41,10 @@ module.exports = {
         source: "/sortiment/:region/:producer/:cardId",
         destination: "/sortiment",
       },
+      {
+        source: "/nyheter/:date/:aid",
+        destination: "/nyheter",
+      },
     ];
   },
   i18n: {

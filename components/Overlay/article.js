@@ -33,7 +33,10 @@ export default function Overlay({ articles, params }) {
   const { query, push } = useRouter();
 
   return (
-    <Backdrop className="flex flex-col items-center">
+    <Backdrop
+      className="flex flex-col items-center"
+      backdropStyles={"bg-white/20"}
+    >
       <div
         className={clsx(
           "relative w-full grow overflow-y-scroll transition-all duration-500",

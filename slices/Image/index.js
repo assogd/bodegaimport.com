@@ -18,7 +18,9 @@ const Image = ({ slice, index }) => {
         "relative",
         isLandscape && "col-span-full",
         query.aid && "mx-4",
-        isLandscape && query.aid && "md:mx-[-4em]",
+        isLandscape &&
+          query.aid &&
+          "md:mx-[-4em] md:rounded-md md:bg-white md:p-4",
         !isLandscape && query.aid && "mx-12 md:mx-36"
       )}
     >
@@ -33,11 +35,11 @@ const Image = ({ slice, index }) => {
         <figcaption
           className={clsx(
             query.aid
-              ? "mt-1 text-sm"
+              ? "mt-1 text-sm md:text-center"
               : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-4 pt-12 text-white"
           )}
         >
-          <div className="max-w-sm">
+          <div className="max-w-sm md:mx-auto ">
             <PrismicRichText field={caption} />
           </div>
         </figcaption>

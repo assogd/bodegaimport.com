@@ -4,28 +4,39 @@ import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
 import Img from "next/future/image";
 
-import { Bounded } from "../../components/Bounded";
+import { useRouter } from "next/router";
 
 const Image = ({ slice, index }) => {
   if (!slice?.primary) return null;
   const { image, caption } = slice.primary;
+  const { query } = useRouter();
+  const isLandscape = slice.variation === "landscape";
 
   return (
     <figure
       className={clsx(
         "relative",
-        slice.variation === "landscape" && "col-span-full"
+        isLandscape && "col-span-full",
+        query.aid && "mx-4",
+        isLandscape && query.aid && "md:mx-[-4em]",
+        !isLandscape && query.aid && "mx-12 md:mx-36"
       )}
     >
       <Img
         src={image.url}
         width={image.dimensions.width}
         height={image.dimensions.height}
-        alt={image.alt}
-        className="rounded-md"
+        alt={image.alt ?? "Ingen beskrivning tillgänglig"}
+        className={clsx(!query.aid && "rounded-md")}
       />
       {caption && (
-        <figcaption className="absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-4 pt-12 text-white">
+        <figcaption
+          className={clsx(
+            query.aid
+              ? "mt-1 text-sm"
+              : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-4 pt-12 text-white"
+          )}
+        >
           <div className="max-w-sm">
             <PrismicRichText field={caption} />
           </div>

@@ -98,16 +98,16 @@ const ExpandIcon = () => (
 const Item = ({ link }) => {
   const { asPath } = useRouter();
   const isHem = link.link.url === "/hem";
-  const isActive = link.link.url === asPath || (asPath === "/" && isHem);
 
   return (
     <div className="relative flex h-12 items-center justify-center">
-      {isActive && (
-        <motion.div
-          layoutId="active"
-          className="absolute inset-x-2 bottom-3 h-[1px] bg-black md:inset-x-4"
-        />
-      )}
+      {link.link.url === asPath ||
+        (asPath === "/" && isHem && (
+          <motion.div
+            layoutId="active"
+            className="absolute inset-x-2 bottom-3 h-[1px] bg-black md:inset-x-4"
+          />
+        ))}
       <Link href={isHem ? "/" : link.link.url}>
         <a>
           <Button size="sm" className="relative py-4 px-2 md:px-4">

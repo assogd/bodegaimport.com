@@ -16,6 +16,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
+        lg: "0 0 8px 2px rgba(0, 0, 0, .125)",
         glow: "0 0 12px 4px rgba(255, 255, 255, .5)",
         easeTop: "0 -24px 24px 0px rgba(255, 255, 255, 1)",
         easeTopPink: "0 -24px 24px 0px rgb(249, 226, 255, 1)",

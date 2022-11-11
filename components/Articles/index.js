@@ -1,16 +1,19 @@
 import { PrismicRichText } from "@prismicio/react";
 import { useRouter } from "next/router";
 import Image from "next/future/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { isMobile } from "react-device-detect";
 
 export default function Articles({ articles }) {
+  const [isStateMobile, setStateMobile] = useState(false);
+  useEffect(() => setStateMobile(isMobile), [isMobile]);
+
   const className = {
     section: clsx(
       "articles grid p-4 pt-12 md:p-8 md:pt-16",
-      isMobile ? "gap-10" : "gap-4"
+      isStateMobile ? "gap-10" : "gap-4"
     ),
   };
   return (
@@ -30,6 +33,9 @@ export default function Articles({ articles }) {
 
 const Article = ({ article }) => {
   const [isHover, setHover] = useState(false);
+  const [isStateMobile, setStateMobile] = useState(false);
+  useEffect(() => setStateMobile(isMobile), [isMobile]);
+
   const { push } = useRouter();
 
   const {
@@ -46,29 +52,35 @@ const Article = ({ article }) => {
   };
 
   const className = {
-    figure: {
-      mobile: clsx("mx-auto max-w-sm"),
-      desktop: clsx(
-        "absolute left-[50%] max-w-sm top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10"
-      ),
-    },
+    figure: clsx(
+      isStateMobile
+        ? "mx-auto max-w-sm"
+        : "absolute left-[50%] max-w-sm top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10"
+    ),
   };
 
   return (
     <article className="relative grid gap-2 text-center">
       <motion.figure
-        animate={isHover || isMobile ? { opacity: 1 } : { opacity: 0 }}
-        className={
-          isMobile ? className.figure.mobile : className.figure.desktop
-        }
+        animate={isHover || isStateMobile ? { opacity: 1 } : { opacity: 0 }}
+        className={className.figure}
       >
-        <Image
-          src={image.url}
-          width={image.dimensions.width}
-          height={image.dimensions.height}
-          alt={image.alt}
-          className="rounded-md"
-        />
+        <a
+          onClick={() =>
+            push(`/nyheter/${date}/${article.uid}`, undefined, {
+              shallow: true,
+            })
+          }
+          className="cursor-pointer"
+        >
+          <Image
+            src={image.url}
+            width={image.dimensions.width}
+            height={image.dimensions.height}
+            alt={image.alt ?? "Ingen beskrivning tillgänglig"}
+            className="rounded-md"
+          />
+        </a>
       </motion.figure>
       <header className="relative">
         <motion.h2

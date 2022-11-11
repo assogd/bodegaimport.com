@@ -19,19 +19,19 @@ export default function Article({ article }) {
   };
 
   return (
-    <article>
-      <motion.figure>
+    <article className="pb-24">
+      <motion.figure className="hidden">
         <Image
           src={image.url}
           width={image.dimensions.width}
           height={image.dimensions.height}
-          alt={image.alt}
+          alt={image.alt ?? "Ingen beskrivning tillgänglig"}
           className="rounded-md"
         />
       </motion.figure>
-      <div className="body">
-        <header className="py-8 text-center">
-          <h1 className="text-xl">
+      <div className="body grid gap-4">
+        <header className="pt-8 pb-4 text-center">
+          <h1 className="mb-1 text-xl">
             <PrismicRichText field={title} />
           </h1>
           <div role="doc-subtitle" className="font-mono">

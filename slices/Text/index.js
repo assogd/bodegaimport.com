@@ -1,11 +1,11 @@
 import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
 import Block from "./block";
-
-import { Bounded } from "../../components/Bounded";
+import { useRouter } from "next/router";
 
 const Text = ({ slice }) => {
   const { variation } = slice;
+  const { query } = useRouter();
 
   if (variation === "block") {
     return (
@@ -15,10 +15,24 @@ const Text = ({ slice }) => {
     );
   }
 
+  if (variation === "introduction") {
+    return (
+      <section
+        className={clsx(
+          "introduction hyphens mx-auto max-w-4xl px-4 text-center",
+          !query.aid && "py-20",
+          query.aid && "mono-base font-mono"
+        )}
+      >
+        <PrismicRichText field={slice.primary.text} />
+      </section>
+    );
+  }
+
   return (
     <section
       className={clsx(
-        "hyphens mx-auto max-w-4xl py-20 px-4 text-center",
+        "hyphens mx-auto max-w-4xl px-4 text-center",
         variation === "mono" && "font-mono"
       )}
     >

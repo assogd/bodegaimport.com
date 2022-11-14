@@ -27,7 +27,7 @@ export default function Carousel({ data, params, className, children }) {
             i={i}
             className={
               child.props.altClassName ??
-              "w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 md:w-96"
+              "w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 sm:w-96"
             }
           >
             <div

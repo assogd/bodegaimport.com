@@ -23,7 +23,7 @@ const Wine = ({ data, bgColor, size }) => {
     .reduce((partialSum, a) => partialSum + a, 0);
 
   return (
-    <div className="px-6 py-2 md:px-8">
+    <div className="px-6 py-2 sm:px-8">
       <Color composition={grape_composition} compSum={compSum} />
       <header
         className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}

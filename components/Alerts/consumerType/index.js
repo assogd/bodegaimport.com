@@ -12,7 +12,7 @@ export default function ConsumerType() {
 
   return (
     <Modal>
-      <div className="body pointer-events-none grid gap-4 px-6 pt-12 md:px-8">
+      <div className="body pointer-events-none grid gap-4 px-6 pt-12 sm:px-8">
         <header>
           <figure className="logotype">
             <Image

@@ -12,9 +12,9 @@ export const Bounded = ({
       data-collapsible={collapsible}
       className={clsx(
         "px-6",
-        yPadding === "sm" && "py-8 md:py-10",
-        yPadding === "base" && "py-10 md:py-14",
-        yPadding === "lg" && "py-16 md:py-24",
+        yPadding === "sm" && "py-8 sm:py-10",
+        yPadding === "base" && "py-10 sm:py-14",
+        yPadding === "lg" && "py-16 sm:py-24",
         className
       )}
     >

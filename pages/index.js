@@ -18,13 +18,13 @@ const Index = ({ page, navigation, marquee, settings, wines }) => {
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      className="min-h-[400vh] p-4 md:p-8"
+      className="min-h-[400vh] p-4 sm:p-8"
       logotype={{ alwaysCentered: true, inView: mainLogotypeInView }}
     >
       <Head>
         <title>Bodega Import</title>
       </Head>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <Observer
           mainLogotypeInView={mainLogotypeInView}
           setMainLogotypeInView={setMainLogotypeInView}

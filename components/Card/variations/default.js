@@ -11,7 +11,7 @@ const Default = ({ data, size, params }) => {
   const containerClasses = clsx(
     "font-mono text-monoBase",
     size != "sm" && "relative min-h-full",
-    size === "sm" && "absolute inset-0 px-6 md:px-8 pt-2 pb-8"
+    size === "sm" && "absolute inset-0 px-6 sm:px-8 pt-2 pb-8"
   );
 
   return (
@@ -37,7 +37,7 @@ const Expand = ({ params, data }) => {
     data.id.slice(-4);
 
   return (
-    <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
+    <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop sm:px-10 sm:py-8">
       <Button
         onTap={() =>
           push(
@@ -58,7 +58,7 @@ const Close = ({ params }) => {
   const { push } = useRouter();
 
   return (
-    <nav className="sticky inset-x-4 bottom-0 rounded bg-white px-0 pb-4 pt-0 text-center shadow-easeTop md:px-10 md:py-8">
+    <nav className="sticky inset-x-4 bottom-0 rounded bg-white px-0 pb-4 pt-0 text-center shadow-easeTop sm:px-10 sm:py-8">
       <Button
         className="w-full border border-solid bg-white font-serif text-base"
         onTap={() => push(`/sortiment`, undefined, { shallow: true })}

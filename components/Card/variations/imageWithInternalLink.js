@@ -35,7 +35,7 @@ const Figcaption = ({ link }) => {
 
   return (
     <figcaption
-      className={`absolute inset-x-2 bottom-2 flex items-end justify-between gap-4 rounded-md bg-white/40 p-4 backdrop-blur-lg md:inset-x-4 md:bottom-4`}
+      className={`absolute inset-x-2 bottom-2 flex items-end justify-between gap-4 rounded-md bg-white/40 p-4 backdrop-blur-lg sm:inset-x-4 sm:bottom-4`}
     >
       <h3>
         <div role="doc-subtitle">{capitalize(type)}</div>

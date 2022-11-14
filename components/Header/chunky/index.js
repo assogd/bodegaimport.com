@@ -16,7 +16,7 @@ export function Header() {
       className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none sm:relative sm:inset-0 sm:h-full"
     >
       <div className="sticky top-[50%] max-h-screen translate-y-[-50%]">
-        <div className="flex h-full flex-col items-center justify-center gap-[8vw] sm:h-full md:translate-y-[-2em] md:gap-[4vw]">
+        <div className="flex h-full flex-col items-center justify-center gap-[8vw] sm:h-full sm:translate-y-[-2em] sm:gap-[4vw]">
           <Image
             src={Logotype}
             alt={"CFHILL"}
@@ -53,7 +53,7 @@ export const Observer = ({
       <AnimatePresence>{(inView || isSm) && children}</AnimatePresence>
       <div
         ref={ref}
-        className="observer inset-0 h-[50vh] sm:h-auto md:absolute"
+        className="observer inset-0 h-[50vh] sm:h-auto sm:absolute"
       />
     </div>
   );

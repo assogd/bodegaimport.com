@@ -14,7 +14,7 @@ export const Container = ({ children, slice }) => {
           </div>
         )}
       </header>
-      <div className="mx-auto mt-4 grid max-w-5xl justify-center gap-4 p-4 sm:grid-cols-3 md:px-[5%]">
+      <div className="mx-auto mt-4 grid max-w-5xl justify-center gap-4 p-4 sm:grid-cols-3 sm:px-[5%]">
         {children}
       </div>
     </section>

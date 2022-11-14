@@ -12,7 +12,7 @@ export default function Articles({ articles }) {
 
   const className = {
     section: clsx(
-      "articles grid p-4 pt-12 md:p-8 md:pt-16",
+      "articles grid p-4 pt-12 sm:p-8 sm:pt-16",
       isStateMobile ? "gap-10" : "gap-4"
     ),
   };
@@ -35,8 +35,6 @@ const Article = ({ article }) => {
   const [isHover, setHover] = useState(false);
   const [isStateMobile, setStateMobile] = useState(false);
   useEffect(() => setStateMobile(isMobile), [isMobile]);
-
-  const { push } = useRouter();
 
   const {
     date_published: date,
@@ -62,17 +60,11 @@ const Article = ({ article }) => {
   return (
     <article className="relative grid gap-2 text-center">
       <motion.figure
+        initial={{ opacity: 0 }}
         animate={isHover || isStateMobile ? { opacity: 1 } : { opacity: 0 }}
         className={className.figure}
       >
-        <a
-          onClick={() =>
-            push(`/nyheter/${date}/${article.uid}`, undefined, {
-              shallow: true,
-            })
-          }
-          className="cursor-pointer"
-        >
+        <A href={`/nyheter/${date}/${article.uid}`}>
           <Image
             src={image.url}
             width={image.dimensions.width}
@@ -80,29 +72,39 @@ const Article = ({ article }) => {
             alt={image.alt ?? "Ingen beskrivning tillgänglig"}
             className="rounded-md"
           />
-        </a>
+        </A>
       </motion.figure>
       <header className="relative">
         <motion.h2
-          className="md:text-xxl inline-block text-lg"
+          className="sm:text-xxl inline-block text-lg"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
-          <a
-            onClick={() =>
-              push(`/nyheter/${date}/${article.uid}`, undefined, {
-                shallow: true,
-              })
-            }
-            className="cursor-pointer"
-          >
+          <A href={`/nyheter/${date}/${article.uid}`}>
             <PrismicRichText field={title} />
-          </a>
+          </A>
         </motion.h2>
         <div role="doc-subtitle" className="font-mono">
           {new Date(date).toLocaleDateString("sv", options)}
         </div>
       </header>
     </article>
+  );
+};
+
+const A = ({ children, href }) => {
+  const { push } = useRouter();
+
+  return (
+    <a
+      onClick={() =>
+        push(href, undefined, {
+          shallow: true,
+        })
+      }
+      className="cursor-pointer"
+    >
+      {children}
+    </a>
   );
 };

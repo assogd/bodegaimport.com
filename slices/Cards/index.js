@@ -13,7 +13,7 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <Carousel data={items} className="mx-[-1em] md:mx-[-2em]" />
+        <Carousel data={items} className="mx-[-1em] sm:mx-[-2em]" />
       </WineContainer>
     );
   }

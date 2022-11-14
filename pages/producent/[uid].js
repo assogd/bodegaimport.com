@@ -19,7 +19,7 @@ const Page = ({ page, navigation, marquee, settings }) => {
       <header className="sticky inset-x-0 top-0 z-0 pt-8 text-center">
         <Heading size="xl">{page.data.title}</Heading>
       </header>
-      <section className="cards relative mx-auto grid max-w-screen-2xl items-stretch gap-4 p-8 md:grid-cols-2 md:px-12">
+      <section className="cards relative mx-auto grid max-w-screen-2xl items-stretch gap-4 p-8 sm:grid-cols-2 sm:px-12">
         <SliceZone slices={page.data.slices} components={components} />
       </section>
     </Layout>

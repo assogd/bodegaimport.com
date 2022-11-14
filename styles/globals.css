@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 [data-collapsible="true"].bg-white + [data-collapsible="true"].bg-white {
-  @apply pt-0 md:pt-0;
+  @apply pt-0 sm:pt-0;
 }
 
 @layer base {

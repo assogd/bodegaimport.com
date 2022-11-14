@@ -105,12 +105,12 @@ const Item = ({ link }) => {
         (asPath === "/" && isHem && (
           <motion.div
             layoutId="active"
-            className="absolute inset-x-2 bottom-3 h-[1px] bg-black md:inset-x-4"
+            className="absolute inset-x-2 bottom-3 h-[1px] bg-black sm:inset-x-4"
           />
         ))}
       <Link href={isHem ? "/" : link.link.url}>
         <a>
-          <Button size="sm" className="relative py-4 px-2 md:px-4">
+          <Button size="sm" className="relative py-4 px-2 sm:px-4">
             <PrismicText field={link.label} />
           </Button>
         </a>

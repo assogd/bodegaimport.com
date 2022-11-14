@@ -26,12 +26,6 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
 
-  articles &&
-    articles.sort(
-      (a, b) =>
-        new Date(a.data.date_published) < new Date(b.data.date_published)
-    );
-
   const overlayCard =
     list &&
     list.filter(
@@ -71,7 +65,7 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
         </title>
       </Head>
       <section className="introduction relative">
-        <Header className="sticky inset-x-0 top-14 text-center md:fixed md:top-6">
+        <Header className="sticky inset-x-0 top-14 text-center sm:fixed sm:top-6">
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
         <SliceZone slices={page.data.slices} components={components} />
@@ -121,7 +115,7 @@ export async function getStaticProps({ params, locale, previewData }) {
 
   const articles = await client.getAllByType("article", {
     orderings: {
-      field: "document.date_published",
+      field: "my.article.date_published",
       direction: "desc",
     },
     lang: locale,

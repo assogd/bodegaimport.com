@@ -4,6 +4,7 @@ import * as prismicH from "@prismicio/helpers";
 import Backdrop from "../Backdrop";
 import Article from "../Article";
 import Button from "../Button";
+import Related from "../Articles/related";
 
 import clsx from "clsx";
 
@@ -22,6 +23,20 @@ export default function Overlay({ articles, params }) {
 
   if (!article) return null;
 
+  const related = articles
+    .filter(
+      (a) =>
+        new Date(a.data.date_published) < new Date(article.data.date_published)
+    )
+    .concat(
+      articles.filter(
+        (a) =>
+          new Date(a.data.date_published) >
+          new Date(article.data.date_published)
+      )
+    )
+    .slice(0, 4);
+
   const [isFull, setFull] = useState(false);
 
   const { ref, inView, entry } = useInView({
@@ -39,13 +54,13 @@ export default function Overlay({ articles, params }) {
     >
       <div
         className={clsx(
-          "relative w-full grow overflow-y-scroll transition-all duration-500",
+          "transition-bg relative w-full grow overflow-y-scroll duration-1000",
           isFull ? "bg-white" : ""
         )}
       >
         <div
           className={clsx(
-            "relative mt-24 max-w-xl origin-top bg-white p-2 pb-0 transition-all duration-500 md:mx-auto",
+            "transition-scale relative mt-24 max-w-xl origin-top bg-white p-2 pb-0 duration-1000 md:mx-auto",
             isFull ? "scale-100" : "scale-90 rounded-md"
           )}
         >
@@ -55,6 +70,7 @@ export default function Overlay({ articles, params }) {
           />
           <Article article={article} />
         </div>
+        <Related articles={related} />
       </div>
       <div className="fixed bottom-0 p-4">
         <Button

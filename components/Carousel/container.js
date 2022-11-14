@@ -5,7 +5,7 @@ import Button from "../Button";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
 
-export default function Carousel({ data, params, className }) {
+export default function Carousel({ data, params, className, children }) {
   const [active, setActive] = useState([]);
   const refs = useRef([]);
 
@@ -20,18 +20,24 @@ export default function Carousel({ data, params, className }) {
     <section className={clsx("carousel", className)}>
       <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll">
         <Fill />
-        {data.map((card, i) => (
-          <div
+        {children.map((child, i) => (
+          <Observer
             key={i}
-            ref={(el) => {
-              refs.current[i] = el;
-            }}
-            className="w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 md:w-96"
+            state={[active, setActive]}
+            i={i}
+            className={
+              child.props.altClassName ??
+              "w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 md:w-96"
+            }
           >
-            <Observer state={[active, setActive]} i={i}>
-              <Card data={card} size="sm" animate={false} params={params} />
-            </Observer>
-          </div>
+            <div
+              ref={(el) => {
+                refs.current[i] = el;
+              }}
+            >
+              {child}
+            </div>
+          </Observer>
         ))}
         <Fill />
       </div>
@@ -54,7 +60,7 @@ export default function Carousel({ data, params, className }) {
   );
 }
 
-const Observer = ({ state, children, i }) => {
+const Observer = ({ state, children, i, className }) => {
   const { ref, inView, entry } = useInView({
     threshold: 0.5,
   });
@@ -68,7 +74,11 @@ const Observer = ({ state, children, i }) => {
     }
   }, [inView, active, i, setActive]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 };
 
 const Dot = ({ i, onTap, active }) => {
@@ -83,4 +93,4 @@ const Dot = ({ i, onTap, active }) => {
   );
 };
 
-const Fill = () => <div className="basis-40 snap-center" />;
+const Fill = () => <div className="basis-4 snap-center" />;

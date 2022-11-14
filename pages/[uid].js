@@ -26,7 +26,11 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
 
-  console.log(router);
+  articles &&
+    articles.sort(
+      (a, b) =>
+        new Date(a.data.date_published) < new Date(b.data.date_published)
+    );
 
   const overlayCard =
     list &&

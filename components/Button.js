@@ -22,7 +22,7 @@ const Button = ({
     "inline-flex gap-1 rounded-lg select-none justify-center items-center",
     className,
     size === "sm" && "py-1.5 px-2",
-    size === "md" && "py-2 px-5",
+    size === "md" && "py-3 px-6 md:px-5 md:py-2",
     size === "lg" && "p-3 w-full"
   );
 

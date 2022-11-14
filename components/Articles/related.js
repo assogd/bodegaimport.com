@@ -33,7 +33,7 @@ export default function Related({ articles }) {
   );
 }
 
-const Card = ({ article }) => {
+export const Card = ({ article }) => {
   const {
     date_published: date,
     hero_image: image,

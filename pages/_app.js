@@ -30,7 +30,7 @@ const richTextComponents = {
     <Heading
       as="h3"
       size="md"
-      className="mb-4 pt-8 font-serif first:mt-0 last:mb-0"
+      className="mb-4 mt-8 font-serif first:mt-0 last:mb-0"
     >
       {children}
     </Heading>

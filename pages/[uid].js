@@ -113,14 +113,16 @@ export async function getStaticProps({ params, locale, previewData }) {
   const marquee = await client.getSingle("marquee", { lang: locale });
   const settings = await client.getSingle("settings", { lang: locale });
 
-  const articles = await client.getAllByType("article", {
-    orderings: {
-      field: "my.article.date_published",
-      direction: "desc",
-    },
-    lang: locale,
-    predicates: [prismic.predicate.at("my.article.type", "News")],
-  });
+  const articles =
+    fetchNews &&
+    (await client.getAllByType("article", {
+      orderings: {
+        field: "my.article.date_published",
+        direction: "desc",
+      },
+      lang: locale,
+      predicates: [prismic.predicate.at("my.article.type", "News")],
+    }));
 
   const page = await client.getByUID("page", params.uid, {
     lang: locale,

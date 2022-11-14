@@ -18,7 +18,7 @@ export default function Carousel({ data, params, className }) {
 
   return (
     <section className={clsx("carousel", className)}>
-      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll">
+      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll md:gap-6">
         <Fill />
         {data.map((card, i) => (
           <div
@@ -77,10 +77,10 @@ const Dot = ({ i, onTap, active }) => {
     active && "bg-black"
   );
   return (
-    <Button onTap={onTap}>
+    <Button size="sm" onTap={onTap}>
       <motion.div className={dotClasses} />
     </Button>
   );
 };
 
-const Fill = () => <div className="basis-40 snap-center" />;
+const Fill = () => <div className="shrink-0 grow basis-2" />;

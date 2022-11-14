@@ -4,6 +4,7 @@ import Header from "./Header/main/";
 import clsx from "clsx";
 import Alerts from "./Alerts/";
 import useAssoCookie from "../lib/hooks/useAssoCookie";
+import Footer from "./Footer";
 
 export const Layout = ({
   navigation,
@@ -21,12 +22,15 @@ export const Layout = ({
   );
 
   return (
-    <div className={containerClasses}>
-      <Header settings={logotype} />
-      <Navigation links={navigation.data?.links} />
-      <main className={className}>{children}</main>
-      <Broadcast marquee={marquee} />
-      <Alerts />
-    </div>
+    <>
+      <div className={containerClasses}>
+        <Header settings={logotype} />
+        <main className={className}>{children}</main>
+        <Navigation links={navigation.data?.links} />
+        <Broadcast marquee={marquee} />
+        <Alerts />
+      </div>
+      <Footer />
+    </>
   );
 };

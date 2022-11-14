@@ -18,7 +18,7 @@ export default function Carousel({ data, params, className, children }) {
 
   return (
     <section className={clsx("carousel", className)}>
-      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll">
+      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll sm:gap-6">
         <Fill />
         {children.map((child, i) => (
           <Observer
@@ -27,7 +27,7 @@ export default function Carousel({ data, params, className, children }) {
             i={i}
             className={
               child.props.altClassName ??
-              "w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 sm:w-96"
+              "shrink-0 basis-4/5 snap-start scroll-mx-8 last:mr-40 sm:w-96"
             }
           >
             <div
@@ -87,10 +87,10 @@ const Dot = ({ i, onTap, active }) => {
     active && "bg-black"
   );
   return (
-    <Button onTap={onTap}>
+    <Button size="sm" onTap={onTap}>
       <motion.div className={dotClasses} />
     </Button>
   );
 };
 
-const Fill = () => <div className="basis-4 snap-center" />;
+const Fill = () => <div className="shrink-0 grow basis-2" />;

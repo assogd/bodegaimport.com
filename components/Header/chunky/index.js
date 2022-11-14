@@ -19,7 +19,7 @@ export function Header() {
         <div className="flex h-full flex-col items-center justify-center gap-[8vw] sm:h-full sm:translate-y-[-2em] sm:gap-[4vw]">
           <Image
             src={Logotype}
-            alt={"CFHILL"}
+            alt={"Bodega Import"}
             loading="eager"
             className="mx-auto w-[32vw] sm:w-[16vw]"
           />
@@ -53,7 +53,7 @@ export const Observer = ({
       <AnimatePresence>{(inView || isSm) && children}</AnimatePresence>
       <div
         ref={ref}
-        className="observer inset-0 h-[50vh] sm:h-auto sm:absolute"
+        className="observer inset-0 h-[50vh] sm:absolute sm:h-auto"
       />
     </div>
   );

@@ -10,7 +10,7 @@ import { Header, Observer } from "../components/Header/chunky";
 
 import { useState } from "react";
 
-const Index = ({ page, navigation, marquee, settings, wines }) => {
+const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
   const [mainLogotypeInView, setMainLogotypeInView] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ const Index = ({ page, navigation, marquee, settings, wines }) => {
       <Head>
         <title>Bodega Import</title>
       </Head>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="mb-48 grid gap-8 sm:grid-cols-2">
         <Observer
           mainLogotypeInView={mainLogotypeInView}
           setMainLogotypeInView={setMainLogotypeInView}
@@ -34,7 +34,7 @@ const Index = ({ page, navigation, marquee, settings, wines }) => {
         <SliceZone
           slices={page.data.slices}
           components={components}
-          context={{ wines: wines }}
+          context={{ wines, articles }}
         />
       </div>
     </Layout>
@@ -50,6 +50,13 @@ export async function getStaticProps({ locale, previewData }) {
     lang: locale,
     fetchLinks: ["producer.title"],
   });
+  const articles = await client.getAllByType("article", {
+    orderings: {
+      field: "my.article.date_published",
+      direction: "desc",
+    },
+    lang: locale,
+  });
   const wines = await client.getAllByType("wine", {
     lang: locale,
     fetchLinks: ["grape.title"],
@@ -60,6 +67,7 @@ export async function getStaticProps({ locale, previewData }) {
 
   return {
     props: {
+      articles,
       page,
       navigation,
       marquee,

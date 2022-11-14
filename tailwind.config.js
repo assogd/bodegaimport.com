@@ -51,7 +51,9 @@ module.exports = {
       purple: "#E4C1E7",
       yellow: "rgb(255, 255, 144)",
       paleYellow: "#FEFFD6",
-      cadmiumGreen: "rgb(9, 121, 105)",
+      peach: "#F3CEB2",
+      toddTerje: "#B9B5E7",
+      cadmiumGreen: "rgb(0, 158, 89)",
       wine: {
         pinotNoir: "#E2908D",
         gamay: "#E2908D",
@@ -63,7 +65,8 @@ module.exports = {
   plugins: [require("@tailwindcss/aspect-ratio")],
   safelist: [
     {
-      pattern: /(bg|text|border)-wine-(pinotNoir|gamay|auxerrois|sylvaner)/,
+      pattern:
+        /(bg|text|border)-wine-(pinotNoir|gamay|auxerrois|sylvaner|peach,)/,
     },
   ],
 };

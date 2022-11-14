@@ -17,7 +17,7 @@ export default function CookieConsent({ lang }) {
           <figure className="logotype">
             <Image
               src={Logotype}
-              alt={"CFHILL"}
+              alt={"Bodega Import"}
               loading="eager"
               className="mx-auto"
             />

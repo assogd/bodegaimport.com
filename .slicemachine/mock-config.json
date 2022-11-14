@@ -238,6 +238,12 @@
       "wines": {
         "primary": {},
         "items": {}
+      },
+      "articles": {
+        "items": {}
+      },
+      "latestNews": {
+        "items": {}
       }
     },
     "Landscape": {

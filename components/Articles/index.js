@@ -12,7 +12,7 @@ export default function Articles({ articles }) {
 
   const className = {
     section: clsx(
-      "articles grid p-4 pt-12 sm:p-8 sm:pt-16",
+      "articles grid px-4 pt-12 pb-36 sm:x-8 sm:pt-16",
       isStateMobile ? "gap-10" : "gap-4"
     ),
   };

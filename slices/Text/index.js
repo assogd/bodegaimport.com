@@ -19,8 +19,8 @@ const Text = ({ slice }) => {
     return (
       <section
         className={clsx(
-          "introduction hyphens mx-auto max-w-4xl px-4 text-center",
-          !query.aid && "py-20",
+          "introduction hyphens col-span-full mx-auto max-w-4xl px-4 text-center",
+          !query.aid && "py-12 pt-12 sm:pt-20",
           query.aid && "mono-base font-mono"
         )}
       >
@@ -32,7 +32,7 @@ const Text = ({ slice }) => {
   return (
     <section
       className={clsx(
-        "hyphens mx-auto max-w-4xl px-4 text-center",
+        "hyphens mx-auto max-w-xl text-center",
         variation === "mono" && "font-mono"
       )}
     >

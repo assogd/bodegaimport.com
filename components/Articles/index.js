@@ -8,7 +8,7 @@ import { isMobile } from "react-device-detect";
 
 export default function Articles({ articles }) {
   const [isStateMobile, setStateMobile] = useState(false);
-  useEffect(() => setStateMobile(isMobile), [isMobile]);
+  useEffect(() => setStateMobile(isMobile), []);
 
   const className = {
     section: clsx(
@@ -34,7 +34,7 @@ export default function Articles({ articles }) {
 const Article = ({ article }) => {
   const [isHover, setHover] = useState(false);
   const [isStateMobile, setStateMobile] = useState(false);
-  useEffect(() => setStateMobile(isMobile), [isMobile]);
+  useEffect(() => setStateMobile(isMobile), []);
 
   const {
     date_published: date,

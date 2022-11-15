@@ -16,7 +16,7 @@ const Image = ({ slice, index }) => {
     <figure
       className={clsx(
         "relative",
-        isLandscape && "col-span-full",
+        isLandscape && "col-span-full mx-auto max-w-4xl",
         query.aid && "mx-4",
         isLandscape &&
           query.aid &&
@@ -34,7 +34,7 @@ const Image = ({ slice, index }) => {
       {caption && (
         <figcaption
           className={clsx(
-            query.aid
+            query.aid || query.uid === "om-oss"
               ? "mt-1 text-sm sm:text-center"
               : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-6 pt-12 text-white"
           )}

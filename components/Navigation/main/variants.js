@@ -12,10 +12,10 @@ export const Collapsible = ({ links, itemsToShow }) => {
   const [isOpen, setOpen] = useState(false);
 
   const navClasses =
-    "sticky inset-x-2 bottom-12 z-30 flex justify-center select-none";
+    "sticky inset-x-2 bottom-10 z-30 flex justify-center select-none bg-gradient-to-t from-black/10";
 
   const ulClasses = clsx(
-    "absolute bottom-0 inset-x-0 text-center mx-auto justify-center gap-4 rounded-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"
+    "absolute bottom-2 inset-x-0 text-center mx-auto justify-center gap-4 rounded-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"
   );
 
   const buttonClasses =
@@ -23,7 +23,7 @@ export const Collapsible = ({ links, itemsToShow }) => {
 
   return (
     <nav className={navClasses}>
-      <div className="flex items-center rounded-lg bg-white px-4 shadow-glow">
+      <div className="mb-2 flex items-center rounded-lg bg-white px-4 shadow-glow">
         <div className="flex h-12 items-center justify-around rounded-lg bg-white shadow-glow">
           {links.slice(0, itemsToShow).map((link, i) => (
             <Item key={i} link={link} />

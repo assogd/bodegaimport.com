@@ -13,6 +13,14 @@ import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 
 export default function Overlay({ articles, params }) {
+  const [isFull, setFull] = useState(false);
+
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5,
+  });
+
+  useEffect(() => setFull(!inView), [inView]);
+
   const article =
     articles &&
     articles.find(
@@ -36,14 +44,6 @@ export default function Overlay({ articles, params }) {
       )
     )
     .slice(0, 4);
-
-  const [isFull, setFull] = useState(false);
-
-  const { ref, inView, entry } = useInView({
-    threshold: 0.5,
-  });
-
-  useEffect(() => setFull(!inView), [inView]);
 
   const { query, push } = useRouter();
 

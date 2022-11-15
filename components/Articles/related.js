@@ -64,7 +64,7 @@ export const Card = ({ article }) => {
         </A>
       </motion.figure>
       <header className="relative">
-        <motion.h2 className="mb-1 inline-block text-base">
+        <motion.h2 className="mb-0 inline-block text-lg">
           <A href={`/nyheter/${date}/${article.uid}`}>
             <PrismicRichText field={title} />
           </A>

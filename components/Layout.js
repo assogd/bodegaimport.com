@@ -12,25 +12,29 @@ export const Layout = ({
   settings,
   children,
   disableScroll,
-  className = "pt-12 pb-16",
+  className = "pt-12",
   logotype = { inView: true, alwaysCentered: false },
+  bg,
 }) => {
   const [preferences, setPreferences] = useAssoCookie();
   const containerClasses = clsx(
     (disableScroll || !preferences?.consent || !preferences?.consumer) &&
-      "overflow-hidden max-h-screen"
+      "overflow-hidden max-h-screen",
+    bg
   );
 
   return (
     <>
       <div className={containerClasses}>
         <Header settings={logotype} />
-        <main className={className}>{children}</main>
-        <Navigation links={navigation.data?.links} />
-        <Broadcast marquee={marquee} />
+        <main className={className}>
+          {children}
+          <Navigation links={navigation.data?.links} />
+          <Broadcast marquee={marquee} />
+        </main>
         <Alerts />
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

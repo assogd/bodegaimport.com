@@ -47,8 +47,8 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   };
 
   const isOverlayCard = overlayCard && overlayCard.length && params?.card?.slug;
-
   const isOverlayArticle = router.query.aid && articles;
+  const isAboutPage = router.query.uid === "om-oss";
 
   return (
     <Layout
@@ -57,6 +57,8 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
       settings={settings}
       disableScroll={isOverlayCard || isOverlayArticle}
       logotype={{ inView: isScrollingUp, alwaysCentered: false }}
+      className={clsx("pt-12")}
+      bg={isAboutPage && "bg-paleYellow"}
     >
       <Head>
         <title>
@@ -64,8 +66,8 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <section className="introduction relative">
-        <Header className="sticky inset-x-0 top-14 text-center sm:fixed sm:top-6">
+      <section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
+        <Header className="sticky inset-x-0 top-12 text-center sm:fixed sm:top-6">
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
         <SliceZone slices={page.data.slices} components={components} />

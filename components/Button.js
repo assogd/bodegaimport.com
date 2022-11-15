@@ -82,6 +82,17 @@ const Button = ({
                 </Button>
               </div>
             </motion.div>
+            <div className="absolute inset-x-0 bottom-0 m-4">
+              <Button
+                size="md"
+                className="border"
+                onTap={() => {
+                  setOpenCopy(false);
+                }}
+              >
+                Stäng
+              </Button>
+            </div>
           </Backdrop>
         )}
       </AnimatePresence>

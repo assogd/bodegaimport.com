@@ -21,6 +21,8 @@ export default function Overlay({ articles, params }) {
 
   useEffect(() => setFull(!inView), [inView]);
 
+  const { query, push } = useRouter();
+
   const article =
     articles &&
     articles.find(
@@ -44,8 +46,6 @@ export default function Overlay({ articles, params }) {
       )
     )
     .slice(0, 4);
-
-  const { query, push } = useRouter();
 
   return (
     <Backdrop

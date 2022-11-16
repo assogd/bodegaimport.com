@@ -24,31 +24,31 @@ export default function Footer() {
     {
       src: Liebling,
       alt: "Restaurang Liebling",
-      className: "h-12 translate-y-[-.25em]",
+      className: "h-12 w-auto translate-y-[-.25em]",
       href: "https://www.restaurangliebling.com",
     },
     {
       src: Eros,
       alt: "Eros",
-      className: "h-12",
+      className: "h-12 w-auto",
       href: "https://www.instagram.com/erosbeerandliquorbar/",
     },
     {
       src: Paradiso,
       alt: "Paradiso",
-      className: "h-12",
+      className: "h-12 w-auto",
       href: "https://www.paradisostockholm.se",
     },
     {
       src: HornstullsBodega,
       alt: "Hornstulls Bodega",
-      className: "h-12",
+      className: "h-12 w-auto",
       href: "https://www.hornstullsbodega.com",
     },
     {
       src: Positano,
       alt: "Positano",
-      className: "h-12",
+      className: "h-12 w-auto",
       href: "https://positanoyes.com",
     },
   ];

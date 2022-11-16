@@ -5,6 +5,7 @@ import clsx from "clsx";
 import Alerts from "./Alerts/";
 import useAssoCookie from "../lib/hooks/useAssoCookie";
 import Footer from "./Footer";
+import { useState, useEffect } from "react";
 
 export const Layout = ({
   navigation,
@@ -17,9 +18,15 @@ export const Layout = ({
   bg,
 }) => {
   const [preferences, setPreferences] = useAssoCookie();
+  const [scrollStateDisabled, setScrollState] = useState(false);
+
+  useEffect(
+    () => setScrollState(!preferences?.consent || !preferences?.consumer),
+    [preferences]
+  );
+
   const containerClasses = clsx(
-    (disableScroll || !preferences?.consent || !preferences?.consumer) &&
-      "overflow-hidden max-h-screen",
+    (disableScroll || scrollStateDisabled) && "overflow-hidden max-h-screen",
     bg
   );
 

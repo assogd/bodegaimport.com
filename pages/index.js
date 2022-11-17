@@ -18,13 +18,13 @@ const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      className="min-h-[400vh] p-4 sm:p-8"
+      className=""
       logotype={{ alwaysCentered: true, inView: mainLogotypeInView }}
     >
       <Head>
         <title>Bodega Import</title>
       </Head>
-      <div className="mb-48 grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-8 p-4 sm:grid-cols-2 sm:p-8">
         <Observer
           mainLogotypeInView={mainLogotypeInView}
           setMainLogotypeInView={setMainLogotypeInView}
@@ -46,7 +46,7 @@ export default Index;
 export async function getStaticProps({ locale, previewData }) {
   const client = createClient({ previewData });
 
-  const page = await client.getByUID("page", "home", {
+  const page = await client.getByUID("page", "hem", {
     lang: locale,
     fetchLinks: ["producer.title"],
   });

@@ -1,7 +1,6 @@
 import useAssoCookie from "../../../lib/hooks/useAssoCookie";
 
 import Button from "../../Button";
-import Backdrop from "../../Backdrop";
 import Modal from "../modal";
 
 import Image from "next/future/image";

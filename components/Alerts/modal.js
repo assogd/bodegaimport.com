@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
-const Modal = ({ children }) => {
+const Modal = ({ children, bg = "bg-pink" }) => {
   const modalVariants = {
     open: {
       y: 0,
@@ -17,7 +18,10 @@ const Modal = ({ children }) => {
   return (
     <motion.div
       key={"modal"}
-      className="modal hyphens bg-pink relative grid max-h-full max-w-md select-none gap-4 overflow-y-scroll rounded-md text-center"
+      className={clsx(
+        "modal hyphens relative grid max-h-full max-w-md select-none gap-4 overflow-y-scroll rounded-md text-center",
+        bg
+      )}
       initial={"closed"}
       animate={"open"}
       exit={"closed"}

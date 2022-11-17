@@ -19,7 +19,7 @@ const Button = ({
   const [openCopy, setOpenCopy] = useState(false);
 
   const classes = clsx(
-    "inline-flex gap-1 rounded-lg select-none justify-center items-center",
+    "inline-flex gap-1 rounded-md select-none justify-center items-center",
     className,
     size === "sm" && "py-1.5 px-2",
     size === "md" && "py-3 px-6 sm:px-5 sm:py-2",

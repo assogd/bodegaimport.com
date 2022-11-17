@@ -8,7 +8,7 @@ import { Card as ArticleCard } from "../../components/Articles/related";
 const Cards = ({ slice, context }) => {
   const { variation } = slice;
 
-  if (variation === "wines") {
+  if (variation === "wines" && context.wines) {
     const items = slice.items.map(({ card }) =>
       context.wines.find((wine) => wine.id === card.id)
     );
@@ -20,7 +20,7 @@ const Cards = ({ slice, context }) => {
     );
   }
 
-  if (variation === "articles") {
+  if (variation === "articles" && context.articles) {
     const items = slice.items.map(({ card }) =>
       context.articles.find((a) => a.id === card.id)
     );

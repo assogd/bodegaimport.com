@@ -6,6 +6,7 @@ import CarouselContainer from "../../components/Carousel/container";
 import { Card as ArticleCard } from "../../components/Articles/related";
 
 const Cards = ({ slice, context }) => {
+  if (!slice.items) return null;
   const { variation } = slice;
 
   if (variation === "wines" && context.wines) {
@@ -36,7 +37,7 @@ const Cards = ({ slice, context }) => {
     );
   }
 
-  if (variation === "latestNews") {
+  if (variation === "latestNews" && context.articles) {
     const items = context.articles;
 
     return (

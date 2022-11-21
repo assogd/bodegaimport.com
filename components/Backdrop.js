@@ -16,7 +16,7 @@ const Backdrop = ({ onTap, children, className, bg = "bg-black/70" }) => {
         className={backdropClasses}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 0, transition: { delay: 0.25 } }}
       />
       {children}
     </motion.section>

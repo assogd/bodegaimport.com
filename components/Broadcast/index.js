@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const Broadcast = ({ navigation, settings, marquee }) => {
   return (
     <motion.div
-      className="sticky inset-x-0 bottom-0 z-20 bg-yellow/100"
+      className="sticky inset-x-0 bottom-0 z-10 bg-yellow/100"
       layoutId={"marquee"}
     >
       <Marquee pauseOnHover gradient={false}>

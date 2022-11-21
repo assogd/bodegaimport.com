@@ -25,7 +25,7 @@ export default function Card({
     : "bg-transparent";
 
   const cardClasses = clsx(
-    "card relative z-20",
+    "card relative z-10",
     isText && size != "sm" && "px-6 sm:px-8",
     variation === "images" && "overflow-hidden",
     bgColor,

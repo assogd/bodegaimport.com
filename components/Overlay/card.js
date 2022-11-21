@@ -26,11 +26,16 @@ export default function Overlay({ data, size, params }) {
       className="overlay flex flex-col items-center"
       bg={"bg-purple/60"}
     >
-      <div className="relative flex min-h-screen w-full flex-col justify-between">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.25 } }}
+        exit={{ opacity: 0 }}
+        className="relative flex min-h-screen w-full flex-col justify-between"
+      >
         <Header params={params} bg={"from-purple"} />
         <Article article={card} variant={"expandedCard"} />
         <Close bg={"from-purple"} />
-      </div>
+      </motion.div>
     </Backdrop>
   );
 }

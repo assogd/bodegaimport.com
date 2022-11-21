@@ -16,7 +16,7 @@ const StickyHeader = ({ children, className, secondLevel }) => {
 
   return (
     <motion.header
-      className={clsx(className, "pointer-events-none z-30 select-none")}
+      className={clsx(className, "pointer-events-none z-20 select-none")}
       animate={isScrollingUp ? "inView" : "outsideView"}
       variants={variants}
       transition={{ type: "tween", duration: 0.5, delay: 0.25 }}

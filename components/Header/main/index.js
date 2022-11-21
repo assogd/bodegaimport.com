@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Header({ settings }) {
   const headerClasses = clsx(
-    "fixed top-4 sm:top-6 left-6 right-6 z-30",
+    "fixed top-4 sm:top-6 left-6 right-6 z-20",
     "text-xl tracking-tight text-center",
     !settings?.alwaysCentered && "sm:right-auto"
   );

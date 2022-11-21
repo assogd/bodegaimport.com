@@ -48,10 +48,7 @@ export default function Overlay({ articles, params }) {
     .slice(0, 4);
 
   return (
-    <Backdrop
-      className="flex flex-col items-center"
-      backdropStyles={"bg-white/20"}
-    >
+    <Backdrop className="flex flex-col items-center" bg={"bg-white/20"}>
       <div
         className={clsx(
           "transition-bg relative w-full grow overflow-y-scroll duration-1000",

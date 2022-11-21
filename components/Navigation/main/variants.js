@@ -12,7 +12,7 @@ export const Collapsible = ({ links, itemsToShow }) => {
   const [isOpen, setOpen] = useState(false);
 
   const navClasses =
-    "sticky inset-x-2 bottom-10 z-30 flex justify-center select-none bg-gradient-to-t from-black/10 mt-16";
+    "sticky inset-x-2 bottom-10 z-20 flex justify-center select-none bg-gradient-to-t from-black/10 mt-16";
 
   const ulClasses = clsx(
     "absolute bottom-2 inset-x-0 text-center mx-auto justify-center gap-4 rounded-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"
@@ -101,13 +101,12 @@ const Item = ({ link }) => {
 
   return (
     <div className="relative flex h-12 items-center justify-center">
-      {link.link.url === asPath ||
-        (asPath === "/" && isHem && (
-          <motion.div
-            layoutId="active"
-            className="absolute inset-x-2 bottom-3 h-[1px] bg-black sm:inset-x-4"
-          />
-        ))}
+      {(link.link.url === asPath || (asPath === "/" && isHem)) && (
+        <motion.div
+          layoutId="active"
+          className="absolute inset-x-2 bottom-3 h-[1px] bg-black sm:inset-x-4"
+        />
+      )}
       <Link href={isHem ? "/" : link.link.url}>
         <a>
           <Button size="sm" className="relative py-4 px-2 sm:px-4">

@@ -9,9 +9,8 @@ import { useRouter } from "next/router";
 export default function Related({ articles }) {
   const { ref, inView } = useInView({ threshold: 0.25 });
 
-  console.log(articles);
   return (
-    <section ref={ref} className="related overflow-hidden bg-white pb-8">
+    <section ref={ref} className="related overflow-hidden bg-white py-8">
       <h2 className="mb-8 text-center text-lg">Andra nyheter om dryck</h2>
       <motion.div
         initial={{ y: "50%" }}

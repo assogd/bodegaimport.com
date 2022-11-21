@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 
 import OverlayCard from "../components/Overlay/card";
 import OverlayArticle from "../components/Overlay/article";
+import { AnimatePresence } from "framer-motion";
 
 const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
@@ -74,16 +75,18 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
       </section>
       {list && list.length && <ListOfProducers list={list} />}
       {articles && articles.length && <Articles articles={articles} />}
-      {isOverlayCard && (
-        <OverlayCard
-          data={overlayCard[0].producers[0].data.slices}
-          size="lg"
-          params={params}
-        />
-      )}
-      {isOverlayArticle && (
-        <OverlayArticle articles={articles} params={router.query} />
-      )}
+      <AnimatePresence>
+        {isOverlayCard && (
+          <OverlayCard
+            data={overlayCard[0].producers[0].data.slices}
+            size="lg"
+            params={params}
+          />
+        )}
+        {isOverlayArticle && (
+          <OverlayArticle articles={articles} params={router.query} />
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };

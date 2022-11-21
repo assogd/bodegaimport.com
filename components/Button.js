@@ -57,7 +57,7 @@ const Button = ({
       <AnimatePresence>
         {openCopy && (
           <Backdrop
-            backdropStyles="bg-white/60"
+            bg="bg-white/60"
             onTap={() => {
               copy(copyText);
               setOpenCopy(false);

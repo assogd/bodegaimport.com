@@ -39,7 +39,7 @@ const Image = ({ slice, index }) => {
               : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-6 pt-12 text-white"
           )}
         >
-          <div className="max-w-sm">
+          <div className="mx-auto">
             <PrismicRichText field={caption} />
           </div>
         </figcaption>

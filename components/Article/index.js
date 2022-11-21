@@ -19,7 +19,7 @@ export default function Article({ article }) {
   };
 
   return (
-    <article className="pb-24">
+    <article className="min-h-[65vh] pb-24">
       <motion.figure className="hidden">
         <Image
           src={image.url}

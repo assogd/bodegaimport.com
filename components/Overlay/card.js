@@ -21,12 +21,13 @@ export default function Overlay({ data, size, params }) {
 
   if (!card) return null;
 
-  const bg = "bg-purple/60";
-
   return (
-    <Backdrop className="overlay flex flex-col items-center" bg={bg}>
-      <div className="relative w-full">
-        <Header params={params} />
+    <Backdrop
+      className="overlay flex flex-col items-center"
+      bg={"bg-purple/60"}
+    >
+      <div className="relative flex min-h-screen w-full flex-col justify-between">
+        <Header params={params} bg={"from-purple"} />
         <Article article={card} variant={"expandedCard"} />
         <Close bg={"from-purple"} />
       </div>
@@ -34,8 +35,10 @@ export default function Overlay({ data, size, params }) {
   );
 }
 
-const Header = ({ params }) => (
-  <header className="sticky top-0 z-10 p-8 text-center">
+const Header = ({ params, bg }) => (
+  <header
+    className={clsx("sticky top-0 z-10 bg-gradient-to-b p-6 text-center", bg)}
+  >
     {params.region.title.region},{" "}
     <span className="leading-wider text-sm uppercase">
       {params.region.title.country.slice(0, 3)}
@@ -52,12 +55,12 @@ const Close = ({ bg }) => {
   return (
     <nav
       className={clsx(
-        "sticky inset-x-0 bottom-0 rounded bg-gradient-to-t px-4 pb-2 pt-24 pt-0 text-center",
+        "sticky inset-x-0 bottom-0 rounded bg-gradient-to-t px-4 pb-2 pt-16 pt-0 text-center",
         bg
       )}
     >
       <Button
-        className="w-full max-w-sm bg-white font-serif text-base"
+        className="w-full max-w-sm bg-white/90 font-serif text-base"
         onTap={() => push(`/${query.uid}`, undefined, { shallow: true })}
       >
         Stäng

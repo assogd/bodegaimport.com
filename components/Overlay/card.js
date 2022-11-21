@@ -4,6 +4,9 @@ import * as prismicH from "@prismicio/helpers";
 import Card from "../Card/";
 import Backdrop from "../Backdrop";
 import Article from "../Article";
+import { useRouter } from "next/router";
+import Button from "../Button";
+import clsx from "clsx";
 
 export default function Overlay({ data, size, params }) {
   if (!params.card.slug) return null;
@@ -18,20 +21,21 @@ export default function Overlay({ data, size, params }) {
 
   if (!card) return null;
 
+  const bg = "bg-purple/60";
+
   return (
-    <Backdrop className="overlay flex flex-col items-center" bg="bg-purple/60">
-      <Header params={params} />
-      <div className="relative w-full max-w-lg grow">
-        <div className="absolute inset-0 py-0 px-4 pb-0">
-          <Article data={card} variant={"expandedCard"} />
-        </div>
+    <Backdrop className="overlay flex flex-col items-center" bg={bg}>
+      <div className="relative w-full">
+        <Header params={params} />
+        <Article article={card} variant={"expandedCard"} />
+        <Close bg={"from-purple"} />
       </div>
     </Backdrop>
   );
 }
 
 const Header = ({ params }) => (
-  <header className="relative z-10 p-8 text-center">
+  <header className="sticky top-0 z-10 p-8 text-center">
     {params.region.title.region},{" "}
     <span className="leading-wider text-sm uppercase">
       {params.region.title.country.slice(0, 3)}
@@ -39,3 +43,25 @@ const Header = ({ params }) => (
     / {params.producer.title}
   </header>
 );
+
+const Close = ({ bg }) => {
+  const { push, query } = useRouter();
+
+  console.log(useRouter());
+
+  return (
+    <nav
+      className={clsx(
+        "sticky inset-x-0 bottom-0 rounded bg-gradient-to-t px-4 pb-2 pt-24 pt-0 text-center",
+        bg
+      )}
+    >
+      <Button
+        className="w-full max-w-sm bg-white font-serif text-base"
+        onTap={() => push(`/${query.uid}`, undefined, { shallow: true })}
+      >
+        Stäng
+      </Button>
+    </nav>
+  );
+};

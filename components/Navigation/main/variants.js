@@ -1,6 +1,6 @@
 import { PrismicLink, PrismicText } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import Button from "../../Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -96,12 +96,18 @@ const ExpandIcon = () => (
 );
 
 const Item = ({ link }) => {
+  const [isActive, setActive] = useState(false);
   const { asPath } = useRouter();
   const isHem = link.link.url === "/hem";
 
+  useEffect(
+    () => setActive(link.link.url === asPath || (asPath === "/" && isHem)),
+    [link.link.url, asPath]
+  );
+
   return (
     <div className="relative flex h-12 items-center justify-center">
-      {(link.link.url === asPath || (asPath === "/" && isHem)) && (
+      {isActive && (
         <motion.div
           layoutId="active"
           className="absolute inset-x-2 bottom-3 h-[1px] bg-black sm:inset-x-4"

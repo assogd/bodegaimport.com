@@ -39,7 +39,6 @@ export const Card = ({ article }) => {
     slices,
     title,
   } = article.data;
-  console.log(article);
 
   const options = {
     year: "numeric",

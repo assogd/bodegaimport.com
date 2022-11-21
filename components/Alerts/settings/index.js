@@ -22,8 +22,6 @@ export default function Settings({ openSettings }) {
   const isFullConsent = preferences.consent === "all";
   const isRestaurant = preferences.consumer === "restaurant";
 
-  console.log(preferences);
-
   const copy = {
     cookieConsent: isFullConsent
       ? "Just nu accepterar du alla våra kakor för bästa möjliga upplevelse "

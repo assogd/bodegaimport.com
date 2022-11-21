@@ -3,8 +3,26 @@ import Image from "next/future/image";
 import { motion } from "framer-motion";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../../slices";
+import * as prismicH from "@prismicio/helpers";
+
+const Slice = ({ article }) => {
+  const { body, title } = article.primary;
+
+  return (
+    <article className="relative mx-auto max-w-2xl px-4 pb-8 text-center sm:px-8">
+      <h1 className="text-xxl pt-8 pb-8 text-center">
+        {prismicH.asText(title)}
+      </h1>
+      <PrismicRichText field={body} />
+    </article>
+  );
+};
 
 export default function Article({ article }) {
+  if (article?.variation) {
+    return <Slice article={article} />;
+  }
+
   const {
     date_published: date,
     hero_image: image,

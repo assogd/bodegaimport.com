@@ -4,10 +4,10 @@ import clsx from "clsx";
 const Backdrop = ({ onTap, children, className, bg = "bg-black/70" }) => {
   const containerClasses = clsx(
     className,
-    "fixed inset-0 z-50 overscroll-contain"
+    "fixed inset-0 z-50 overscroll-contain max-h-full overflow-y-scroll"
   );
 
-  const backdropClasses = clsx("absolute inset-0 backdrop-blur-lg", bg);
+  const backdropClasses = clsx("fixed inset-0 backdrop-blur-lg", bg);
 
   return (
     <motion.section className={containerClasses} onTap={onTap}>

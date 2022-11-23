@@ -10,7 +10,7 @@ export default function Related({ articles }) {
   const { ref, inView } = useInView({ threshold: 0.25 });
 
   return (
-    <section ref={ref} className="related overflow-hidden bg-white py-8">
+    <section ref={ref} className="related overflow-hidden bg-white pt-8 pb-24">
       <h2 className="mb-8 text-center text-lg">Andra nyheter om dryck</h2>
       <motion.div
         initial={{ y: "50%" }}
@@ -61,8 +61,8 @@ export const Card = ({ article }) => {
           </div>
         </A>
       </motion.figure>
-      <header className="relative">
-        <motion.h2 className="mb-0 inline-block text-lg">
+      <header className="relative px-1">
+        <motion.h2 className="mb-0 inline-block sm:text-lg">
           <A href={`/nyheter/${date}/${article.uid}`}>
             <PrismicRichText field={title} />
           </A>

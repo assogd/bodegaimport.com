@@ -26,15 +26,16 @@ export const Layout = ({
   );
 
   const containerClasses = clsx(
-    (disableScroll || scrollStateDisabled) && "overflow-hidden max-h-screen",
+    (disableScroll || scrollStateDisabled) &&
+      "overflow-hidden max-h-screen fixed inset-0",
     bg
   );
 
   return (
     <>
-      <div className={containerClasses}>
+      <div className={"containerClasses"}>
         <Header settings={logotype} />
-        <main className={className}>
+        <main className={clsx(className)}>
           {children}
           <Navigation links={navigation.data?.links} />
           <Broadcast marquee={marquee} />

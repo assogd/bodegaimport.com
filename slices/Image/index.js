@@ -35,7 +35,7 @@ const Image = ({ slice, index }) => {
         <figcaption
           className={clsx(
             query.aid || query.uid === "om-oss"
-              ? "mt-1 text-sm sm:text-center"
+              ? "mx-1 mt-1 text-center text-sm"
               : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-6 pt-12 text-white"
           )}
         >

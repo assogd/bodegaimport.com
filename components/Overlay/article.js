@@ -49,11 +49,14 @@ export default function Overlay({ articles, params }) {
 
   return (
     <Backdrop className="flex flex-col items-center" bg={"bg-white/20"}>
-      <div
+      <motion.div
         className={clsx(
-          "transition-bg relative w-full grow overflow-y-scroll duration-1000",
+          "transition-bg contain; relative w-full grow overflow-y-scroll overscroll-contain duration-1000",
           isFull ? "bg-white" : ""
         )}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.25 } }}
+        exit={{ opacity: 0 }}
       >
         <div
           className={clsx(
@@ -68,7 +71,7 @@ export default function Overlay({ articles, params }) {
           <Article article={article} />
         </div>
         <Related articles={related} />
-      </div>
+      </motion.div>
       <div className="fixed bottom-0 p-4">
         <Button
           onTap={() => push(`/${query.uid}`, undefined, { shallow: true })}

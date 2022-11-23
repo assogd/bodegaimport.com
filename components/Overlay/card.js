@@ -22,19 +22,16 @@ export default function Overlay({ data, size, params }) {
   if (!card) return null;
 
   return (
-    <Backdrop
-      className="overlay flex flex-col items-center"
-      bg={"bg-purple/60"}
-    >
+    <Backdrop className="flex flex-col items-center" bg={"bg-purple/40"}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.25 } }}
         exit={{ opacity: 0 }}
         className="relative flex min-h-screen w-full flex-col justify-between"
       >
-        <Header params={params} bg={"from-purple"} />
+        <Header params={params} bg={"from-purple/60"} />
         <Article article={card} variant={"expandedCard"} />
-        <Close bg={"from-purple"} />
+        <Close bg={"from-purple/60"} />
       </motion.div>
     </Backdrop>
   );
@@ -55,8 +52,6 @@ const Header = ({ params, bg }) => (
 const Close = ({ bg }) => {
   const { push, query } = useRouter();
 
-  console.log(useRouter());
-
   return (
     <nav
       className={clsx(
@@ -65,7 +60,7 @@ const Close = ({ bg }) => {
       )}
     >
       <Button
-        className="w-full max-w-sm bg-white/90 font-serif text-base"
+        className="w-full max-w-sm bg-white font-serif text-base"
         onTap={() => push(`/${query.uid}`, undefined, { shallow: true })}
       >
         Stäng

@@ -28,12 +28,21 @@ export default function Instagram() {
 
   return (
     <section className="bg-peach mb-[-7.5em] rounded-t-2xl pb-24">
-      <header className="p-8">
+      <header
+        className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+        onClick={() => setActive(null)}
+      >
         <h2 className="text-lg">Senaste från socialen</h2>
+        <Button size="xs" className="font-mono">
+          Läs allt på @bodegaimport{" "}
+          <span className="ml-1 translate-y-[-.1em] rotate-[-45deg] tracking-tighter">
+            =&gt;
+          </span>
+        </Button>
       </header>
       {data?.data && (
-        <Carousel data={data.data}>
-          {data.data.map((entry, i) => (
+        <Carousel>
+          {data.data.slice(0, 10).map((entry, i) => (
             <Entry
               key={entry.id}
               entry={entry}
@@ -56,7 +65,9 @@ const Entry = ({ entry, state, i }) => {
       className={clsx("grid gap-2", !isActive && "cursor-pointer")}
       onTap={() => state.setActive(i)}
     >
-      <div className="text-center font-mono">(A)</div>
+      <div className="text-center font-mono">
+        ({String.fromCharCode(i + 65)})
+      </div>
       <figure className="relative h-0 overflow-hidden pb-[100%]">
         <img
           src={media_url}
@@ -67,22 +78,20 @@ const Entry = ({ entry, state, i }) => {
         />
         <AnimatePresence>
           {isActive && (
-            <motion.figcaption className="user-select-none absolute inset-x-2 bottom-2">
+            <motion.figcaption className="user-select-none absolute inset-2">
               <motion.div
                 initial={{ opacity: 0, y: "100%" }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: "100%" }}
                 transition={{ type: "tween" }}
-                className="grid gap-2"
+                className="flex h-full flex-col justify-end gap-1"
               >
-                <div className="relative max-h-56 overflow-y-scroll rounded-md bg-white/70 py-3 px-4 text-center font-mono backdrop-blur-lg">
+                <div className="relative shrink overflow-y-scroll rounded-md bg-white/70 py-3 px-4 text-center font-mono backdrop-blur-lg">
                   {caption}
                 </div>
-                <a href={permalink} target="_blank" rel="noreferrer norel">
-                  <Button href={permalink} size="lg" className="bg-yellow">
-                    Se inlägget på Instagram
-                  </Button>
-                </a>
+                <Button href={permalink} size="lg" className="bg-yellow">
+                  Se inlägget på Instagram
+                </Button>
               </motion.div>
             </motion.figcaption>
           )}

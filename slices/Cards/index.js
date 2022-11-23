@@ -28,7 +28,7 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <CarouselContainer data={items}>
+        <CarouselContainer>
           {items.map((article, i) => (
             <ArticleCard article={article} key={i} />
           ))}
@@ -42,7 +42,7 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <CarouselContainer data={items}>
+        <CarouselContainer>
           {items.map((article, i) => (
             <ArticleCard article={article} key={i} />
           ))}

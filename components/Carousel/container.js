@@ -27,13 +27,14 @@ export default function Carousel({ params, className, children }) {
             i={i}
             className={
               child.props.altClassName ??
-              "shrink-0 basis-4/5 snap-start scroll-mx-8 last:mr-40 sm:basis-96"
+              "shrink-0 basis-4/5 snap-start scroll-mx-8 last:mr-40 sm:basis-56 md:basis-72 lg:basis-96"
             }
           >
             <div
               ref={(el) => {
                 refs.current[i] = el;
               }}
+              onClick={() => scrollTo(i)}
             >
               {child}
             </div>

@@ -15,6 +15,8 @@ import { useState } from "react";
 const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
   const [mainLogotypeInView, setMainLogotypeInView] = useState(false);
 
+  console.log(page.data.slices);
+
   return (
     <Layout
       navigation={navigation}

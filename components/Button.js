@@ -17,6 +17,9 @@ const Button = ({
   disabled,
 }) => {
   const [openCopy, setOpenCopy] = useState(false);
+  const isMono = className && className.includes("font-mono");
+
+  console.log(isMono);
 
   const classes = clsx(
     "inline-flex gap-1 rounded-md select-none justify-center items-center",
@@ -36,14 +39,8 @@ const Button = ({
           disabled={disabled}
         >
           {children}
-          {href && (
-            <Image
-              src={"/icons/launch.svg"}
-              alt={"External link"}
-              width="16"
-              height="16"
-            />
-          )}
+          {href && !isMono && <External />}
+          {href && isMono && <ExternalMono />}
           {copyText && (
             <Image
               src={"/icons/copy.svg"}
@@ -111,3 +108,18 @@ const A = ({ children, href }) => {
     </a>
   );
 };
+
+const External = () => (
+  <Image
+    src={"/icons/launch.svg"}
+    alt={"External link"}
+    width="16"
+    height="16"
+  />
+);
+
+const ExternalMono = () => (
+  <span className="ml-1 translate-y-[-.1em] rotate-[-45deg] tracking-tighter">
+    =&gt;
+  </span>
+);

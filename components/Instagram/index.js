@@ -33,11 +33,12 @@ export default function Instagram() {
         onClick={() => setActive(null)}
       >
         <h2 className="text-lg">Senaste från socialen</h2>
-        <Button size="xs" className="font-mono">
-          Läs allt på @bodegaimport{" "}
-          <span className="ml-1 translate-y-[-.1em] rotate-[-45deg] tracking-tighter">
-            =&gt;
-          </span>
+        <Button
+          size="xs"
+          className="font-mono"
+          href={"https://www.instagram.com/bodega.import"}
+        >
+          Läs allt på @bodegaimport
         </Button>
       </header>
       {data?.data && (

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { PrismicRichText } from "@prismicio/react";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
+import * as prismicH from "@prismicio/helpers";
 
 export default function Related({ articles }) {
   const { ref, inView } = useInView({ threshold: 0.25 });
@@ -62,9 +63,9 @@ export const Card = ({ article }) => {
         </A>
       </motion.figure>
       <header className="relative px-1">
-        <motion.h2 className="mb-0 inline-block sm:text-lg">
+        <motion.h2 className="mb-1 inline-block sm:text-lg">
           <A href={`/nyheter/${date}/${article.uid}`}>
-            <PrismicRichText field={title} />
+            {prismicH.asText(title)}
           </A>
         </motion.h2>
         <div role="doc-subtitle" className="font-mono">

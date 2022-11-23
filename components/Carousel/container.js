@@ -5,7 +5,7 @@ import Button from "../Button";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
 
-export default function Carousel({ data, params, className, children }) {
+export default function Carousel({ params, className, children }) {
   const [active, setActive] = useState([]);
   const refs = useRef([]);
 
@@ -27,7 +27,7 @@ export default function Carousel({ data, params, className, children }) {
             i={i}
             className={
               child.props.altClassName ??
-              "shrink-0 basis-4/5 snap-start scroll-mx-8 last:mr-40 sm:w-96"
+              "shrink-0 basis-4/5 snap-start scroll-mx-8 last:mr-40 sm:basis-96"
             }
           >
             <div
@@ -42,13 +42,13 @@ export default function Carousel({ data, params, className, children }) {
         <Fill />
       </div>
       <div
-        className={`flex justify-center p-4 transition-opacity ${
-          active.length === data.length || active.length === 0
+        className={`m-4 flex max-w-full flex-wrap justify-center overflow-hidden transition-opacity ${
+          active.length === children.length || active.length === 0
             ? "opacity-0"
             : "opacity-1"
         }`}
       >
-        {data.map((dot, i) => (
+        {[...Array(children.length)].map((dot, i) => (
           <Dot
             key={i}
             onTap={() => scrollTo(i)}

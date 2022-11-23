@@ -8,6 +8,8 @@ import { components } from "../slices/";
 import { Layout } from "../components/Layout";
 import { Header, Observer } from "../components/Header/chunky";
 
+import Instagram from "../components/Instagram";
+
 import { useState } from "react";
 
 const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
@@ -37,6 +39,7 @@ const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
           context={{ wines, articles }}
         />
       </div>
+      <Instagram />
     </Layout>
   );
 };

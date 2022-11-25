@@ -14,9 +14,13 @@ import clsx from "clsx";
 export default function Instagram() {
   const [active, setActive] = useState(null);
 
-  const query = `id,caption,media_type,media_url,permalink,thumbnail_url`;
+  const params = [
+    "fields=id,caption,media_type,media_url,permalink,thumbnail_url",
+    `access_token=${IGAccessToken}`,
+    `limit=10`,
+  ];
   const { data, error } = useSWR(
-    `https://graph.instagram.com/me/media?fields=${query}&access_token=${IGAccessToken}`,
+    `https://graph.instagram.com/me/media?${params.join("&")}`,
     fetcher
   );
 
@@ -43,7 +47,7 @@ export default function Instagram() {
       </header>
       {data?.data && (
         <Carousel>
-          {data.data.slice(0, 10).map((entry, i) => (
+          {data.data.map((entry, i) => (
             <Entry
               key={entry.id}
               entry={entry}

@@ -19,8 +19,6 @@ const Button = ({
   const [openCopy, setOpenCopy] = useState(false);
   const isMono = className && className.includes("font-mono");
 
-  console.log(isMono);
-
   const classes = clsx(
     "inline-flex gap-1 rounded-md select-none justify-center items-center",
     className,

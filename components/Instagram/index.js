@@ -28,8 +28,6 @@ export default function Instagram() {
 
   if (error) return null;
 
-  if (!data) return <div>loading...</div>;
-
   return (
     <section className="bg-peach mb-[-7.5em] rounded-t-2xl pb-24">
       <header
@@ -45,8 +43,14 @@ export default function Instagram() {
           Läs allt på @bodegaimport
         </Button>
       </header>
-      {data?.data && (
-        <Carousel>
+      {!data?.data ? (
+        <Carousel loading={!data}>
+          {[...Array(10)].map((item, i) => (
+            <LoadingBox key={i} i={i} />
+          ))}
+        </Carousel>
+      ) : (
+        <Carousel loading={!data}>
           {data.data.map((entry, i) => (
             <Entry
               key={entry.id}
@@ -60,6 +64,25 @@ export default function Instagram() {
     </section>
   );
 }
+
+const LoadingBox = ({ i }) => {
+  return (
+    <div className="grid gap-2">
+      <div className="text-center font-mono">
+        ({String.fromCharCode(i + 65)})
+      </div>
+      <motion.div
+        className="h-0 rounded-md bg-white/20 pb-[100%]"
+        animate={{ opacity: 0 }}
+        transition={{
+          repeat: Infinity,
+          duration: 1,
+          repeatType: "mirror",
+        }}
+      ></motion.div>
+    </div>
+  );
+};
 
 const Entry = ({ entry, state, i }) => {
   const isActive = state.active === i;

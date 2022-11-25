@@ -26,7 +26,7 @@ export default function Carousel({ params, className, children }) {
             state={[active, setActive]}
             i={i}
             className={
-              child.props.altClassName ??
+              child?.props?.altClassName ??
               "shrink-0 basis-4/5 snap-center last:mr-40 sm:basis-56 md:basis-72 lg:basis-96"
             }
           >

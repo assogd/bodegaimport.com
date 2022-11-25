@@ -78,7 +78,7 @@ const Entry = ({ entry, state, i }) => {
           src={media_url}
           width="500"
           height="500"
-          className="absolute inset-0 rounded-md"
+          className="absolute inset-0"
           alt={caption}
         />
         <AnimatePresence>

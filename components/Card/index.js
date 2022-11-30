@@ -21,7 +21,7 @@ export default function Card({
   const bgColor = refinedData?.color
     ? `bg-${camelCase(refinedData?.color)}`
     : isText
-    ? "bg-white"
+    ? "bg-transparent"
     : "bg-transparent";
 
   const cardClasses = clsx(

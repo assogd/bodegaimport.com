@@ -23,6 +23,8 @@ import OverlayCard from "../components/Overlay/card";
 import OverlayArticle from "../components/Overlay/article";
 import { AnimatePresence } from "framer-motion";
 
+import Section from "../components/Section";
+
 const Page = ({ page, list, navigation, marquee, settings, articles }) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
@@ -67,12 +69,12 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
+      <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
         <Header className="sticky inset-x-0 top-12 text-center sm:fixed sm:top-6">
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
         <SliceZone slices={page.data.slices} components={components} />
-      </section>
+      </Section>
       {list && list.length && <ListOfProducers list={list} />}
       {articles && articles.length && <Articles articles={articles} />}
       <AnimatePresence>

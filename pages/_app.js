@@ -6,6 +6,7 @@ import { repositoryName, linkResolver } from "../prismicio";
 import { Heading } from "../components/Heading";
 
 import "../styles/globals.css";
+import { AnimatePresence } from "framer-motion";
 
 const NextLinkShim = ({ href, children, locale, ...props }) => {
   return (
@@ -44,7 +45,7 @@ const richTextComponents = {
     <li className="mb-1 list-decimal pl-1 last:mb-0 sm:pl-2">{children}</li>
   ),
   list: ({ children }) => (
-    <ul className="mx-auto mb-8 max-w-xl list-inside rounded-md bg-white p-8 text-left last:mb-0">
+    <ul className="mx-auto max-w-xl list-inside rounded-md bg-white text-left last:mb-0">
       {children}
     </ul>
   ),
@@ -69,7 +70,7 @@ const richTextComponents = {
   ),
 };
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, router }) {
   return (
     <PrismicProvider
       linkResolver={linkResolver}
@@ -77,7 +78,9 @@ export default function App({ Component, pageProps }) {
       richTextComponents={richTextComponents}
     >
       <PrismicPreview repositoryName={repositoryName}>
-        <Component {...pageProps} />
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Component {...pageProps} key={router.asPath} />
+        </AnimatePresence>
       </PrismicPreview>
     </PrismicProvider>
   );

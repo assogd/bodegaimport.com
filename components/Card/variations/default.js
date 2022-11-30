@@ -9,14 +9,14 @@ import { motion } from "framer-motion";
 
 const Default = ({ data, size, params }) => {
   const containerClasses = clsx(
-    "font-mono text-monoBase",
+    "font-mono text-monoBase bg-white rounded",
     size != "sm" && "relative min-h-full",
-    size === "sm" && "absolute inset-0 px-6 sm:px-8 pt-2 pb-8"
+    size === "sm" && "absolute inset-0 px-6 sm:px-6 pt-2 pb-8"
   );
 
   return (
     <article className={containerClasses}>
-      <header className="z-2 sticky top-0 left-0 bg-white pt-6 pb-2 font-serif text-base">
+      <header className="z-2 sticky top-0 left-0 bg-white pt-4 pb-2 font-serif text-base">
         <PrismicRichText field={data.primary.title} />
       </header>
       <PrismicRichText field={data.primary.body} />
@@ -37,7 +37,7 @@ const Expand = ({ params, data }) => {
     data.id.slice(-4);
 
   return (
-    <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop sm:px-10 sm:py-8">
+    <nav className="absolute inset-x-0 bottom-0 rounded bg-white px-4 pb-4 pt-0 text-center shadow-easeTop sm:px-4 sm:py-4">
       <Button
         onTap={() =>
           push(

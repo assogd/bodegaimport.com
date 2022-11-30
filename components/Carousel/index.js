@@ -26,7 +26,7 @@ export default function Carousel({ data, params, className }) {
             ref={(el) => {
               refs.current[i] = el;
             }}
-            className="w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 sm:w-96"
+            className="w-5/6 shrink-0 basis-auto snap-center scroll-mx-12 sm:w-72"
           >
             <Observer state={[active, setActive]} i={i}>
               <Card data={card} size="sm" animate={false} params={params} />

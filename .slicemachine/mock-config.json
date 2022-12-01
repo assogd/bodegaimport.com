@@ -266,7 +266,14 @@
     },
     "navigation": {},
     "settings": {},
-    "producer": {},
+    "producer": {
+      "title": {
+        "config": {
+          "patternType": "HEADING",
+          "blocks": 1
+        }
+      }
+    },
     "origin": {},
     "wine": {
       "grape_composition": {},

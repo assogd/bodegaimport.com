@@ -9,7 +9,8 @@ import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
 
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+
+import { Select, Option } from "../../Select";
 
 export default function Settings({ openSettings }) {
   const [preferences, setPreferences] = useAssoCookie();
@@ -46,38 +47,54 @@ export default function Settings({ openSettings }) {
           </p>
           <p>Du kan ändra det nedan, om du vill.</p>
         </div>
-        <Select label={"Kakor"}>
-          <Option
-            value={"all"}
-            useState={[consentSelect, setConsentSelect]}
-            parent={"consent"}
+        <div className="mx-4 flex flex-col items-center justify-center gap-2 rounded-md bg-wine-auxerrois/60 p-4 text-center font-mono">
+          <h3 className="grow uppercase">Kakor</h3>
+          <Select
+            label={"Kakor"}
+            className="flex w-full grow flex-col rounded-md border border-wine-gamay text-center sm:flex-row"
           >
-            Acceptera alla
-          </Option>
-          <Option
-            parent={"consent"}
-            value={"onlyRequired"}
-            useState={[consentSelect, setConsentSelect]}
+            <Option
+              value={"all"}
+              useState={[consentSelect, setConsentSelect]}
+              parent={"consent"}
+              active={"absolute inset-0 rounded-md bg-wine-gamay"}
+            >
+              Acceptera alla
+            </Option>
+            <Option
+              parent={"consent"}
+              value={"onlyRequired"}
+              useState={[consentSelect, setConsentSelect]}
+              active={"absolute inset-0 rounded-md bg-wine-gamay"}
+            >
+              Endast nödvändiga
+            </Option>
+          </Select>
+        </div>
+        <div className="mx-4 flex flex-col items-center justify-center gap-2 rounded-md bg-wine-auxerrois/60 p-4 text-center font-mono">
+          <h3 className="grow uppercase">Typ av kund</h3>
+          <Select
+            label={"Typ av kund"}
+            className="flex w-full grow flex-col rounded-md border border-wine-gamay text-center sm:flex-row"
           >
-            Endast nödvändiga
-          </Option>
-        </Select>
-        <Select label={"Typ av kund"}>
-          <Option
-            parent={"consumer"}
-            value={"private"}
-            useState={[consumerSelect, setConsumerSelect]}
-          >
-            Privatkund
-          </Option>
-          <Option
-            parent={"consumer"}
-            value={"restaurant"}
-            useState={[consumerSelect, setConsumerSelect]}
-          >
-            Restaurangkund
-          </Option>
-        </Select>
+            <Option
+              parent={"consumer"}
+              value={"private"}
+              useState={[consumerSelect, setConsumerSelect]}
+              active={"absolute inset-0 rounded-md bg-wine-gamay"}
+            >
+              Privatkund
+            </Option>
+            <Option
+              parent={"consumer"}
+              value={"restaurant"}
+              useState={[consumerSelect, setConsumerSelect]}
+              active={"absolute inset-0 rounded-md bg-wine-gamay"}
+            >
+              Restaurangkund
+            </Option>
+          </Select>
+        </div>
         <div>
           <Button
             size={"lg"}
@@ -90,7 +107,7 @@ export default function Settings({ openSettings }) {
             Ta bort alla kakor och inställningar
           </Button>
         </div>
-        <div className="bg-pink shadow-easeTopPink sticky bottom-0 z-10 mt-2 grid gap-2 rounded-md p-4 pt-0">
+        <div className="sticky bottom-0 z-10 mt-2 grid gap-2 rounded-md bg-pink p-4 pt-0 shadow-easeTopPink">
           <Button
             size={"lg"}
             className={"bg-white"}
@@ -109,34 +126,3 @@ export default function Settings({ openSettings }) {
     </Backdrop>
   );
 }
-
-const Select = ({ children, label }) => {
-  return (
-    <div className="bg-wine-auxerrois/60 mx-4 flex flex-col items-center justify-center gap-2 rounded-md p-4 text-center font-mono">
-      <h3 className="grow uppercase">{label}</h3>
-      <div className="border-wine-gamay flex w-full grow flex-col rounded-md border text-center sm:flex-row">
-        {children}
-      </div>
-    </div>
-  );
-};
-
-const Option = ({ value, useState, children, parent }, props) => {
-  const [state, setState] = useState;
-
-  return (
-    <Button
-      size="lg"
-      className={clsx("relative grow")}
-      onTap={() => setState(value)}
-    >
-      {state === value && (
-        <motion.div
-          layoutId={`selected-${parent}`}
-          className="bg-wine-gamay absolute inset-0 rounded-md"
-        />
-      )}
-      <span className="relative z-10">{children}</span>
-    </Button>
-  );
-};

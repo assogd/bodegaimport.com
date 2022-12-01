@@ -44,7 +44,7 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
     },
     producer: {
       slug: router.query.producer,
-      title: overlayCard[0]?.producers[0]?.data?.title,
+      title: prismicH.asText(overlayCard[0]?.producers[0]?.data?.title),
     },
     card: { slug: router.query.cardId },
   };

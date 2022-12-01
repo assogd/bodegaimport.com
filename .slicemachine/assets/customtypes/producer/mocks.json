@@ -11,11 +11,17 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "belong",
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Observe",
+        "spans": []
+      }
+    ],
     "region_ref": {
       "id": "mock_document_id",
       "link_type": "Document",
-      "type": "region",
+      "type": "origin",
       "tags": [],
       "lang": "en-us",
       "slug": null,

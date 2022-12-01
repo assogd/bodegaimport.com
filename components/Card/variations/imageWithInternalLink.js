@@ -3,6 +3,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import clsx from "clsx";
 import { capitalize } from "../../../lib/utils/text";
 import Image from "next/future/image";
+import * as prismicH from "@prismicio/helpers";
 
 import Link from "next/link";
 import Button from "../../Button";
@@ -21,7 +22,7 @@ const ImageWithInternalLink = ({ data, size }) => {
         width={file.dimensions.width}
         height={file.dimensions.height}
         className="rounded-md"
-        alt={file.alt ?? link.data.title}
+        alt={file.alt ?? link?.data?.title}
       />
       <Figcaption link={link} />
     </figure>
@@ -39,7 +40,7 @@ const Figcaption = ({ link }) => {
     >
       <h3>
         <div role="doc-subtitle">{capitalize(type)}</div>
-        <div className="text-lg">{data.title}</div>
+        <div className="text-lg">{prismicH.asText(data.title)}</div>
       </h3>
       <Link href={url}>
         <a>

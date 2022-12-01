@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
 const Default = ({ data, size, params }) => {
+  const { query } = useRouter();
   const containerClasses = clsx(
     "font-mono text-monoBase bg-white rounded-md",
     size != "sm" && "relative min-h-full",

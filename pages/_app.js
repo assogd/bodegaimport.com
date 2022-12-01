@@ -8,6 +8,8 @@ import { Heading } from "../components/Heading";
 import "../styles/globals.css";
 import { AnimatePresence } from "framer-motion";
 
+import { generateKey } from "../lib/utils";
+
 const NextLinkShim = ({ href, children, locale, ...props }) => {
   return (
     <Link href={href} locale={locale}>
@@ -71,6 +73,7 @@ const richTextComponents = {
 };
 
 export default function App({ Component, pageProps, router }) {
+  console.log(router.asPath);
   return (
     <PrismicProvider
       linkResolver={linkResolver}
@@ -79,7 +82,7 @@ export default function App({ Component, pageProps, router }) {
     >
       <PrismicPreview repositoryName={repositoryName}>
         <AnimatePresence exitBeforeEnter initial={false}>
-          <Component {...pageProps} key={router.asPath} />
+          <Component {...pageProps} key={generateKey} />
         </AnimatePresence>
       </PrismicPreview>
     </PrismicProvider>

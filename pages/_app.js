@@ -53,7 +53,7 @@ const richTextComponents = {
     <li className="mb-2 list-disc last:mb-0 sm:pl-2">{children}</li>
   ),
   preformatted: ({ children }) => (
-    <pre className="bg-slate-100 mb-7 rounded p-4 text-sm last:mb-0 sm:p-8 sm:text-lg">
+    <pre className="bg-slate-100 mb-7 rounded-md p-4 text-sm last:mb-0 sm:p-8 sm:text-lg">
       <code>{children}</code>
     </pre>
   ),

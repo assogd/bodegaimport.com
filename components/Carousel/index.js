@@ -18,7 +18,7 @@ export default function Carousel({ data, params, className }) {
 
   return (
     <section className={clsx("carousel", className)}>
-      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll md:gap-6">
+      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll">
         <Fill />
         {data.map((card, i) => (
           <div

@@ -15,7 +15,7 @@ export default function Navigation({ links }) {
   const itemsToShow = itemMultiplicator;
 
   const ulClasses = clsx(
-    "mx-auto justify-center gap-4 rounded bg-purple/40 hidden sm:flex"
+    "mx-auto justify-center gap-4 rounded-md bg-purple/40 hidden sm:flex"
   );
 
   return <Collapsible links={links} itemsToShow={itemsToShow} />;

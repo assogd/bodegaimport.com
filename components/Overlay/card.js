@@ -55,7 +55,7 @@ const Close = ({ bg }) => {
   return (
     <nav
       className={clsx(
-        "sticky inset-x-0 bottom-0 rounded bg-gradient-to-t px-4 pb-2 pt-16 pt-0 text-center",
+        "sticky inset-x-0 bottom-0 rounded-md bg-gradient-to-t px-4 pb-2 pt-16 pt-0 text-center",
         bg
       )}
     >

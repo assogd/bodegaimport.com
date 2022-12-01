@@ -1,6 +1,7 @@
 import Header from "../Header/sticky/";
 import { Heading } from "../Heading";
-import Carousel from "../Carousel";
+import Carousel from "../Carousel/container";
+import Card from "../Card";
 
 export default function ListOfProducers({ list }) {
   return list
@@ -22,19 +23,25 @@ export default function ListOfProducers({ list }) {
                 {producer.data.title}
               </Heading>
             </Header>
-            <Carousel
-              data={producer.data.slices}
-              params={{
-                region: {
-                  title: `${item.origin.region}, ${item.origin.country}`,
-                  slug: item.slug,
-                },
-                producer: {
-                  title: producer.data.title,
-                  slug: producer.uid,
-                },
-              }}
-            />
+            <Carousel>
+              {producer.data.slices.map((card, i) => (
+                <Card
+                  data={card}
+                  size="sm"
+                  animate={false}
+                  params={{
+                    region: {
+                      title: `${item.origin.region}, ${item.origin.country}`,
+                      slug: item.slug,
+                    },
+                    producer: {
+                      title: producer.data.title,
+                      slug: producer.uid,
+                    },
+                  }}
+                />
+              ))}
+            </Carousel>
           </section>
         ))}
       </section>

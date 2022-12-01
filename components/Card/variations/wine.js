@@ -23,7 +23,7 @@ const Wine = ({ data, bgColor, size }) => {
     .reduce((partialSum, a) => partialSum + a, 0);
 
   return (
-    <div className="px-6 py-2 sm:px-8">
+    <div className="px-6 py-2">
       <Color composition={grape_composition} compSum={compSum} />
       <header
         className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}
@@ -105,7 +105,7 @@ const Plate = ({ data }) => {
   const { reseller, art_no, link, volume, price } = data;
 
   return (
-    <motion.div className="mt-2 grid gap-1 rounded bg-white/60 p-4">
+    <motion.div className="mt-2 grid gap-1 rounded-md bg-white/60 p-4">
       <div className="flex justify-between">
         <div>{reseller}</div>
         <div>{volume} ml</div>

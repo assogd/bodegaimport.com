@@ -64,6 +64,12 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
   safelist: [
+    "w-8",
+    "w-10",
+    "w-12",
+    "w-14",
+    "w-16",
+    "w-18",
     {
       pattern:
         /(bg|text|border)-wine-(pinotNoir|gamay|auxerrois|sylvaner|peach,)/,

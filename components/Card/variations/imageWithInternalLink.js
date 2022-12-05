@@ -21,18 +21,31 @@ const ImageWithInternalLink = ({ data, size }) => {
         src={file.url}
         width={file.dimensions.width}
         height={file.dimensions.height}
-        className="rounded-md"
+        className={clsx("rounded-md", size === "sm" && "h-full object-cover")}
         alt={file.alt ?? link?.data?.title}
       />
-      <Figcaption link={link} />
+      <Figcaption link={link} size={size} />
     </figure>
   );
 };
 
 export default ImageWithInternalLink;
 
-const Figcaption = ({ link }) => {
+const Figcaption = ({ link, size }) => {
   const { type, url, data } = link;
+
+  if (size === "sm")
+    return (
+      <div className={`absolute inset-x-2 bottom-2 sm:inset-x-4 sm:bottom-4`}>
+        <Link href={url}>
+          <a>
+            <Button className="bg-purple/90 p-4 backdrop-blur-lg">
+              Besök profil
+            </Button>
+          </a>
+        </Link>
+      </div>
+    );
 
   return (
     <figcaption
@@ -40,7 +53,7 @@ const Figcaption = ({ link }) => {
     >
       <h3>
         <div role="doc-subtitle">{capitalize(type)}</div>
-        <div className="text-lg">{prismicH.asText(data.title)}</div>
+        <div className="text-lg">{prismicH.asText(data?.title)}</div>
       </h3>
       <Link href={url}>
         <a>

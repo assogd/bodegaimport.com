@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Default = ({ data, size, params }) => {
   const { query } = useRouter();
   const containerClasses = clsx(
-    "font-mono text-monoBase bg-white rounded-md",
+    "font-mono text-monoBase bg-white rounded-md hyphens",
     size != "sm" && "relative min-h-full",
     size === "sm" && "absolute inset-0 px-6 sm:px-6 pt-2 pb-8"
   );

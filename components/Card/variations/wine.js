@@ -4,6 +4,8 @@ import Button from "../../Button";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { camelCase } from "../../../lib/utils/text";
+import { WineColor } from "../helpers";
+import { compSum } from "../../../lib/utils";
 
 const Wine = ({ data, bgColor, size }) => {
   const {
@@ -18,13 +20,9 @@ const Wine = ({ data, bgColor, size }) => {
     title,
   } = data.data;
 
-  const compSum = grape_composition
-    .map((d) => d.density)
-    .reduce((partialSum, a) => partialSum + a, 0);
-
   return (
     <div className="px-6 py-2">
-      <Color composition={grape_composition} compSum={compSum} />
+      <WineColor composition={grape_composition} />
       <header
         className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}
       >
@@ -50,24 +48,6 @@ const Wine = ({ data, bgColor, size }) => {
       </ul>
     </div>
   );
-};
-
-const Color = ({ composition, compSum }) => {
-  if (!composition) return null;
-
-  const layout = "absolute inset-0 rounded-md";
-
-  const opacity = (x) => (x / compSum) * 100;
-
-  return composition.map((color, i) => (
-    <div
-      key={i}
-      className={clsx(
-        layout,
-        `bg-wine-${camelCase(color.grape.data.title)}/${opacity(color.density)}`
-      )}
-    />
-  ));
 };
 
 const ListItem = ({ title, body, type, compSum }) => {

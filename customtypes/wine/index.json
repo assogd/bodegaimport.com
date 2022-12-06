@@ -22,17 +22,6 @@
           ]
         }
       },
-      "color": {
-        "type": "Select",
-        "config": {
-          "label": "Color",
-          "placeholder": "",
-          "options": [
-            "Champagne",
-            "Red"
-          ]
-        }
-      },
       "origin": {
         "type": "Text",
         "config": {
@@ -45,13 +34,6 @@
         "config": {
           "label": "Grape Composition",
           "fields": {
-            "density": {
-              "type": "Number",
-              "config": {
-                "label": "Density (%)",
-                "placeholder": ""
-              }
-            },
             "grape": {
               "type": "Link",
               "config": {
@@ -60,6 +42,13 @@
                 "customtypes": [
                   "grape"
                 ]
+              }
+            },
+            "density": {
+              "type": "Number",
+              "config": {
+                "label": "Density (%)",
+                "placeholder": ""
               }
             }
           }

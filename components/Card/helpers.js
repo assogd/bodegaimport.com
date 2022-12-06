@@ -9,8 +9,6 @@ export const WineColor = ({ composition }) => {
 
   const opacity = (x) => (x / compSum(composition)) * 100;
 
-  console.log(compSum);
-
   return composition.map((color, i) => (
     <div
       key={i}

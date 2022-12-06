@@ -1,7 +1,7 @@
 {
   "id": "mock-doc-id",
-  "uid": "accident",
-  "url": "/accident",
+  "uid": "almost",
+  "url": "/almost",
   "type": "wine",
   "href": null,
   "tags": [],
@@ -12,7 +12,7 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "reach",
+    "title": "science",
     "producer": {
       "id": "mock_document_id",
       "link_type": "Document",
@@ -23,11 +23,9 @@
       "first_publication_date": "1970-01-01T00:00:01+0000",
       "last_publication_date": "1970-01-01T01:00:00+0000"
     },
-    "color": "Champagne",
-    "origin": "roof",
+    "origin": "straw",
     "grape_composition": [
       {
-        "density": 74,
         "grape": {
           "id": "mock_document_id",
           "link_type": "Document",
@@ -37,29 +35,30 @@
           "slug": null,
           "first_publication_date": "1970-01-01T00:00:01+0000",
           "last_publication_date": "1970-01-01T01:00:00+0000"
-        }
+        },
+        "density": 16
       }
     ],
-    "soil": "snow",
+    "soil": "purple",
     "method": [
       {
         "type": "paragraph",
-        "text": "Reprehenderit aliqua velit Lorem irure. Consequat nulla ipsum adipisicing incididunt exercitation qui sit dolor irure aliquip elit aliqua voluptate aute. Occaecat duis do dolore esse.",
+        "text": "Nisi sint ullamco adipisicing ullamco consectetur nulla consectetur elit sit excepteur. Dolor fugiat esse exercitation Lorem deserunt consequat fugiat nulla Lorem.",
         "spans": []
       }
     ],
-    "hl_ha": "police",
-    "alcohol": "somehow",
+    "hl_ha": "answer",
+    "alcohol": "middle",
     "resellers": [
       {
-        "reseller": "particles",
-        "art_no": "flew",
+        "reseller": "count",
+        "art_no": "near",
         "link": {
           "link_type": "Web",
           "url": "https://www.systembolaget.se"
         },
-        "volume": 61,
-        "price": 21
+        "volume": 20,
+        "price": 55
       }
     ]
   }

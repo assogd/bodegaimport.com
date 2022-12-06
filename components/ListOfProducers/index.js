@@ -6,14 +6,16 @@ import * as prismicH from "@prismicio/helpers";
 
 import { useState, useEffect } from "react";
 import { Select, Option } from "../Select";
-import Button from "../Button";
 import useAssoCookie from "../../lib/hooks/useAssoCookie";
 
-import { compSum } from "../../lib/utils";
 import clsx from "clsx";
 
-import { WineColor } from "../Card/helpers";
-import { motion } from "framer-motion";
+import useBreakpoints from "../../lib/hooks/useBreakpoints";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+import Toggle from "../Toggle";
+import Row from "../Card/variations/row";
 
 export default function ListOfProducers({ list }) {
   const [preferences, setPreferences] = useAssoCookie();
@@ -34,81 +36,52 @@ export default function ListOfProducers({ list }) {
           </Heading>
         </Header>
         <ChangeView state={[view, setView]} />
-        {item.producers.map((producer) =>
-          view === "rows" ? (
-            producer.data.slices
-              .filter((f) => f.variation === "wine")
-              .map((card, i) => (
-                <section
-                  key={producer.id}
-                  className="flex items-center justify-between gap-2 px-6"
-                >
-                  <div className="truncate md:basis-48">
-                    {prismicH.asText(producer.data.title)}
-                  </div>
-                  <div className="relative truncate md:grow md:basis-72">
-                    <div className="relative inline-block overflow-hidden rounded-full py-1 px-4">
-                      <WineColor
-                        composition={
-                          card.primary.reference.data.grape_composition
-                        }
-                      />
-                      <span className="relative truncate">
-                        {card.primary.reference.data.title}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="hidden truncate md:basis-48 lg:block">
-                    {card.primary.reference.data.origin}
-                  </div>
-                  <div className="hidden truncate text-right md:block md:basis-72">
-                    {card.primary.reference.data.grape_composition
-                      .map(
-                        (grape, i) =>
-                          `${
-                            (grape.density /
-                              compSum(
-                                card.primary.reference.data.grape_composition
-                              )) *
-                            100
-                          }% ${grape.grape.data.title}`
-                      )
-                      .join(", ")}
-                  </div>
-                </section>
-              ))
-          ) : (
-            <section key={producer.id} className="producer">
-              <Header
-                className="sticky inset-x-0 top-[3.25em] p-8 text-center sm:top-[1.8em] xl:top-[2.4vw]"
-                secondLevel={true}
+        <AnimatePresence>
+          {item.producers.map((producer) =>
+            view === "rows" ? (
+              producer.data.slices
+                .filter((f) => f.variation === "wine")
+                .map((card, i) => <Row producer={producer} card={card} />)
+            ) : (
+              <motion.section
+                className="producer"
+                key={`card-${producer.id}`}
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -100 }}
+                transition={{ type: "tween" }}
               >
-                <Heading as="h2" size="xl">
-                  {prismicH.asText(producer.data.title)}
-                </Heading>
-              </Header>
-              <Carousel>
-                {producer.data.slices.map((card, i) => (
-                  <Card
-                    data={card}
-                    size="sm"
-                    animate={false}
-                    params={{
-                      region: {
-                        title: `${item.origin.region}, ${item.origin.country}`,
-                        slug: item.slug,
-                      },
-                      producer: {
-                        title: producer.data.title,
-                        slug: producer.uid,
-                      },
-                    }}
-                  />
-                ))}
-              </Carousel>
-            </section>
-          )
-        )}
+                <Header
+                  className="sticky inset-x-0 top-[3.25em] p-8 text-center sm:top-[1.8em] xl:top-[2.4vw]"
+                  secondLevel={true}
+                >
+                  <Heading as="h2" size="xl">
+                    {prismicH.asText(producer.data.title)}
+                  </Heading>
+                </Header>
+                <Carousel>
+                  {producer.data.slices.map((card, i) => (
+                    <Card
+                      data={card}
+                      size="sm"
+                      animate={false}
+                      params={{
+                        region: {
+                          title: `${item.origin.region}, ${item.origin.country}`,
+                          slug: item.slug,
+                        },
+                        producer: {
+                          title: producer.data.title,
+                          slug: producer.uid,
+                        },
+                      }}
+                    />
+                  ))}
+                </Carousel>
+              </motion.section>
+            )
+          )}
+        </AnimatePresence>
       </section>
     ));
 }
@@ -116,17 +89,20 @@ export default function ListOfProducers({ list }) {
 const ChangeView = ({ state }) => {
   const [view, setView] = state;
   const [preferences, setPreferences] = useAssoCookie();
+  const isSm = useBreakpoints([]).some((n) => n === "sm");
 
   useEffect(() => {
     if (preferences?.consent === "all") {
-      setPreferences({ ...preferences, producerView: view });
+      setPreferences({ ...preferences, producerView: isSm ? view : "cards" });
     } else if (
       preferences?.consent === "onlyRequired" &&
       preferences?.producerView
     ) {
       setPreferences({ ...preferences, producerView: undefined });
     }
-  }, [view]);
+  }, [view, isSm]);
+
+  if (!isSm) return null;
 
   return (
     <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-6">
@@ -138,33 +114,5 @@ const ChangeView = ({ state }) => {
         {view === "cards" ? "Öppen" : "Knuten"}
       </Toggle>
     </div>
-  );
-};
-
-const Toggle = ({ onTap, children, options }) => {
-  const width = 2 + options.length * 2;
-
-  console.log(options.active / options.length);
-
-  return (
-    <Button
-      size="minimal"
-      whileTap={{}}
-      onTap={onTap}
-      className="items-baseline"
-    >
-      {children}
-      <div
-        className={clsx(
-          `relative ml-[0.125em] box-content h-3 translate-y-[0.025em] rounded-full border-2`,
-          `w-${width}`
-        )}
-      >
-        <motion.div
-          className="h-3 w-4 rounded-full border-2 bg-black"
-          animate={{ x: `${(options.active / options.length) * 100}%` }}
-        />
-      </div>
-    </Button>
   );
 };

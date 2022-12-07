@@ -63,7 +63,9 @@ const ListItem = ({ title, body, type, compSum }) => {
       ? body
           .map(
             (grape) =>
-              `${(grape.density / compSum) * 100}% ${grape.grape.data.title}`
+              `${Math.round((grape.density / compSum(body)) * 100)}% ${
+                grape.grape.data.title
+              }`
           )
           .join(", ")
       : null;
@@ -74,7 +76,7 @@ const ListItem = ({ title, body, type, compSum }) => {
   return (
     <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
       <h5 className="text-monoBase leading-relaxed">{title}</h5>
-      <div className="font-mono text-monoBase">
+      <div className={clsx("font-mono text-monoBase")}>
         {resellers ?? grapes ?? richText ?? body}
       </div>
     </li>

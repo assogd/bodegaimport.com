@@ -55,10 +55,15 @@ module.exports = {
       toddTerje: "#B9B5E7",
       cadmiumGreen: "rgb(0, 158, 89)",
       wine: {
-        pinotNoir: "#E2908D",
-        gamay: "#E2908D",
         auxerrois: "#FFDBA6",
+        gamay: "#E2908D",
+        muscatBlanc: "#FFF5DA",
+        muscatOttonel: "#FFF5DA",
+        pinotBlanc: "#FEFFD3",
+        pinotNoir: "#E2908D",
+        riesling: "#FEFFC8",
         sylvaner: "#FFF2D0",
+        gewurztraminer: "#FFE2C8",
       },
     },
   },
@@ -71,8 +76,13 @@ module.exports = {
     "w-16",
     "w-18",
     {
-      pattern:
-        /(bg|text|border)-wine-(pinotNoir|gamay|auxerrois|sylvaner|peach,)/,
+      pattern: /^bg-./,
+    },
+    {
+      pattern: /^bg-opacity-./,
+    },
+    {
+      pattern: /^opacity-./,
     },
   ],
 };

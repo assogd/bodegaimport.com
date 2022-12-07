@@ -25,7 +25,15 @@ import { AnimatePresence } from "framer-motion";
 
 import Section from "../components/Section";
 
-const Page = ({ page, list, navigation, marquee, settings, articles }) => {
+const Page = ({
+  page,
+  list,
+  navigation,
+  marquee,
+  settings,
+  articles,
+  wines,
+}) => {
   const router = useRouter();
   const [isScrollingUp] = useScrollDirection();
 
@@ -75,7 +83,7 @@ const Page = ({ page, list, navigation, marquee, settings, articles }) => {
         </Header>
         <SliceZone slices={page.data.slices} components={components} />
       </Section>
-      {list && list.length && <ListOfProducers list={list} />}
+      {list && list.length && <ListOfProducers list={list} wines={wines} />}
       {articles && articles.length && <Articles articles={articles} />}
       <AnimatePresence>
         {isOverlayCard && (
@@ -114,6 +122,7 @@ export async function getStaticProps({ params, locale, previewData }) {
       "wine.resellers",
       "grape.title",
     ],
+    wines: ["grape.title"],
   };
 
   const navigation = await client.getSingle("navigation", { lang: locale });
@@ -137,21 +146,28 @@ export async function getStaticProps({ params, locale, previewData }) {
   });
 
   const origins = fetchProducers && (await client.getAllByType("origin"));
+
   const producers =
     fetchProducers &&
     (await client.getAllByType("producer", {
       fetchLinks: links.producers,
     }));
 
+  const wines =
+    fetchProducers &&
+    (await client.getAllByType("wine", { fetchLinks: links.wines }));
+
   const list =
     fetchProducers &&
-    origins.map((origin) => ({
-      origin: origin.data,
-      slug: origin.slugs[0],
-      producers: producers.filter(
-        (producer) => producer.data.region_ref.id === origin.id
-      ),
-    }));
+    origins
+      .map((origin) => ({
+        origin: origin.data,
+        slug: origin.slugs[0],
+        producers: producers.filter(
+          (producer) => producer.data.region_ref.id === origin.id
+        ),
+      }))
+      .filter((a) => a.producers.length > 0);
 
   const sortList =
     list && list.sort((a, b) => a.origin.region > b.origin.region);
@@ -164,6 +180,7 @@ export async function getStaticProps({ params, locale, previewData }) {
       marquee,
       settings,
       articles,
+      wines,
     },
   };
 }

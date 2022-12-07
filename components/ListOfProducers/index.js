@@ -4,7 +4,7 @@ import Carousel from "../Carousel/container";
 import Card from "../Card";
 import * as prismicH from "@prismicio/helpers";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Select, Option } from "../Select";
 import useAssoCookie from "../../lib/hooks/useAssoCookie";
 
@@ -15,83 +15,78 @@ import useBreakpoints from "../../lib/hooks/useBreakpoints";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Toggle from "../Toggle";
+
+import { Region, Producer } from "./headers";
 import Row from "../Card/variations/row";
 
-export default function ListOfProducers({ list }) {
+export default function ListOfProducers({ list, wines }) {
   const [preferences, setPreferences] = useAssoCookie();
   const [view, setView] = useState(preferences?.producerView ?? "cards");
 
-  return list
-    .filter((a) => a.producers.length > 0)
-    .map((item) => (
-      <section key={item.slug} className={clsx("region mb-12 w-full")}>
-        <Header
-          className={clsx(
-            "sticky top-12 right-0 w-full px-6 text-center sm:top-6 sm:text-right",
-            view === "rows" && "mb-8"
-          )}
-        >
-          <Heading as="h2" size="xl">
-            {item.origin.region}, {item.origin.country}
-          </Heading>
-        </Header>
-        <ChangeView state={[view, setView]} />
-        <AnimatePresence>
-          {item.producers.map((producer) =>
-            view === "rows" ? (
-              producer.data.slices
-                .filter((f) => f.variation === "wine")
-                .map((card, i) => <Row producer={producer} card={card} />)
-            ) : (
-              <motion.section
-                className="producer"
-                key={`card-${producer.id}`}
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -100 }}
-                transition={{ type: "tween" }}
-              >
-                <Header
-                  className="sticky inset-x-0 top-[3.25em] p-8 text-center sm:top-[1.8em] xl:top-[2.4vw]"
-                  secondLevel={true}
-                >
-                  <Heading as="h2" size="xl">
-                    {prismicH.asText(producer.data.title)}
-                  </Heading>
-                </Header>
-                <Carousel>
-                  {producer.data.slices.map((card, i) => (
-                    <Card
-                      data={card}
-                      size="sm"
-                      animate={false}
-                      params={{
-                        region: {
-                          title: `${item.origin.region}, ${item.origin.country}`,
-                          slug: item.slug,
-                        },
-                        producer: {
-                          title: producer.data.title,
-                          slug: producer.uid,
-                        },
-                      }}
-                    />
-                  ))}
-                </Carousel>
-              </motion.section>
-            )
-          )}
-        </AnimatePresence>
-      </section>
-    ));
+  return list.map((item) => (
+    <Region key={item.id} item={item} view={view}>
+      <ChangeView state={[view, setView]} />
+      <AnimatePresence>
+        {item.producers.map((producer, i) => (
+          <Item
+            key={item.producers.id}
+            view={view}
+            producer={producer}
+            region={item}
+            wines={wines.filter((a) => a.data.producer.id === producer.id)}
+          />
+        ))}
+      </AnimatePresence>
+    </Region>
+  ));
 }
+
+const Item = ({ view, producer, region, wines }) => {
+  const slicedWines = producer.data.slices
+    .filter((a) => a.variation === "wine")
+    .map((b) => b.primary.reference.id);
+
+  const unfilteredWines = wines.filter((a) =>
+    slicedWines.some((b) => b != a.id)
+  );
+
+  const set = producer.data.slices.concat(unfilteredWines);
+
+  if (view === "rows")
+    return set
+      .filter((f) => f.variation === "wine" || f.type === "wine")
+      .map((card, i) => (
+        <Row
+          producer={producer}
+          card={card.data ?? card?.primary?.reference?.data}
+          i={i}
+          key={card.id}
+        />
+      ));
+
+  return (
+    <Producer producer={producer}>
+      <Carousel>
+        {set.map((card, i) => (
+          <Card
+            data={card}
+            size="sm"
+            animate={false}
+            params={params(region, producer)}
+            key={card.id}
+          />
+        ))}
+      </Carousel>
+    </Producer>
+  );
+};
 
 const ChangeView = ({ state }) => {
   const [view, setView] = state;
   const [preferences, setPreferences] = useAssoCookie();
   const isSm = useBreakpoints([]).some((n) => n === "sm");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (preferences?.consent === "all") {
       setPreferences({ ...preferences, producerView: isSm ? view : "cards" });
     } else if (
@@ -116,3 +111,14 @@ const ChangeView = ({ state }) => {
     </div>
   );
 };
+
+const params = (item, producer) => ({
+  region: {
+    title: `${item.origin.region}, ${item.origin.country}`,
+    slug: item.slug,
+  },
+  producer: {
+    title: producer.data.title,
+    slug: producer.uid,
+  },
+});

@@ -7,7 +7,9 @@ export const WineColor = ({ composition }) => {
 
   const layout = "absolute inset-0 rounded-md";
 
-  const opacity = (x) => (x / compSum(composition)) * 100;
+  const opacity = (x) =>
+    Math.round(((x / compSum(composition)) * 100) / 10) * 10;
+  const opacityFixed = (x) => (x / compSum(composition)).toFixed(2);
 
   return composition.map((color, i) => (
     <div

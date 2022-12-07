@@ -32,6 +32,7 @@ const ImageWithInternalLink = ({ data, size }) => {
 export default ImageWithInternalLink;
 
 const Figcaption = ({ link, size }) => {
+  if (!link.data) return null;
   const { type, url, data } = link;
 
   if (size === "sm")

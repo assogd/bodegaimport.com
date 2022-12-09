@@ -27,9 +27,9 @@ const Wine = ({ data, bgColor, size }) => {
     <div className="px-6 py-2">
       <WineColor composition={grape_composition} />
       <header
-        className={`z-2 sticky top-0 left-0 font-serif bg-${bgColor} py-4 pb-2 text-base`}
+        className={`z-2 sticky top-0 left-0 w-full py-4 pb-2 font-serif text-base`}
       >
-        <h4>{title}</h4>
+        <h4 className=" truncate">{title}</h4>
       </header>
       <ul className="relative">
         <ListItem title="Ursprung" body={origin} />

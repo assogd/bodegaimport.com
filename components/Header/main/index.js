@@ -4,15 +4,30 @@ import Link from "next/link";
 
 export default function Header({ settings }) {
   const headerClasses = clsx(
-    "fixed top-4 sm:top-6 left-6 right-6 z-20",
-    "text-xl tracking-tight text-center",
-    !settings?.alwaysCentered && "sm:right-auto"
+    "text-xl tracking-tight",
+    "fixed top-4 sm:top-6 inline-block",
+    "left-[50%] translate-x-[-50%] z-20",
+    !settings?.alwaysCentered && "sm:left-6 translate-x-0",
+    "delay-250 duration-500",
+    !settings?.inView && "translate-y-[-200%]"
   );
+
+  const innerClasses = clsx("");
 
   const variants = {
     outsideView: { opacity: 1, y: "-200%" },
     inView: { opacity: 1, y: 0 },
   };
+
+  return (
+    <header className={headerClasses}>
+      <motion.div layoutId="mainHeader" className={innerClasses}>
+        <Link href="/">
+          <a>Bodega Import</a>
+        </Link>
+      </motion.div>
+    </header>
+  );
 
   return (
     <motion.header

@@ -46,20 +46,24 @@ const Row = ({ producer, card, i, params }) => {
       }
     >
       <Col className="basis-36 pl-6 md:basis-48">
-        {prismicH.asText(producer.data.title)}
+        {prismicH.asText(producer?.data?.title ?? "Okänd producent")}
       </Col>
       <Col className="sticky left-2 flex basis-72 gap-1 self-stretch">
         <div className="relative inline-block rounded-full px-3 pt-[.05em] pb-[.025em]">
-          <WineColor composition={card.data.grape_composition} />
-          <span className="relative truncate">{card.data.title}</span>
+          <WineColor composition={card?.data?.grape_composition} />
+          <span className="relative truncate">
+            {card?.data?.title ?? "Ingen titel"}
+          </span>
         </div>
         {isHover && <Open />}
       </Col>
-      <Col className="basis-60">{card.data.origin}</Col>
+      <Col className="basis-60">{card?.data?.origin ?? "Oklart ursprung"}</Col>
       <Col className="basis-80 pr-6">
-        {card.data.grape_composition
-          .map((grape, i) => `${grape?.grape?.data.title}`)
-          .join(", ")}
+        {card?.data?.grape_composition
+          ? card.data.grape_composition
+              .map((grape, i) => `${grape?.grape?.data.title}`)
+              .join(", ")
+          : "Hemlig sammansättning"}
       </Col>
     </motion.ul>
   );

@@ -58,7 +58,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-toddTerje overflow-hidden" ref={ref}>
+      <footer className="overflow-hidden bg-toddTerje" ref={ref}>
         <motion.div
           initial={{ y: 100 }}
           animate={{ y: inView ? 0 : 100 }}
@@ -69,7 +69,7 @@ export default function Footer() {
             <Image
               src={Logotype}
               alt={"Bodega Import"}
-              className="mx-auto h-24 sm:h-36"
+              className="mx-auto h-24 w-auto sm:h-36"
             />
           </figure>
           <div className="flex flex-col gap-3">

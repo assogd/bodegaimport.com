@@ -102,7 +102,7 @@ const Item = ({ link }) => {
 
   useEffect(
     () => setActive(link.link.url === asPath || (asPath === "/" && isHem)),
-    [link.link.url, asPath]
+    [link.link.url, asPath, isHem]
   );
 
   return (

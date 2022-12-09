@@ -27,7 +27,7 @@ export default function ListOfProducers({ list, wines }) {
 
   useLayoutEffect(() => {
     preferences?.producerView && setView(preferences.producerView);
-  }, [preferences]);
+  }, [preferences, setView]);
 
   return (
     <>

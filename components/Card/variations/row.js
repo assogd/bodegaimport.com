@@ -40,11 +40,9 @@ const Row = ({ producer, card, i, params }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onTap={() =>
-        push(
-          `/sortiment/${params.region.slug}/${params.producer.slug}/hej`,
-          undefined,
-          { shallow: true }
-        )
+        push(`/producent/${params.producer.slug}#${card.uid}`, undefined, {
+          shallow: true,
+        })
       }
     >
       <Col className="basis-36 pl-6 md:basis-48">
@@ -52,14 +50,14 @@ const Row = ({ producer, card, i, params }) => {
       </Col>
       <Col className="sticky left-2 flex basis-72 gap-1 self-stretch">
         <div className="relative inline-block rounded-full px-3 pt-[.05em] pb-[.025em]">
-          <WineColor composition={card.grape_composition} />
-          <span className="relative truncate">{card.title}</span>
+          <WineColor composition={card.data.grape_composition} />
+          <span className="relative truncate">{card.data.title}</span>
         </div>
         {isHover && <Open />}
       </Col>
-      <Col className="basis-60">{card.origin}</Col>
+      <Col className="basis-60">{card.data.origin}</Col>
       <Col className="basis-80 pr-6">
-        {card.grape_composition
+        {card.data.grape_composition
           .map((grape, i) => `${grape?.grape?.data.title}`)
           .join(", ")}
       </Col>

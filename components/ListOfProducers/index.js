@@ -70,7 +70,7 @@ const Item = ({ view, producer, region, wines }) => {
           .map((card, i) => (
             <Row
               producer={producer}
-              card={card.data ?? card?.primary?.reference?.data}
+              card={card?.type ? card : card?.primary?.reference}
               i={i}
               params={params(region, producer)}
               key={card.id}

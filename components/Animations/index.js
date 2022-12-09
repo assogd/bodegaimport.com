@@ -8,11 +8,13 @@ export const AnimateInView = ({
   duration = 0.5,
   element,
   skip,
+  id,
 }) => {
   if (skip) return <section className={className}>{children}</section>;
 
   return (
     <motion.section
+      id={id}
       className={className}
       initial={{ opacity: 0, y: "1em", scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}

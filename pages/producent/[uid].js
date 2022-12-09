@@ -6,21 +6,34 @@ import { createClient } from "../../prismicio";
 import { components } from "../../slices";
 import { Layout } from "../../components/Layout";
 
+import Header from "../../components/Header/sticky/";
 import { Heading } from "../../components/Heading";
+import clsx from "clsx";
 
 const Page = ({ page, navigation, marquee, settings }) => {
   return (
-    <Layout navigation={navigation} marquee={marquee} settings={settings}>
+    <Layout
+      navigation={navigation}
+      marquee={marquee}
+      settings={settings}
+      className={"pt-6"}
+    >
       <Head>
         <title>
           {prismicH.asText(settings.data.siteTitle)}:{" "}
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <header className="sticky inset-x-0 top-0 z-0 pt-8 text-center">
-        <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
-      </header>
-      <section className="cards relative mx-auto grid max-w-screen-2xl items-stretch gap-4 p-8 sm:grid-cols-2 sm:px-12">
+      <Header
+        className={clsx(
+          "sticky top-12 right-0 w-full px-6 text-center sm:top-6"
+        )}
+      >
+        <Heading as="h1" size="xl">
+          {prismicH.asText(page.data.title)}
+        </Heading>
+      </Header>
+      <section className="cards relative mx-auto mt-24 grid max-w-screen-xl items-stretch gap-4 p-8 sm:grid-cols-2 sm:px-12">
         <SliceZone slices={page.data.slices} components={components} />
       </section>
     </Layout>

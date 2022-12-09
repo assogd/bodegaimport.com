@@ -18,6 +18,7 @@ const Wine = ({ data, bgColor, size }) => {
     resellers,
     soil,
     title,
+    id,
   } = data.data;
 
   return (

@@ -18,18 +18,9 @@ export default function Card({
 
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
-  const bgColor = refinedData?.color
-    ? `bg-${camelCase(refinedData?.color)}`
-    : isText
-    ? "bg-transparent"
-    : "bg-transparent";
-
   const cardClasses = clsx(
-    "card relative z-10",
-    isText && size != "sm" && "px-6 sm:px-8",
+    "card relative z-10 scroll-mt-24",
     variation === "images" && "overflow-hidden",
-    bgColor,
-    size === "sm" && " ",
     className
   );
 
@@ -40,13 +31,14 @@ export default function Card({
     }
   );
 
+  console.log(data);
+
   return (
-    <Animation className={cardClasses} skip={!animate}>
+    <Animation className={cardClasses} skip={!animate} id={refinedData?.uid}>
       <AspectRatio render={size === "sm"}>
         <DynamicComponent
           data={refinedData}
           size={size}
-          bgColor={bgColor}
           params={params}
           id={data?.id}
         />

@@ -73,7 +73,6 @@ const richTextComponents = {
 };
 
 export default function App({ Component, pageProps, router }) {
-  console.log(router.asPath);
   return (
     <PrismicProvider
       linkResolver={linkResolver}
@@ -81,7 +80,7 @@ export default function App({ Component, pageProps, router }) {
       richTextComponents={richTextComponents}
     >
       <PrismicPreview repositoryName={repositoryName}>
-        <AnimatePresence exitBeforeEnter initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <Component {...pageProps} key={generateKey} />
         </AnimatePresence>
       </PrismicPreview>

@@ -21,7 +21,7 @@ export function Header() {
             src={Logotype}
             alt={"Bodega Import"}
             loading="eager"
-            className="mx-auto w-[32vw] sm:w-[16vw]"
+            className="mx-auto h-auto w-[32vw] sm:w-[16vw]"
           />
           <div className="text-[10vw] tracking-tight sm:text-[5vw]">
             Bodega Import

@@ -22,7 +22,7 @@ const ImageWithInternalLink = ({ data, size }) => {
         width={file.dimensions.width}
         height={file.dimensions.height}
         className={clsx("rounded-md", size === "sm" && "h-full object-cover")}
-        alt={file.alt ?? link?.data?.title}
+        alt={file.alt ?? link?.data?.title ?? "Ingen beskrivning tillgänglig"}
       />
       <Figcaption link={link} size={size} />
     </figure>

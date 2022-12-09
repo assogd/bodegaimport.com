@@ -4,9 +4,6 @@ import Button from "../../Button";
 import Backdrop from "../../Backdrop";
 import Modal from "../modal";
 
-import Image from "next/future/image";
-import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
-
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 

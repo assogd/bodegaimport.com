@@ -3,13 +3,25 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { compSum } from "../../../lib/utils";
 import * as prismicH from "@prismicio/helpers";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Button from "../../Button";
 
-const Row = ({ producer, card, i }) => {
-  console.log(card);
+const Col = ({ className, children }) => {
+  return (
+    <li className={clsx("shrink-0 truncate leading-[1.1em]", className)}>
+      {children}
+    </li>
+  );
+};
+
+const Row = ({ producer, card, i, params }) => {
+  const [isHover, setHover] = useState(false);
+  const { push } = useRouter();
 
   return (
-    <motion.section
-      className="flex items-center justify-between gap-2 px-6"
+    <motion.ul
+      className="relative flex w-[72em] cursor-pointer items-center gap-2 py-1 hover:bg-white lg:w-full lg:justify-between"
       key={`row-${producer.id}`}
       initial={{
         opacity: 0,
@@ -25,24 +37,47 @@ const Row = ({ producer, card, i }) => {
         y: -10,
         transition: { type: "tween", delay: i / 10 },
       }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onTap={() =>
+        push(
+          `/sortiment/${params.region.slug}/${params.producer.slug}/hej`,
+          undefined,
+          { shallow: true }
+        )
+      }
     >
-      <div className="truncate md:basis-48">
+      <Col className="basis-36 pl-6 md:basis-48">
         {prismicH.asText(producer.data.title)}
-      </div>
-      <div className="relative truncate md:grow md:basis-72">
-        <div className="relative inline-block overflow-hidden rounded-full py-1 px-4">
+      </Col>
+      <Col className="sticky left-2 flex basis-72 gap-1 self-stretch">
+        <div className="relative inline-block rounded-full px-3 pt-[.05em] pb-[.025em]">
           <WineColor composition={card.grape_composition} />
           <span className="relative truncate">{card.title}</span>
         </div>
-      </div>
-      <div className="hidden truncate md:basis-48 lg:block">{card.origin}</div>
-      <div className="hidden truncate text-right md:block md:basis-72">
+        {isHover && <Open />}
+      </Col>
+      <Col className="basis-60">{card.origin}</Col>
+      <Col className="basis-80 pr-6">
         {card.grape_composition
           .map((grape, i) => `${grape?.grape?.data.title}`)
           .join(", ")}
-      </div>
-    </motion.section>
+      </Col>
+    </motion.ul>
   );
 };
 
 export default Row;
+
+const Open = () => {
+  const { push } = useRouter();
+
+  return (
+    <Button
+      className="mt-[0.125em] rounded-md px-1 font-mono text-sm uppercase leading-4"
+      size="mini"
+    >
+      +Info
+    </Button>
+  );
+};

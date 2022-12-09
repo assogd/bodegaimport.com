@@ -19,26 +19,36 @@ import Toggle from "../Toggle";
 import { Region, Producer } from "./headers";
 import Row from "../Card/variations/row";
 
+import { generateKey } from "../../lib/utils";
+
 export default function ListOfProducers({ list, wines }) {
   const [preferences, setPreferences] = useAssoCookie();
-  const [view, setView] = useState(preferences?.producerView ?? "cards");
+  const [view, setView] = useState("cards");
 
-  return list.map((item) => (
-    <Region key={item.id} item={item} view={view}>
+  useLayoutEffect(() => {
+    preferences?.producerView && setView(preferences.producerView);
+  }, [preferences]);
+
+  return (
+    <>
       <ChangeView state={[view, setView]} />
-      <AnimatePresence>
-        {item.producers.map((producer, i) => (
-          <Item
-            key={item.producers.id}
-            view={view}
-            producer={producer}
-            region={item}
-            wines={wines.filter((a) => a.data.producer.id === producer.id)}
-          />
-        ))}
-      </AnimatePresence>
-    </Region>
-  ));
+      {list.map((item, i) => (
+        <Region key={generateKey + i} item={item} view={view}>
+          <AnimatePresence>
+            {item.producers.map((producer, b) => (
+              <Item
+                key={generateKey + b}
+                view={view}
+                producer={producer}
+                region={item}
+                wines={wines.filter((a) => a.data.producer.id === producer.id)}
+              />
+            ))}
+          </AnimatePresence>
+        </Region>
+      ))}
+    </>
+  );
 }
 
 const Item = ({ view, producer, region, wines }) => {
@@ -53,16 +63,21 @@ const Item = ({ view, producer, region, wines }) => {
   const set = producer.data.slices.concat(unfilteredWines);
 
   if (view === "rows")
-    return set
-      .filter((f) => f.variation === "wine" || f.type === "wine")
-      .map((card, i) => (
-        <Row
-          producer={producer}
-          card={card.data ?? card?.primary?.reference?.data}
-          i={i}
-          key={card.id}
-        />
-      ));
+    return (
+      <>
+        {set
+          .filter((f) => f.variation === "wine" || f.type === "wine")
+          .map((card, i) => (
+            <Row
+              producer={producer}
+              card={card.data ?? card?.primary?.reference?.data}
+              i={i}
+              params={params(region, producer)}
+              key={card.id}
+            />
+          ))}
+      </>
+    );
 
   return (
     <Producer producer={producer}>

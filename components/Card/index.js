@@ -19,7 +19,7 @@ export default function Card({
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
   const cardClasses = clsx(
-    "card relative z-10 scroll-mt-24",
+    "card relative z-10 scroll-mt-24 max-w-lg mx-auto",
     variation === "images" && "overflow-hidden",
     className
   );

@@ -11,13 +11,18 @@ const Default = ({ data, size, params }) => {
   const { query } = useRouter();
   const containerClasses = clsx(
     "font-mono text-monoBase bg-white rounded-md hyphens",
-    size != "sm" && "relative min-h-full",
-    size === "sm" && "absolute inset-0 px-6 sm:px-6 pt-2 pb-8"
+    size != "sm" && "relative min-h-full px-10 pb-12",
+    size === "sm" && "absolute inset-0 px-6 pt-2 pb-8"
   );
 
   return (
     <article className={containerClasses}>
-      <header className="z-2 sticky top-0 left-0 bg-white pt-4 pb-2 font-serif text-base">
+      <header
+        className={clsx(
+          "z-2 sticky top-0 left-0 bg-white pb-2 font-serif text-base",
+          size === "sm" ? "pt-4" : "pt-10"
+        )}
+      >
         <PrismicRichText field={data.primary.title} />
       </header>
       <PrismicRichText field={data.primary.body} />

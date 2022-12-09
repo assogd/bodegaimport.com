@@ -33,7 +33,7 @@ const Page = ({ page, navigation, marquee, settings }) => {
           {prismicH.asText(page.data.title)}
         </Heading>
       </Header>
-      <section className="cards relative mx-auto mt-24 grid max-w-screen-xl items-stretch gap-4 p-8 sm:grid-cols-2 sm:px-12">
+      <section className="cards relative mx-auto mt-4 grid max-w-screen-xl items-stretch gap-4 px-4 py-8 sm:px-8 lg:grid-cols-2 lg:px-12">
         <SliceZone slices={page.data.slices} components={components} />
       </section>
     </Layout>

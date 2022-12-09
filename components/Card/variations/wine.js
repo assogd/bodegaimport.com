@@ -21,6 +21,8 @@ const Wine = ({ data, bgColor, size }) => {
     id,
   } = data.data;
 
+  console.log(size);
+
   return (
     <div className="px-6 py-2">
       <WineColor composition={grape_composition} />

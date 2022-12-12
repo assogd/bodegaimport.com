@@ -7,14 +7,19 @@ import * as prismicH from "@prismicio/helpers";
 
 export const Region = ({ children, item, view }) => {
   return (
-    <section key={item.slug} className={clsx("region mb-12")}>
+    <section
+      key={item.slug}
+      className={clsx("region mb-12", view === "rows" ? "mb-4" : "mb-12")}
+    >
       <Header
-        className={clsx(
-          "sticky top-12 right-0 w-full px-6 text-center sm:top-6 sm:text-right",
-          view === "rows" && "mb-8"
-        )}
+        className={clsx(view === "rows" && "mb-8", "relative md:sticky")}
+        placement={{ col: "right", row: "first" }}
       >
-        <Heading as="h2" size="xl">
+        <Heading
+          as="h2"
+          size="xl"
+          className="underline decoration-1 underline-offset-4 md:no-underline"
+        >
           {item.origin.region}, {item.origin.country}
         </Heading>
       </Header>
@@ -27,7 +32,7 @@ const RowContainer = ({ children, view }) =>
   view === "rows" ? (
     <div className="relative pb-8">
       <motion.ul
-        className="sticky top-0 z-10 flex w-[72em] items-center gap-2 bg-peach/40 py-1 backdrop-blur-lg lg:w-full lg:justify-between"
+        className="sticky top-0 z-10 mb-[.15em] flex w-[72em] items-center gap-2 bg-peach/40 py-1 backdrop-blur-lg lg:w-full lg:justify-between"
         initial={{
           opacity: 0,
           y: 10,
@@ -78,8 +83,8 @@ export const Producer = ({ children, producer, view }) => {
       transition={{ type: "tween" }}
     >
       <Header
-        className="sticky inset-x-0 top-[3.25em] p-8 text-center sm:top-[1.8em] xl:top-[2.4vw]"
-        secondLevel={true}
+        placement={{ col: "center", row: "second" }}
+        className="sticky pb-4"
       >
         <Heading as="h2" size="xl">
           {prismicH.asText(producer.data.title)}

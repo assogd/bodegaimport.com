@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import Link from "next/link";
+import StickyHeader from "../sticky";
 
 export default function Header({ settings }) {
   const headerClasses = clsx(
@@ -12,12 +13,27 @@ export default function Header({ settings }) {
     !settings?.inView && "translate-y-[-200%]"
   );
 
+  const header2Classes = clsx("text-xl tracking-tight");
+
   const innerClasses = clsx("");
 
   const variants = {
     outsideView: { opacity: 1, y: "-200%" },
     inView: { opacity: 1, y: 0 },
   };
+
+  return (
+    <StickyHeader
+      className={clsx("sticky pt-4 md:fixed", header2Classes)}
+      placement={{ row: "first", col: "left" }}
+    >
+      <motion.div layoutId="mainHeader" className={innerClasses}>
+        <Link href="/">
+          <a>Bodega Import</a>
+        </Link>
+      </motion.div>
+    </StickyHeader>
+  );
 
   return (
     <header className={headerClasses}>

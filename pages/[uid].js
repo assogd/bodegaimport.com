@@ -68,7 +68,7 @@ const Page = ({
       settings={settings}
       disableScroll={isOverlayCard || isOverlayArticle}
       logotype={{ inView: isScrollingUp, alwaysCentered: false }}
-      className={clsx("pt-12")}
+      className={clsx("sticky")}
       bg={isAboutPage && "bg-paleYellow"}
     >
       <Head>
@@ -78,7 +78,10 @@ const Page = ({
         </title>
       </Head>
       <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
-        <Header className="sticky inset-x-0 top-12 text-center sm:fixed sm:top-6">
+        <Header
+          placement={{ col: "center", row: "first" }}
+          className="relative"
+        >
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
         <SliceZone slices={page.data.slices} components={components} />

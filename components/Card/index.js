@@ -31,8 +31,6 @@ export default function Card({
     }
   );
 
-  console.log(data);
-
   return (
     <Animation className={cardClasses} skip={!animate} id={refinedData?.uid}>
       <AspectRatio render={size === "sm"}>

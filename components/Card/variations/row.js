@@ -21,7 +21,7 @@ const Row = ({ producer, card, i, params }) => {
 
   return (
     <motion.ul
-      className="relative flex w-[72em] cursor-pointer items-center gap-2 py-1 hover:bg-white lg:w-full lg:justify-between"
+      className="relative flex w-[72em] cursor-pointer items-center gap-2 py-[.15em] hover:bg-white lg:w-full lg:justify-between"
       key={`row-${producer.id}`}
       initial={{
         opacity: 0,

@@ -16,7 +16,7 @@ const StickyHeader = ({ children, className, secondLevel, placement }) => {
   }, [inView, setStuck]);
 
   const isMd = useBreakpoints([]).some((n) => n === "md");
-  const isSecondRow = placement.row === "second";
+  const isSecondRow = placement?.row && placement.row === "second";
 
   const big = isSecondRow ? "0" : "-200%";
 
@@ -25,16 +25,13 @@ const StickyHeader = ({ children, className, secondLevel, placement }) => {
     inView: { y: 0 },
   };
 
-  console.log({ children, isStuck });
-
   return (
     <header
-      ref={ref}
       className={clsx(
         "top-[-1px] z-20 px-4 sm:px-6",
         "delay-250 duration-500",
-        col(placement.col),
-        row(placement.row),
+        col(placement?.col ?? "center"),
+        row(placement?.row ?? "first"),
         className
       )}
     >

@@ -1,5 +1,4 @@
 import * as prismicH from "@prismicio/helpers";
-import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
 import Img from "next/future/image";

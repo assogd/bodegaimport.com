@@ -1,5 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import Img from "next/future/image";
 import clsx from "clsx";
 
 const Image = ({ data, size }) => {
@@ -15,13 +16,18 @@ const Image = ({ data, size }) => {
 
   return (
     <figure className={containerClasses}>
-      <PrismicNextImage
-        field={file}
-        layout={imageLayout}
-        objectFit={objectFit}
+      <Img
+        src={file.url}
+        width={file.dimensions.width}
+        height={file.dimensions.height}
+        alt={file.alt ?? "Ingen beskrivning tillgänglig"}
+        className={clsx(
+          "align-text-bottom",
+          size === "sm" && "h-full object-cover"
+        )}
       />
       {caption && size != "sm" && (
-        <figcaption className="text-neutral-100 absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm">
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm text-neutral-100">
           <PrismicRichText field={caption} />
         </figcaption>
       )}

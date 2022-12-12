@@ -43,9 +43,7 @@ const Wine = ({ data, bgColor, size }) => {
         )}
         {size != "sm" && <ListItem title="HL/HA" body={hl_ha} />}
         <ListItem title="Alkohol" body={alcohol} />
-        {size != "sm" && (
-          <ListItem type="resellers" title="Återförsäljare" body={resellers} />
-        )}
+        {size != "sm" && <Resellers data={resellers} />}
       </ul>
     </div>
   );
@@ -53,11 +51,6 @@ const Wine = ({ data, bgColor, size }) => {
 
 const ListItem = ({ title, body, type, compSum }) => {
   if (!body) return null;
-
-  const resellers =
-    type === "resellers"
-      ? body.map((plate, i) => <Plate key={i} data={plate} />)
-      : null;
 
   const grapes =
     type === "grapes"
@@ -78,29 +71,44 @@ const ListItem = ({ title, body, type, compSum }) => {
     <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
       <h5 className="text-monoBase leading-relaxed">{title}</h5>
       <div className={clsx("font-mono text-monoBase")}>
-        {resellers ?? grapes ?? richText ?? body}
+        {grapes ?? richText ?? body}
       </div>
     </li>
   );
 };
 
-const Plate = ({ data }) => {
-  const { reseller, art_no, link, volume, price } = data;
+const Resellers = ({ data }) => {
+  if (!data.length) return null;
 
   return (
-    <motion.div className="mt-2 grid gap-1 rounded-md bg-white/60 p-4">
-      <div className="flex justify-between">
-        <div>{reseller}</div>
-        <div>{volume} ml</div>
+    <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
+      <h5 className="text-monoBase leading-relaxed">Återförsäljare</h5>
+      <div className={clsx("font-mono text-monoBase")}>
+        {data.map((item, i) => (
+          <motion.div
+            key={i}
+            className="mt-2 grid gap-1 rounded-md bg-white/60 p-4"
+          >
+            <div className="flex justify-between">
+              <div>{item?.reseller}</div>
+              <div>{item?.volume && `${item.volume} ml`}</div>
+            </div>
+            <div className="flex justify-between">
+              <div>{item?.art_no && `Artikelnr ${item.art_no}`}</div>
+              <div>{item?.price && `${item.price} SEK`}</div>
+            </div>
+            {item.link.url && (
+              <Button
+                href={item.link.url}
+                className="mt-2 w-full bg-red/50 font-serif"
+              >
+                Beställ från {extractDomain(item.link.url)}
+              </Button>
+            )}
+          </motion.div>
+        ))}
       </div>
-      <div className="flex justify-between">
-        <div>Artikelnr {art_no}</div>
-        <div>{price} SEK</div>
-      </div>
-      <Button href={link.url} className="mt-2 w-full bg-red/50 font-serif">
-        Beställ från {extractDomain(link.url)}
-      </Button>
-    </motion.div>
+    </li>
   );
 };
 

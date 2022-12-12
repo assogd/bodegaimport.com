@@ -16,7 +16,7 @@ const Page = ({ page, navigation, marquee, settings }) => {
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      className={"pt-6"}
+      className={"pt-0"}
     >
       <Head>
         <title>
@@ -24,11 +24,7 @@ const Page = ({ page, navigation, marquee, settings }) => {
           {prismicH.asText(page.data.title)}
         </title>
       </Head>
-      <Header
-        className={clsx(
-          "sticky top-12 right-0 w-full px-6 text-center sm:top-6"
-        )}
-      >
+      <Header placement={{ col: "center", row: "second" }} className="sticky">
         <Heading as="h1" size="xl">
           {prismicH.asText(page.data.title)}
         </Heading>

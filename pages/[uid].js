@@ -10,7 +10,7 @@ import { Layout } from "../components/Layout";
 import { Heading } from "../components/Heading";
 import ListOfProducers from "../components/ListOfProducers";
 import Articles from "../components/Articles";
-import Header from "../components/Header/sticky/";
+import Header from "../components/Header/base/";
 
 import useScrollDirection from "../lib/hooks/useScrollDirection";
 
@@ -80,7 +80,7 @@ const Page = ({
       <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
         <Header
           placement={{ col: "center", row: "first" }}
-          className="relative"
+          className="relative lg:pt-6"
         >
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>

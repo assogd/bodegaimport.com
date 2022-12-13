@@ -1,4 +1,4 @@
-import Header from "../Header/sticky/";
+import Header from "../Header/base/";
 import { Heading } from "../Heading";
 import Carousel from "../Carousel/container";
 import Card from "../Card";
@@ -99,20 +99,20 @@ const Item = ({ view, producer, region, wines }) => {
 const ChangeView = ({ state }) => {
   const [view, setView] = state;
   const [preferences, setPreferences] = useAssoCookie();
-  const isSm = useBreakpoints([]).some((n) => n === "sm");
+  const render = useBreakpoints([]).some((n) => n === "lg");
 
   useLayoutEffect(() => {
     if (preferences?.consent === "all") {
-      setPreferences({ ...preferences, producerView: isSm ? view : "cards" });
+      setPreferences({ ...preferences, producerView: render ? view : "cards" });
     } else if (
       preferences?.consent === "onlyRequired" &&
       preferences?.producerView
     ) {
       setPreferences({ ...preferences, producerView: undefined });
     }
-  }, [view, isSm]);
+  }, [view, render]);
 
-  if (!isSm) return null;
+  if (!render) return null;
 
   return (
     <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-6">

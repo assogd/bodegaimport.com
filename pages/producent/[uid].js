@@ -6,7 +6,7 @@ import { createClient } from "../../prismicio";
 import { components } from "../../slices";
 import { Layout } from "../../components/Layout";
 
-import Header from "../../components/Header/sticky/";
+import Header from "../../components/Header/base/";
 import { Heading } from "../../components/Heading";
 import clsx from "clsx";
 

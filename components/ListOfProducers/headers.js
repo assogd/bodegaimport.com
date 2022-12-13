@@ -1,4 +1,4 @@
-import Header from "../Header/sticky/";
+import Header from "../Header/base/";
 import { Heading } from "../Heading";
 
 import clsx from "clsx";
@@ -12,13 +12,13 @@ export const Region = ({ children, item, view }) => {
       className={clsx("region mb-12", view === "rows" ? "mb-4" : "mb-12")}
     >
       <Header
-        className={clsx(view === "rows" && "mb-8", "relative md:sticky")}
+        className={clsx(view === "rows" && "mb-8", "relative lg:sticky")}
         placement={{ col: "right", row: "first" }}
       >
         <Heading
           as="h2"
           size="xl"
-          className="underline decoration-1 underline-offset-4 md:no-underline"
+          className="mb-8 underline decoration-1 underline-offset-4 lg:mb-0 lg:no-underline"
         >
           {item.origin.region}, {item.origin.country}
         </Heading>

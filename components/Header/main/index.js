@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import Link from "next/link";
-import StickyHeader from "../sticky";
+import StickyHeader from "../base/";
 
 export default function Header({ settings }) {
   const headerClasses = clsx(
@@ -24,7 +24,7 @@ export default function Header({ settings }) {
 
   return (
     <StickyHeader
-      className={clsx("sticky pt-4 md:fixed", header2Classes)}
+      className={clsx("sticky pt-4 lg:fixed", header2Classes)}
       placement={{ row: "first", col: "left" }}
     >
       <motion.div layoutId="mainHeader" className={innerClasses}>

@@ -2,8 +2,10 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import Img from "next/future/image";
 import clsx from "clsx";
+import { useMemo } from "react";
 
 const Image = ({ data, size }) => {
+  console.log(data);
   const { file, caption } = data.primary;
 
   const containerClasses = clsx(

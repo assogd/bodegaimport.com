@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import Link from "next/link";
 import StickyHeader from "../base/";
+import useScrollDirection from "../../../lib/hooks/useScrollDirection";
 
 export default function Header({ settings }) {
+  const [isScrollingUp] = useScrollDirection();
   const headerClasses = clsx(
     "text-xl tracking-tight",
     "fixed top-4 sm:top-6 inline-block",
@@ -22,13 +24,12 @@ export default function Header({ settings }) {
     inView: { opacity: 1, y: 0 },
   };
 
-  console.log(settings);
-
   return (
     <StickyHeader
       className={clsx("sticky pt-4 lg:fixed", header2Classes)}
       placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
-      inView={settings?.inView}
+      inView={isScrollingUp}
+      animate={"translate-y-[-200%]"}
     >
       <motion.div layoutId="mainHeader" className={innerClasses}>
         <Link href="/">

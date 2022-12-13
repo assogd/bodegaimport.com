@@ -13,7 +13,8 @@ export const Region = ({ children, item, view }) => {
     >
       <Header
         className={clsx(view === "rows" && "mb-8", "relative lg:sticky")}
-        placement={{ col: "right", row: "first" }}
+        placement={{ col: "right" }}
+        animate={"lg:translate-y-[-200%]"}
       >
         <Heading
           as="h2"
@@ -84,7 +85,8 @@ export const Producer = ({ children, producer, view }) => {
     >
       <Header
         placement={{ col: "center", row: "second" }}
-        className="sticky pb-4"
+        className="sticky pb-8 pt-11"
+        animate={"translate-y-[-2.25em] lg:translate-y-0"}
       >
         <Heading as="h2" size="xl">
           {prismicH.asText(producer.data.title)}

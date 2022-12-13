@@ -12,8 +12,6 @@ import ListOfProducers from "../components/ListOfProducers";
 import Articles from "../components/Articles";
 import Header from "../components/Header/base/";
 
-import useScrollDirection from "../lib/hooks/useScrollDirection";
-
 import clsx from "clsx";
 import slugify from "slugify";
 
@@ -35,7 +33,6 @@ const Page = ({
   wines,
 }) => {
   const router = useRouter();
-  const [isScrollingUp] = useScrollDirection();
 
   const overlayCard =
     list &&
@@ -67,7 +64,7 @@ const Page = ({
       marquee={marquee}
       settings={settings}
       disableScroll={isOverlayCard || isOverlayArticle}
-      logotype={{ inView: isScrollingUp, alwaysCentered: false }}
+      logotype={{ alwaysCentered: false }}
       className={clsx("sticky")}
       bg={isAboutPage && "bg-paleYellow"}
     >

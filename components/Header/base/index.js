@@ -1,18 +1,38 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import useScrollDirection from "../../../lib/hooks/useScrollDirection";
+import { useState, useLayoutEffect, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
-const Header = ({ children, className, secondLevel, placement, inView }) => {
+const Header = ({
+  children,
+  className,
+  secondLevel,
+  placement,
+  animate = "",
+}) => {
+  const [isStuck, setStuck] = useState(false);
+  const [isScrollingUp] = useScrollDirection();
+  const { ref, inView, entry } = useInView({
+    threshold: 1,
+  });
+  useEffect(() => {
+    setStuck(!inView);
+  }, [inView, setStuck]);
+
   return (
-    <motion.header
+    <header
       className={clsx(
-        "top-0 z-20 px-4 sm:px-6 lg:pt-6",
+        "top-[-1px] z-20 px-4 sm:px-6 lg:pt-6",
+        "delay-250 duration-500",
         col(placement?.col ?? "center"),
-        !inView && "translate-y-[-200%]",
+        !isScrollingUp && isStuck && animate,
         className
       )}
+      ref={ref}
     >
-      <motion.div className={clsx("inline-block")}>{children}</motion.div>
-    </motion.header>
+      <div className={clsx("inline-block")}>{children}</div>
+    </header>
   );
 };
 

@@ -24,14 +24,20 @@ const Header = ({
     <header
       className={clsx(
         "top-[-1px] z-20 px-4 sm:px-6 lg:pt-6",
-        "delay-250 duration-500",
         col(placement?.col ?? "center"),
-        !isScrollingUp && isStuck && animate,
         className
       )}
       ref={ref}
     >
-      <div className={clsx("inline-block")}>{children}</div>
+      <div
+        className={clsx(
+          "inline-block",
+          "delay-250 duration-500",
+          !isScrollingUp && isStuck && animate
+        )}
+      >
+        {children}
+      </div>
     </header>
   );
 };

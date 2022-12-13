@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import * as prismicH from "@prismicio/helpers";
 
+import Button from "../Button";
+
 export const Region = ({ children, item, view }) => {
   return (
     <section
@@ -91,6 +93,12 @@ export const Producer = ({ children, producer, view }) => {
         <Heading as="h2" size="xl">
           {prismicH.asText(producer.data.title)}
         </Heading>
+        <Button
+          className="ml-2 translate-y-[-.25em] bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur hover:underline"
+          size="mini"
+        >
+          Profil
+        </Button>
       </Header>
       {children}
     </motion.section>

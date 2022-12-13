@@ -89,6 +89,7 @@ const Item = ({ view, producer, region, wines }) => {
             animate={false}
             params={params(region, producer)}
             key={card.id}
+            i={i}
           />
         ))}
       </Carousel>

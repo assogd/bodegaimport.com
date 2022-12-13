@@ -11,6 +11,7 @@ export default function Card({
   animate = true,
   params,
   className,
+  i,
 }) {
   const { variation, type } = data;
 
@@ -39,6 +40,7 @@ export default function Card({
           size={size}
           params={params}
           id={data?.id}
+          i={i}
         />
       </AspectRatio>
     </Animation>

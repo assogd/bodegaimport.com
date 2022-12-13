@@ -3,7 +3,7 @@ import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
 
 import { useInView } from "react-intersection-observer";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import useBreakpoints from "../../../lib/hooks/useBreakpoints";
 
 export function Header() {
@@ -13,17 +13,17 @@ export function Header() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5 }}
-      className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none sm:relative sm:inset-0 sm:h-full"
+      className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none md:relative md:inset-0 md:h-full"
     >
       <div className="sticky top-[50%] max-h-screen translate-y-[-50%]">
-        <div className="flex h-full flex-col items-center justify-center gap-[8vw] sm:h-full sm:translate-y-[-7vh] sm:gap-[4vw]">
+        <div className="flex h-full flex-col items-center justify-center gap-[8vw] md:h-full md:translate-y-[-3vh] md:gap-[4vw]">
           <Image
             src={Logotype}
             alt={"Bodega Import"}
             loading="eager"
-            className="mx-auto h-auto w-[32vw] sm:w-[16vw]"
+            className="mx-auto h-auto w-[32vw] md:w-[16vw]"
           />
-          <div className="text-[10vw] tracking-tight sm:text-[5vw]">
+          <div className="text-[10vw] tracking-tight md:text-[5vw]">
             Bodega Import
           </div>
         </div>
@@ -37,23 +37,23 @@ export const Observer = ({
   mainLogotypeInView,
   setMainLogotypeInView,
 }) => {
-  const isSm = useBreakpoints([]).some((n) => n === "sm");
+  const isMd = useBreakpoints([]).some((n) => n === "md");
 
   const { ref, inView, entry } = useInView({
-    threshold: isSm ? 0 : 0.5,
+    threshold: isMd ? 0 : 0.5,
   });
 
-  useEffect(
+  useLayoutEffect(
     () => setMainLogotypeInView(!inView),
     [inView, mainLogotypeInView, setMainLogotypeInView]
   );
 
   return (
     <div className="relative">
-      <AnimatePresence>{(inView || isSm) && children}</AnimatePresence>
+      <AnimatePresence>{(inView || isMd) && children}</AnimatePresence>
       <div
         ref={ref}
-        className="observer inset-0 h-[50vh] sm:absolute sm:h-auto"
+        className="observer inset-0 h-[50vh] md:absolute md:h-auto"
       />
     </div>
   );

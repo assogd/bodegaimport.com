@@ -22,10 +22,13 @@ export default function Header({ settings }) {
     inView: { opacity: 1, y: 0 },
   };
 
+  console.log(settings);
+
   return (
     <StickyHeader
       className={clsx("sticky pt-4 lg:fixed", header2Classes)}
-      placement={{ row: "first", col: "left" }}
+      placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
+      inView={settings?.inView}
     >
       <motion.div layoutId="mainHeader" className={innerClasses}>
         <Link href="/">

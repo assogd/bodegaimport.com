@@ -1,8 +1,7 @@
 import React from "react";
 import { Container as ContactContainer, Card as ContactCard } from "./contact";
 import { Container as WineContainer } from "./wine";
-import Carousel from "../../components/Carousel";
-import CarouselContainer from "../../components/Carousel/container";
+import Carousel from "../../components/Carousel/container";
 import { Card as ArticleCard } from "../../components/Articles/related";
 
 const Cards = ({ slice, context }) => {
@@ -28,11 +27,11 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <CarouselContainer>
+        <Carousel>
           {items.map((article, i) => (
             <ArticleCard article={article} key={i} />
           ))}
-        </CarouselContainer>
+        </Carousel>
       </WineContainer>
     );
   }
@@ -42,11 +41,11 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <CarouselContainer>
+        <Carousel>
           {items.map((article, i) => (
             <ArticleCard article={article} key={i} />
           ))}
-        </CarouselContainer>
+        </Carousel>
       </WineContainer>
     );
   }

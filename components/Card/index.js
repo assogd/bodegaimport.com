@@ -20,7 +20,7 @@ export default function Card({
 
   const cardClasses = clsx(
     "card relative z-10 scroll-mt-24",
-    variation === "images" && "overflow-hidden",
+    variation === "images" && "",
     className
   );
 
@@ -47,7 +47,9 @@ export default function Card({
 
 const AspectRatio = ({ render, children }) =>
   render ? (
-    <div className="relative h-0 overflow-hidden pb-[135%]">{children}</div>
+    <div className="relative h-0 max-w-full overflow-hidden pb-[135%]">
+      {children}
+    </div>
   ) : (
     children
   );

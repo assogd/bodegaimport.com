@@ -16,40 +16,43 @@ export default function Carousel({ params, className, children }) {
       inline: "center",
     });
 
+  if (!children?.length) return null;
+
   return (
     <section className={clsx("carousel", className)}>
       <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-x-scroll sm:gap-4">
         <Fill />
-        {children.map((child, i) => (
-          <Observer
-            key={i}
-            state={[active, setActive]}
-            i={i}
-            className={
-              child?.props?.altClassName ??
-              "shrink-0 grow-0 basis-4/5 snap-center last:mr-40 sm:basis-56 md:basis-72 lg:basis-72"
-            }
-          >
-            <div
-              ref={(el) => {
-                refs.current[i] = el;
-              }}
-              onClick={() => scrollTo(i)}
+        {children &&
+          children.map((child, i) => (
+            <Observer
+              key={i}
+              state={[active, setActive]}
+              i={i}
+              className={
+                child?.props?.altClassName ??
+                "relative w-4/5 shrink-0 grow-0 basis-4/5 snap-center last:mr-40 sm:w-72 sm:basis-72"
+              }
             >
-              {child}
-            </div>
-          </Observer>
-        ))}
+              <div
+                ref={(el) => {
+                  refs.current[i] = el;
+                }}
+                onClick={() => scrollTo(i)}
+              >
+                {child}
+              </div>
+            </Observer>
+          ))}
         <Fill />
       </div>
       <div
         className={`m-4 flex max-w-full flex-wrap justify-center overflow-hidden transition-opacity ${
-          active.length === children.length || active.length === 0
+          active.length === children?.length || active.length === 0
             ? "opacity-0"
             : "opacity-1"
         }`}
       >
-        {[...Array(children.length)].map((dot, i) => (
+        {[...Array(children?.length)].map((dot, i) => (
           <Dot
             key={i}
             onTap={() => scrollTo(i)}

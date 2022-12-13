@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import * as prismicH from "@prismicio/helpers";
 
 import Button from "../Button";
+import Link from "next/link";
 
 export const Region = ({ children, item, view }) => {
   return (
@@ -93,12 +94,19 @@ export const Producer = ({ children, producer, view }) => {
         <Heading as="h2" size="xl">
           {prismicH.asText(producer.data.title)}
         </Heading>
-        <Button
-          className="ml-2 translate-y-[-.25em] bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur hover:underline"
-          size="mini"
-        >
-          Profil
-        </Button>
+        <div className="ml-2 inline-block translate-y-[-.25em]">
+          <Link href={producer.url}>
+            <a>
+              <Button
+                className="bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur"
+                size="mini"
+                whileHover={{ scale: 1.025 }}
+              >
+                Profil
+              </Button>
+            </a>
+          </Link>
+        </div>
       </Header>
       {children}
     </motion.section>

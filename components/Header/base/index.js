@@ -23,7 +23,7 @@ const Header = ({
   return (
     <header
       className={clsx(
-        "top-[-1px] z-20 px-4 sm:px-6 lg:pt-6",
+        "top-[-1px] z-20 px-4 sm:px-6 lg:pt-5",
         col(placement?.col ?? "center"),
         className
       )}

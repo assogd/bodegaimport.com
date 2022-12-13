@@ -15,6 +15,7 @@ const Button = ({
   copyText,
   whileTap = { scale: 1, y: 2 },
   disabled,
+  whileHover,
 }) => {
   const [openCopy, setOpenCopy] = useState(false);
   const isMono = className && className.includes("font-mono");
@@ -35,6 +36,7 @@ const Button = ({
           whileTap={whileTap}
           onTap={copyText ? () => setOpenCopy(!openCopy) : onTap}
           disabled={disabled}
+          whileHover={whileHover}
         >
           {children}
           {href && !isMono && <External />}

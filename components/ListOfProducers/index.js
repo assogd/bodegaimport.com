@@ -115,7 +115,7 @@ const ChangeView = ({ state }) => {
   if (!render) return null;
 
   return (
-    <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-6">
+    <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-5">
       <div className="">Vy:</div>
       <Toggle
         onTap={() => setView(view === "cards" ? "rows" : "cards")}

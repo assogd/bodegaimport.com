@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { useMemo } from "react";
 
 const Image = ({ data, size }) => {
-  console.log(data);
   const { file, caption } = data.primary;
 
   const containerClasses = clsx(

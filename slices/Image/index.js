@@ -28,7 +28,7 @@ const Image = ({ slice, index }) => {
         width={image.dimensions.width}
         height={image.dimensions.height}
         alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-        className={clsx(!query.aid && "rounded-md")}
+        className={clsx(!query.aid && "rounded-md object-cover")}
       />
       {caption && (
         <figcaption

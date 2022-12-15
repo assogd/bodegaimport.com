@@ -26,7 +26,7 @@ const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
       <Head>
         <title>Bodega Import</title>
       </Head>
-      <div className="grid gap-8 p-4 md:grid-cols-2 md:p-8">
+      <div className="grid items-stretch gap-8 p-4 md:grid-cols-2 md:p-8">
         <Observer
           mainLogotypeInView={mainLogotypeInView}
           setMainLogotypeInView={setMainLogotypeInView}

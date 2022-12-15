@@ -24,12 +24,10 @@ export default function Instagram() {
     fetcher
   );
 
-  console.log({ data, error });
-
   if (error) return null;
 
   return (
-    <section className="bg-peach mb-[-7.5em] rounded-t-2xl pb-24">
+    <section className="mb-[-7.5em] rounded-t-2xl bg-peach pb-24">
       <header
         className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
         onClick={() => setActive(null)}
@@ -86,7 +84,7 @@ const LoadingBox = ({ i }) => {
 
 const Entry = ({ entry, state, i }) => {
   const isActive = state.active === i;
-  const { caption, media_url, permalink } = entry;
+  const { caption, media_url, permalink, media_type } = entry;
 
   return (
     <motion.figure
@@ -97,13 +95,28 @@ const Entry = ({ entry, state, i }) => {
         ({String.fromCharCode(i + 65)})
       </div>
       <figure className="relative h-0 overflow-hidden pb-[100%]">
-        <img
-          src={media_url}
-          width="500"
-          height="500"
-          className="absolute inset-0"
-          alt={caption}
-        />
+        {media_type === "VIDEO" ? (
+          <video
+            playsInline
+            muted
+            loop
+            autoPlay
+            width="500"
+            height="500"
+            className="absolute inset-0"
+          >
+            <source src={media_url} type={"video/mp4"} />
+          </video>
+        ) : (
+          <img
+            src={media_url}
+            width="500"
+            height="500"
+            className="absolute inset-0"
+            alt={caption}
+          />
+        )}
+
         <AnimatePresence>
           {isActive && (
             <motion.figcaption className="user-select-none absolute inset-2">

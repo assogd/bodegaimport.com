@@ -22,7 +22,7 @@ export default function Related({ articles }) {
           {articles.map((card, i) => (
             <div
               key={i}
-              altClassName="w-5/6 shrink-0 sm:basis-40 snap-center scroll-mx-12 sm:w-auto sm:shrink sm:grow"
+              altclassname="w-5/6 shrink-0 sm:basis-40 snap-center scroll-mx-12 sm:w-auto sm:shrink sm:grow"
             >
               <Card article={card} />
             </div>

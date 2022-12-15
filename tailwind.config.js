@@ -58,6 +58,7 @@ module.exports = {
         auxerrois: "#FFDBA6",
         gamay: "#E2908D",
         gewurztraminer: "#FFE2C8",
+        grenacheGris: "#F8DEC6",
         jacquèRe: "#FCFFEC",
         muscatBlanc: "#FFF5DA",
         muscatOttonel: "#FFF5DA",

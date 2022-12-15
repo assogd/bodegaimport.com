@@ -3,8 +3,10 @@ import clsx from "clsx";
 import Link from "next/link";
 import StickyHeader from "../base/";
 import useScrollDirection from "../../../lib/hooks/useScrollDirection";
+import { useRouter } from "next/router";
 
 export default function Header({ settings }) {
+  const { asPath } = useRouter();
   const [isScrollingUp] = useScrollDirection();
   const headerClasses = clsx(
     "text-xl tracking-tight",
@@ -28,10 +30,10 @@ export default function Header({ settings }) {
     <StickyHeader
       className={clsx("sticky pt-4 lg:fixed", header2Classes)}
       placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
-      inView={isScrollingUp}
+      hide={asPath === "/" && !settings?.inView}
       animate={"translate-y-[-200%]"}
     >
-      <motion.div layoutId="mainHeader" className={innerClasses}>
+      <motion.div className={innerClasses}>
         <Link href="/">
           <a>Bodega Import</a>
         </Link>

@@ -10,6 +10,7 @@ const Header = ({
   secondLevel,
   placement,
   animate = "",
+  hide = false,
 }) => {
   const [isStuck, setStuck] = useState(false);
   const [isScrollingUp] = useScrollDirection();
@@ -33,7 +34,8 @@ const Header = ({
         className={clsx(
           "inline-block",
           "delay-250 duration-500",
-          !isScrollingUp && isStuck && animate
+          !isScrollingUp && isStuck && animate,
+          hide && animate
         )}
       >
         {children}

@@ -58,8 +58,6 @@ const Page = ({
   const isOverlayArticle = router.query.aid && articles;
   const isAboutPage = router.query.uid === "om-oss";
 
-  console.log(list);
-
   return (
     <Layout
       navigation={navigation}

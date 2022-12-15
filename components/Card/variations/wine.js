@@ -25,7 +25,6 @@ const Body = ({ children }) => (
 );
 
 const Producer = ({ producer }) => {
-  console.log(producer);
   return (
     <Li>
       <Heading>Producent</Heading>

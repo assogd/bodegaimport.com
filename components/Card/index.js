@@ -25,10 +25,10 @@ export default function Card({
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
   const cardClasses = clsx(
-    "card relative z-10 scroll-mt-24",
+    "card relative z-10 scroll-mt-0",
     variation === "images" && "",
     size != "sm" && "min-h-[32em]",
-    asPath != "/" && "max-w-lg justify-self-center",
+    asPath != "/" && "max-w-lg justify-self-center w-full",
     className
   );
 

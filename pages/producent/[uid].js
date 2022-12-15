@@ -91,7 +91,7 @@ const Vindex = ({ wines }) => {
     <>
       <Header
         className="fixed right-0 inline-block pt-4 text-xl tracking-tight lg:pt-5"
-        animate={"lg:translate-y-[-200%]"}
+        animate={"lg:translate-y-[-0%]"}
       >
         <Button
           size="mini"
@@ -149,7 +149,7 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       <Header
         placement={{ col: "center" }}
         className="sticky pt-[3.25em] lg:pt-5"
-        animate={"translate-y-[-2.25em] lg:translate-y-[-200%]"}
+        animate={"translate-y-[-2.5em] lg:translate-y-[-0%]"}
       >
         <Heading as="h1" size="xl">
           {prismicH.asText(page.data.title)}

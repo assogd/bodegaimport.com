@@ -60,6 +60,7 @@ module.exports = {
         gewurztraminer: "#FFE2C8",
         grenacheGris: "#F8DEC6",
         jacquèRe: "#FCFFEC",
+        muscat: "#F8EDC6",
         muscatBlanc: "#FFF5DA",
         muscatOttonel: "#FFF5DA",
         pinotBlanc: "#FEFFD3",

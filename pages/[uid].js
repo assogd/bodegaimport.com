@@ -58,6 +58,8 @@ const Page = ({
   const isOverlayArticle = router.query.aid && articles;
   const isAboutPage = router.query.uid === "om-oss";
 
+  console.log(list);
+
   return (
     <Layout
       navigation={navigation}
@@ -167,10 +169,8 @@ export async function getStaticProps({ params, locale, previewData }) {
           (producer) => producer.data.region_ref.id === origin.id
         ),
       }))
-      .filter((a) => a.producers.length > 0);
-
-  const sortList =
-    list && list.sort((a, b) => a.origin.region > b.origin.region);
+      .filter((a) => a.producers.length > 0)
+      .sort((a, b) => a.origin.region.localeCompare(b.origin.region));
 
   return {
     props: {

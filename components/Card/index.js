@@ -22,6 +22,7 @@ export default function Card({
   const cardClasses = clsx(
     "card relative z-10 scroll-mt-24",
     variation === "images" && "",
+    size != "sm" && "min-h-[32em]",
     className
   );
 

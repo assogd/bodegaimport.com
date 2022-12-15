@@ -87,7 +87,7 @@ export const Producer = ({ children, producer, view }) => {
       transition={{ type: "tween" }}
     >
       <Header
-        placement={{ col: "center", row: "second" }}
+        placement={{ col: "center" }}
         className="sticky pb-8 pt-11"
         animate={"translate-y-[-2.25em] lg:translate-y-0"}
       >

@@ -29,8 +29,6 @@ const CTA = ({ href, render }) =>
 const Image = ({ data, size, i, params }) => {
   const { file, caption } = data.primary;
 
-  console.log(params);
-
   const containerClasses = clsx(
     "overflow-hidden rounded",
     size === "sm" ? "absolute inset-0" : "sticky top-14"
@@ -38,7 +36,7 @@ const Image = ({ data, size, i, params }) => {
 
   const imageLayout = size === "sm" ? "fill" : "responsive";
   const objectFit = size === "sm" ? "cover" : "none";
-  console.log(i);
+
   return (
     <figure className={containerClasses}>
       <Img

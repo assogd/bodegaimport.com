@@ -6,11 +6,12 @@ import * as prismicH from "@prismicio/helpers";
 
 import { useState, useEffect, useLayoutEffect } from "react";
 import { Select, Option } from "../Select";
-import useAssoCookie from "../../lib/hooks/useAssoCookie";
 
 import clsx from "clsx";
 
+import useAssoCookie from "../../lib/hooks/useAssoCookie";
 import useBreakpoints from "../../lib/hooks/useBreakpoints";
+import { orderWines } from "../../lib/utils";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -52,15 +53,7 @@ export default function ListOfProducers({ list, wines }) {
 }
 
 const Item = ({ view, producer, region, wines }) => {
-  const slicedWines = producer.data.slices
-    .filter((a) => a.variation === "wine")
-    .map((b) => b.primary.reference.id);
-
-  const unfilteredWines = wines.filter((a) =>
-    slicedWines.some((b) => b != a.id)
-  );
-
-  const set = producer.data.slices.concat(unfilteredWines);
+  const set = orderWines(producer.data.slices, wines);
 
   if (view === "rows")
     return (

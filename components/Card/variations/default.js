@@ -19,7 +19,7 @@ const Default = ({ data, size, params }) => {
     <article className={containerClasses}>
       <header
         className={clsx(
-          "z-2 sticky top-0 left-0 bg-white pb-2 font-serif text-base",
+          "z-2 relative top-0 left-0 bg-white pb-2 font-serif text-base",
           size === "sm" ? "pt-4" : "pt-10"
         )}
       >

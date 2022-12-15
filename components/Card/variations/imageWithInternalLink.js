@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { capitalize } from "../../../lib/utils/text";
 import Image from "next/future/image";
 import * as prismicH from "@prismicio/helpers";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 import Button from "../../Button";
@@ -32,7 +33,10 @@ const ImageWithInternalLink = ({ data, size }) => {
 export default ImageWithInternalLink;
 
 const Figcaption = ({ link, size }) => {
-  if (!link.data) return null;
+  const { asPath } = useRouter();
+  const linkingObsolete = asPath === link.url;
+
+  if (!link.url || linkingObsolete) return null;
   const { type, url, data } = link;
 
   if (size === "sm")
@@ -40,7 +44,7 @@ const Figcaption = ({ link, size }) => {
       <div className={`absolute inset-x-2 bottom-2 sm:inset-x-4 sm:bottom-4`}>
         <Link href={url}>
           <a>
-            <Button className="bg-purple/90 p-4 backdrop-blur-lg">
+            <Button className="bg-cadmiumGreen/80 p-4 backdrop-blur-lg">
               Besök profil
             </Button>
           </a>

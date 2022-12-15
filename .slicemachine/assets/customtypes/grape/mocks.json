@@ -1,6 +1,7 @@
 {
   "id": "mock-doc-id",
-  "url": null,
+  "uid": "spring",
+  "url": "/spring",
   "type": "grape",
   "href": null,
   "tags": [],
@@ -11,6 +12,6 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "depth"
+    "title": "additional"
   }
 }

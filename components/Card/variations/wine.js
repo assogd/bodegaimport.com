@@ -7,8 +7,40 @@ import { camelCase } from "../../../lib/utils/text";
 import { WineColor } from "../helpers";
 import { compSum } from "../../../lib/utils";
 import { Container, Header, Open } from "../elements";
+import * as prismicH from "@prismicio/helpers";
+import Link from "next/link";
 
-const Wine = ({ data, bgColor, size, params }) => {
+const Li = ({ children }) => (
+  <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
+    {children}
+  </li>
+);
+
+const Heading = ({ children }) => (
+  <h5 className="text-monoBase leading-relaxed">{children}</h5>
+);
+
+const Body = ({ children }) => (
+  <div className={clsx("font-mono text-monoBase")}>{children}</div>
+);
+
+const Producer = ({ producer }) => {
+  console.log(producer);
+  return (
+    <Li>
+      <Heading>Producent</Heading>
+      <Body>
+        <Link href={producer.url}>
+          <a className="sober underline decoration-black decoration-solid decoration-from-font underline-offset-4">
+            {prismicH.asText(producer?.data?.title)}
+          </a>
+        </Link>
+      </Body>
+    </Li>
+  );
+};
+
+const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
   const {
     alcohol,
     color,
@@ -20,6 +52,7 @@ const Wine = ({ data, bgColor, size, params }) => {
     soil,
     title,
     id,
+    producer,
   } = data.data;
 
   return (
@@ -27,11 +60,14 @@ const Wine = ({ data, bgColor, size, params }) => {
       <WineColor composition={grape_composition} />
       <Header>
         <h4 className="truncate">{title}</h4>
-        {params && (
-          <Open href={`/producent/${params.producer.slug}#${data.uid}`} />
+        {(href || params) && (
+          <Open
+            href={href ?? `/producent/${params.producer.slug}#${data.uid}`}
+          />
         )}
       </Header>
       <ul className="relative">
+        {listProducer && <Producer producer={producer} />}
         <ListItem title="Ursprung" body={origin} />
         <ListItem title="Jord" body={soil} />
         <ListItem

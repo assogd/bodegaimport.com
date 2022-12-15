@@ -39,8 +39,8 @@
     white-space: nowrap;
   }
 
-  a:link,
-  a:visited {
+  a:link:not(.sober),
+  a:visited:not(.sober) {
     text-decoration-color: rgba(0, 0, 255, 0.7);
     text-decoration-style: wavy;
     text-underline-offset: 3px;

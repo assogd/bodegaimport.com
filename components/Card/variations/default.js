@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { getCardId } from "../../../lib/utils";
 import { Container, Header, Gradient, Open } from "../elements";
 
-const Default = ({ data, size, params }) => {
+const Default = ({ data, size, params, href }) => {
   const { query } = useRouter();
 
   return (
@@ -18,9 +18,11 @@ const Default = ({ data, size, params }) => {
     >
       <Header>
         <PrismicRichText field={data.primary.title} />
-        {params && (
+        {(href || params) && (
           <Open
-            href={`/producent/${params.producer.slug}#${getCardId(data)}`}
+            href={
+              href ?? `/producent/${params.producer.slug}#${getCardId(data)}`
+            }
           />
         )}
       </Header>

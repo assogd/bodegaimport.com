@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { camelCase } from "../../lib/utils/text";
 import { AnimateInView as Animation } from "../Animations/";
 import { getCardId } from "../../lib/utils";
+import { useRouter } from "next/router";
 
 export default function Card({
   data,
@@ -13,17 +14,21 @@ export default function Card({
   params,
   className,
   i,
+  href,
+  listProducer,
 }) {
   const { variation, type } = data;
+  const { asPath } = useRouter();
 
   const isText = variation === "default" || variation === "wine";
 
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
   const cardClasses = clsx(
-    "card relative z-10 scroll-mt-24 max-w-lg justify-self-center",
+    "card relative z-10 scroll-mt-24",
     variation === "images" && "",
     size != "sm" && "min-h-[32em]",
+    asPath != "/" && "max-w-lg justify-self-center",
     className
   );
 
@@ -47,6 +52,8 @@ export default function Card({
           params={params}
           id={data?.id}
           i={i}
+          href={href}
+          listProducer={listProducer}
         />
       </AspectRatio>
     </Animation>

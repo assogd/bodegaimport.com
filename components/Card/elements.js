@@ -17,7 +17,7 @@ export const Container = ({ children, size, className }) => (
 export const Header = ({ children }) => (
   <header
     className={clsx(
-      "relative mb-3 font-serif text-base",
+      "relative mb-2 font-serif text-base",
       "flex items-stretch justify-between gap-2",
       "border-b border-dashed"
     )}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Container as ContactContainer, Card as ContactCard } from "./contact";
 import { Container as WineContainer } from "./wine";
+import WineCard from "../../components/Card";
 import Carousel from "../../components/Carousel/container";
 import { Card as ArticleCard } from "../../components/Articles/related";
 
@@ -15,7 +16,20 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <Carousel data={items} className="mx-[-1em] sm:mx-[-2em]" />
+        <Carousel data={items} className="mx-[-1em] sm:mx-[-2em]">
+          {items.map((item, i) => (
+            <WineCard
+              data={item}
+              key={i}
+              size="sm"
+              href={
+                item?.data?.producer?.url &&
+                `${item.data.producer.url}#${item.uid}`
+              }
+              listProducer={true}
+            />
+          ))}
+        </Carousel>
       </WineContainer>
     );
   }

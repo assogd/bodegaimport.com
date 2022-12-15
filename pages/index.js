@@ -62,7 +62,7 @@ export async function getStaticProps({ locale, previewData }) {
   });
   const wines = await client.getAllByType("wine", {
     lang: locale,
-    fetchLinks: ["grape.title"],
+    fetchLinks: ["grape.title", "producer.title"],
   });
   const navigation = await client.getSingle("navigation", { lang: locale });
   const marquee = await client.getSingle("marquee", { lang: locale });

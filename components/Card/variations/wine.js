@@ -6,8 +6,9 @@ import clsx from "clsx";
 import { camelCase } from "../../../lib/utils/text";
 import { WineColor } from "../helpers";
 import { compSum } from "../../../lib/utils";
+import { Container, Header, Open } from "../elements";
 
-const Wine = ({ data, bgColor, size }) => {
+const Wine = ({ data, bgColor, size, params }) => {
   const {
     alcohol,
     color,
@@ -22,22 +23,20 @@ const Wine = ({ data, bgColor, size }) => {
   } = data.data;
 
   return (
-    <div className={clsx(size === "sm" ? "px-6 pt-2 pb-8" : "px-8 pb-8")}>
+    <Container size={size}>
       <WineColor composition={grape_composition} />
-      <header
-        className={clsx(
-          `z-2 relative top-0 left-0 w-full pb-2 font-serif text-base`,
-          size === "sm" ? "pt-4" : "pt-8"
+      <Header>
+        <h4 className="truncate">{title}</h4>
+        {params && (
+          <Open href={`/producent/${params.producer.slug}#${data.uid}`} />
         )}
-      >
-        <h4 className=" truncate">{title}</h4>
-      </header>
+      </Header>
       <ul className="relative">
         <ListItem title="Ursprung" body={origin} />
         <ListItem title="Jord" body={soil} />
         <ListItem
           type="grapes"
-          title="Druvor"
+          title={grape_composition.length === 1 ? "Druva" : "Druvor"}
           body={grape_composition}
           compSum={compSum}
         />
@@ -48,7 +47,7 @@ const Wine = ({ data, bgColor, size }) => {
         <ListItem title="Alkohol" body={alcohol} />
         {size != "sm" && <Resellers data={resellers} />}
       </ul>
-    </div>
+    </Container>
   );
 };
 

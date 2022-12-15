@@ -125,6 +125,13 @@
                 "select": null
               }
             },
+            "quantity": {
+              "type": "Number",
+              "config": {
+                "label": "Quantity",
+                "placeholder": ""
+              }
+            },
             "volume": {
               "type": "Number",
               "config": {

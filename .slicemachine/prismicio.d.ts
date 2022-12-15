@@ -530,6 +530,16 @@ export interface WineDocumentDataResellersItem {
      */
     link: prismicT.LinkField;
     /**
+     * Quantity field in *Wine → Reseller(s)*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: wine.resellers[].quantity
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    quantity: prismicT.NumberField;
+    /**
      * Volume (ml) field in *Wine → Reseller(s)*
      *
      * - **Field Type**: Number

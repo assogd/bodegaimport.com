@@ -4,6 +4,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import clsx from "clsx";
 import { camelCase } from "../../lib/utils/text";
 import { AnimateInView as Animation } from "../Animations/";
+import { getCardId } from "../../lib/utils";
 
 export default function Card({
   data,
@@ -20,7 +21,7 @@ export default function Card({
   const refinedData = variation === "wine" ? data.primary.reference : data;
 
   const cardClasses = clsx(
-    "card relative z-10 scroll-mt-24",
+    "card relative z-10 scroll-mt-24 max-w-lg justify-self-center",
     variation === "images" && "",
     size != "sm" && "min-h-[32em]",
     className
@@ -34,7 +35,11 @@ export default function Card({
   );
 
   return (
-    <Animation className={cardClasses} skip={!animate} id={refinedData?.uid}>
+    <Animation
+      className={cardClasses}
+      skip={!animate}
+      id={refinedData?.uid ?? getCardId(refinedData)}
+    >
       <AspectRatio render={size === "sm"}>
         <DynamicComponent
           data={refinedData}

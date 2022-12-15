@@ -3,32 +3,30 @@ import clsx from "clsx";
 import Button from "../../Button";
 import Link from "next/link";
 import * as prismicH from "@prismicio/helpers";
-import slugify from "slugify";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import { getCardId } from "../../../lib/utils";
+import { Container, Header, Gradient, Open } from "../elements";
 
 const Default = ({ data, size, params }) => {
   const { query } = useRouter();
-  const containerClasses = clsx(
-    "font-mono text-monoBase bg-white rounded-md hyphens",
-    size != "sm" && "relative min-h-full px-8 pb-12",
-    size === "sm" && "absolute inset-0 px-6 pt-2 pb-8"
-  );
 
   return (
-    <article className={containerClasses}>
-      <header
-        className={clsx(
-          "z-2 relative top-0 left-0 bg-white pb-2 font-serif text-base",
-          size === "sm" ? "pt-4" : "pt-8"
-        )}
-      >
+    <Container
+      size={size}
+      className={"rounded-md bg-white font-mono text-monoBase"}
+    >
+      <Header>
         <PrismicRichText field={data.primary.title} />
-      </header>
+        {params && (
+          <Open
+            href={`/producent/${params.producer.slug}#${getCardId(data)}`}
+          />
+        )}
+      </Header>
       <PrismicRichText field={data.primary.body} />
-      {params && <Expand params={params} data={data} />}
-      {size === "lg" && <Close />}
-    </article>
+      <Gradient />
+    </Container>
   );
 };
 
@@ -37,19 +35,14 @@ export default Default;
 const Expand = ({ params, data }) => {
   const { push } = useRouter();
 
-  const getCardId =
-    slugify(prismicH.asText(data.primary.title), { lower: true }) +
-    "-" +
-    data.id.slice(-4);
-
   return (
     <nav className="absolute inset-x-0 bottom-0 rounded-md bg-white px-4 pb-4 pt-0 text-center shadow-easeTop sm:px-4 sm:py-4">
       <Button
         onTap={() =>
           push(
-            `/sortiment/${params.region.slug}/${params.producer.slug}/${getCardId}`,
+            `/producent/${params.producer.slug}#${getCardId(data)}`,
             undefined,
-            { shallow: true }
+            {}
           )
         }
         className="w-full border-0 border-solid bg-yellow font-serif text-base"

@@ -156,7 +156,13 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
         </Heading>
       </Header>
       <Vindex wines={vindex} />
-      <section className="cards relative mx-auto mt-4 grid max-w-screen-xl items-stretch gap-4 px-4 py-8 sm:px-8 lg:grid-cols-2 lg:px-12">
+      <section
+        className={clsx(
+          "relative grid max-w-screen-xl items-stretch lg:grid-cols-2",
+          "mx-auto mt-4 px-4 py-8 sm:px-8 lg:px-12",
+          "gap-4 lg:gap-8 xl:gap-x-12"
+        )}
+      >
         {set.map((card, i) => (
           <Card data={card} key={card.id} />
         ))}

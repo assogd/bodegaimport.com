@@ -22,7 +22,7 @@ export const Region = ({ children, item, view }) => {
         <Heading
           as="h2"
           size="xl"
-          className="mb-8 underline decoration-1 underline-offset-4 lg:mb-0 lg:no-underline"
+          className="mt-8 underline decoration-1 underline-offset-4 lg:mt-0 lg:mb-8 lg:mb-0 lg:no-underline"
         >
           {item.origin.region}, {item.origin.country}
         </Heading>

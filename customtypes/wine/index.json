@@ -89,6 +89,19 @@
         "config": {
           "label": "Reseller(s)",
           "fields": {
+            "segment": {
+              "type": "Select",
+              "config": {
+                "label": "Segment",
+                "placeholder": "",
+                "options": [
+                  "Restaurant",
+                  "Private consumer",
+                  "Both"
+                ],
+                "default_value": "Restaurant"
+              }
+            },
             "reseller": {
               "type": "Text",
               "config": {

@@ -22,12 +22,12 @@ const Wine = ({ data, bgColor, size }) => {
   } = data.data;
 
   return (
-    <div className={clsx(size === "sm" ? "px-6 pt-2 pb-8" : "px-10 pb-12")}>
+    <div className={clsx(size === "sm" ? "px-6 pt-2 pb-8" : "px-8 pb-8")}>
       <WineColor composition={grape_composition} />
       <header
         className={clsx(
           `z-2 relative top-0 left-0 w-full pb-2 font-serif text-base`,
-          size === "sm" ? "pt-4" : "pt-10"
+          size === "sm" ? "pt-4" : "pt-8"
         )}
       >
         <h4 className=" truncate">{title}</h4>

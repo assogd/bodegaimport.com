@@ -1,7 +1,7 @@
 {
   "id": "mock-doc-id",
-  "uid": "almost",
-  "url": "/almost",
+  "uid": "grade",
+  "url": "/grade",
   "type": "wine",
   "href": null,
   "tags": [],
@@ -12,7 +12,7 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "science",
+    "title": "express",
     "producer": {
       "id": "mock_document_id",
       "link_type": "Document",
@@ -23,7 +23,7 @@
       "first_publication_date": "1970-01-01T00:00:01+0000",
       "last_publication_date": "1970-01-01T01:00:00+0000"
     },
-    "origin": "straw",
+    "origin": "prepare",
     "grape_composition": [
       {
         "grape": {
@@ -36,29 +36,30 @@
           "first_publication_date": "1970-01-01T00:00:01+0000",
           "last_publication_date": "1970-01-01T01:00:00+0000"
         },
-        "density": 16
+        "density": 3
       }
     ],
-    "soil": "purple",
+    "soil": "sad",
     "method": [
       {
         "type": "paragraph",
-        "text": "Nisi sint ullamco adipisicing ullamco consectetur nulla consectetur elit sit excepteur. Dolor fugiat esse exercitation Lorem deserunt consequat fugiat nulla Lorem.",
+        "text": "Dolor est irure ullamco.",
         "spans": []
       }
     ],
-    "hl_ha": "answer",
-    "alcohol": "middle",
+    "hl_ha": "roof",
+    "alcohol": "therefore",
     "resellers": [
       {
-        "reseller": "count",
-        "art_no": "near",
+        "segment": "Both",
+        "reseller": "doubt",
+        "art_no": "package",
         "link": {
           "link_type": "Web",
           "url": "https://www.systembolaget.se"
         },
-        "volume": 20,
-        "price": 55
+        "volume": 65,
+        "price": 89
       }
     ]
   }

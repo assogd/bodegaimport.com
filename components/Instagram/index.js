@@ -108,7 +108,7 @@ const Entry = ({ entry, state, i }) => {
             <source src={media_url} type={"video/mp4"} />
           </video>
         ) : (
-          <Image
+          <img
             src={media_url}
             width="500"
             height="500"
@@ -116,7 +116,6 @@ const Entry = ({ entry, state, i }) => {
             alt={caption}
           />
         )}
-
         <AnimatePresence>
           {isActive && (
             <motion.figcaption className="user-select-none absolute inset-2">

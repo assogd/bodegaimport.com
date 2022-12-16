@@ -27,7 +27,7 @@ export default function Instagram() {
   if (error) return null;
 
   return (
-    <section className="mb-[-7.5em] rounded-t-2xl bg-peach pb-24">
+    <section className="mb-[-7.5em] mt-8 rounded-t-2xl bg-peach pb-24">
       <header
         className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
         onClick={() => setActive(null)}

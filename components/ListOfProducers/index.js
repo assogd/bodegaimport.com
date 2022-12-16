@@ -43,6 +43,7 @@ export default function ListOfProducers({ list, wines }) {
                 producer={producer}
                 region={item}
                 wines={wines.filter((a) => a.data.producer.id === producer.id)}
+                aboveFold={!i && !b && b < 5}
               />
             ))}
           </AnimatePresence>
@@ -52,7 +53,7 @@ export default function ListOfProducers({ list, wines }) {
   );
 }
 
-const Item = ({ view, producer, region, wines }) => {
+const Item = ({ view, producer, region, wines, aboveFold }) => {
   const set = orderWines(producer.data.slices, wines);
 
   if (view === "rows")
@@ -83,6 +84,7 @@ const Item = ({ view, producer, region, wines }) => {
             params={params(region, producer)}
             key={card.id}
             i={i}
+            aboveFold={aboveFold}
           />
         ))}
       </Carousel>

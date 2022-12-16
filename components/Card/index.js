@@ -16,6 +16,7 @@ export default function Card({
   i,
   href,
   listProducer,
+  aboveFold,
 }) {
   const { variation, type } = data;
   const { asPath } = useRouter();
@@ -54,6 +55,7 @@ export default function Card({
           i={i}
           href={href}
           listProducer={listProducer}
+          aboveFold={aboveFold}
         />
       </AspectRatio>
     </Animation>

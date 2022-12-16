@@ -26,7 +26,7 @@ const CTA = ({ href, render }) =>
     </div>
   );
 
-const Image = ({ data, size, i, params }) => {
+const Image = ({ data, size, i, params, aboveFold }) => {
   const { file, caption } = data.primary;
 
   const containerClasses = clsx(
@@ -48,6 +48,7 @@ const Image = ({ data, size, i, params }) => {
           "align-text-bottom",
           size === "sm" && "h-full object-cover"
         )}
+        priority={aboveFold}
       />
       <Caption render={caption && size != "sm"} caption={caption} />
       <CTA

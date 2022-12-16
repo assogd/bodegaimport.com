@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Button from "../../Button";
 
-const ImageWithInternalLink = ({ data, size }) => {
+const ImageWithInternalLink = ({ data, size, aboveFold }) => {
   const { file, link } = data.primary;
 
   const containerClasses = clsx(
@@ -24,6 +24,7 @@ const ImageWithInternalLink = ({ data, size }) => {
         height={file.dimensions.height}
         className={clsx("rounded-md", size === "sm" && "h-full object-cover")}
         alt={file.alt ?? link?.data?.title ?? "Ingen beskrivning tillgänglig"}
+        priority={aboveFold}
       />
       <Figcaption link={link} size={size} />
     </figure>

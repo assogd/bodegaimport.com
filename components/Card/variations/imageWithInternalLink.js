@@ -34,7 +34,7 @@ export default ImageWithInternalLink;
 
 const Figcaption = ({ link, size }) => {
   const { asPath } = useRouter();
-  const linkingObsolete = asPath === link.url;
+  const linkingObsolete = asPath.split("#")[0] === link.url;
 
   if (!link.url || linkingObsolete) return null;
   const { type, url, data } = link;

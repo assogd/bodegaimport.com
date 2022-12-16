@@ -24,20 +24,55 @@ const Body = ({ children }) => (
   <div className={clsx("font-mono text-monoBase")}>{children}</div>
 );
 
-const Producer = ({ producer }) => {
+const Producer = ({ producer }) => (
+  <Li>
+    <Heading>Producent</Heading>
+    <Body>
+      <Link href={producer.url}>
+        <a className="sober underline decoration-black decoration-solid decoration-from-font underline-offset-4">
+          {prismicH.asText(producer?.data?.title)}
+        </a>
+      </Link>
+    </Body>
+  </Li>
+);
+
+const Grapes = ({ grapes }) => {
+  const body = grapes
+    .map(
+      (grape) =>
+        `${Math.round((grape.density / compSum(grapes)) * 100)}% ${
+          grape.grape.data.title
+        }`
+    )
+    .join(", ");
+
   return (
     <Li>
-      <Heading>Producent</Heading>
-      <Body>
-        <Link href={producer.url}>
-          <a className="sober underline decoration-black decoration-solid decoration-from-font underline-offset-4">
-            {prismicH.asText(producer?.data?.title)}
-          </a>
-        </Link>
-      </Body>
+      <Heading>{grapes.length === 1 ? "Druva" : "Druvor"}</Heading>
+      <Body>{body}</Body>
     </Li>
   );
 };
+
+const Method = ({ body, render }) =>
+  render && (
+    <Li>
+      <Heading>Metod</Heading>
+      <Body>
+        <PrismicRichText field={body} />
+      </Body>
+    </Li>
+  );
+
+const ListItem = ({ title, body, render = true }) =>
+  body &&
+  render && (
+    <Li>
+      <Heading>{title}</Heading>
+      <Body>{body}</Body>
+    </Li>
+  );
 
 const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
   const {
@@ -69,48 +104,13 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         {listProducer && <Producer producer={producer} />}
         <ListItem title="Ursprung" body={origin} />
         <ListItem title="Jord" body={soil} />
-        <ListItem
-          type="grapes"
-          title={grape_composition.length === 1 ? "Druva" : "Druvor"}
-          body={grape_composition}
-          compSum={compSum}
-        />
-        {size != "sm" && (
-          <ListItem type="richText" title="Metod" body={method} />
-        )}
-        {size != "sm" && <ListItem title="HL/HA" body={hl_ha} />}
+        <Grapes grapes={grape_composition} />
+        <Method body={method} render={size != "sm"} />
+        <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <ListItem title="Alkohol" body={alcohol} />
         {size != "sm" && <Resellers data={resellers} />}
       </ul>
     </Container>
-  );
-};
-
-const ListItem = ({ title, body, type, compSum }) => {
-  if (!body) return null;
-
-  const grapes =
-    type === "grapes"
-      ? body
-          .map(
-            (grape) =>
-              `${Math.round((grape.density / compSum(body)) * 100)}% ${
-                grape.grape.data.title
-              }`
-          )
-          .join(", ")
-      : null;
-
-  const richText =
-    type === "richText" ? <PrismicRichText field={body} /> : null;
-
-  return (
-    <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
-      <h5 className="text-monoBase leading-relaxed">{title}</h5>
-      <div className={clsx("font-mono text-monoBase")}>
-        {grapes ?? richText ?? body}
-      </div>
-    </li>
   );
 };
 

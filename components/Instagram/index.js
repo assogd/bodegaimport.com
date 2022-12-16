@@ -108,7 +108,7 @@ const Entry = ({ entry, state, i }) => {
             <source src={media_url} type={"video/mp4"} />
           </video>
         ) : (
-          <img
+          <Image
             src={media_url}
             width="500"
             height="500"

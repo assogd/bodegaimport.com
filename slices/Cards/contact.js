@@ -2,6 +2,8 @@ import Image from "next/future/image";
 import { PrismicRichText } from "@prismicio/react";
 import Button from "../../components/Button";
 import * as prismicH from "@prismicio/helpers";
+import { useState } from "react";
+import { LoadingAssetAnimation } from "../../components/Animations";
 
 export const Container = ({ children, slice }) => {
   return (
@@ -22,19 +24,22 @@ export const Container = ({ children, slice }) => {
 };
 
 export const Card = ({ data }) => {
+  const [loaded, setLoaded] = useState(false);
   const { district, email, name, phone, picture } = data;
 
   return (
-    <div className="contact card bg-paleYellow grid max-w-xs gap-6 rounded-md p-4 text-center">
-      <Image
-        src={picture.url}
-        width={picture.dimensions.width}
-        height={picture.dimensions.height}
-        layout="responsive"
-        alt={picture.alt}
-        className="bg-paleYellow rounded-md mix-blend-multiply grayscale"
-      />
-
+    <div className="contact card grid max-w-xs gap-6 rounded-md bg-paleYellow p-4 text-center">
+      <LoadingAssetAnimation loaded={loaded}>
+        <Image
+          src={picture.url}
+          width={picture.dimensions.width}
+          height={picture.dimensions.height}
+          layout="responsive"
+          alt={picture.alt}
+          className="rounded-md bg-paleYellow mix-blend-multiply grayscale"
+          onLoadingComplete={() => setLoaded(true)}
+        />
+      </LoadingAssetAnimation>
       <header className="">
         <div className="font-mono">
           <PrismicRichText field={district} />

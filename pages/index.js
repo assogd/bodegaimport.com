@@ -10,29 +10,20 @@ import { Header, Observer } from "../components/Header/chunky";
 
 import Instagram from "../components/Instagram";
 
-import { useState } from "react";
-
 const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
-  const [mainLogotypeInView, setMainLogotypeInView] = useState(false);
-
   return (
     <Layout
       navigation={navigation}
       marquee={marquee}
       settings={settings}
       className=""
-      logotype={{ alwaysCentered: true, inView: mainLogotypeInView }}
+      logotype={{ alwaysCentered: true }}
     >
       <Head>
         <title>Bodega Import</title>
       </Head>
       <div className="grid items-stretch gap-8 p-0 md:grid-cols-2 md:p-8">
-        <Observer
-          mainLogotypeInView={mainLogotypeInView}
-          setMainLogotypeInView={setMainLogotypeInView}
-        >
-          <Header />
-        </Observer>
+        <Header />
         <SliceZone
           slices={page.data.slices}
           components={components}

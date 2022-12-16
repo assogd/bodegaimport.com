@@ -4,10 +4,23 @@ import Link from "next/link";
 import StickyHeader from "../base/";
 import useScrollDirection from "../../../lib/hooks/useScrollDirection";
 import { useRouter } from "next/router";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import { useState } from "react";
 
 export default function Header({ settings }) {
+  const [hideOnScroll, setHideOnScroll] = useState(true);
   const { asPath } = useRouter();
   const [isScrollingUp] = useScrollDirection();
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      console.log(currPos.y);
+      const isShow = currPos.y > -1000;
+      if (isShow !== hideOnScroll) setHideOnScroll(isShow);
+    },
+    [hideOnScroll]
+  );
+
   const headerClasses = clsx(
     "text-xl tracking-tight",
     "fixed top-4 sm:top-6 inline-block",
@@ -25,6 +38,21 @@ export default function Header({ settings }) {
     outsideView: { opacity: 1, y: "-200%" },
     inView: { opacity: 1, y: 0 },
   };
+
+  return (
+    <StickyHeader
+      className={clsx("sticky pt-4 lg:fixed", header2Classes)}
+      placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
+      hide={asPath === "/" && hideOnScroll}
+      animate={"translate-y-[-200%]"}
+    >
+      <motion.div className={innerClasses}>
+        <Link href="/">
+          <a>Bodega Import</a>
+        </Link>
+      </motion.div>
+    </StickyHeader>
+  );
 
   return (
     <StickyHeader

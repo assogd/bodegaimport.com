@@ -16,7 +16,7 @@ const Cards = ({ slice, context }) => {
 
     return (
       <WineContainer slice={slice}>
-        <Carousel data={items} className="mx-[-0em] sm:mx-[-0em]">
+        <Carousel data={items} className="mx-[-0rem] sm:mx-[-2rem]">
           {items.map((item, i) => (
             <WineCard
               data={item}

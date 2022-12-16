@@ -25,7 +25,7 @@ const Button = ({
     className,
     size === "sm" && "py-2 px-2",
     size === "md" && "py-3 px-6 sm:px-5",
-    size === "lg" && "p-3 w-full"
+    size === "lg" && "px-2 py-2 sm:px-3 sm:py-3 w-full"
   );
 
   return (

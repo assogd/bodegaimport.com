@@ -20,10 +20,6 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
     size === "sm" ? "absolute inset-0" : "sticky top-8"
   );
 
-  const handleImageLoad = (e) => {
-    console.log("load", e);
-  };
-
   return (
     <figure className={containerClasses}>
       <LoadingAssetAnimation loaded={loaded}>
@@ -66,17 +62,25 @@ const Figcaption = ({ link, size }) => {
 
   return (
     <figcaption
-      className={`absolute inset-x-2 bottom-2 flex items-end justify-between gap-4 rounded-md bg-white/40 p-4 backdrop-blur-lg sm:inset-x-4 sm:bottom-4`}
+      className={`absolute inset-x-2 bottom-2 block flex flex-col justify-between gap-4 rounded-md bg-white/30 p-4 backdrop-blur sm:inset-x-4 sm:bottom-4 sm:flex-row sm:items-end`}
     >
-      <h3>
-        <div role="doc-subtitle">{capitalize(type)}</div>
+      <h3 className="">
+        <div role="doc-subtitle" className="font-mono">
+          {translate(type)}
+        </div>
         <div className="text-lg">{prismicH.asText(data?.title)}</div>
       </h3>
       <Link href={url}>
-        <a>
-          <Button className="whitespace-nowrap border">Läs mer</Button>
+        <a className="w-full sm:w-auto">
+          <Button size="lg" className="whitespace-nowrap border">
+            Läs mer
+          </Button>
         </a>
       </Link>
     </figcaption>
   );
+};
+
+const translate = (type) => {
+  if (type === "producer") return "Producent";
 };

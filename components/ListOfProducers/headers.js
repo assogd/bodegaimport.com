@@ -15,7 +15,10 @@ export const Region = ({ children, item, view }) => {
       className={clsx("region mb-12", view === "rows" ? "mb-4" : "mb-12")}
     >
       <Header
-        className={clsx(view === "rows" && "mb-8", "relative lg:sticky")}
+        className={clsx(
+          view === "rows" && "md:mb-8",
+          "relative mb-[-1.25em] lg:sticky"
+        )}
         placement={{ col: "right" }}
         animate={"lg:translate-y-[-200%]"}
       >

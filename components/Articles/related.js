@@ -48,7 +48,7 @@ export const Card = ({ article }) => {
   };
 
   return (
-    <div className="relative grid gap-2">
+    <div className="relative">
       <motion.figure>
         <A href={`/nyheter/${date}/${article.uid}`}>
           <div className="ratio relative h-0 pb-[75%]">
@@ -62,16 +62,16 @@ export const Card = ({ article }) => {
           </div>
         </A>
       </motion.figure>
-      <header className="relative px-1">
-        <motion.h2 className="mb-1 inline-block sm:text-lg">
+      <div className="px-1 pt-2">
+        <span className="mb-[0.125em] inline-block sm:text-lg">
           <A href={`/nyheter/${date}/${article.uid}`}>
             {prismicH.asText(title)}
           </A>
-        </motion.h2>
-        <div role="doc-subtitle" className="font-mono">
+        </span>
+        <div className="font-mono">
           {new Date(date).toLocaleDateString("sv", options)}
         </div>
-      </header>
+      </div>
     </div>
   );
 };

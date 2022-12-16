@@ -20,7 +20,7 @@ export default function Carousel({ params, className, children }) {
 
   return (
     <section className={clsx("carousel", className)}>
-      <div className="scrollbar-hide max-w-screen flex max-w-[100vw] snap-x snap-mandatory gap-4 overflow-y-hidden overflow-x-scroll sm:gap-4">
+      <div className="scrollbar-hide flex max-w-[100%] snap-x snap-mandatory gap-4 overflow-y-hidden overflow-x-scroll sm:gap-4">
         <Fill />
         {children &&
           children.map((child, i) => (

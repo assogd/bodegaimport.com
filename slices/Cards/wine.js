@@ -22,28 +22,34 @@ export const Container = ({ children, slice }) => {
     header: clsx(
       "mb-4",
       variation === "wines" && "mt-8",
-      isArticle && "px-6 sm:px-8",
-      isButton ? "flex items-baseline gap-4 justify-between" : "text-center"
+      "px-6 sm:px-8",
+      isButton
+        ? "flex items-baseline flex-row sm:flex-row items-center flex-wrap gap-x-4 justify-between"
+        : "text-center"
     ),
   };
 
   return (
     <section className={className.section}>
       <header className={className.header}>
-        {title && <PrismicRichText field={title} />}
+        {title && (
+          <h3 className="inline-block text-lg leading-tight tracking-tight">
+            {prismicH.asText(title)}
+          </h3>
+        )}
         {isButton && variation === "wines" && (
           <div>
             <Link href={button_link.url}>
               <a>
-                <Button size="md" className="bg-white">
-                  {button_text ?? "Läs mer"}
+                <Button size="mini" className="whitespace-nowrap font-mono">
+                  {button_text ?? "Läs mer"} -&gt;
                 </Button>
               </a>
             </Link>
           </div>
         )}
       </header>
-      {children}
+      <div className="mx-[-0em] box-border max-w-[100vw]">{children}</div>
       {isButton && isArticle && (
         <div className="px-4 sm:px-6">
           <Link href={button_link.url}>

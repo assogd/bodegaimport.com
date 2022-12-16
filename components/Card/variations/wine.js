@@ -103,11 +103,11 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
       <ul className="relative">
         {listProducer && <Producer producer={producer} />}
         <ListItem title="Ursprung" body={origin} />
-        <ListItem title="Jord" body={soil} />
         <Grapes grapes={grape_composition} />
+        <ListItem title="Jord" body={soil} />
         <Method body={method} render={size != "sm"} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
-        <ListItem title="Alkohol" body={alcohol} />
+        <ListItem title="Alkohol" body={alcohol} render={size != "sm"} />
         {size != "sm" && <Resellers data={resellers} />}
       </ul>
     </Container>

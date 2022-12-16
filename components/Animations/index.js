@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import clsx from "clsx";
 
 export const AnimateInView = ({
   amount = 0,
@@ -23,5 +24,19 @@ export const AnimateInView = ({
     >
       {children}
     </motion.section>
+  );
+};
+
+export const LoadingAssetAnimation = ({ className, children, loaded }) => {
+  return (
+    <div
+      className={clsx(
+        "delay-250 h-full duration-500",
+        loaded ? "opacity-1" : "opacity-0",
+        className
+      )}
+    >
+      {children}
+    </div>
   );
 };

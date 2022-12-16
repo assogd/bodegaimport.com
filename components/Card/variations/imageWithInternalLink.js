@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 
 import Link from "next/link";
 import Button from "../../Button";
+
 import { useState } from "react";
+import { LoadingAssetAnimation } from "../../Animations";
 
 const ImageWithInternalLink = ({ data, size, aboveFold }) => {
   const [loaded, setLoaded] = useState(false);
@@ -24,24 +26,18 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
 
   return (
     <figure className={containerClasses}>
-      <Image
-        src={file.url}
-        width={file.dimensions.width}
-        height={file.dimensions.height}
-        className={clsx(
-          "duration-250 rounded-md",
-          size === "sm" && "h-full object-cover",
-          loaded ? "opacity-1" : "opacity-0"
-        )}
-        alt={file.alt ?? link?.data?.title ?? "Ingen beskrivning tillgänglig"}
-        priority={aboveFold}
-        onLoadingComplete={(e) => setLoaded(true)}
-        placeholder={"blur"}
-        blurDataURL={
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/2XDfwAJQQOk986kaQAAAABJRU5ErkJggg=="
-        }
-      />
-      <Figcaption link={link} size={size} />
+      <LoadingAssetAnimation loaded={loaded}>
+        <Image
+          src={file.url}
+          width={file.dimensions.width}
+          height={file.dimensions.height}
+          className={clsx("rounded-md", size === "sm" && "h-full object-cover")}
+          alt={file.alt ?? link?.data?.title ?? "Ingen beskrivning tillgänglig"}
+          priority={aboveFold}
+          onLoadingComplete={(e) => setLoaded(true)}
+        />
+        <Figcaption link={link} size={size} />
+      </LoadingAssetAnimation>
     </figure>
   );
 };

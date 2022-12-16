@@ -51,7 +51,7 @@ const richTextComponents = {
     <li className="mb-1 list-decimal pl-1 last:mb-0 sm:pl-2">{children}</li>
   ),
   list: ({ children }) => (
-    <ul className="mx-auto max-w-xl list-inside rounded-md bg-white text-left last:mb-0">
+    <ul className="mx-auto max-w-xl list-inside rounded-md text-left last:mb-0">
       {children}
     </ul>
   ),

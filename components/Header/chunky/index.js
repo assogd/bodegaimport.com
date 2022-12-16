@@ -22,7 +22,7 @@ export function Header() {
               <Image
                 src={Logotype}
                 alt={"Bodega Import"}
-                loading="eager"
+                priority
                 className="mx-auto h-auto w-[50vw] md:w-[16vw]"
               />
               <div className="text-[10vw] tracking-tight md:text-[5vw]">

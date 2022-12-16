@@ -14,7 +14,6 @@ export default function Header({ settings }) {
 
   useScrollPosition(
     ({ prevPos, currPos }) => {
-      console.log(currPos.y);
       const isShow = currPos.y > -1000;
       if (isShow !== hideOnScroll) setHideOnScroll(isShow);
     },

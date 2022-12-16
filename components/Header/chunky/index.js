@@ -17,8 +17,8 @@ export function Header() {
           transition={{ duration: 0.5 }}
           className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none md:relative md:inset-0 md:h-full"
         >
-          <div className="sticky top-[50%] max-h-screen translate-y-[-50%]">
-            <div className="flex h-full flex-col items-center justify-center gap-[8vw] md:h-full md:translate-y-[-3vh] md:gap-[4vw]">
+          <div className="sticky top-[50%] max-h-screen translate-y-[-12%] md:translate-y-[-50%]">
+            <div className="flex h-full flex-col items-center justify-center gap-[8vw] md:h-full md:translate-y-[-5vh] md:gap-[4vw]">
               <Image
                 src={Logotype}
                 alt={"Bodega Import"}

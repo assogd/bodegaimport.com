@@ -53,11 +53,14 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["images.prismic.io", "scontent.cdninstagram.com"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.example.com",
+        hostname: "scontent-**.cdninstagram.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.prismic.io",
       },
     ],
   },

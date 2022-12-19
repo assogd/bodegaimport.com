@@ -94,24 +94,32 @@ export const Producer = ({ children, producer, view }) => {
         className="sticky pb-8 pt-11"
         animate={"translate-y-[-2.25em] lg:translate-y-0"}
       >
-        <Heading as="h2" size="xl">
-          {prismicH.asText(producer.data.title)}
-        </Heading>
-        <div className="ml-2 inline-block translate-y-[-.25em]">
-          <Link href={producer.url}>
-            <a>
-              <Button
-                className="bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur"
-                size="mini"
-                whileHover={{ scale: 1.025 }}
-              >
-                Profil
-              </Button>
-            </a>
-          </Link>
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-baseline">
+          <Heading as="h2" size="xl" className="grow">
+            {prismicH.asText(producer.data.title)}
+          </Heading>
+          <VisitProfile href={producer.url} />
         </div>
       </Header>
       {children}
     </motion.section>
+  );
+};
+
+const VisitProfile = ({ href }) => {
+  return (
+    <div className="inline-block grow-0 translate-y-[-.25em]">
+      <Link href={href}>
+        <a>
+          <Button
+            className="bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur"
+            size="mini"
+            whileHover={{ scale: 1.025 }}
+          >
+            Profil
+          </Button>
+        </a>
+      </Link>
+    </div>
   );
 };

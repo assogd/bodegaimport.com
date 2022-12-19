@@ -40,3 +40,17 @@ export const Open = ({ href }) => (
     <Link href={href}>Öppna -&gt;</Link>
   </div>
 );
+
+export const Li = ({ children }) => (
+  <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
+    {children}
+  </li>
+);
+
+export const Heading = ({ children }) => (
+  <h5 className="text-monoBase leading-relaxed">{children}</h5>
+);
+
+export const Body = ({ children }) => (
+  <div className={clsx("font-mono text-monoBase")}>{children}</div>
+);

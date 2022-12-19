@@ -6,25 +6,11 @@ import clsx from "clsx";
 import { camelCase } from "../../../lib/utils/text";
 import { WineColor } from "../helpers";
 import { compSum } from "../../../lib/utils";
-import { Container, Header, Open } from "../elements";
+import { Container, Header, Open, Li, Heading, Body } from "../elements";
 import * as prismicH from "@prismicio/helpers";
 import Link from "next/link";
 
-const Li = ({ children }) => (
-  <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
-    {children}
-  </li>
-);
-
-const Heading = ({ children }) => (
-  <h5 className="text-monoBase leading-relaxed">{children}</h5>
-);
-
-const Body = ({ children }) => (
-  <div className={clsx("font-mono text-monoBase")}>{children}</div>
-);
-
-const Producer = ({ producer }) => (
+export const Producer = ({ producer }) => (
   <Li>
     <Heading>Producent</Heading>
     <Body>
@@ -37,7 +23,7 @@ const Producer = ({ producer }) => (
   </Li>
 );
 
-const Grapes = ({ grapes }) => {
+export const Grapes = ({ grapes }) => {
   const body = grapes
     .map(
       (grape) =>
@@ -55,7 +41,7 @@ const Grapes = ({ grapes }) => {
   );
 };
 
-const Method = ({ body, render }) =>
+export const Method = ({ body, render }) =>
   render && (
     <Li>
       <Heading>Metod</Heading>
@@ -65,7 +51,7 @@ const Method = ({ body, render }) =>
     </Li>
   );
 
-const ListItem = ({ title, body, render = true }) =>
+export const ListItem = ({ title, body, render = true }) =>
   body &&
   render && (
     <Li>
@@ -105,7 +91,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         <ListItem title="Ursprung" body={origin} />
         <Grapes grapes={grape_composition} />
         <ListItem title="Jord" body={soil} />
-        <Method body={method} render={size != "sm"} />
+        <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <ListItem title="Alkohol" body={alcohol} render={size != "sm"} />
         {size != "sm" && <Resellers data={resellers} />}

@@ -1,5 +1,4 @@
 import { PrismicRichText } from "@prismicio/react";
-import Button from "../../Button";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { camelCase } from "../../../lib/utils/text";
@@ -67,7 +66,6 @@ const Resellers = ({ data, render = true }) => {
 
   return (
     <Li>
-      <Heading>Återförsäljare</Heading>
       <Body>
         {data.map((item, i) => (
           <Reseller key={i} item={item} />

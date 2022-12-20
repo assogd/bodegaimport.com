@@ -1,5 +1,4 @@
 import { PrismicRichText } from "@prismicio/react";
-import extractDomain from "extract-domain";
 import Button from "../../Button";
 import { motion } from "framer-motion";
 import clsx from "clsx";
@@ -9,6 +8,7 @@ import { compSum } from "../../../lib/utils";
 import { Container, Header, Open, Li, Heading, Body } from "../elements";
 import * as prismicH from "@prismicio/helpers";
 import Link from "next/link";
+import Reseller from "./reseller";
 
 export const Producer = ({ producer }) => (
   <Li>
@@ -60,6 +60,23 @@ export const ListItem = ({ title, body, render = true }) =>
     </Li>
   );
 
+const Resellers = ({ data, render = true }) => {
+  const incomplete =
+    data.findIndex((a) => a.art_no && a.volume && a.price) === -1;
+  if (!data.length || incomplete || !render) return null;
+
+  return (
+    <Li>
+      <Heading>Återförsäljare</Heading>
+      <Body>
+        {data.map((item, i) => (
+          <Reseller key={i} item={item} />
+        ))}
+      </Body>
+    </Li>
+  );
+};
+
 const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
   const {
     alcohol,
@@ -94,51 +111,9 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <ListItem title="Alkohol" body={alcohol} render={size != "sm"} />
-        {size != "sm" && <Resellers data={resellers} />}
+        <Resellers data={resellers} render={size != "sm"} />
       </ul>
     </Container>
-  );
-};
-
-const Resellers = ({ data }) => {
-  const incomplete =
-    data.findIndex((a) => a.art_no && a.volume && a.price) === -1;
-  if (!data.length || incomplete) return null;
-
-  return (
-    <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
-      <h5 className="text-monoBase leading-relaxed">Återförsäljare</h5>
-      <div className={clsx("font-mono text-monoBase")}>
-        {data.map(
-          (item, i) =>
-            item?.volume &&
-            item?.art_no &&
-            item?.price && (
-              <motion.div
-                key={i}
-                className="mt-2 grid gap-1 rounded-md bg-white/60 p-4"
-              >
-                <div className="flex justify-between">
-                  <div>{item?.reseller ?? "Bodega Import"}</div>
-                  <div>{item?.volume && `${item.volume} ml`}</div>
-                </div>
-                <div className="flex justify-between">
-                  <div>{item?.art_no && `Artikelnr ${item.art_no}`}</div>
-                  <div>{item?.price && `${item.price} SEK`}</div>
-                </div>
-                {item.link.url && (
-                  <Button
-                    href={item.link.url}
-                    className="mt-2 w-full bg-red/50 font-serif"
-                  >
-                    Beställ från {extractDomain(item.link.url)}
-                  </Button>
-                )}
-              </motion.div>
-            )
-        )}
-      </div>
-    </li>
   );
 };
 

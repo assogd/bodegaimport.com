@@ -149,7 +149,7 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       <Header
         placement={{ col: "center" }}
         className="sticky pt-[3.25em] lg:pt-5"
-        animate={"translate-y-[-2.5em] lg:translate-y-[-0%]"}
+        animate={"translate-y-[-2.2em] lg:translate-y-[-0%]"}
       >
         <Heading as="h1" size="xl">
           {prismicH.asText(page.data.title)}

@@ -7,7 +7,9 @@ import { compSum } from "../../../lib/utils";
 import { Container, Header, Open, Li, Heading, Body } from "../elements";
 import * as prismicH from "@prismicio/helpers";
 import Link from "next/link";
+
 import Reseller from "./reseller";
+import useAssoCookie from "../../../lib/hooks/useAssoCookie";
 
 export const Producer = ({ producer }) => (
   <Li>
@@ -60,20 +62,39 @@ export const ListItem = ({ title, body, render = true }) =>
   );
 
 const Resellers = ({ data, render = true }) => {
-  const incomplete =
-    data.findIndex((a) => a.art_no && a.volume && a.price) === -1;
-  if (!data.length || incomplete || !render) return null;
+  if (!render) return null;
+  const [preferences] = useAssoCookie();
+
+  const refinedData = data
+    .filter(
+      (c) =>
+        c?.segment === "Both" ||
+        c?.segment?.includes(preferences?.consumer) ||
+        !c?.segment
+    )
+    .filter((p) => p.price);
+
+  const incomplete = data.findIndex((a) => a.price) === -1;
+  if (!refinedData.length || incomplete || !render) return null;
+  console.log(refinedData);
 
   return (
     <Li>
       <Body>
-        {data.map((item, i) => (
+        {refinedData.map((item, i) => (
           <Reseller key={i} item={item} />
         ))}
       </Body>
     </Li>
   );
 };
+
+const translate = (word) =>
+  ({
+    Both: "both",
+    "Private consumer": "consumer",
+    Restaurant: "restaurant",
+  }[word]);
 
 const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
   const {

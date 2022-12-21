@@ -77,7 +77,7 @@ const Page = ({
       <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
         <Header
           placement={{ col: "center", row: "first" }}
-          className="relative lg:pt-6"
+          className="relative pt-1 lg:pt-6"
         >
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>

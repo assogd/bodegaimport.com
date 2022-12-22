@@ -5,10 +5,11 @@ import Cards from "./Cards";
 import Image from "./Image";
 import ImageCards from "./ImageCards";
 import Region from "./Region";
+import SeoCard from "./SeoCard";
 import Text from "./Text";
 import TextWithImage from "./TextWithImage";
 
-export { Card, Cards, Image, ImageCards, Region, Text, TextWithImage };
+export { Card, Cards, Image, ImageCards, Region, SeoCard, Text, TextWithImage };
 
 export const components = {
   card: Card,
@@ -16,6 +17,7 @@ export const components = {
   image: Image,
   image_cards: ImageCards,
   region: Region,
+  seo_card: SeoCard,
   text: Text,
   text_with_image: TextWithImage,
 };

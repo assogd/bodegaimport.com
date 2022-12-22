@@ -1,0 +1,84 @@
+{
+  "id": "seo_card",
+  "type": "SharedSlice",
+  "name": "SeoCard",
+  "description": "Social card for Facebook, Twitter, LinkedIn, Google+, etc.",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Social card for Facebook, LinkedIn, Google+, etc.",
+      "primary": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "image": {
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 1200,
+              "height": 650
+            },
+            "thumbnails": []
+          },
+          "type": "Image"
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "twitterCard",
+      "name": "Twitter card",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Social card for Twitter",
+      "primary": {
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          },
+          "type": "Text"
+        },
+        "image": {
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 600,
+              "height": 314
+            },
+            "thumbnails": [
+              {
+                "name": "small",
+                "width": 300,
+                "height": 300
+              }
+            ]
+          },
+          "type": "Image"
+        }
+      },
+      "items": {}
+    }
+  ]
+}

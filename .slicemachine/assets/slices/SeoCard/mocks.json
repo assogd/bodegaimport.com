@@ -1,0 +1,53 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "title": "climate",
+      "description": "stick",
+      "image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 650
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6"
+      }
+    },
+    "slice_type": "seo_card"
+  },
+  {
+    "variation": "twitterCard",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {}
+    ],
+    "primary": {
+      "title": "done",
+      "description": "rubbed",
+      "image": {
+        "dimensions": {
+          "width": 600,
+          "height": 314
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+        "small": {
+          "dimensions": {
+            "width": 300,
+            "height": 300
+          },
+          "alt": null,
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764"
+        }
+      }
+    },
+    "slice_type": "seo_card"
+  }
+]

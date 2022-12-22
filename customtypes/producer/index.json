@@ -19,9 +19,7 @@
         "config": {
           "label": "Region",
           "select": "document",
-          "customtypes": [
-            "origin"
-          ]
+          "customtypes": ["origin"]
         }
       },
       "uid": {
@@ -37,6 +35,33 @@
         "config": {
           "choices": {
             "card": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO": {
+      "seo_title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "seo_description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "seo_cards": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "seo_card": {
               "type": "SharedSlice"
             }
           }

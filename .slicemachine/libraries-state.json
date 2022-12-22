@@ -1218,6 +1218,156 @@
         },
         "screenshotPaths": {}
       },
+      "seo_card": {
+        "library": "slices",
+        "id": "seo_card",
+        "name": "SeoCard",
+        "description": "Social card for Facebook, Twitter, LinkedIn, Google+, etc.",
+        "model": {
+          "id": "seo_card",
+          "type": "SharedSlice",
+          "name": "SeoCard",
+          "description": "Social card for Facebook, Twitter, LinkedIn, Google+, etc.",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Social card for Facebook, LinkedIn, Google+, etc.",
+              "primary": {
+                "title": {
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "description": {
+                  "config": {
+                    "label": "Description",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "image": {
+                  "config": {
+                    "label": "Image",
+                    "constraint": {
+                      "width": 1200,
+                      "height": 650
+                    },
+                    "thumbnails": []
+                  },
+                  "type": "Image"
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            },
+            {
+              "id": "twitterCard",
+              "name": "Twitter card",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Social card for Twitter",
+              "primary": {
+                "title": {
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "description": {
+                  "config": {
+                    "label": "Description",
+                    "placeholder": ""
+                  },
+                  "type": "Text"
+                },
+                "image": {
+                  "config": {
+                    "label": "Image",
+                    "constraint": {
+                      "width": 600,
+                      "height": 314
+                    },
+                    "thumbnails": [
+                      {
+                        "name": "small",
+                        "width": 300,
+                        "height": 300
+                      }
+                    ]
+                  },
+                  "type": "Image"
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": "climate",
+              "description": "stick",
+              "image": {
+                "dimensions": {
+                  "width": 1200,
+                  "height": 650
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6"
+              }
+            },
+            "slice_type": "seo_card"
+          },
+          "twitterCard": {
+            "variation": "twitterCard",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "title": "done",
+              "description": "rubbed",
+              "image": {
+                "dimensions": {
+                  "width": 600,
+                  "height": 314
+                },
+                "alt": null,
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+                "small": {
+                  "dimensions": {
+                    "width": 300,
+                    "height": 300
+                  },
+                  "alt": null,
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764"
+                }
+              }
+            },
+            "slice_type": "seo_card"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "text": {
         "library": "slices",
         "id": "text",

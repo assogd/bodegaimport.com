@@ -17,9 +17,7 @@
         "config": {
           "label": "Producer",
           "select": "document",
-          "customtypes": [
-            "producer"
-          ]
+          "customtypes": ["producer"]
         }
       },
       "origin": {
@@ -39,9 +37,7 @@
               "config": {
                 "label": "Grape",
                 "select": "document",
-                "customtypes": [
-                  "grape"
-                ]
+                "customtypes": ["grape"]
               }
             },
             "density": {
@@ -94,11 +90,7 @@
               "config": {
                 "label": "Segment",
                 "placeholder": "",
-                "options": [
-                  "Restaurant",
-                  "Private consumer",
-                  "Both"
-                ],
+                "options": ["Restaurant", "Private consumer", "Both"],
                 "default_value": "Restaurant"
               }
             },
@@ -154,6 +146,33 @@
         "config": {
           "label": "UID",
           "placeholder": ""
+        }
+      }
+    },
+    "SEO": {
+      "seo_title": {
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "seo_description": {
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "seo_cards": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "seo_card": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

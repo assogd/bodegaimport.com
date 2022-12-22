@@ -20,6 +20,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { orderWines } from "../../lib/utils";
 import { WineColor } from "../../components/Card/helpers";
 
+import Meta from "../../components/Meta";
+
 const Anchor = ({ anchor, wines }) => {
   const { grape_composition, producer, title } = anchor;
 
@@ -123,6 +125,8 @@ const Vindex = ({ wines }) => {
 };
 
 const Page = ({ page, navigation, marquee, settings, wines }) => {
+  const { seo_cards, seo_description, seo_title } = page.data;
+
   const set = orderWines(
     page.data.slices,
     wines.filter((b) => b.data.producer.uid === page.uid)
@@ -140,12 +144,14 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       settings={settings}
       className={"pt-0"}
     >
-      <Head>
-        <title>
-          {prismicH.asText(settings.data.siteTitle)}:{" "}
-          {prismicH.asText(page.data.title)}
-        </title>
-      </Head>
+      <Meta
+        title={`${prismicH.asText(settings.data.siteTitle)}: ${
+          prismicH.asText(page.data.title) ?? seo_title
+        }`}
+        description={seo_description}
+        og={seo_cards?.find((c) => c.variation === "default")}
+        twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
+      />
       <Header
         placement={{ col: "center" }}
         className="sticky pt-[3.25em] lg:pt-5"

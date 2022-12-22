@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { SliceZone } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 
@@ -9,8 +8,11 @@ import { Layout } from "../components/Layout";
 import { Header, Observer } from "../components/Header/chunky";
 
 import Instagram from "../components/Instagram";
+import Meta from "../components/Meta";
 
 const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
+  const { seo_cards, seo_description, seo_title, slices } = page.data;
+
   return (
     <Layout
       navigation={navigation}
@@ -19,13 +21,16 @@ const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
       className=""
       logotype={{ alwaysCentered: true }}
     >
-      <Head>
-        <title>Bodega Import</title>
-      </Head>
+      <Meta
+        title={seo_title}
+        description={seo_description}
+        og={seo_cards?.find((c) => c.variation === "default")}
+        twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
+      />
       <div className="grid items-stretch gap-8 p-0 md:grid-cols-2 md:p-8">
         <Header />
         <SliceZone
-          slices={page.data.slices}
+          slices={slices}
           components={components}
           context={{ wines, articles }}
         />

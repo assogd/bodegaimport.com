@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Meta from "../components/Meta";
 import { SliceZone } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import * as prismic from "@prismicio/client";
@@ -32,6 +32,7 @@ const Page = ({
   articles,
   wines,
 }) => {
+  const { seo_cards, seo_description, seo_title } = page.data;
   const router = useRouter();
 
   const overlayCard =
@@ -68,12 +69,16 @@ const Page = ({
       className={clsx("sticky")}
       bg={isAboutPage && "bg-paleYellow"}
     >
-      <Head>
-        <title>
-          {prismicH.asText(settings.data.siteTitle)}:{" "}
-          {prismicH.asText(page.data.title)}
-        </title>
-      </Head>
+      {!isOverlayArticle && (
+        <Meta
+          title={`${prismicH.asText(settings.data.siteTitle)}: ${
+            prismicH.asText(page.data.title) ?? seo_title
+          }`}
+          description={seo_description}
+          og={seo_cards?.find((c) => c.variation === "default")}
+          twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
+        />
+      )}
       <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
         <Header
           placement={{ col: "center", row: "first" }}
@@ -94,7 +99,11 @@ const Page = ({
           />
         )}
         {isOverlayArticle && (
-          <OverlayArticle articles={articles} params={router.query} />
+          <OverlayArticle
+            articles={articles}
+            params={router.query}
+            settings={settings}
+          />
         )}
       </AnimatePresence>
     </Layout>

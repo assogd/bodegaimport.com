@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head";
 import {
   Title,
   Canonical,
@@ -6,14 +6,14 @@ import {
   Twitter,
   Favicon,
   OpenGraph,
-} from './render'
+} from "./render";
 
 import {
   APP_URL,
   APP_NAME,
   FALLBACK_OG_IMAGE,
   FALLBACK_DESCRIPTION,
-} from '../../lib/const'
+} from "../../lib/const";
 
 export default function Meta({
   title,
@@ -46,13 +46,13 @@ export default function Meta({
         title={og?.primary.title ?? title ?? APP_NAME}
         url={slug ? APP_URL + slug : APP_URL}
       />
-      <Favicon render={true} />
+      <Favicon render={false} />
     </>
-  )
+  );
 }
 
 const NoIndex = () => (
   <Head>
     <meta name="robots" content="noindex" />
   </Head>
-)
+);

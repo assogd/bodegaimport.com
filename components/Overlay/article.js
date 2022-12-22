@@ -6,13 +6,14 @@ import Article from "../Article";
 import Button from "../Button";
 import Related from "../Articles/related";
 
+import Meta from "../Meta";
 import clsx from "clsx";
 
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/router";
 
-export default function Overlay({ articles, params }) {
+export default function Overlay({ articles, params, settings }) {
   const [isFull, setFull] = useState(false);
 
   const { ref, inView, entry } = useInView({
@@ -32,6 +33,7 @@ export default function Overlay({ articles, params }) {
     );
 
   if (!article) return null;
+  const { seo_cards, seo_description, seo_title } = article.data;
 
   const related = articles
     .filter(
@@ -49,6 +51,14 @@ export default function Overlay({ articles, params }) {
 
   return (
     <Backdrop className="flex flex-col items-center" bg={"bg-white/20"}>
+      <Meta
+        title={`${prismicH.asText(settings.data.siteTitle)}: ${
+          prismicH.asText(article.data.title) ?? seo_title
+        }`}
+        description={seo_description}
+        og={seo_cards?.find((c) => c.variation === "default")}
+        twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
+      />
       <motion.div
         className={clsx(
           "transition-bg contain; relative w-full grow overflow-y-scroll overscroll-contain duration-1000",

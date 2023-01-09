@@ -76,7 +76,6 @@ const Resellers = ({ data, render = true }) => {
 
   const incomplete = data.findIndex((a) => a.price) === -1;
   if (!refinedData.length || incomplete || !render) return null;
-  console.log(refinedData);
 
   return (
     <Li>

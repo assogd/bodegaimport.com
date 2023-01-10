@@ -62,8 +62,8 @@ export const ListItem = ({ title, body, render = true }) =>
   );
 
 const Resellers = ({ data, render = true }) => {
-  if (!render) return null;
   const [preferences] = useAssoCookie();
+  if (!render) return null;
 
   const refinedData = data
     .filter(

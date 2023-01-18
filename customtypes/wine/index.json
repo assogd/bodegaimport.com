@@ -17,7 +17,9 @@
         "config": {
           "label": "Producer",
           "select": "document",
-          "customtypes": ["producer"]
+          "customtypes": [
+            "producer"
+          ]
         }
       },
       "origin": {
@@ -37,7 +39,9 @@
               "config": {
                 "label": "Grape",
                 "select": "document",
-                "customtypes": ["grape"]
+                "customtypes": [
+                  "grape"
+                ]
               }
             },
             "density": {
@@ -66,13 +70,6 @@
           "multi": "paragraph,em"
         }
       },
-      "hl_ha": {
-        "type": "Text",
-        "config": {
-          "label": "HL/HA",
-          "placeholder": ""
-        }
-      },
       "alcohol": {
         "type": "Text",
         "config": {
@@ -90,7 +87,11 @@
               "config": {
                 "label": "Segment",
                 "placeholder": "",
-                "options": ["Restaurant", "Private consumer", "Both"],
+                "options": [
+                  "Restaurant",
+                  "Private consumer",
+                  "Both"
+                ],
                 "default_value": "Restaurant"
               }
             },

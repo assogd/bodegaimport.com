@@ -1,7 +1,6 @@
 {
   "id": "mock-doc-id",
-  "uid": "easily",
-  "url": "/easily",
+  "url": null,
   "type": "wine",
   "href": null,
   "tags": [],
@@ -12,7 +11,7 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "youth",
+    "title": "teeth",
     "producer": {
       "id": "mock_document_id",
       "link_type": "Document",
@@ -23,7 +22,7 @@
       "first_publication_date": "1970-01-01T00:00:01+0000",
       "last_publication_date": "1970-01-01T01:00:00+0000"
     },
-    "origin": "wing",
+    "origin": "onto",
     "grape_composition": [
       {
         "grape": {
@@ -36,32 +35,34 @@
           "first_publication_date": "1970-01-01T00:00:01+0000",
           "last_publication_date": "1970-01-01T01:00:00+0000"
         },
-        "density": 70
+        "density": 32
       }
     ],
-    "soil": "develop",
+    "soil": "them",
     "method": [
       {
         "type": "paragraph",
-        "text": "Tempor duis elit ut fugiat do occaecat nulla.",
+        "text": "Eu sint veniam nisi fugiat. Ad nulla eiusmod ut anim aute mollit dolor ut et eu esse nisi occaecat excepteur.",
         "spans": []
       }
     ],
-    "hl_ha": "establish",
-    "alcohol": "another",
+    "alcohol": "happen",
     "resellers": [
       {
-        "segment": "Private consumer",
-        "reseller": "climate",
-        "art_no": "stretch",
+        "segment": "Restaurant",
+        "reseller": "model",
+        "art_no": "spread",
         "link": {
           "link_type": "Web",
           "url": "https://www.systembolaget.se"
         },
-        "quantity": 39,
-        "volume": 30,
-        "price": 5
+        "quantity": 76,
+        "volume": 12,
+        "price": 35
       }
-    ]
+    ],
+    "seo_title": "tie",
+    "seo_description": "fun",
+    "seo_cards": []
   }
 }

@@ -64,12 +64,50 @@ interface ArticleDocumentData {
      *
      */
     slices: prismicT.SliceZone<ArticleDocumentDataSlicesSlice>;
+    /**
+     * Title field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.seo_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * Description field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.seo_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Article*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.seo_cards[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    seo_cards: prismicT.SliceZone<ArticleDocumentDataSeoCardsSlice>;
 }
 /**
  * Slice for *Article → Slice Zone*
  *
  */
 type ArticleDocumentDataSlicesSlice = ImageSlice | TextSlice;
+/**
+ * Slice for *Article → Slice Zone*
+ *
+ */
+type ArticleDocumentDataSeoCardsSlice = SeoCardSlice;
 /**
  * Article document from Prismic
  *
@@ -264,12 +302,50 @@ interface PageDocumentData {
      *
      */
     slices: prismicT.SliceZone<PageDocumentDataSlicesSlice>;
+    /**
+     * Title field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.seo_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * Description field in *Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.seo_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Page*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.seo_cards[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    seo_cards: prismicT.SliceZone<PageDocumentDataSeoCardsSlice>;
 }
 /**
  * Slice for *Page → Slice Zone*
  *
  */
 type PageDocumentDataSlicesSlice = TextSlice | ImageSlice | CardsSlice | CardSlice;
+/**
+ * Slice for *Page → Slice Zone*
+ *
+ */
+type PageDocumentDataSeoCardsSlice = SeoCardSlice;
 /**
  * Page document from Prismic
  *
@@ -315,12 +391,50 @@ interface ProducerDocumentData {
      *
      */
     slices: prismicT.SliceZone<ProducerDocumentDataSlicesSlice>;
+    /**
+     * Title field in *Producer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: producer.seo_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * Description field in *Producer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: producer.seo_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Producer*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: producer.seo_cards[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    seo_cards: prismicT.SliceZone<ProducerDocumentDataSeoCardsSlice>;
 }
 /**
  * Slice for *Producer → Slice Zone*
  *
  */
 type ProducerDocumentDataSlicesSlice = CardSlice;
+/**
+ * Slice for *Producer → Slice Zone*
+ *
+ */
+type ProducerDocumentDataSeoCardsSlice = SeoCardSlice;
 /**
  * Producer document from Prismic
  *
@@ -424,17 +538,6 @@ interface WineDocumentData {
      */
     method: prismicT.RichTextField;
     /**
-     * HL/HA field in *Wine*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: wine.hl_ha
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    hl_ha: prismicT.KeyTextField;
-    /**
      * Alcohol field in *Wine*
      *
      * - **Field Type**: Text
@@ -456,6 +559,39 @@ interface WineDocumentData {
      *
      */
     resellers: prismicT.GroupField<Simplify<WineDocumentDataResellersItem>>;
+    /**
+     * Title field in *Wine*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: wine.seo_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_title: prismicT.KeyTextField;
+    /**
+     * Description field in *Wine*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: wine.seo_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    seo_description: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Wine*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: wine.seo_cards[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    seo_cards: prismicT.SliceZone<WineDocumentDataSeoCardsSlice>;
 }
 /**
  * Item in Wine → Grape Composition
@@ -560,6 +696,11 @@ export interface WineDocumentDataResellersItem {
      */
     price: prismicT.NumberField;
 }
+/**
+ * Slice for *Wine → Slice Zone*
+ *
+ */
+type WineDocumentDataSeoCardsSlice = SeoCardSlice;
 /**
  * Wine document from Prismic
  *
@@ -1257,6 +1398,110 @@ type RegionSliceVariation = RegionSliceDefault;
  */
 export type RegionSlice = prismicT.SharedSlice<"region", RegionSliceVariation>;
 /**
+ * Primary content in SeoCard → Primary
+ *
+ */
+interface SeoCardSliceDefaultPrimary {
+    /**
+     * Title field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Image field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for SeoCard Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Social card for Facebook, LinkedIn, Google+, etc.`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SeoCardSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<SeoCardSliceDefaultPrimary>, never>;
+/**
+ * Primary content in SeoCard → Primary
+ *
+ */
+interface SeoCardSliceTwitterCardPrimary {
+    /**
+     * Title field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Image field in *SeoCard → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo_card.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<"small">;
+}
+/**
+ * Twitter card variation for SeoCard Slice
+ *
+ * - **API ID**: `twitterCard`
+ * - **Description**: `Social card for Twitter`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SeoCardSliceTwitterCard = prismicT.SharedSliceVariation<"twitterCard", Simplify<SeoCardSliceTwitterCardPrimary>, never>;
+/**
+ * Slice variation for *SeoCard*
+ *
+ */
+type SeoCardSliceVariation = SeoCardSliceDefault | SeoCardSliceTwitterCard;
+/**
+ * SeoCard Shared Slice
+ *
+ * - **API ID**: `seo_card`
+ * - **Description**: `Social card for Facebook, Twitter, LinkedIn, Google+, etc.`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SeoCardSlice = prismicT.SharedSlice<"seo_card", SeoCardSliceVariation>;
+/**
  * Primary content in Text → Primary
  *
  */
@@ -1281,31 +1526,6 @@ interface TextSliceDefaultPrimary {
  *
  */
 export type TextSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TextSliceDefaultPrimary>, never>;
-/**
- * Primary content in Text → Primary
- *
- */
-interface TextSliceTwoColumnsPrimary {
-    /**
-     * Text field in *Text → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: text.primary.text
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    text: prismicT.RichTextField;
-}
-/**
- * Two Columns variation for Text Slice
- *
- * - **API ID**: `twoColumns`
- * - **Description**: `Text`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type TextSliceTwoColumns = prismicT.SharedSliceVariation<"twoColumns", Simplify<TextSliceTwoColumnsPrimary>, never>;
 /**
  * Primary content in Text → Primary
  *
@@ -1426,7 +1646,7 @@ export type TextSliceIntroduction = prismicT.SharedSliceVariation<"introduction"
  * Slice variation for *Text*
  *
  */
-type TextSliceVariation = TextSliceDefault | TextSliceTwoColumns | TextSliceMono | TextSliceBlock | TextSliceIntroduction;
+type TextSliceVariation = TextSliceDefault | TextSliceMono | TextSliceBlock | TextSliceIntroduction;
 /**
  * Text Shared Slice
  *
@@ -1545,6 +1765,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, GrapeDocumentData, GrapeDocument, MarqueeDocumentData, MarqueeDocumentDataMessagesItem, MarqueeDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, OriginDocumentData, OriginDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProducerDocumentData, ProducerDocumentDataSlicesSlice, ProducerDocument, SettingsDocumentData, SettingsDocument, WineDocumentData, WineDocumentDataGrapeCompositionItem, WineDocumentDataResellersItem, WineDocument, AllDocumentTypes, CardSliceDefaultPrimary, CardSliceDefault, CardSliceImagePrimary, CardSliceImage, CardSliceWinePrimary, CardSliceWine, CardSliceImageWithInternalLinkPrimary, CardSliceImageWithInternalLink, CardSliceVariation, CardSlice, CardsSliceDefaultPrimary, CardsSliceDefault, CardsSliceContactPrimary, CardsSliceContactItem, CardsSliceContact, CardsSliceWinesPrimary, CardsSliceWinesItem, CardsSliceWines, CardsSliceArticlesPrimary, CardsSliceArticlesItem, CardsSliceArticles, CardsSliceLatestNewsPrimary, CardsSliceLatestNews, CardsSliceVariation, CardsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceLandscapePrimary, ImageSliceLandscape, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, RegionSliceDefaultPrimary, RegionSliceDefaultItem, RegionSliceDefault, RegionSliceVariation, RegionSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceTwoColumnsPrimary, TextSliceTwoColumns, TextSliceMonoPrimary, TextSliceMono, TextSliceBlockPrimary, TextSliceBlock, TextSliceIntroductionPrimary, TextSliceIntroduction, TextSliceVariation, TextSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocumentDataSeoCardsSlice, ArticleDocument, GrapeDocumentData, GrapeDocument, MarqueeDocumentData, MarqueeDocumentDataMessagesItem, MarqueeDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, OriginDocumentData, OriginDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocumentDataSeoCardsSlice, PageDocument, ProducerDocumentData, ProducerDocumentDataSlicesSlice, ProducerDocumentDataSeoCardsSlice, ProducerDocument, SettingsDocumentData, SettingsDocument, WineDocumentData, WineDocumentDataGrapeCompositionItem, WineDocumentDataResellersItem, WineDocumentDataSeoCardsSlice, WineDocument, AllDocumentTypes, CardSliceDefaultPrimary, CardSliceDefault, CardSliceImagePrimary, CardSliceImage, CardSliceWinePrimary, CardSliceWine, CardSliceImageWithInternalLinkPrimary, CardSliceImageWithInternalLink, CardSliceVariation, CardSlice, CardsSliceDefaultPrimary, CardsSliceDefault, CardsSliceContactPrimary, CardsSliceContactItem, CardsSliceContact, CardsSliceWinesPrimary, CardsSliceWinesItem, CardsSliceWines, CardsSliceArticlesPrimary, CardsSliceArticlesItem, CardsSliceArticles, CardsSliceLatestNewsPrimary, CardsSliceLatestNews, CardsSliceVariation, CardsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceLandscapePrimary, ImageSliceLandscape, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, RegionSliceDefaultPrimary, RegionSliceDefaultItem, RegionSliceDefault, RegionSliceVariation, RegionSlice, SeoCardSliceDefaultPrimary, SeoCardSliceDefault, SeoCardSliceTwitterCardPrimary, SeoCardSliceTwitterCard, SeoCardSliceVariation, SeoCardSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceMonoPrimary, TextSliceMono, TextSliceBlockPrimary, TextSliceBlock, TextSliceIntroductionPrimary, TextSliceIntroduction, TextSliceVariation, TextSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
     }
 }

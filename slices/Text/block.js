@@ -18,7 +18,7 @@ export default function Block({ children, data }) {
       <h5>
         <PrismicRichText field={heading} />
       </h5>
-      <div className="text-lg sm:text-xl">{children}</div>
+      <div className="mx-auto max-w-5xl text-lg lg:text-[2vw]">{children}</div>
       <div>
         <Link href={button_link.url}>
           <a>

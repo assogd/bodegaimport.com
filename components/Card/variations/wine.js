@@ -25,14 +25,18 @@ export const Producer = ({ producer }) => (
 );
 
 export const Grapes = ({ grapes }) => {
-  const body = grapes
-    .map(
-      (grape) =>
-        `${Math.round((grape.density / compSum(grapes)) * 100)}% ${
-          grape.grape.data.title
-        }`
-    )
-    .join(", ");
+  const body =
+    grapes.length === 1
+      ? grapes[0].grape.data.title
+      : grapes
+          .map((grape) =>
+            grape?.density
+              ? `${Math.round((grape.density / compSum(grapes)) * 100)}% ${
+                  grape.grape.data.title
+                }`
+              : grape.grape.data.title
+          )
+          .join(", ");
 
   return (
     <Li>

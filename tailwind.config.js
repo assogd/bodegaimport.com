@@ -90,7 +90,7 @@ module.exports = {
         pinotNoir: "#e87c70",
         riesling: "#FEFFC8",
         sangiovese: "#de7062",
-        sauvignonBlanc: "#feffb2",
+        sauvignonBlanc: "#FFFBDB",
         sousóN: "#d16565",
         sylvaner: "#FFF2D0",
         vermentino: "#FEFFC8",

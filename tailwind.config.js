@@ -117,4 +117,7 @@ module.exports = {
       pattern: /^opacity-./,
     },
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

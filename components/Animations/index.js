@@ -31,7 +31,7 @@ export const LoadingAssetAnimation = ({ className, children, loaded }) => {
   return (
     <div
       className={clsx(
-        "h-full duration-500",
+        "h-full duration-100",
         loaded ? "opacity-1" : "opacity-0",
         className
       )}

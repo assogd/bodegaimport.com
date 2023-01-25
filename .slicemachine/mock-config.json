@@ -178,6 +178,17 @@
       },
       "imageWithInternalLink": {
         "primary": {}
+      },
+      "multipleImages": {
+        "items": {
+          "caption": {
+            "config": {
+              "patternType": "PARAGRAPH",
+              "blocks": 1
+            }
+          }
+        },
+        "primary": {}
       }
     },
     "Bottle": {},

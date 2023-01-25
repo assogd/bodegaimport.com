@@ -843,10 +843,45 @@ interface CardSliceImageWithInternalLinkPrimary {
  */
 export type CardSliceImageWithInternalLink = prismicT.SharedSliceVariation<"imageWithInternalLink", Simplify<CardSliceImageWithInternalLinkPrimary>, never>;
 /**
+ * Item in Card → Items
+ *
+ */
+export interface CardSliceMultipleImagesItem {
+    /**
+     * File field in *Card → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: card.items[].file
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    file: prismicT.ImageField<"portrait_lg" | "portrait_md" | "portrait_sm" | "landscape_lg">;
+    /**
+     * Caption field in *Card → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: card.items[].caption
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    caption: prismicT.RichTextField;
+}
+/**
+ * Multiple Images variation for Card Slice
+ *
+ * - **API ID**: `multipleImages`
+ * - **Description**: `Card`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CardSliceMultipleImages = prismicT.SharedSliceVariation<"multipleImages", Record<string, never>, Simplify<CardSliceMultipleImagesItem>>;
+/**
  * Slice variation for *Card*
  *
  */
-type CardSliceVariation = CardSliceDefault | CardSliceImage | CardSliceWine | CardSliceImageWithInternalLink;
+type CardSliceVariation = CardSliceDefault | CardSliceImage | CardSliceWine | CardSliceImageWithInternalLink | CardSliceMultipleImages;
 /**
  * Card Shared Slice
  *
@@ -1765,6 +1800,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocumentDataSeoCardsSlice, ArticleDocument, GrapeDocumentData, GrapeDocument, MarqueeDocumentData, MarqueeDocumentDataMessagesItem, MarqueeDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, OriginDocumentData, OriginDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocumentDataSeoCardsSlice, PageDocument, ProducerDocumentData, ProducerDocumentDataSlicesSlice, ProducerDocumentDataSeoCardsSlice, ProducerDocument, SettingsDocumentData, SettingsDocument, WineDocumentData, WineDocumentDataGrapeCompositionItem, WineDocumentDataResellersItem, WineDocumentDataSeoCardsSlice, WineDocument, AllDocumentTypes, CardSliceDefaultPrimary, CardSliceDefault, CardSliceImagePrimary, CardSliceImage, CardSliceWinePrimary, CardSliceWine, CardSliceImageWithInternalLinkPrimary, CardSliceImageWithInternalLink, CardSliceVariation, CardSlice, CardsSliceDefaultPrimary, CardsSliceDefault, CardsSliceContactPrimary, CardsSliceContactItem, CardsSliceContact, CardsSliceWinesPrimary, CardsSliceWinesItem, CardsSliceWines, CardsSliceArticlesPrimary, CardsSliceArticlesItem, CardsSliceArticles, CardsSliceLatestNewsPrimary, CardsSliceLatestNews, CardsSliceVariation, CardsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceLandscapePrimary, ImageSliceLandscape, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, RegionSliceDefaultPrimary, RegionSliceDefaultItem, RegionSliceDefault, RegionSliceVariation, RegionSlice, SeoCardSliceDefaultPrimary, SeoCardSliceDefault, SeoCardSliceTwitterCardPrimary, SeoCardSliceTwitterCard, SeoCardSliceVariation, SeoCardSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceMonoPrimary, TextSliceMono, TextSliceBlockPrimary, TextSliceBlock, TextSliceIntroductionPrimary, TextSliceIntroduction, TextSliceVariation, TextSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocumentDataSeoCardsSlice, ArticleDocument, GrapeDocumentData, GrapeDocument, MarqueeDocumentData, MarqueeDocumentDataMessagesItem, MarqueeDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, OriginDocumentData, OriginDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocumentDataSeoCardsSlice, PageDocument, ProducerDocumentData, ProducerDocumentDataSlicesSlice, ProducerDocumentDataSeoCardsSlice, ProducerDocument, SettingsDocumentData, SettingsDocument, WineDocumentData, WineDocumentDataGrapeCompositionItem, WineDocumentDataResellersItem, WineDocumentDataSeoCardsSlice, WineDocument, AllDocumentTypes, CardSliceDefaultPrimary, CardSliceDefault, CardSliceImagePrimary, CardSliceImage, CardSliceWinePrimary, CardSliceWine, CardSliceImageWithInternalLinkPrimary, CardSliceImageWithInternalLink, CardSliceMultipleImagesItem, CardSliceMultipleImages, CardSliceVariation, CardSlice, CardsSliceDefaultPrimary, CardsSliceDefault, CardsSliceContactPrimary, CardsSliceContactItem, CardsSliceContact, CardsSliceWinesPrimary, CardsSliceWinesItem, CardsSliceWines, CardsSliceArticlesPrimary, CardsSliceArticlesItem, CardsSliceArticles, CardsSliceLatestNewsPrimary, CardsSliceLatestNews, CardsSliceVariation, CardsSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceLandscapePrimary, ImageSliceLandscape, ImageSliceVariation, ImageSlice, ImageCardsSliceDefaultPrimary, ImageCardsSliceDefaultItem, ImageCardsSliceDefault, ImageCardsSliceVariation, ImageCardsSlice, RegionSliceDefaultPrimary, RegionSliceDefaultItem, RegionSliceDefault, RegionSliceVariation, RegionSlice, SeoCardSliceDefaultPrimary, SeoCardSliceDefault, SeoCardSliceTwitterCardPrimary, SeoCardSliceTwitterCard, SeoCardSliceVariation, SeoCardSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceMonoPrimary, TextSliceMono, TextSliceBlockPrimary, TextSliceBlock, TextSliceIntroductionPrimary, TextSliceIntroduction, TextSliceVariation, TextSlice, TextWithImageSliceDefaultPrimary, TextWithImageSliceDefault, TextWithImageSliceWithButtonPrimary, TextWithImageSliceWithButton, TextWithImageSliceVariation, TextWithImageSlice };
     }
 }

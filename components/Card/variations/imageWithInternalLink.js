@@ -18,8 +18,6 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
   const { asPath } = useRouter();
   const isHome = asPath === "/";
 
-  console.log(isHome);
-
   const containerClasses = clsx(
     size === "sm" ? "absolute inset-0" : "sticky top-8",
     isHome && "px-2 md:px-0"

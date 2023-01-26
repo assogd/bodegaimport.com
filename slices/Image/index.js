@@ -12,8 +12,9 @@ const Image = ({ slice, index }) => {
   const [loaded, setLoaded] = useState(false);
   if (!slice?.primary) return null;
   const { image, caption } = slice.primary;
-  const { query } = useRouter();
+  const { query, asPath } = useRouter();
   const isLandscape = slice.variation === "landscape";
+  const isHome = asPath === "/";
 
   return (
     <figure
@@ -24,7 +25,8 @@ const Image = ({ slice, index }) => {
         isLandscape &&
           query.aid &&
           "sm:mx-[-4em] sm:rounded-md sm:bg-white sm:p-4",
-        !isLandscape && query.aid && "mx-12 sm:mx-36"
+        !isLandscape && query.aid && "mx-12 sm:mx-36",
+        isHome && "mx-2 md:mx-0"
       )}
     >
       <LoadingAssetAnimation loaded={loaded}>

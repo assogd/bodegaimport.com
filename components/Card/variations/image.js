@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useMemo } from "react";
 import Button from "../../Button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useState } from "react";
 import { LoadingAssetAnimation } from "../../Animations";
@@ -33,9 +34,13 @@ const Image = ({ data, size, i, params, aboveFold }) => {
   const { file, caption } = data.primary;
   const [loaded, setLoaded] = useState(false);
 
+  const { asPath } = useRouter();
+  const isHome = asPath === "/";
+
   const containerClasses = clsx(
     "overflow-hidden rounded",
-    size === "sm" ? "absolute inset-0" : "absolute inset-0 sm:sticky sm:top-14"
+    size === "sm" ? "absolute inset-0" : "absolute inset-0 sm:sticky sm:top-14",
+    isHome && "px-2 md:px-0"
   );
 
   return (

@@ -16,7 +16,7 @@ export const Container = ({ children, slice }) => {
           </div>
         )}
       </header>
-      <div className="mx-auto mt-4 grid max-w-5xl justify-center gap-4 p-4 sm:grid-cols-3 sm:px-[5%]">
+      <div className="mx-auto mt-4 flex max-w-5xl flex-wrap justify-center gap-4 p-4 sm:grid-cols-3 sm:px-[5%]">
         {children}
       </div>
     </section>
@@ -28,7 +28,7 @@ export const Card = ({ data }) => {
   const { district, email, name, phone, picture } = data;
 
   return (
-    <div className="contact card grid max-w-xs gap-6 rounded-md bg-paleYellow p-4 text-center">
+    <div className="contact card grid max-w-xs shrink grow basis-72 gap-6 rounded-md bg-paleYellow p-4 text-center">
       <LoadingAssetAnimation loaded={loaded}>
         <Image
           src={picture.url}

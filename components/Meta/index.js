@@ -46,7 +46,7 @@ export default function Meta({
         title={og?.primary.title ?? title ?? APP_NAME}
         url={slug ? APP_URL + slug : APP_URL}
       />
-      <Favicon render={false} />
+      <Favicon render={true} />
     </>
   );
 }

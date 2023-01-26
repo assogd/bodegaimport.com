@@ -40,7 +40,7 @@ export default function Header({ settings }) {
 
   return (
     <StickyHeader
-      className={clsx("sticky pt-4 lg:fixed", header2Classes)}
+      className={clsx("sticky pt-4 pb-1 lg:fixed", header2Classes)}
       placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
       hide={asPath === "/" && hideOnScroll}
       animate={"translate-y-[-200%]"}

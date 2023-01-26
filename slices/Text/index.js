@@ -19,7 +19,7 @@ const Text = ({ slice }) => {
     return (
       <section
         className={clsx(
-          "introduction hyphens col-span-full mx-auto max-w-4xl px-4 text-center",
+          "introduction hyphens col-span-full mx-auto max-w-4xl px-0 text-center",
           !query.aid && "py-12 pt-12 sm:pt-20",
           query.aid && "mono-base font-mono"
         )}

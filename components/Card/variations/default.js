@@ -27,7 +27,7 @@ const Default = ({ data, size, params, href }) => {
         )}
       </Header>
       <PrismicRichText field={data.primary.body} />
-      <Gradient />
+      {size === "sm" && <Gradient />}
     </Container>
   );
 };

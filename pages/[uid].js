@@ -66,7 +66,7 @@ const Page = ({
       settings={settings}
       disableScroll={isOverlayCard || isOverlayArticle}
       logotype={{ alwaysCentered: false }}
-      className={clsx("sticky")}
+      className={clsx("")}
       bg={isAboutPage && "bg-paleYellow"}
     >
       {!isOverlayArticle && (

@@ -122,7 +122,7 @@ const Expand = ({ children, onTap }) => {
           alt={"Photo library"}
           width="24"
           height="24"
-          className="translate-y-[-0em] translate-x-[-.5em]"
+          className="ml-[-.5em] mr-[.25em]"
           size="sm"
         />
         {children}

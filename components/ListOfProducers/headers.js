@@ -12,7 +12,7 @@ export const Region = ({ children, item, view }) => {
   return (
     <section
       key={item.slug}
-      className={clsx("region mb-12", view === "rows" ? "mb-4" : "mb-12")}
+      className={clsx("region mb-12", view === "rows" ? "mb-4" : "mb-8")}
     >
       <Header
         className={clsx(

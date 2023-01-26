@@ -45,6 +45,10 @@ module.exports = {
         source: "/nyheter/:date/:aid",
         destination: "/nyheter",
       },
+      {
+        source: "/hem",
+        destination: "/",
+      },
     ];
   },
   i18n: {

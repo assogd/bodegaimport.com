@@ -21,6 +21,8 @@ export const Collapsible = ({ links, itemsToShow }) => {
   const buttonClasses =
     "shadow-easeTop absolute inset-x-0 bottom-4 flex w-full justify-center bg-white pb-8 font-mono uppercase";
 
+  console.log(links);
+
   return (
     <nav className={navClasses}>
       <div className="mb-2 flex items-center rounded-lg bg-neutral-100/70 px-4 shadow-glow backdrop-blur">

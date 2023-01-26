@@ -60,8 +60,8 @@ export default function Footer() {
     <>
       <footer className="overflow-hidden bg-toddTerje" ref={ref}>
         <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: inView ? 0 : 100 }}
+          initial={{ y: 20 }}
+          animate={{ y: inView ? 0 : 20 }}
           transition={{ type: "tween", duration: 0.5 }}
           className="grid gap-4 p-8 text-center"
         >

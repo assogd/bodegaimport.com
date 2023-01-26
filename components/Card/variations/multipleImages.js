@@ -15,10 +15,12 @@ import Backdrop from "../../Backdrop";
 
 const Caption = ({ data }) => {
   if (!data.length) return null;
-  console.log(data.length);
+
   return (
-    <figcaption className="absolute left-0 bottom-0 rounded-md p-4 font-mono text-sm text-white">
-      <PrismicRichText field={data} />
+    <figcaption className="absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/40 p-4 text-center font-mono text-sm text-white">
+      <div className="mx-auto max-w-4xl">
+        <PrismicRichText field={data} />
+      </div>
     </figcaption>
   );
 };
@@ -136,6 +138,8 @@ const Slideshow = ({ items, render, close }) => {
     onSwipedLeft: (eventData) =>
       inView + 1 !== items.length && setInView(inView + 1),
     onSwipedRight: (eventData) => inView > 0 && setInView(inView - 1),
+    onSwipedUp: close,
+    onSwipedDown: close,
     preventScrollOnSwipe: true,
   });
 

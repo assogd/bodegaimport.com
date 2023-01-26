@@ -15,11 +15,11 @@ export const Collapsible = ({ links, itemsToShow }) => {
     "sticky inset-x-0 bottom-[2.7em] z-20 flex justify-center select-none bg-gradient-to-t from-black/10 mt-16";
 
   const ulClasses = clsx(
-    "absolute bottom-0 inset-x-0 text-center mx-auto justify-center gap-4 rounded-t-md overscroll-contain bg-white pb-20 pt-4 max-h-full overflow-y-scroll"
+    "absolute bottom-0 inset-x-0 text-center mx-auto justify-center gap-4 rounded-t-md overscroll-contain bg-white pb-24 pt-4 max-h-full overflow-y-scroll"
   );
 
   const buttonClasses =
-    "shadow-easeTop absolute inset-x-0 bottom-0 flex w-full justify-center bg-white pb-8 font-mono uppercase";
+    "shadow-easeTop absolute inset-x-0 bottom-4 flex w-full justify-center bg-white pb-8 font-mono uppercase";
 
   return (
     <nav className={navClasses}>

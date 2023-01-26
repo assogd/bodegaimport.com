@@ -9,7 +9,19 @@ import Button from "../../Button";
 import { useSwipeable } from "react-swipeable";
 import { useHotkeys } from "react-hotkeys-hook";
 
+import { PrismicRichText } from "@prismicio/react";
+
 import Backdrop from "../../Backdrop";
+
+const Caption = ({ data }) => {
+  if (!data.length) return null;
+  console.log(data.length);
+  return (
+    <figcaption className="absolute left-0 bottom-0 rounded-md p-4 font-mono text-sm text-white">
+      <PrismicRichText field={data} />
+    </figcaption>
+  );
+};
 
 const Asset = ({ data, priority, inView, dir }) => {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +54,7 @@ const Asset = ({ data, priority, inView, dir }) => {
           onLoadingComplete={(e) => setLoaded(true)}
         />
       </LoadingAssetAnimation>
+      <Caption data={data.caption} />
     </motion.figure>
   );
 };
@@ -64,7 +77,7 @@ const Control = ({ onTap, disabled, className, children }) => {
           size="sm"
           className={clsx(
             "h-12 w-12 rounded-full text-[2em]",
-            disabled ? "" : "bg-white/5"
+            disabled ? "" : "bg-black/20"
           )}
           whileHover={{ scale: 1.1 }}
           disabled={disabled}
@@ -79,7 +92,7 @@ const Control = ({ onTap, disabled, className, children }) => {
 const Dots = ({ children }) => {
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex max-w-full justify-center bg-gradient-to-t from-black/40 p-6`}
+      className={`absolute inset-x-0 top-0 flex max-w-full justify-start bg-gradient-to-b from-black/40 p-6 pr-24 sm:justify-center sm:pr-6`}
     >
       {children}
     </div>
@@ -147,7 +160,7 @@ const Slideshow = ({ items, render, close }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {items.map((item, i) => (
                 <Asset
                   key={i}
@@ -175,7 +188,7 @@ const Slideshow = ({ items, render, close }) => {
             <Button
               onTap={close}
               size="md"
-              className="absolute right-0 m-4 bg-white/5 font-mono text-[2em] text-white"
+              className="absolute right-0 m-4 bg-black/20 font-mono text-[2em] text-white"
               whileHover={{ scale: 1.1 }}
             >
               <span className="translate-y-[.05em]">Stäng</span>

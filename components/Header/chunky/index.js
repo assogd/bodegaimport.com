@@ -14,7 +14,7 @@ export function Header() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
           className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none md:relative md:inset-0 md:h-full"
         >
           <div className="sticky top-[50%] max-h-screen translate-y-[-12%] md:translate-y-[-50%]">

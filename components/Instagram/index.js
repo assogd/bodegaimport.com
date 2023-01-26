@@ -103,7 +103,7 @@ const Entry = ({ entry, state, i }) => {
             autoPlay
             width="500"
             height="500"
-            className="absolute inset-0 object-cover"
+            className="absolute inset-0 h-full object-cover"
           >
             <source src={media_url} type={"video/mp4"} />
           </video>
@@ -112,7 +112,7 @@ const Entry = ({ entry, state, i }) => {
             src={media_url}
             width="500"
             height="500"
-            className="absolute inset-0 object-cover"
+            className="absolute inset-0 h-full object-cover"
             alt={caption}
           />
         )}

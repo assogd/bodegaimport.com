@@ -94,7 +94,7 @@ const Control = ({ onTap, disabled, className, children }) => {
 const Dots = ({ children }) => {
   return (
     <div
-      className={`absolute inset-x-0 top-0 flex max-w-full justify-start bg-gradient-to-b from-black/20 p-6 pr-24 sm:justify-center sm:pr-6`}
+      className={`absolute inset-x-0 top-0 flex max-w-full justify-start bg-gradient-to-b from-black/20 py-6 pl-6 pr-24 sm:justify-center sm:pl-24`}
     >
       {children}
     </div>
@@ -189,6 +189,11 @@ const Slideshow = ({ items, render, close }) => {
             >
               &gt;
             </Control>
+            <Dots>
+              {items.map((dot, i) => (
+                <Dot key={i} onTap={() => setInView(i)} active={i === inView} />
+              ))}
+            </Dots>
             <Button
               onTap={close}
               size="md"
@@ -197,11 +202,6 @@ const Slideshow = ({ items, render, close }) => {
             >
               <span className="translate-y-[.05em]">Stäng</span>
             </Button>
-            <Dots>
-              {items.map((dot, i) => (
-                <Dot key={i} onTap={() => setInView(i)} active={i === inView} />
-              ))}
-            </Dots>
           </motion.section>
         </Backdrop>
       )}

@@ -91,7 +91,7 @@ export const Producer = ({ children, producer, view }) => {
     >
       <Header
         placement={{ col: "center" }}
-        className="sticky pb-8 pt-11"
+        className="sticky pb-8 pt-12"
         animate={"translate-y-[-2.25em] lg:translate-y-0"}
       >
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-baseline">

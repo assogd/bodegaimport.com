@@ -28,9 +28,9 @@ export const Header = ({ children }) => (
 
 export const Gradient = () => {
   return (
-    <div className="absolute inset-x-0 bottom-0 ">
+    <div className="absolute inset-x-0 bottom-0 rounded-md">
       <div className="h-12 rounded-md bg-gradient-to-t from-white" />
-      <div className="h-4 bg-white" />
+      <div className="h-4 rounded-md bg-white" />
     </div>
   );
 };

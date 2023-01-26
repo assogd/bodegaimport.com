@@ -86,7 +86,8 @@ const Close = ({ setOpen }) => (
   </motion.div>
 );
 
-const Vindex = ({ wines }) => {
+const Vindex = ({ wines, render }) => {
+  if (!render) return null;
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -161,7 +162,7 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
           {prismicH.asText(page.data.title)}
         </Heading>
       </Header>
-      <Vindex wines={vindex} />
+      <Vindex wines={vindex} render={false} />
       <section
         className={clsx(
           "relative grid max-w-screen-xl items-stretch lg:grid-cols-2",

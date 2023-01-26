@@ -17,7 +17,7 @@ const Caption = ({ data }) => {
   if (!data.length) return null;
 
   return (
-    <figcaption className="absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/40 p-4 text-center font-mono text-sm text-white">
+    <figcaption className="absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/20 p-4 text-center font-mono text-sm text-white">
       <div className="mx-auto max-w-4xl">
         <PrismicRichText field={data} />
       </div>
@@ -94,7 +94,7 @@ const Control = ({ onTap, disabled, className, children }) => {
 const Dots = ({ children }) => {
   return (
     <div
-      className={`absolute inset-x-0 top-0 flex max-w-full justify-start bg-gradient-to-b from-black/40 p-6 pr-24 sm:justify-center sm:pr-6`}
+      className={`absolute inset-x-0 top-0 flex max-w-full justify-start bg-gradient-to-b from-black/20 p-6 pr-24 sm:justify-center sm:pr-6`}
     >
       {children}
     </div>

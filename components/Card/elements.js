@@ -5,7 +5,7 @@ export const Container = ({ children, size, className }) => (
   <div
     className={clsx(
       "hyphens",
-      size != "sm" && "relative min-h-full p-8 pb-10",
+      size != "sm" && "relative min-h-full p-6 pb-10 sm:p-8",
       size === "sm" && "absolute inset-0 p-6 pb-8",
       className
     )}

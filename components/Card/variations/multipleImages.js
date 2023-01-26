@@ -6,29 +6,38 @@ import Image from "next/future/image";
 import { LoadingAssetAnimation } from "../../Animations";
 import Button from "../../Button";
 
-import Backdrop from "../Backdrop";
+import { useSwipeable } from "react-swipeable";
+import { useHotkeys } from "react-hotkeys-hook";
 
-const Asset = ({ data, size, priority }) => {
+import Backdrop from "../../Backdrop";
+
+const Asset = ({ data, priority, inView, dir }) => {
   const [loaded, setLoaded] = useState(false);
-  const { file, caption } = data;
+  const ratio = data.file.dimensions.width / data.file.dimensions.height;
+  const isPortrait = data.file.dimensions.width < data.file.dimensions.height;
+  const { url, dimensions, alt } = isPortrait
+    ? data.file.portrait_lg
+    : data.file.landscape_lg;
 
   return (
     <motion.figure
-      key={file.url}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      key={url}
+      initial={{ opacity: 0, x: priority || inView ? 0 : "100%" }}
+      animate={{
+        opacity: 1,
+        x: inView ? 0 : dir,
+      }}
       exit={{ opacity: 0 }}
+      className="absolute inset-0"
+      transition={{ type: "tween" }}
     >
-      <LoadingAssetAnimation loaded={true} duration={100}>
+      <LoadingAssetAnimation loaded={loaded} duration={100}>
         <Image
-          src={file.portrait_lg.url}
-          width={file.portrait_lg.dimensions.width}
-          height={file.portrait_lg.dimensions.height}
-          alt={file.alt ?? "Ingen beskrivning tillgänglig"}
-          className={clsx(
-            "align-text-bottom",
-            size === "sm" && "h-full object-cover"
-          )}
+          src={url}
+          width={dimensions.width}
+          height={dimensions.height}
+          alt={alt ?? "Ingen beskrivning tillgänglig"}
+          className={clsx("h-full object-contain align-text-bottom")}
           priority={priority}
           onLoadingComplete={(e) => setLoaded(true)}
         />
@@ -39,24 +48,30 @@ const Asset = ({ data, size, priority }) => {
 
 const Control = ({ onTap, disabled, className, children }) => {
   const [hover, setHover] = useState(false);
-  if (disabled) return null;
-
   return (
     <motion.div
       className={clsx(
-        "absolute inset-y-0 flex w-1/2 items-center font-mono uppercase text-white",
+        "absolute inset-y-0 flex w-36 items-center p-2 font-mono uppercase text-white sm:p-4",
         className,
         !hover && "from-black/0"
       )}
-      onTap={onTap}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {hover && (
-        <Button onTap={onTap} size="sm">
-          {children}
+      {
+        <Button
+          onTap={!disabled && onTap}
+          size="sm"
+          className={clsx(
+            "h-12 w-12 rounded-full text-[2em]",
+            disabled ? "" : "bg-white/5"
+          )}
+          whileHover={{ scale: 1.1 }}
+          disabled={disabled}
+        >
+          <span className="translate-y-[.05em]">{children}</span>
         </Button>
-      )}
+      }
     </motion.div>
   );
 };
@@ -64,7 +79,7 @@ const Control = ({ onTap, disabled, className, children }) => {
 const Dots = ({ children }) => {
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex max-w-full justify-center bg-gradient-to-t from-black/40 p-4`}
+      className={`absolute inset-x-0 bottom-0 flex max-w-full justify-center bg-gradient-to-t from-black/40 p-6`}
     >
       {children}
     </div>
@@ -101,39 +116,79 @@ const Expand = ({ children, onTap }) => {
   );
 };
 
-const Slideshow = ({ items }) => {
+const Slideshow = ({ items, render, close }) => {
   const [inView, setInView] = useState(0);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: (eventData) =>
+      inView + 1 !== items.length && setInView(inView + 1),
+    onSwipedRight: (eventData) => inView > 0 && setInView(inView - 1),
+    preventScrollOnSwipe: true,
+  });
+
+  useHotkeys("left", () => inView > 0 && setInView(inView - 1), [inView]);
+
+  useHotkeys(
+    "right",
+    () => inView + 1 < items.length && setInView(inView + 1),
+    [inView]
+  );
+
+  useHotkeys("esc", close, [inView]);
+
   return (
-    <Backdrop className="flex flex-col items-center" bg={"bg-purple/40"}>
-      <section className={""}>
-        <AnimatePresence mode="wait">
-          {items.map(
-            (item, i) =>
-              i === inView && <Asset key={i} data={item} priority={i === 0} />
-          )}
-        </AnimatePresence>
-        <Control
-          className={"left-0 justify-start bg-gradient-to-r from-black/40"}
-          onTap={() => setInView(inView - 1)}
-          disabled={inView === 0}
-        >
-          [&lt;]
-        </Control>
-        <Control
-          className={"right-0 justify-end bg-gradient-to-l from-black/40 "}
-          onTap={() => setInView(inView + 1)}
-          disabled={inView + 1 === data.items.length}
-        >
-          [&gt;]
-        </Control>
-        <Dots>
-          {items.map((dot, i) => (
-            <Dot key={i} onTap={() => setInView(i)} active={i === inView} />
-          ))}
-        </Dots>
-      </section>
-    </Backdrop>
+    <AnimatePresence>
+      {render && (
+        <Backdrop className="" bg={"bg-black/80"}>
+          <motion.section
+            className={"relative h-full overflow-hidden"}
+            {...handlers}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <AnimatePresence mode="wait">
+              {items.map((item, i) => (
+                <Asset
+                  key={i}
+                  data={item}
+                  priority={i === 0}
+                  inView={i === inView}
+                  dir={i > inView ? "100%" : "-100%"}
+                />
+              ))}
+            </AnimatePresence>
+            <Control
+              className={"left-0 justify-start bg-gradient-to-r from-black/20"}
+              onTap={() => setInView(inView - 1)}
+              disabled={inView === 0}
+            >
+              &lt;
+            </Control>
+            <Control
+              className={"right-0 justify-end bg-gradient-to-l from-black/0 "}
+              onTap={() => setInView(inView + 1)}
+              disabled={inView + 1 === items.length}
+            >
+              &gt;
+            </Control>
+            <Button
+              onTap={close}
+              size="md"
+              className="absolute right-0 m-4 bg-white/5 font-mono text-[2em] text-white"
+              whileHover={{ scale: 1.1 }}
+            >
+              <span className="translate-y-[.05em]">Stäng</span>
+            </Button>
+            <Dots>
+              {items.map((dot, i) => (
+                <Dot key={i} onTap={() => setInView(i)} active={i === inView} />
+              ))}
+            </Dots>
+          </motion.section>
+        </Backdrop>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -168,7 +223,13 @@ export default function MultipleImages({ data, size, aboveFold }) {
           </Expand>
         </LoadingAssetAnimation>
       </figure>
-      <Slideshow items={data.items} />
+      <Slideshow
+        items={data.items}
+        render={overlay}
+        close={() => {
+          setOverlay(false);
+        }}
+      />
     </>
   );
 }

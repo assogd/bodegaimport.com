@@ -33,9 +33,9 @@ export const Layout = ({
 
   return (
     <>
-      <div className={"containerClasses"}>
-        <Header settings={logotype} />
+      <div className={containerClasses}>
         <main className={clsx(className)}>
+          <Header settings={logotype} />
           {children}
           <Navigation links={navigation.data?.links} />
           <Broadcast marquee={marquee} />

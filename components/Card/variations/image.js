@@ -35,11 +35,8 @@ const Image = ({ data, size, i, params, aboveFold }) => {
 
   const containerClasses = clsx(
     "overflow-hidden rounded",
-    size === "sm" ? "absolute inset-0" : "sticky top-14"
+    size === "sm" ? "absolute inset-0" : "absolute inset-0 sm:sticky sm:top-14"
   );
-
-  const imageLayout = size === "sm" ? "fill" : "responsive";
-  const objectFit = size === "sm" ? "cover" : "none";
 
   return (
     <figure className={containerClasses}>
@@ -51,7 +48,7 @@ const Image = ({ data, size, i, params, aboveFold }) => {
           alt={file.alt ?? "Ingen beskrivning tillgänglig"}
           className={clsx(
             "align-text-bottom",
-            size === "sm" && "h-full object-cover"
+            size === "sm" ? "h-full object-cover" : "h-full object-cover"
           )}
           priority={aboveFold}
           onLoadingComplete={(e) => setLoaded(true)}

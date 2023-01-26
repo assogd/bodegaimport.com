@@ -14,8 +14,8 @@ export function Header() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.2 }}
-          className="pointer-events-none fixed inset-x-4 top-4 h-[50vh] select-none md:relative md:inset-0 md:h-full"
+          transition={{ duration: 0.4 }}
+          className="pointer-events-none fixed inset-x-4 top-4 z-[-1] h-[50vh] select-none md:relative md:inset-0 md:h-full"
         >
           <div className="sticky top-[50%] max-h-screen translate-y-[-12%] md:translate-y-[-50%]">
             <div className="flex h-full flex-col items-center justify-center gap-[8vw] md:h-full md:translate-y-[-5vh] md:gap-[4vw]">
@@ -44,7 +44,7 @@ export const Observer = ({
   const isMd = useBreakpoints([]).some((n) => n === "md");
 
   const { ref, inView, entry } = useInView({
-    threshold: isMd ? 0 : 0.5,
+    threshold: isMd ? 0 : 0.75,
   });
 
   return (

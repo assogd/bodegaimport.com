@@ -70,7 +70,7 @@ export default function Overlay({ articles, params, settings }) {
       >
         <div
           className={clsx(
-            "transition-scale relative mt-24 max-w-xl origin-top bg-white p-2 pb-0 duration-1000 sm:mx-auto",
+            "transition-scale relative mt-24 max-w-xl origin-top bg-white py-2 px-4 pb-0 duration-1000 sm:mx-auto",
             isFull ? "scale-100" : "scale-90 rounded-md"
           )}
         >

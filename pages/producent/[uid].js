@@ -166,7 +166,7 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       <section
         className={clsx(
           "relative grid max-w-screen-xl items-stretch lg:grid-cols-2",
-          "mx-auto mt-4 px-4 py-8 sm:px-8 lg:px-12",
+          "mx-auto mt-4 px-2 py-8 sm:px-8 lg:px-12",
           "gap-4 lg:gap-8 xl:gap-x-12"
         )}
       >

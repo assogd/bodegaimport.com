@@ -28,7 +28,7 @@ export default function Card({
   const cardClasses = clsx(
     "card relative scroll-mt-24",
     variation === "images" && "",
-    size != "sm" && "min-h-[32em]",
+    size != "sm" && "sm:min-h-[32em]",
     asPath != "/" && "max-w-lg justify-self-center w-full",
     className
   );

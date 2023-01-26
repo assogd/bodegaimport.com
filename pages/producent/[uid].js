@@ -87,8 +87,8 @@ const Close = ({ setOpen }) => (
 );
 
 const Vindex = ({ wines, render }) => {
-  if (!render) return null;
   const [isOpen, setOpen] = useState(false);
+  if (!render) return null;
 
   return (
     <>

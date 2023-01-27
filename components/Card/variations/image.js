@@ -35,7 +35,7 @@ const Image = ({ data, size, i, params, aboveFold }) => {
   const [loaded, setLoaded] = useState(false);
 
   const { asPath } = useRouter();
-  const isHome = asPath === "/";
+  const isHome = asPath === "/" || asPath === "/hem";
 
   const containerClasses = clsx(
     "overflow-hidden rounded",

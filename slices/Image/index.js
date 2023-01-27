@@ -14,7 +14,7 @@ const Image = ({ slice, index }) => {
   const { image, caption } = slice.primary;
   const { query, asPath } = useRouter();
   const isLandscape = slice.variation === "landscape";
-  const isHome = asPath === "/";
+  const isHome = asPath === "/" || asPath === "/hem";
 
   return (
     <figure

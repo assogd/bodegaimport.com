@@ -16,7 +16,7 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
   const [loaded, setLoaded] = useState(false);
   const { file, link } = data.primary;
   const { asPath } = useRouter();
-  const isHome = asPath === "/";
+  const isHome = asPath === "/" || asPath === "/hem";
 
   const containerClasses = clsx(
     size === "sm" ? "absolute inset-0" : "sticky top-8",

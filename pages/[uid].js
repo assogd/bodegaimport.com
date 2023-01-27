@@ -31,14 +31,14 @@ const CookieToggle = ({ render }) => {
   const [preferences, setPreferences] = useAssoCookie();
   const [isRestaurant, setRestaurant] = useState(false);
 
-  if (!render) return null;
-
   useEffect(() => {
     setPreferences({
       ...preferences,
       consumer: isRestaurant ? "private" : "restaurant",
     });
   }, [isRestaurant, preferences, setPreferences]);
+
+  if (!render) return null;
 
   return (
     <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-5">

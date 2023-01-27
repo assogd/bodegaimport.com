@@ -13,7 +13,7 @@ export function Header() {
         <motion.header
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
+          exit={{ opacity: 0, y: "-50%" }}
           transition={{ duration: 0.4 }}
           className="pointer-events-none fixed inset-x-4 top-4 z-[-1] h-[50vh] select-none md:relative md:inset-0 md:h-full"
         >
@@ -44,7 +44,7 @@ export const Observer = ({
   const isMd = useBreakpoints([]).some((n) => n === "md");
 
   const { ref, inView, entry } = useInView({
-    threshold: isMd ? 0 : 0.75,
+    threshold: isMd ? 0 : 0.5,
   });
 
   return (

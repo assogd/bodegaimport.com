@@ -10,7 +10,7 @@ export default function Block({ children, data }) {
   return (
     <AnimateInView
       className={clsx(
-        "mx-2 grid gap-12 rounded-md bg-white p-4 text-center md:mx-0 md:p-8",
+        "mx-2 grid gap-12 rounded-md bg-white p-6 text-center md:mx-0 md:p-8",
         span_all && "col-span-full"
       )}
       amount={0.5}

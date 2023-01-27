@@ -81,7 +81,7 @@ const Page = ({
           twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
         />
       )}
-      <Section className="relative grid gap-4 px-4 sm:gap-8 sm:px-8">
+      <Section className="relative grid gap-4 px-4 pb-8 sm:gap-8 sm:px-4">
         <Header
           placement={{ col: "center", row: "first" }}
           className="relative lg:pt-6"

@@ -27,32 +27,6 @@ import Toggle from "../components/Toggle";
 import useAssoCookie from "../lib/hooks/useAssoCookie";
 import { useState, useEffect } from "react";
 
-const CookieToggle = ({ render }) => {
-  const [preferences, setPreferences] = useAssoCookie();
-  const [isRestaurant, setRestaurant] = useState(false);
-
-  useEffect(() => {
-    setPreferences({
-      ...preferences,
-      consumer: isRestaurant ? "private" : "restaurant",
-    });
-  }, [isRestaurant, preferences, setPreferences]);
-
-  if (!render) return null;
-
-  return (
-    <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-5">
-      <div className="">Vy:</div>
-      <Toggle
-        onTap={() => setRestaurant(!isRestaurant)}
-        options={{ active: isRestaurant ? 0 : 1, length: 2 }}
-      >
-        {isRestaurant ? "Restaurang" : "Privatspanare"}
-      </Toggle>
-    </div>
-  );
-};
-
 const Page = ({
   page,
   list,
@@ -119,7 +93,6 @@ const Page = ({
         >
           <Heading size="xl">{prismicH.asText(page.data.title)}</Heading>
         </Header>
-        <CookieToggle render={false} />
         <SliceZone slices={page.data.slices} components={components} />
       </Section>
       {list && list.length && <ListOfProducers list={list} wines={wines} />}
@@ -212,7 +185,7 @@ export async function getStaticProps({ params, locale, previewData }) {
       }))
       .filter((a) => a.producers.length > 0)
       .sort((a, b) => a.origin.region.localeCompare(b.origin.region));
-
+  console.log(page);
   return {
     props: {
       page,

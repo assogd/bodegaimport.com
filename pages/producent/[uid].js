@@ -155,10 +155,14 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       />
       <Header
         placement={{ col: "center" }}
-        className="sticky pt-[3.25em] lg:pt-5"
+        className="sticky pt-[3.25em] pb-20 lg:pt-5"
         animate={"translate-y-[-2.2em] lg:translate-y-[-0%]"}
       >
-        <Heading as="h1" size="xl">
+        <Heading
+          as="h1"
+          size="xl"
+          className="underline decoration-1 underline-offset-4 lg:no-underline"
+        >
           {prismicH.asText(page.data.title)}
         </Heading>
       </Header>
@@ -166,7 +170,7 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       <section
         className={clsx(
           "relative grid max-w-screen-xl items-stretch lg:grid-cols-2",
-          "mx-auto mt-8 px-2 py-8 sm:px-8 lg:px-12",
+          "mx-auto px-2 pb-8 sm:px-8 lg:px-12",
           "gap-4 lg:gap-8 xl:gap-x-12"
         )}
       >

@@ -42,7 +42,7 @@ export default function Header({ settings }) {
     <StickyHeader
       className={clsx("sticky pt-4 pb-1 lg:fixed", header2Classes)}
       placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
-      hide={asPath === "/" && hideOnScroll}
+      hide={(asPath === "/" || asPath === "/hem") && hideOnScroll}
       animate={"translate-y-[-200%]"}
     >
       <motion.div className={innerClasses}>

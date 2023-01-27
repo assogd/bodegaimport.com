@@ -35,6 +35,8 @@ const Page = ({
   const { seo_cards, seo_description, seo_title } = page.data;
   const router = useRouter();
 
+  //if (router.asPath === "/hem") return router.push("/");
+
   const overlayCard =
     list &&
     list.filter(

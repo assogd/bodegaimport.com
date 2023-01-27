@@ -185,7 +185,6 @@ export async function getStaticProps({ params, locale, previewData }) {
       }))
       .filter((a) => a.producers.length > 0)
       .sort((a, b) => a.origin.region.localeCompare(b.origin.region));
-  console.log(page);
   return {
     props: {
       page,
@@ -203,9 +202,10 @@ export async function getStaticPaths() {
   const client = createClient();
 
   const pages = await client.getAllByType("page", { lang: "*" });
+  const pagesWithoutHome = pages.filter((a) => a.uid !== "hem");
 
   return {
-    paths: pages.map((page) => {
+    paths: pagesWithoutHome.map((page) => {
       return {
         params: { uid: page.uid },
         locale: page.lang,

@@ -38,7 +38,7 @@ const CookieToggle = ({ render }) => {
       ...preferences,
       consumer: isRestaurant ? "private" : "restaurant",
     });
-  }, [isRestaurant]);
+  }, [isRestaurant, preferences, setPreferences]);
 
   return (
     <div className="absolute right-6 top-4 flex items-end gap-2 text-xl tracking-tight sm:top-5">

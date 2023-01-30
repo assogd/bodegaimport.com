@@ -35,7 +35,7 @@ const Image = ({ slice, index }) => {
           width={image.dimensions.width}
           height={image.dimensions.height}
           alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-          className={clsx(!query.aid && "rounded-md object-cover")}
+          className={clsx(!query.aid && "h-full rounded-md object-cover")}
           onLoadingComplete={(e) => setLoaded(true)}
         />
         {caption && (

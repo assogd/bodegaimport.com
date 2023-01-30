@@ -52,7 +52,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "prismic-ts-codegen": "^0.1.5",
-    "slice-machine-ui": "^0.5.2",
+    "slice-machine-ui": "^0.6.1",
     "tailwindcss": "^3.2.4"
   }
 }

@@ -214,7 +214,7 @@ export default function MultipleImages({ data, size, aboveFold }) {
   const [loaded, setLoaded] = useState(false);
 
   const containerClasses = clsx(
-    "overflow-hidden rounded bg-white h-full",
+    "overflow-hidden rounded h-full",
     size === "sm" ? "absolute inset-0" : "sticky top-14"
   );
   const { url, dimensions, alt } = data.items[0].file.portrait_lg;

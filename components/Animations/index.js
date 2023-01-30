@@ -28,15 +28,21 @@ export const AnimateInView = ({
 };
 
 export const LoadingAssetAnimation = ({ className, children, loaded }) => {
+  if (loaded) return children;
+
   return (
-    <div
-      className={clsx(
-        "h-full duration-100",
-        loaded ? "opacity-1" : "opacity-0",
-        className
-      )}
-    >
-      {children}
+    <div className={clsx("h-full animate-pulse rounded-md bg-black/10")}>
+      <div
+        className={clsx(
+          "h-full duration-100",
+          loaded ? "opacity-1" : "opacity-0",
+          className
+        )}
+      >
+        <div className="absolute inset-x-4 bottom-4 h-3 rounded-md bg-white/30" />
+        <div className="absolute inset-x-4 bottom-10 h-3 rounded-md bg-white/30" />
+        {children}
+      </div>
     </div>
   );
 };

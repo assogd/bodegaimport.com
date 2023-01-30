@@ -27,20 +27,26 @@ export const Card = ({ data }) => {
   const [loaded, setLoaded] = useState(false);
   const { district, email, name, phone, picture } = data;
 
+  if (!name || !email) return null;
+
   return (
-    <div className="contact card grid max-w-xs shrink grow basis-72 gap-6 rounded-md bg-paleYellow p-4 text-center">
-      <LoadingAssetAnimation loaded={loaded}>
-        <Image
-          src={picture.url}
-          width={picture.dimensions.width}
-          height={picture.dimensions.height}
-          layout="responsive"
-          alt={picture.alt}
-          className="rounded-md bg-paleYellow mix-blend-multiply grayscale"
-          onLoadingComplete={() => setLoaded(true)}
-        />
-      </LoadingAssetAnimation>
-      <header className="">
+    <div className="contact card flex max-w-xs shrink grow basis-72 flex-col justify-end gap-2 rounded-md bg-paleYellow p-4 text-center">
+      {picture?.url ? (
+        <LoadingAssetAnimation loaded={loaded}>
+          <Image
+            src={picture.url}
+            width={picture.dimensions.width}
+            height={picture.dimensions.height}
+            layout="responsive"
+            alt={picture.alt}
+            className="rounded-md bg-paleYellow mix-blend-multiply grayscale"
+            onLoadingComplete={() => setLoaded(true)}
+          />
+        </LoadingAssetAnimation>
+      ) : (
+        <div className="h-full rounded-md bg-black/5" />
+      )}
+      <header className="py-2">
         <div className="font-mono">
           <PrismicRichText field={district} />
         </div>

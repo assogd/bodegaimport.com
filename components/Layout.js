@@ -37,7 +37,10 @@ export const Layout = ({
         <main className={clsx(className)}>
           <Header settings={logotype} />
           {children}
-          <Navigation links={navigation.data?.links} />
+          <Navigation
+            links={navigation.data?.links}
+            marquee={marquee?.data?.messages.length}
+          />
           <Broadcast marquee={marquee} />
         </main>
         <Alerts />

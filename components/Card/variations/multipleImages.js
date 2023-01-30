@@ -45,7 +45,7 @@ const Asset = ({ data, priority, inView, dir }) => {
       className="absolute inset-0"
       transition={{ type: "tween" }}
     >
-      <LoadingAssetAnimation loaded={loaded} duration={100}>
+      <LoadingAssetAnimation loaded={loaded}>
         <Image
           src={url}
           width={dimensions.width}
@@ -214,7 +214,7 @@ export default function MultipleImages({ data, size, aboveFold }) {
   const [loaded, setLoaded] = useState(false);
 
   const containerClasses = clsx(
-    "overflow-hidden rounded h-full",
+    "overflow-hidden rounded",
     size === "sm" ? "absolute inset-0" : "sticky top-14"
   );
   const { url, dimensions, alt } = data.items[0].file.portrait_lg;
@@ -229,7 +229,7 @@ export default function MultipleImages({ data, size, aboveFold }) {
             height={dimensions.height}
             alt={alt ?? "Ingen beskrivning tillgänglig"}
             className={clsx(
-              "h-full object-cover align-text-bottom",
+              "object-cover align-text-bottom",
               size === "sm" && "h-full object-cover"
             )}
             priority={aboveFold}

@@ -97,4 +97,4 @@ const Dot = ({ i, onTap, active }) => {
   );
 };
 
-const Fill = () => <div className="shrink-0 grow basis-2" />;
+const Fill = () => <div className="shrink-0 grow basis-4" />;

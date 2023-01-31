@@ -20,8 +20,10 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
 
   const containerClasses = clsx(
     size === "sm" ? "absolute inset-0" : "sticky top-8",
-    isHome && "px-2 md:px-0"
+    isHome && "mx-2 md:mx-0"
   );
+
+  console.log(data);
 
   return (
     <figure className={containerClasses}>
@@ -31,12 +33,16 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
           width={file.dimensions.width}
           height={file.dimensions.height}
           className={clsx("rounded-md", size === "sm" && "h-full object-cover")}
-          alt={file.alt ?? link?.data?.title ?? "Ingen beskrivning tillgänglig"}
+          alt={
+            file.alt ??
+            prismicH.asText(link?.data?.title) ??
+            "Ingen beskrivning tillgänglig"
+          }
           priority={aboveFold}
           onLoadingComplete={(e) => setLoaded(true)}
         />
-        <Figcaption link={link} size={size} />
       </LoadingAssetAnimation>
+      <Figcaption link={link} size={size} />
     </figure>
   );
 };
@@ -65,7 +71,12 @@ const Figcaption = ({ link, size }) => {
 
   return (
     <figcaption
-      className={`absolute inset-x-2 bottom-2 block flex flex-col justify-between gap-4 rounded-md bg-white/30 p-4 backdrop-blur sm:inset-x-4 sm:bottom-4 sm:flex-row sm:items-end`}
+      className={clsx(
+        `absolute inset-x-0 bottom-0 m-2 block max-w-md rounded-md md:top-0 md:bottom-auto lg:m-4`,
+        `flex flex-col justify-between gap-4 sm:flex-row sm:items-end`,
+        `bg-white/30 backdrop-blur`,
+        `p-4`
+      )}
     >
       <h3 className="">
         <div role="doc-subtitle" className="font-mono">

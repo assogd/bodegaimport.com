@@ -56,6 +56,15 @@ export const Method = ({ body, render }) =>
     </Li>
   );
 
+export const Alcohol = ({ title, body, render = true }) =>
+  body &&
+  render && (
+    <Li>
+      <Heading>{title}</Heading>
+      <Body>{body.replace("%", "") + "%"}</Body>
+    </Li>
+  );
+
 export const ListItem = ({ title, body, render = true }) =>
   body &&
   render && (
@@ -132,7 +141,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         <ListItem title="Jord" body={soil} />
         <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
-        <ListItem title="Alkohol" body={alcohol} render={size != "sm"} />
+        <Alcohol title="Alkohol" body={alcohol} render={size != "sm"} />
         <Resellers data={resellers} render={size != "sm"} />
       </ul>
     </Container>

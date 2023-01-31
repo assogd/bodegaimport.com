@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { isMobile } from "react-device-detect";
+import { AnimateInView } from "../Animations";
 
 export default function Articles({ articles }) {
   const [isStateMobile, setStateMobile] = useState(false);
@@ -17,11 +18,11 @@ export default function Articles({ articles }) {
     ),
   };
   return (
-    <section className={className.section}>
+    <AnimateInView className={className.section}>
       {articles.map((article, i) => (
         <Article key={i} article={article} />
       ))}
-    </section>
+    </AnimateInView>
   );
 }
 

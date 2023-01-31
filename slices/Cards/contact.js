@@ -3,11 +3,14 @@ import { PrismicRichText } from "@prismicio/react";
 import Button from "../../components/Button";
 import * as prismicH from "@prismicio/helpers";
 import { useState } from "react";
-import { LoadingAssetAnimation } from "../../components/Animations";
+import {
+  LoadingAssetAnimation,
+  AnimateInView,
+} from "../../components/Animations";
 
 export const Container = ({ children, slice }) => {
   return (
-    <section className={`cards ${slice.variation}`}>
+    <AnimateInView className={`cards ${slice.variation}`}>
       <header className="text-center">
         {slice.primary.title && <PrismicRichText field={slice.primary.title} />}
         {slice.primary.introduction && (
@@ -19,7 +22,7 @@ export const Container = ({ children, slice }) => {
       <div className="mx-auto mt-4 flex max-w-5xl flex-wrap justify-center gap-4 p-4 sm:grid-cols-3 sm:px-[5%]">
         {children}
       </div>
-    </section>
+    </AnimateInView>
   );
 };
 

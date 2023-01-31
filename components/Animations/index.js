@@ -31,10 +31,10 @@ export const LoadingAssetAnimation = ({ className, children, loaded }) => {
   if (loaded) return children;
 
   return (
-    <div className={clsx("h-full animate-pulse rounded-md bg-black/10")}>
+    <div className={clsx("h-full animate-pulse rounded-sm bg-black/10")}>
       <div
         className={clsx(
-          "h-full duration-100",
+          "h-full duration-300",
           loaded ? "opacity-1" : "opacity-0",
           className
         )}

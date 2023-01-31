@@ -32,7 +32,7 @@ const Text = ({ slice }) => {
 
   if (variation === "introduction") {
     return (
-      <section
+      <AnimateInView
         className={clsx(
           "introduction hyphens col-span-full mx-auto max-w-4xl px-0 text-center",
           !query.aid && "py-12 pt-12 sm:pt-20",
@@ -40,7 +40,7 @@ const Text = ({ slice }) => {
         )}
       >
         <PrismicRichText field={slice.primary.text} />
-      </section>
+      </AnimateInView>
     );
   }
 

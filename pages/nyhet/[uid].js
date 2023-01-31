@@ -23,6 +23,8 @@ import { motion } from "framer-motion";
 import Image from "next/future/image";
 import Related from "../../components/Articles/related2";
 
+import { AnimateInView } from "../../components/Animations";
+
 const Article = ({ article, articles, navigation, marquee, settings }) => {
   const {
     date_published,
@@ -79,7 +81,7 @@ const Article = ({ article, articles, navigation, marquee, settings }) => {
         </Heading>
       </header>
       <article className="mx-2 min-h-[65vh] pb-24">
-        <div className="body grid gap-4">
+        <AnimateInView className="body grid gap-4">
           <header className="pt-12 pb-4 text-center">
             <h1 className="mb-2 w-full text-xl md:text-xxl">
               <PrismicRichText field={title} />
@@ -99,7 +101,7 @@ const Article = ({ article, articles, navigation, marquee, settings }) => {
             />
           </motion.figure>
           <SliceZone slices={slices} components={components} />
-        </div>
+        </AnimateInView>
       </article>
       <Related articles={related} />
     </Layout>

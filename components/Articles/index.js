@@ -13,7 +13,7 @@ export default function Articles({ articles }) {
   const className = {
     section: clsx(
       "articles grid px-2 pt-12 pb-36 sm:px-8 sm:pt-16",
-      isStateMobile ? "gap-10" : "gap-4"
+      isStateMobile ? "gap-10" : "gap-6"
     ),
   };
   return (
@@ -70,7 +70,7 @@ const Article = ({ article }) => {
       </motion.figure>
       <header className="relative">
         <motion.h2
-          className="inline-block text-lg sm:text-xxl"
+          className="inline-block pb-1 text-lg sm:text-xxl"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

@@ -21,12 +21,6 @@ export default function Articles({ articles }) {
       {articles.map((article, i) => (
         <Article key={i} article={article} />
       ))}
-      {articles.map((article, i) => (
-        <Article key={i} article={article} />
-      ))}
-      {articles.map((article, i) => (
-        <Article key={i} article={article} />
-      ))}
     </section>
   );
 }

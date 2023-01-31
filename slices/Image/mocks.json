@@ -1,0 +1,224 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613",
+          "width": 3168,
+          "height": 4752
+        },
+        "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?rect=0%2C370%2C3168%2C4013&w=1500&h=1900",
+        "width": 1500,
+        "height": 1900,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 370
+          },
+          "background": "transparent"
+        },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {
+          "md": {
+            "origin": {
+              "id": "md",
+              "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
+              "width": 3199,
+              "height": 3199
+            },
+            "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?rect=400%2C0%2C2399%2C3199&w=750&h=1000",
+            "width": 750,
+            "height": 1000,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 400,
+                "y": 0
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          },
+          "sm": {
+            "origin": {
+              "id": "sm",
+              "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+              "width": 12288,
+              "height": 16384
+            },
+            "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?rect=931%2C0%2C10426%2C16384&w=350&h=550",
+            "width": 350,
+            "height": 550,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 931,
+                "y": 0
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          }
+        }
+      },
+      "caption": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Pariatur reprehenderit culpa consequat nulla dolore."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "landscape",
+    "primary": {
+      "image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+          "width": 8640,
+          "height": 8640
+        },
+        "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?rect=0%2C1901%2C8640%2C4838&w=2500&h=1400",
+        "width": 2500,
+        "height": 1400,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 1901
+          },
+          "background": "transparent"
+        },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {
+          "md": {
+            "origin": {
+              "id": "md",
+              "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+              "width": 3168,
+              "height": 4752
+            },
+            "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?rect=0%2C1362%2C3168%2C2028&w=1250&h=800",
+            "width": 1250,
+            "height": 800,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 0,
+                "y": 1362
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          },
+          "sm": {
+            "origin": {
+              "id": "sm",
+              "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+              "width": 4000,
+              "height": 6000
+            },
+            "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?rect=0%2C1560%2C4000%2C2880&w=625&h=450",
+            "width": 625,
+            "height": 450,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 0,
+                "y": 1560
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          }
+        }
+      },
+      "caption": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Officia aliquip proident esse ut qui ex esse nisi commodo eiusmod aute voluptate."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "manualFormat",
+    "primary": {
+      "image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+          "width": 3560,
+          "height": 5340
+        },
+        "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+        "width": 3560,
+        "height": 5340,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "thumbnails": {}
+      },
+      "caption": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Lorem dolor laboris occaecat veniam deserunt fugiat dolor voluptate nostrud non velit culpa anim cillum ad. Occaecat et ex tempor ut et ea eu. Ut ex deserunt commodo."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

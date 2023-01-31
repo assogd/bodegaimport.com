@@ -1,0 +1,82 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Audience"
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "image",
+            {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+                "width": 2747,
+                "height": 4120
+              },
+              "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?rect=0%2C1311%2C2747%2C1498&w=2200&h=1200",
+              "width": 2200,
+              "height": 1200,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 1311
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
+            }
+          ],
+          [
+            "text",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Laboris Lorem ipsum esse cillum aliqua. Occaecat nisi proident id mollit in commodo dolore amet veniam ex nulla culpa qui."
+                  }
+                }
+              ]
+            }
+          ],
+          [
+            "buttonLink",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://prismic.io"
+              }
+            }
+          ],
+          [
+            "buttonText",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "calm",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

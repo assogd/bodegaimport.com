@@ -93,6 +93,9 @@
             }
           }
         }
+      },
+      "manualFormat": {
+        "primary": {}
       }
     },
     "Quote": {

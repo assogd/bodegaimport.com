@@ -1,0 +1,37 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "title": {
+        "__TYPE__": "FieldContent",
+        "value": "small",
+        "type": "Text"
+      },
+      "reference": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock_document_id"
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "producer",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

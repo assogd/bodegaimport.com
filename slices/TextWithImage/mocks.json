@@ -1,0 +1,108 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Object"
+            }
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Non qui mollit aute."
+            }
+          }
+        ]
+      },
+      "image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+          "width": 5616,
+          "height": 3744
+        },
+        "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?rect=1248%2C0%2C3120%2C3744&w=1000&h=1200",
+        "width": 1000,
+        "height": 1200,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 1248,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "withButton",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Id ea sit cillum nisi sit aute fugiat ex."
+            }
+          }
+        ]
+      },
+      "buttonLink": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      "buttonText": {
+        "__TYPE__": "FieldContent",
+        "value": "he",
+        "type": "Text"
+      },
+      "image": {
+        "__TYPE__": "ImageContent",
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+          "width": 4000,
+          "height": 6000
+        },
+        "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+        "width": 4000,
+        "height": 6000,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

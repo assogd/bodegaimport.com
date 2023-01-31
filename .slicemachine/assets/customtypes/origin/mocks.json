@@ -1,17 +1,12 @@
 {
-  "id": "mock-doc-id",
-  "url": null,
-  "type": "origin",
-  "href": null,
-  "tags": [],
-  "first_publication_date": "1970-01-01T00:00:01+0000",
-  "last_publication_date": "1970-01-01T00:00:01+0000",
-  "slugs": [],
-  "linked_documents": [],
-  "lang": "en-us",
-  "alternate_languages": [],
-  "data": {
-    "region": "lying",
-    "country": "bark"
+  "region": {
+    "__TYPE__": "FieldContent",
+    "value": "unit",
+    "type": "Text"
+  },
+  "country": {
+    "__TYPE__": "FieldContent",
+    "value": "disappear",
+    "type": "Text"
   }
 }

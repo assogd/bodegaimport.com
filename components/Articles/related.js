@@ -50,7 +50,7 @@ export const Card = ({ article }) => {
   return (
     <div className="relative">
       <motion.figure>
-        <A href={`/nyheter/${date}/${article.uid}`}>
+        <A href={`/nyhet/${article.uid}`}>
           <div className="ratio relative h-0 pb-[75%]">
             <Image
               src={image.url}
@@ -64,9 +64,7 @@ export const Card = ({ article }) => {
       </motion.figure>
       <div className="px-1 pt-2">
         <span className="mb-[0.125em] inline-block sm:text-lg">
-          <A href={`/nyheter/${date}/${article.uid}`}>
-            {prismicH.asText(title)}
-          </A>
+          <A href={`/nyhet/${article.uid}`}>{prismicH.asText(title)}</A>
         </span>
         <div className="font-mono">
           {new Date(date).toLocaleDateString("sv", options)}

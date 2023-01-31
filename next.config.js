@@ -42,10 +42,6 @@ module.exports = {
         destination: "/sortiment",
       },
       {
-        source: "/nyheter/:date/:aid",
-        destination: "/nyheter",
-      },
-      {
         source: "/hem",
         destination: "/",
       },

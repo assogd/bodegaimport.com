@@ -96,6 +96,7 @@ const Article = ({ article, articles, navigation, marquee, settings }) => {
               width={hero_image.dimensions.width}
               height={hero_image.dimensions.height}
               alt={hero_image.alt ?? "Ingen beskrivning tillgänglig"}
+              priority={true}
             />
           </motion.figure>
           <SliceZone slices={slices} components={components} />

@@ -20,9 +20,11 @@ export default function Related({ articles }) {
       <header className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
         <h2 className="text-lg">Andra nyheter om dryck</h2>
         <Link href={"/nyheter"}>
-          <Button size="xs" className="font-mono">
-            Se fler nyheter =&gt;
-          </Button>
+          <a>
+            <Button size="xs" className="font-mono">
+              Se fler nyheter =&gt;
+            </Button>
+          </a>
         </Link>
       </header>
       <motion.div

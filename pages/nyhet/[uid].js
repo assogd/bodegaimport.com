@@ -55,8 +55,6 @@ const Article = ({ article, articles, navigation, marquee, settings }) => {
     )
     .slice(0, 4);
 
-  console.log(article);
-
   return (
     <Layout
       navigation={navigation}

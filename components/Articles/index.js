@@ -47,9 +47,11 @@ const Article = ({ article }) => {
     figure: clsx(
       isStateMobile
         ? "mx-auto max-w-sm"
-        : "absolute left-[50%] max-w-sm top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10"
+        : "absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10"
     ),
   };
+
+  console.log(image);
 
   return (
     <article className="relative grid gap-2 text-center">
@@ -60,11 +62,11 @@ const Article = ({ article }) => {
       >
         <A href={`/nyhet/${article.uid}`}>
           <Image
-            src={image.url}
-            width={image.dimensions.width}
-            height={image.dimensions.height}
+            src={image.sm.url}
+            width={image.sm.dimensions.width}
+            height={image.sm.dimensions.height}
             alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-            className="rounded-md"
+            className="rounded-sm"
           />
         </A>
       </motion.figure>

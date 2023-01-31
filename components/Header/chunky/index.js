@@ -23,7 +23,7 @@ export function Header() {
                 src={Logotype}
                 alt={"Bodega Import"}
                 priority
-                className="mx-auto h-auto w-[50vw] md:w-[16vw]"
+                className="mx-auto h-auto w-[50vw] max-w-[200px] md:w-[16vw] md:max-w-none"
               />
               <div className="text-[10vw] tracking-tight md:text-[5vw]">
                 Bodega Import

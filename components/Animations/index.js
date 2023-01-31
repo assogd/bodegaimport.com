@@ -34,7 +34,7 @@ export const LoadingAssetAnimation = ({ className, children, loaded }) => {
     <div className={clsx("h-full animate-pulse rounded-sm bg-black/10")}>
       <div
         className={clsx(
-          "h-full duration-300",
+          "h-full duration-100",
           loaded ? "opacity-1" : "opacity-0",
           className
         )}

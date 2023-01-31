@@ -52,8 +52,6 @@ const Article = ({ article }) => {
     ),
   };
 
-  console.log(image);
-
   return (
     <article className="relative grid gap-2 text-center">
       <motion.figure

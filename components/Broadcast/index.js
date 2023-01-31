@@ -6,8 +6,6 @@ import { motion } from "framer-motion";
 export const Broadcast = ({ navigation, settings, marquee }) => {
   if (marquee?.data.messages.length == 0) return null;
 
-  console.log(marquee.data.messages);
-
   const multipliedMarquee = [...Array(5)]
     .map((m) => marquee.data.messages.map((a) => a))
     .flat(1);

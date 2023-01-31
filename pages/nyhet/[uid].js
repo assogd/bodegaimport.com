@@ -148,9 +148,6 @@ export async function getStaticPaths() {
       return {
         params: {
           uid: page.uid,
-          year: getYear(pages[0].data.date_published),
-          month: getMonth(pages[0].data.date_published),
-          date: getDate(pages[0].data.date_published),
         },
         locale: page.lang,
       };

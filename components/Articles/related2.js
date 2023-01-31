@@ -46,12 +46,7 @@ export default function Related({ articles }) {
 }
 
 export const Card = ({ article, i }) => {
-  const {
-    date_published: date,
-    hero_image: image,
-    slices,
-    title,
-  } = article.data;
+  const { date_published: date, hero_image: image, title } = article.data;
 
   const options = {
     year: "numeric",
@@ -65,46 +60,28 @@ export const Card = ({ article, i }) => {
         ({String.fromCharCode(i + 65)})
       </div>
       <motion.figure>
-        <A href={`/nyhet/${article.uid}`}>
-          <div className="ratio relative h-0 pb-[75%]">
-            <Image
-              src={image.url}
-              width={image.dimensions.width}
-              height={image.dimensions.height}
-              alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-              className="absolute inset-0 h-full rounded-md object-cover"
-            />
-          </div>
-        </A>
+        <Link href={`/nyhet/${article.uid}`}>
+          <a>
+            <div className="ratio relative h-0 pb-[75%]">
+              <Image
+                src={image.url}
+                width={image.dimensions.width}
+                height={image.dimensions.height}
+                alt={image.alt ?? "Ingen beskrivning tillgänglig"}
+                className="absolute inset-0 h-full rounded-md object-cover"
+              />
+            </div>
+          </a>
+        </Link>
       </motion.figure>
       <div className="px-1 pt-2">
         <span className="mb-[0.125em] inline-block sm:text-lg">
-          <A href={`/nyheter/${date}/${article.uid}`}>
-            {prismicH.asText(title)}
-          </A>
+          <Link href={`/nyhet/${article.uid}`}>{prismicH.asText(title)}</Link>
         </span>
         <div className="font-mono">
           {new Date(date).toLocaleDateString("sv", options)}
         </div>
       </div>
     </div>
-  );
-};
-
-const A = ({ children, href }) => {
-  const { push } = useRouter();
-
-  return (
-    <a
-      onClick={() =>
-        push(href, undefined, {
-          shallow: true,
-          scroll: true,
-        })
-      }
-      className="cursor-pointer"
-    >
-      {children}
-    </a>
   );
 };

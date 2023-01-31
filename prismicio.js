@@ -32,6 +32,7 @@ export const createClient = (config = {}) => {
     routes: [
       { type: "page", path: "/:uid" },
       { type: "producer", path: "/producent/:uid" },
+      { type: "article", path: "/nyhet/:uid" },
       { type: "settings", path: "/" },
       { type: "navigation", path: "/" },
     ],

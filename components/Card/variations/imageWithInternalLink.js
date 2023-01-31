@@ -23,8 +23,6 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
     isHome && "mx-2 md:mx-0"
   );
 
-  console.log(data);
-
   return (
     <figure className={containerClasses}>
       <LoadingAssetAnimation loaded={loaded}>

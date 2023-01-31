@@ -10,7 +10,7 @@ const Slice = ({ article }) => {
 
   return (
     <article className="relative mx-auto max-w-2xl px-4 pb-8 text-center sm:px-8">
-      <h1 className="text-xxl pt-8 pb-8 text-center">
+      <h1 className="pt-8 pb-8 text-center text-xxl">
         {prismicH.asText(title)}
       </h1>
       <PrismicRichText field={body} />

@@ -58,7 +58,7 @@ const Article = ({ article }) => {
         animate={isHover || isStateMobile ? { opacity: 1 } : { opacity: 0 }}
         className={className.figure}
       >
-        <A href={`/nyheter/${date}/${article.uid}`}>
+        <A href={`/nyhet/${article.uid}`}>
           <Image
             src={image.url}
             width={image.dimensions.width}
@@ -74,7 +74,7 @@ const Article = ({ article }) => {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
-          <A href={`/nyheter/${date}/${article.uid}`}>
+          <A href={`/nyhet/${article.uid}`}>
             <PrismicRichText field={title} />
           </A>
         </motion.h2>

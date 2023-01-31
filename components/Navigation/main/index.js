@@ -12,7 +12,6 @@ export default function Navigation({ links, marquee }) {
   useEffect(() => setWindowWidth(onlyWidth), [onlyWidth]);
 
   const itemsToShow = Math.round((windowWidth - 100) / 100);
-  console.log(itemsToShow);
 
   return (
     <Collapsible links={links} marquee={marquee} itemsToShow={itemsToShow} />

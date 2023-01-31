@@ -32,29 +32,27 @@ const Image = ({ slice, index }) => {
         isHome && "mx-2 md:mx-0"
       )}
     >
-      <LoadingAssetAnimation loaded={loaded}>
-        <Img
-          src={image.url}
-          width={image.dimensions.width}
-          height={image.dimensions.height}
-          alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-          className={clsx(!query.aid && "h-full rounded-sm object-cover")}
-          onLoadingComplete={(e) => setLoaded(true)}
-        />
-        {caption && (
-          <figcaption
-            className={clsx(
-              query.aid || query.uid === "om-oss"
-                ? "mx-1 mt-1 text-center text-sm"
-                : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-6 pt-12 text-white"
-            )}
-          >
-            <div className="mx-auto">
-              <PrismicRichText field={caption} />
-            </div>
-          </figcaption>
-        )}
-      </LoadingAssetAnimation>
+      <Img
+        src={image.url}
+        width={image.dimensions.width}
+        height={image.dimensions.height}
+        alt={image.alt ?? "Ingen beskrivning tillgänglig"}
+        className={clsx(!query.aid && "h-full rounded-sm object-cover")}
+        onLoadingComplete={(e) => setLoaded(true)}
+      />
+      {caption && (
+        <figcaption
+          className={clsx(
+            query.aid || query.uid === "om-oss"
+              ? "mx-1 mt-1 text-center text-sm"
+              : "absolute inset-x-0 bottom-0 rounded-md bg-gradient-to-t from-black/80 p-6 pt-12 text-white"
+          )}
+        >
+          <div className="mx-auto">
+            <PrismicRichText field={caption} />
+          </div>
+        </figcaption>
+      )}
     </figure>
   );
 };

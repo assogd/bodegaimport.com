@@ -17,8 +17,6 @@ import slugify from "slugify";
 
 import { useRouter } from "next/router";
 
-import OverlayCard from "../components/Overlay/card";
-import OverlayArticle from "../components/Overlay/article";
 import { AnimatePresence } from "framer-motion";
 
 import Section from "../components/Section";
@@ -86,7 +84,7 @@ const Page = ({
           twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
         />
       )}
-      <Section className="relative grid gap-4 px-4 pb-8 sm:gap-8 sm:px-4">
+      <Section className="relative grid gap-6 px-4 pb-8 sm:gap-8 sm:px-4">
         <Header
           placement={{ col: "center", row: "first" }}
           className="relative lg:pt-6"
@@ -97,22 +95,6 @@ const Page = ({
       </Section>
       {list && list.length && <ListOfProducers list={list} wines={wines} />}
       {articles && articles.length && <Articles articles={articles} />}
-      <AnimatePresence>
-        {isOverlayCard && (
-          <OverlayCard
-            data={overlayCard[0].producers[0].data.slices}
-            size="lg"
-            params={params}
-          />
-        )}
-        {isOverlayArticle && (
-          <OverlayArticle
-            articles={articles}
-            params={router.query}
-            settings={settings}
-          />
-        )}
-      </AnimatePresence>
     </Layout>
   );
 };

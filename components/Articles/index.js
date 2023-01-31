@@ -47,7 +47,7 @@ const Article = ({ article }) => {
     figure: clsx(
       isStateMobile
         ? "mx-auto max-w-sm"
-        : "absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10"
+        : "absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-55%] pointer-events-none z-10 max-w-xs"
     ),
   };
 

@@ -68,26 +68,28 @@ const Button = ({
             >
               <div className="flex max-w-lg flex-col gap-4">
                 <div className="text-lg">{copyText}</div>
-                <Button size="lg" className="bg-paleYellow">
-                  Kopiera
-                  <Image
-                    src={"/icons/copy.svg"}
-                    alt={"Copy"}
-                    width="16"
-                    height="16"
-                  />
-                </Button>
+                <div>
+                  <Button size="md" className="bg-paleYellow">
+                    Kopiera
+                    <Image
+                      src={"/icons/copy.svg"}
+                      alt={"Copy"}
+                      width="16"
+                      height="16"
+                    />
+                  </Button>
+                </div>
               </div>
             </motion.div>
             <div className="absolute inset-x-0 bottom-0 m-4">
               <Button
-                size="md"
-                className="border"
+                size="mini"
+                className="font-mono"
                 onTap={() => {
                   setOpenCopy(false);
                 }}
               >
-                Stäng
+                [Stäng]
               </Button>
             </div>
           </Backdrop>

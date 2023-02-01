@@ -24,12 +24,7 @@ const nextConfig = async () => {
     },
     reactStrictMode: true,
     i18n: {
-      // These are all the locales you want to support in
-      // your application
-      locales,
-      // This is the default locale you want to be used when visiting
-      // a non-locale prefixed path e.g. `/hello`
-      defaultLocale: locales[0],
+      defaultLocale: "sv",
     },
   };
 };

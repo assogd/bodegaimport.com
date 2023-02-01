@@ -43,8 +43,8 @@ module.exports = {
     ];
   },
   i18n: {
-    locales: ["en-us"],
-    defaultLocale: "en-us",
+    locales: ["sv"],
+    defaultLocale: "sv",
   },
   reactStrictMode: true,
   images: {

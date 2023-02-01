@@ -85,7 +85,7 @@ const Index = ({ grapes, navigation, marquee, settings }) => {
 
 export default Index;
 
-export async function getStaticProps({ locale, previewData }) {
+export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
 
   const grapes = await client.getAllByType("grape", {
@@ -95,9 +95,9 @@ export async function getStaticProps({ locale, previewData }) {
     },
   });
 
-  const navigation = await client.getSingle("navigation", { lang: locale });
-  const marquee = await client.getSingle("marquee", { lang: locale });
-  const settings = await client.getSingle("settings", { lang: locale });
+  const navigation = await client.getSingle("navigation");
+  const marquee = await client.getSingle("marquee");
+  const settings = await client.getSingle("settings");
 
   return {
     props: {

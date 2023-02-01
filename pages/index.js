@@ -42,11 +42,10 @@ const Index = ({ page, navigation, marquee, settings, wines, articles }) => {
 
 export default Index;
 
-export async function getStaticProps({ locale, previewData }) {
+export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
 
   const page = await client.getByUID("page", "hem", {
-    lang: locale,
     fetchLinks: ["producer.title"],
   });
   const articles = await client.getAllByType("article", {
@@ -54,15 +53,13 @@ export async function getStaticProps({ locale, previewData }) {
       field: "my.article.date_published",
       direction: "desc",
     },
-    lang: locale,
   });
   const wines = await client.getAllByType("wine", {
-    lang: locale,
     fetchLinks: ["grape.title", "producer.title"],
   });
-  const navigation = await client.getSingle("navigation", { lang: locale });
-  const marquee = await client.getSingle("marquee", { lang: locale });
-  const settings = await client.getSingle("settings", { lang: locale });
+  const navigation = await client.getSingle("navigation");
+  const marquee = await client.getSingle("marquee");
+  const settings = await client.getSingle("settings");
 
   return {
     props: {

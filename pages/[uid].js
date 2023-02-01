@@ -101,7 +101,7 @@ const Page = ({
 
 export default Page;
 
-export async function getStaticProps({ params, locale, previewData }) {
+export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
   const fetchProducers = params.uid === "sortiment";
   const fetchNews = params.uid === "nyheter";
@@ -123,9 +123,9 @@ export async function getStaticProps({ params, locale, previewData }) {
     wines: ["grape.title"],
   };
 
-  const navigation = await client.getSingle("navigation", { lang: locale });
-  const marquee = await client.getSingle("marquee", { lang: locale });
-  const settings = await client.getSingle("settings", { lang: locale });
+  const navigation = await client.getSingle("navigation");
+  const marquee = await client.getSingle("marquee");
+  const settings = await client.getSingle("settings");
 
   const articles =
     fetchNews &&
@@ -134,12 +134,10 @@ export async function getStaticProps({ params, locale, previewData }) {
         field: "my.article.date_published",
         direction: "desc",
       },
-      lang: locale,
       predicates: [prismic.predicate.at("my.article.type", "News")],
     }));
 
   const page = await client.getByUID("page", params.uid, {
-    lang: locale,
     fetchLinks: links.page,
   });
 
@@ -183,14 +181,13 @@ export async function getStaticProps({ params, locale, previewData }) {
 export async function getStaticPaths() {
   const client = createClient();
 
-  const pages = await client.getAllByType("page", { lang: "*" });
+  const pages = await client.getAllByType("page");
   const pagesWithoutHome = pages.filter((a) => a.uid !== "hem");
 
   return {
     paths: pages.map((page) => {
       return {
         params: { uid: page.uid },
-        locale: page.lang,
       };
     }),
     fallback: false,

@@ -184,11 +184,10 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
 
 export default Page;
 
-export async function getStaticProps({ params, locale, previewData }) {
+export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
   const page = await client.getByUID("producer", params.uid, {
-    lang: locale,
     fetchLinks: [
       "wine.title",
       "wine.origin",
@@ -206,9 +205,9 @@ export async function getStaticProps({ params, locale, previewData }) {
   const wines = await client.getAllByType("wine", {
     fetchLinks: ["grape.title", "producer.title"],
   });
-  const navigation = await client.getSingle("navigation", { lang: locale });
-  const marquee = await client.getSingle("marquee", { lang: locale });
-  const settings = await client.getSingle("settings", { lang: locale });
+  const navigation = await client.getSingle("navigation");
+  const marquee = await client.getSingle("marquee");
+  const settings = await client.getSingle("settings");
 
   return {
     props: {
@@ -224,13 +223,12 @@ export async function getStaticProps({ params, locale, previewData }) {
 export async function getStaticPaths() {
   const client = createClient();
 
-  const pages = await client.getAllByType("producer", { lang: "*" });
+  const pages = await client.getAllByType("producer");
 
   return {
     paths: pages.map((page) => {
       return {
         params: { uid: page.uid },
-        locale: page.lang,
       };
     }),
     fallback: false,

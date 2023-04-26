@@ -185,7 +185,7 @@ export async function getStaticPaths() {
   const pagesWithoutHome = pages.filter((a) => a.uid !== "hem");
 
   return {
-    paths: pages.map((page) => {
+    paths: pagesWithoutHome.map((page) => {
       return {
         params: { uid: page.uid },
       };

@@ -83,6 +83,8 @@ export default function Footer() {
               +46 (0) 8 22 00 21
               <br />
               info@bodegaimport.com
+              <br />
+              press@20-gruppen.com
             </p>
           </div>
           <div className="mt-4 font-mono">

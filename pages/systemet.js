@@ -58,38 +58,6 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
               </div>
             ))
           )}
-          {!wines?.results || wines?.results.length === 0 ? (
-            <div className=" text-center">
-              Allt verkar vara slutsålt för tillfället.
-            </div>
-          ) : (
-            wines.results.map((wine) => (
-              <div className="w-full max-w-sm grow basis-0">
-                <Card
-                  key={wine.id}
-                  data={wine}
-                  listProducer
-                  href={`${wine.data.producer.url}#${wine.uid}`}
-                />
-              </div>
-            ))
-          )}
-          {!wines?.results || wines?.results.length === 0 ? (
-            <div className=" text-center">
-              Allt verkar vara slutsålt för tillfället.
-            </div>
-          ) : (
-            wines.results.map((wine) => (
-              <div className="w-full max-w-sm grow basis-0">
-                <Card
-                  key={wine.id}
-                  data={wine}
-                  listProducer
-                  href={`${wine.data.producer.url}#${wine.uid}`}
-                />
-              </div>
-            ))
-          )}
         </div>
       </Section>
       <Instagram />

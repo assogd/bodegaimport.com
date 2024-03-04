@@ -90,15 +90,9 @@ const Resellers = ({ data, render = true, size }) => {
   const incomplete = data.findIndex((a) => a.price) === -1;
   if (!refinedData.length || incomplete || !render) return null;
 
-  return (
-    <Li className="">
-      <Body>
-        {refinedData.map((item, i) => (
-          <Reseller key={i} item={item} size={size} />
-        ))}
-      </Body>
-    </Li>
-  );
+  return refinedData.map((item, i) => (
+    <Reseller key={i} item={item} size={size} />
+  ));
 };
 
 const translate = (word) =>
@@ -138,12 +132,12 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         {listProducer && <Producer producer={producer} />}
         <ListItem title="Ursprung" body={origin} />
         <Grapes grapes={grape_composition} />
-        <ListItem title="Jord" body={soil} />
+        <ListItem title="Jord" body={soil} render={size != "sm"} />
         <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <Alcohol title="Alkohol" body={alcohol} render={size != "sm"} />
-        <Resellers data={resellers} size={size} />
       </ul>
+      <Resellers data={resellers} size={size} />
     </Container>
   );
 };

@@ -1,0 +1,28 @@
+[
+  {
+    "messages": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "body",
+              {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Minim nulla ex tempor irure cupidatat consequat culpa tempor amet id magna et nostrud tempor anim. Magna proident aliquip proident mollit ullamco excepteur do eiusmod aliquip."
+                    }
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+]

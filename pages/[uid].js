@@ -89,7 +89,7 @@ const Page = ({
 
 export default Page;
 
-export async function getStaticProps({ params, previewData }) {
+export async function getServerSideProps({ params, previewData }) {
   const client = createClient({ previewData });
   const fetchProducers = params.uid === "sortiment";
   const fetchNews = params.uid === "nyheter";
@@ -140,7 +140,7 @@ export async function getStaticProps({ params, previewData }) {
   };
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const client = createClient();
 
   const pages = await client.getAllByType("page");
@@ -154,4 +154,4 @@ export async function getStaticPaths() {
     }),
     fallback: false,
   };
-}
+}*/

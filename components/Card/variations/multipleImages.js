@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import Image from "next/future/image";
+import Image from "next/image";
 import { LoadingAssetAnimation } from "../../Animations";
 import Button from "../../Button";
 

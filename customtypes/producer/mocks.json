@@ -1,0 +1,131 @@
+[
+  {
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Nature"
+          }
+        }
+      ]
+    },
+    "region_ref": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "trap"
+    },
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "card$32316272-28f4-411e-842e-53756942df1e",
+          "name": "card",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "title": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "heading4",
+                    "content": {
+                      "text": "Value"
+                    }
+                  }
+                ]
+              },
+              "body": {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Fugiat laboris est non et ex excepteur sit. Labore Lorem id aute exercitation laboris et ipsum labore laboris irure proident. Nostrud nisi occaecat cillum laborum."
+                    }
+                  }
+                ]
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "seo_title": {
+      "__TYPE__": "FieldContent",
+      "value": "anyway",
+      "type": "Text"
+    },
+    "seo_description": {
+      "__TYPE__": "FieldContent",
+      "value": "stairs",
+      "type": "Text"
+    },
+    "seo_cards": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "seo_card$3c7e42f6-0e60-403e-ab9d-4918b05490a1",
+          "name": "seo_card",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "title": {
+                "__TYPE__": "FieldContent",
+                "value": "furniture",
+                "type": "Text"
+              },
+              "description": {
+                "__TYPE__": "FieldContent",
+                "value": "owner",
+                "type": "Text"
+              },
+              "image": {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+                  "width": 5616,
+                  "height": 3744
+                },
+                "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?rect=0%2C351%2C5616%2C3042&w=1200&h=650",
+                "width": 1200,
+                "height": 650,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 351
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

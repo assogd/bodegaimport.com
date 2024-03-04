@@ -1,5 +1,5 @@
 import { PrismicRichText } from "@prismicio/react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../../slices";

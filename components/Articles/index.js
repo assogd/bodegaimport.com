@@ -1,6 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { useRouter } from "next/router";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";

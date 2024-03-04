@@ -40,15 +40,13 @@ export default function Header({ settings }) {
 
   return (
     <StickyHeader
-      className={clsx("sticky pt-4 pb-1 lg:fixed", header2Classes)}
+      className={clsx("sticky pb-1 pt-4 lg:fixed", header2Classes)}
       placement={{ col: settings?.alwaysCentered ? "center" : "left" }}
       hide={(asPath === "/" || asPath === "/hem") && hideOnScroll}
       animate={"translate-y-[-200%]"}
     >
       <motion.div className={innerClasses}>
-        <Link href="/">
-          <a>Bodega Import</a>
-        </Link>
+        <Link href="/">Bodega Import</Link>
       </motion.div>
     </StickyHeader>
   );
@@ -61,9 +59,7 @@ export default function Header({ settings }) {
       animate={"translate-y-[-200%]"}
     >
       <motion.div className={innerClasses}>
-        <Link href="/">
-          <a>Bodega Import</a>
-        </Link>
+        <Link href="/">Bodega Import</Link>
       </motion.div>
     </StickyHeader>
   );
@@ -71,9 +67,7 @@ export default function Header({ settings }) {
   return (
     <header className={headerClasses}>
       <motion.div layoutId="mainHeader" className={innerClasses}>
-        <Link href="/">
-          <a>Bodega Import</a>
-        </Link>
+        <Link href="/">Bodega Import</Link>
       </motion.div>
     </header>
   );
@@ -87,9 +81,7 @@ export default function Header({ settings }) {
       transition={{ type: "tween", duration: 0.5, delay: 0.25 }}
       className={headerClasses}
     >
-      <Link href="/">
-        <a>Bodega Import</a>
-      </Link>
+      <Link href="/">Bodega Import</Link>
     </motion.header>
   );
 }

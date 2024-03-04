@@ -25,7 +25,7 @@ export const Region = ({ children, item, view }) => {
         <Heading
           as="h2"
           size="xl"
-          className="mt-8 underline decoration-1 underline-offset-4 lg:mt-0 lg:mb-8 lg:mb-0 lg:no-underline"
+          className="mt-8 underline decoration-1 underline-offset-4 lg:mb-0 lg:mb-8 lg:mt-0 lg:no-underline"
         >
           {item.origin.region}, {item.origin.country}
         </Heading>
@@ -64,7 +64,7 @@ const RowContainer = ({ children, view }) =>
         <Col className="basis-60">Ursprung</Col>
         <Col className="basis-80 pr-6">Druvor</Col>
       </motion.ul>
-      <div className="sticky left-6 mx-6 mt-[.1em] mb-2 hidden border-b" />
+      <div className="sticky left-6 mx-6 mb-2 mt-[.1em] hidden border-b" />
       {children}
     </div>
   ) : (
@@ -110,15 +110,13 @@ const VisitProfile = ({ href }) => {
   return (
     <div className="inline-block grow-0 translate-y-[-.25em]">
       <Link href={href}>
-        <a>
-          <Button
-            className="bg-neutral-500/20 py-[0.125em] px-[0.5em] backdrop-blur"
-            size="mini"
-            whileHover={{ scale: 1.025 }}
-          >
-            Profil
-          </Button>
-        </a>
+        <Button
+          className="bg-neutral-500/20 px-[0.5em] py-[0.125em] backdrop-blur"
+          size="mini"
+          whileHover={{ scale: 1.025 }}
+        >
+          Profil
+        </Button>
       </Link>
     </div>
   );

@@ -1,0 +1,14 @@
+[
+  {
+    "region": {
+      "__TYPE__": "FieldContent",
+      "value": "kept",
+      "type": "Text"
+    },
+    "country": {
+      "__TYPE__": "FieldContent",
+      "value": "between",
+      "type": "Text"
+    }
+  }
+]

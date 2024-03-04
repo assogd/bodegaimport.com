@@ -15,10 +15,11 @@ export const Producer = ({ producer }) => (
   <Li>
     <Heading>Producent</Heading>
     <Body>
-      <Link href={producer.url}>
-        <a className="sober underline decoration-black decoration-solid decoration-from-font underline-offset-4">
-          {prismicH.asText(producer?.data?.title)}
-        </a>
+      <Link
+        href={producer.url}
+        className="sober underline decoration-black decoration-solid decoration-from-font underline-offset-4"
+      >
+        {prismicH.asText(producer?.data?.title)}
       </Link>
     </Body>
   </Li>

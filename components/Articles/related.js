@@ -1,6 +1,6 @@
 import Carousel from "../Carousel/container";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { PrismicRichText } from "@prismicio/react";
 import { useInView } from "react-intersection-observer";

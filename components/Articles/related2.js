@@ -1,6 +1,6 @@
 import Carousel from "../Carousel/container";
 import { useRef, useState, useEffect } from "react";
-import Image from "next/future/image";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { PrismicRichText } from "@prismicio/react";
 import { useInView } from "react-intersection-observer";
@@ -15,16 +15,14 @@ export default function Related({ articles }) {
   return (
     <section
       ref={ref}
-      className="related mb-[-7.5em] overflow-hidden rounded-t-2xl bg-peach pt-8  pb-20"
+      className="related mb-[-7.5em] overflow-hidden rounded-t-2xl bg-peach pb-20  pt-8"
     >
       <header className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
         <h2 className="text-lg">Andra nyheter om dryck</h2>
         <Link href={"/nyheter"}>
-          <a>
-            <Button size="xs" className="font-mono">
-              Se fler nyheter =&gt;
-            </Button>
-          </a>
+          <Button size="xs" className="font-mono">
+            Se fler nyheter =&gt;
+          </Button>
         </Link>
       </header>
       <motion.div
@@ -63,17 +61,15 @@ export const Card = ({ article, i }) => {
       </div>
       <motion.figure>
         <Link href={`/nyhet/${article.uid}`}>
-          <a>
-            <div className="ratio relative h-0 pb-[75%]">
-              <Image
-                src={image.url}
-                width={image.dimensions.width}
-                height={image.dimensions.height}
-                alt={image.alt ?? "Ingen beskrivning tillgänglig"}
-                className="absolute inset-0 h-full rounded-md object-cover"
-              />
-            </div>
-          </a>
+          <div className="ratio relative h-0 pb-[75%]">
+            <Image
+              src={image.url}
+              width={image.dimensions.width}
+              height={image.dimensions.height}
+              alt={image.alt ?? "Ingen beskrivning tillgänglig"}
+              className="absolute inset-0 h-full rounded-md object-cover"
+            />
+          </div>
         </Link>
       </motion.figure>
       <div className="px-1 pt-2">

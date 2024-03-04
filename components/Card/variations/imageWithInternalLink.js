@@ -2,7 +2,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import clsx from "clsx";
 import { capitalize } from "../../../lib/utils/text";
-import Image from "next/future/image";
+import Image from "next/image";
 import * as prismicH from "@prismicio/helpers";
 import { useRouter } from "next/router";
 
@@ -58,11 +58,9 @@ const Figcaption = ({ link, size }) => {
     return (
       <div className={`absolute inset-x-2 bottom-2 sm:inset-x-4 sm:bottom-4`}>
         <Link href={url}>
-          <a>
-            <Button className="bg-cadmiumGreen/80 p-4 backdrop-blur-lg">
-              Besök profil
-            </Button>
-          </a>
+          <Button className="bg-cadmiumGreen/80 p-4 backdrop-blur-lg">
+            Besök profil
+          </Button>
         </Link>
       </div>
     );
@@ -70,7 +68,7 @@ const Figcaption = ({ link, size }) => {
   return (
     <figcaption
       className={clsx(
-        `absolute inset-x-0 bottom-0 m-2 block max-w-md rounded-md md:top-0 md:bottom-auto lg:m-4`,
+        `absolute inset-x-0 bottom-0 m-2 block max-w-md rounded-md md:bottom-auto md:top-0 lg:m-4`,
         `flex flex-col justify-between gap-4 sm:flex-row sm:items-end`,
         `bg-white/30 backdrop-blur`,
         `p-4`
@@ -82,12 +80,10 @@ const Figcaption = ({ link, size }) => {
         </div>
         <div className="text-lg">{prismicH.asText(data?.title)}</div>
       </h3>
-      <Link href={url}>
-        <a className="w-full sm:w-auto">
-          <Button size="lg" className="whitespace-nowrap border">
-            Läs mer
-          </Button>
-        </a>
+      <Link href={url} className="w-full sm:w-auto">
+        <Button size="lg" className="whitespace-nowrap border">
+          Läs mer
+        </Button>
       </Link>
     </figcaption>
   );

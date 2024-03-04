@@ -133,14 +133,12 @@ const Item = ({ link }) => {
         />
       )}
       <Link href={link.link.url}>
-        <a>
-          <Button
-            size="sm"
-            className="relative whitespace-nowrap py-4 px-2 sm:px-4"
-          >
-            <PrismicText field={link.label} />
-          </Button>
-        </a>
+        <Button
+          size="sm"
+          className="relative whitespace-nowrap px-2 py-4 sm:px-4"
+        >
+          <PrismicText field={link.label} />
+        </Button>
       </Link>
     </div>
   );

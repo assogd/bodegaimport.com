@@ -3,7 +3,7 @@ import useAssoCookie from "../../../lib/hooks/useAssoCookie";
 import Button from "../../Button";
 import Modal from "../modal";
 
-import Image from "next/future/image";
+import Image from "next/image";
 import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
 
 export default function CookieConsent({ lang }) {

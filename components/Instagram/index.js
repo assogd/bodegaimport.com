@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import Carousel from "../Carousel/container";
-import Image from "next/future/image";
+import Image from "next/image";
 import { useState } from "react";
 
 const IGAccessToken = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN;

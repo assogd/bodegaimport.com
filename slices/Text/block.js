@@ -21,11 +21,9 @@ export default function Block({ children, data }) {
       <div className="mx-auto max-w-5xl text-lg lg:text-[2vw]">{children}</div>
       <div>
         <Link href={button_link.url}>
-          <a>
-            <Button size="md" className="bg-yellow">
-              {button_text ?? "Läs mer"}
-            </Button>
-          </a>
+          <Button size="md" className="bg-yellow">
+            {button_text ?? "Läs mer"}
+          </Button>
         </Link>
       </div>
     </AnimateInView>

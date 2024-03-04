@@ -1,0 +1,204 @@
+[
+  {
+    "title": {
+      "__TYPE__": "FieldContent",
+      "value": "able",
+      "type": "Text"
+    },
+    "producer": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "origin": {
+      "__TYPE__": "FieldContent",
+      "value": "rays",
+      "type": "Text"
+    },
+    "grape_composition": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "grape",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ],
+            [
+              "density",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "59",
+                "type": "Number"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "soil": {
+      "__TYPE__": "FieldContent",
+      "value": "space",
+      "type": "Text"
+    },
+    "method": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "paragraph",
+          "content": {
+            "text": "Et consectetur amet commodo esse labore reprehenderit nostrud."
+          }
+        }
+      ]
+    },
+    "alcohol": {
+      "__TYPE__": "FieldContent",
+      "value": "thirty",
+      "type": "Text"
+    },
+    "resellers": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "segment",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "Private consumer",
+                "type": "Select"
+              }
+            ],
+            [
+              "reseller",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "merely",
+                "type": "Text"
+              }
+            ],
+            [
+              "art_no",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "church",
+                "type": "Text"
+              }
+            ],
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "ExternalLink",
+                  "url": "http://google.com"
+                }
+              }
+            ],
+            [
+              "quantity",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "66",
+                "type": "Number"
+              }
+            ],
+            [
+              "volume",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "18",
+                "type": "Number"
+              }
+            ],
+            [
+              "price",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "48",
+                "type": "Number"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "shall"
+    },
+    "seo_title": {
+      "__TYPE__": "FieldContent",
+      "value": "somehow",
+      "type": "Text"
+    },
+    "seo_description": {
+      "__TYPE__": "FieldContent",
+      "value": "measure",
+      "type": "Text"
+    },
+    "seo_cards": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "seo_card$51893117-0389-4b9a-bd7b-10ae0a54c557",
+          "name": "seo_card",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "title": {
+                "__TYPE__": "FieldContent",
+                "value": "save",
+                "type": "Text"
+              },
+              "description": {
+                "__TYPE__": "FieldContent",
+                "value": "perfectly",
+                "type": "Text"
+              },
+              "image": {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+                  "width": 4024,
+                  "height": 4024
+                },
+                "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?rect=0%2C922%2C4024%2C2180&w=1200&h=650",
+                "width": 1200,
+                "height": 650,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 922
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

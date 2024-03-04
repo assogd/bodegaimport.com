@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import Logotype from "../public/BODEGA-IMPORT_LOGOTYPE.svg";
 
 import Tjoget from "../public/LINJE-TIO_LOGOTYPES/tjoget.svg";

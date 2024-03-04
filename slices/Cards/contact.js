@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { PrismicRichText } from "@prismicio/react";
 import Button from "../../components/Button";
 import * as prismicH from "@prismicio/helpers";

@@ -1,6 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import Img from "next/future/image";
+import Img from "next/image";
 import clsx from "clsx";
 import { useMemo } from "react";
 import Button from "../../Button";
@@ -12,7 +12,7 @@ import { LoadingAssetAnimation } from "../../Animations";
 
 const Caption = ({ caption, render }) =>
   render && (
-    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 py-4 px-6 text-sm text-neutral-100">
+    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 px-6 py-4 text-sm text-neutral-100">
       <PrismicRichText field={caption} />
     </figcaption>
   );
@@ -21,11 +21,9 @@ const CTA = ({ href, render }) =>
   render && (
     <div className="absolute inset-x-0 bottom-0 rounded-full bg-gradient-to-t from-black/50 p-4">
       <Link href={href}>
-        <a>
-          <Button className="bg-cadmiumGreen/80 backdrop-blur">
-            Besök profil
-          </Button>
-        </a>
+        <Button className="bg-cadmiumGreen/80 backdrop-blur">
+          Besök profil
+        </Button>
       </Link>
     </div>
   );

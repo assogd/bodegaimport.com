@@ -1,0 +1,13 @@
+[
+  {
+    "title": {
+      "__TYPE__": "FieldContent",
+      "value": "properly",
+      "type": "Text"
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "tip"
+    }
+  }
+]

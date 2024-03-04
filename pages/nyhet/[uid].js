@@ -20,7 +20,7 @@ import { getYear, getMonth, getDate } from "../../lib/utils/date";
 import { PrismicRichText } from "@prismicio/react";
 import { motion } from "framer-motion";
 
-import Image from "next/future/image";
+import Image from "next/image";
 import Related from "../../components/Articles/related2";
 
 import { AnimateInView } from "../../components/Animations";

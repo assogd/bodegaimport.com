@@ -1,7 +1,7 @@
 import * as prismicH from "@prismicio/helpers";
 import { PrismicRichText } from "@prismicio/react";
 import clsx from "clsx";
-import Img from "next/future/image";
+import Img from "next/image";
 
 import { useRouter } from "next/router";
 

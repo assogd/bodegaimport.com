@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { PrismicRichText } from "@prismicio/react";
 import Button from "../../components/Button";
 import Link from "next/link";
@@ -40,11 +40,9 @@ export const Container = ({ children, slice }) => {
         {isButton && variation === "wines" && (
           <div>
             <Link href={button_link.url}>
-              <a>
-                <Button size="mini" className="whitespace-nowrap font-mono">
-                  {button_text ?? "Läs mer"} -&gt;
-                </Button>
-              </a>
+              <Button size="mini" className="whitespace-nowrap font-mono">
+                {button_text ?? "Läs mer"} -&gt;
+              </Button>
             </Link>
           </div>
         )}
@@ -53,11 +51,9 @@ export const Container = ({ children, slice }) => {
       {isButton && isArticle && (
         <div className="px-4 sm:px-6">
           <Link href={button_link.url}>
-            <a>
-              <Button size="lg" className="bg-cadmiumGreen">
-                {button_text ?? "Läs mer"}
-              </Button>
-            </a>
+            <Button size="lg" className="bg-cadmiumGreen">
+              {button_text ?? "Läs mer"}
+            </Button>
           </Link>
         </div>
       )}

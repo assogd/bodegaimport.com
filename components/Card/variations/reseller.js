@@ -19,6 +19,7 @@ export default function Reseller({ item, size }) {
       <a
         href={link?.url}
         target="_blank"
+        rel="noreferrer"
         className={clsx(
           "inset-x-3 bottom-3 font-mono",
           isSm ? "absolute" : "sm:absolute"

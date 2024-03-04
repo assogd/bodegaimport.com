@@ -54,9 +54,8 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
             </div>
           ) : (
             wines.results.map((wine) => (
-              <div className="w-full max-w-sm grow basis-0">
+              <div className="w-full max-w-sm grow basis-0" key={wine.id}>
                 <Card
-                  key={wine.id}
                   data={wine}
                   listProducer
                   href={`${wine.data.producer.url}#${wine.uid}`}

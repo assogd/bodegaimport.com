@@ -1,5 +1,5 @@
 import Card from "../Card";
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Button from "../Button";
 import clsx from "clsx";
@@ -70,7 +70,7 @@ const Observer = ({ state, children, i, className }) => {
   });
   const [active, setActive] = state;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (inView && !active.some((a) => a === i)) {
       setActive([...active, i]);
     } else if (!inView && active.some((a) => a === i)) {

@@ -24,7 +24,7 @@ export default function Instagram() {
     fetcher
   );
 
-  if (error) return null;
+  if (data?.error) return null;
 
   return (
     <section className="mb-[-7.5em] mt-8 rounded-t-2xl bg-peach pb-24">

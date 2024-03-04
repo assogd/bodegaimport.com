@@ -8,79 +8,26 @@ import { components } from "../slices";
 import { Layout } from "../components/Layout";
 
 import { Heading } from "../components/Heading";
-import ListOfProducers from "../components/ListOfProducers";
-import Articles from "../components/Articles";
 import Header from "../components/Header/base/";
-
 import clsx from "clsx";
-import slugify from "slugify";
-
-import { useRouter } from "next/router";
-
-import { AnimatePresence } from "framer-motion";
-
 import Section from "../components/Section";
 
-import Toggle from "../components/Toggle";
-import useAssoCookie from "../lib/hooks/useAssoCookie";
-import { useState, useEffect } from "react";
+import Card from "../components/Card/variations/wine";
+import Instagram from "../components/Instagram";
 
-const Page = ({
-  page,
-  list,
-  navigation,
-  marquee,
-  settings,
-  articles,
-  wines,
-}) => {
+const Page = ({ page, navigation, marquee, settings, wines }) => {
   const { seo_cards, seo_description, seo_title } = page.data;
-  const router = useRouter();
 
-  const overlayCard =
-    list &&
-    list.filter(
-      (r) =>
-        slugify(r.origin.region, { lower: true }) === router.query?.region &&
-        r.producers.find((p) => p.uid === router.query?.producer)
-    );
-
-  const params = {
-    region: {
-      slug: router.query.region,
-      title: list && list.find((r) => r.slug === router.query.region)?.origin,
-    },
-    producer: {
-      slug: router.query.producer,
-      title: prismicH.asText(overlayCard[0]?.producers[0]?.data?.title),
-    },
-    card: { slug: router.query.cardId },
-  };
-
-  const isOverlayCard = overlayCard && overlayCard.length && params?.card?.slug;
-  const isOverlayArticle = router.query.aid && articles;
-  const isAboutPage = router.query.uid === "om-oss";
+  console.log(wines.results);
 
   return (
     <Layout
       navigation={navigation}
       marquee={marquee}
       settings={settings}
-      disableScroll={isOverlayCard || isOverlayArticle}
+      className=""
       logotype={{ alwaysCentered: false }}
-      className={clsx("")}
-      bg={isAboutPage && "bg-paleYellow"}
     >
-      {!isOverlayArticle && (
-        <Meta
-          title={`${prismicH.asText(settings.data.siteTitle)}: ${
-            prismicH.asText(page.data.title) ?? seo_title
-          }`}
-          description={seo_description}
-          og={seo_cards?.find((c) => c.variation === "default")}
-          twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
-        />
-      )}
       <Section className="relative grid gap-6 px-4 pb-8 sm:gap-8 sm:px-4">
         <Header
           placement={{ col: "center", row: "first" }}
@@ -90,8 +37,62 @@ const Page = ({
         </Header>
         <SliceZone slices={page.data.slices} components={components} />
       </Section>
-      {list && list.length && <ListOfProducers list={list} wines={wines} />}
-      {articles && articles.length && <Articles articles={articles} />}
+      <Section className="relative grid gap-6 px-4 pb-8 sm:gap-8 sm:px-4">
+        <h3 className="mb-4 mt-8 inline-block text-center font-serif text-lg tracking-tight first:mt-0 last:mb-0 sm:text-lg">
+          Aktuellt sortiment
+        </h3>
+        <div className="mx-auto flex w-full flex-wrap justify-center gap-8">
+          {!wines?.results || wines?.results.length === 0 ? (
+            <div className=" text-center">
+              Allt verkar vara slutsålt för tillfället.
+            </div>
+          ) : (
+            wines.results.map((wine) => (
+              <div className="w-full max-w-sm grow basis-0">
+                <Card
+                  key={wine.id}
+                  data={wine}
+                  listProducer
+                  href={`${wine.data.producer.url}#${wine.uid}`}
+                />
+              </div>
+            ))
+          )}
+          {!wines?.results || wines?.results.length === 0 ? (
+            <div className=" text-center">
+              Allt verkar vara slutsålt för tillfället.
+            </div>
+          ) : (
+            wines.results.map((wine) => (
+              <div className="w-full max-w-sm grow basis-0">
+                <Card
+                  key={wine.id}
+                  data={wine}
+                  listProducer
+                  href={`${wine.data.producer.url}#${wine.uid}`}
+                />
+              </div>
+            ))
+          )}
+          {!wines?.results || wines?.results.length === 0 ? (
+            <div className=" text-center">
+              Allt verkar vara slutsålt för tillfället.
+            </div>
+          ) : (
+            wines.results.map((wine) => (
+              <div className="w-full max-w-sm grow basis-0">
+                <Card
+                  key={wine.id}
+                  data={wine}
+                  listProducer
+                  href={`${wine.data.producer.url}#${wine.uid}`}
+                />
+              </div>
+            ))
+          )}
+        </div>
+      </Section>
+      <Instagram />
     </Layout>
   );
 };
@@ -105,10 +106,22 @@ export async function getStaticProps({ params, previewData }) {
   const settings = await client.getSingle("settings");
   const page = await client.getByUID("page", "systemet", {});
 
+  const wines = await client.query(
+    [
+      prismic.Predicates.at("document.type", "wine"),
+      prismic.Predicates.any("my.wine.resellers.segment", [
+        "Both",
+        "Private consumer",
+      ]),
+    ],
+    {
+      fetchLinks: ["producer.title", "producer.region", "grape.title"],
+    }
+  );
+
   return {
     props: {
       page,
-      list,
       navigation,
       marquee,
       settings,

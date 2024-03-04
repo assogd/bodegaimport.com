@@ -121,7 +121,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
     <Container size={size}>
       <WineColor composition={grape_composition} />
       <Header>
-        <h4 className="truncate">{title}</h4>
+        <h4 className="truncate pb-2">{title}</h4>
         {(href || params) && (
           <Open
             href={href ?? `/producent/${params.producer.slug}#${data.uid}`}
@@ -136,6 +136,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <Alcohol title="Alkohol" body={alcohol} render={size != "sm"} />
+        {size != "sm" && resellers?.length && <div className="h-24" />}
       </ul>
       <Resellers data={resellers} size={size} />
     </Container>

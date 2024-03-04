@@ -4,19 +4,6 @@ import Button from "../../Button";
 import clsx from "clsx";
 import Image from "next/image";
 
-const Container = ({ children, className, href }) => (
-  <motion.div
-    className={clsx("mx-[-.5em] mt-2 grid gap-1 rounded-md bg-white/60 p-4")}
-  >
-    {children}
-    {href && (
-      <Button href={href} className="mt-1 w-full bg-red/50 font-serif">
-        Beställ från {extractDomain(href)}
-      </Button>
-    )}
-  </motion.div>
-);
-
 export default function Reseller({ item, size }) {
   const isSm = size === "sm";
   const { reseller, art_no, link, quantity, price, volume } = item;

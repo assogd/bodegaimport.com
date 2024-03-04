@@ -18,8 +18,6 @@ import Instagram from "../components/Instagram";
 const Page = ({ page, navigation, marquee, settings, wines }) => {
   const { seo_cards, seo_description, seo_title } = page.data;
 
-  console.log(wines.results);
-
   return (
     <Layout
       navigation={navigation}
@@ -28,6 +26,14 @@ const Page = ({ page, navigation, marquee, settings, wines }) => {
       className=""
       logotype={{ alwaysCentered: false }}
     >
+      <Meta
+        title={`${prismicH.asText(settings.data.siteTitle)}: ${
+          prismicH.asText(page.data.title) ?? seo_title
+        }`}
+        description={seo_description}
+        og={seo_cards?.find((c) => c.variation === "default")}
+        twitter={seo_cards?.find((c) => c.variation === "twitterCard")}
+      />
       <Section className="relative grid gap-6 px-4 pb-8 sm:gap-8 sm:px-4">
         <Header
           placement={{ col: "center", row: "first" }}

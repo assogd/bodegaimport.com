@@ -36,9 +36,6 @@ const Page = ({
 }) => {
   const { seo_cards, seo_description, seo_title } = page.data;
   const router = useRouter();
-  const renderToggle = router.query.uid !== "sortiment";
-
-  //if (router.asPath === "/hem") return router.push("/");
 
   const overlayCard =
     list &&
@@ -47,6 +44,18 @@ const Page = ({
         slugify(r.origin.region, { lower: true }) === router.query?.region &&
         r.producers.find((p) => p.uid === router.query?.producer)
     );
+
+  const params = {
+    region: {
+      slug: router.query.region,
+      title: list && list.find((r) => r.slug === router.query.region)?.origin,
+    },
+    producer: {
+      slug: router.query.producer,
+      title: prismicH.asText(overlayCard[0]?.producers[0]?.data?.title),
+    },
+    card: { slug: router.query.cardId },
+  };
 
   const isOverlayCard = overlayCard && overlayCard.length && params?.card?.slug;
   const isOverlayArticle = router.query.aid && articles;
@@ -91,8 +100,6 @@ export default Page;
 
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
-  const fetchProducers = params.uid === "sortiment";
-  const fetchNews = params.uid === "nyheter";
 
   const links = {
     page: ["producer.title", "producer.region", "card.caption"],
@@ -115,43 +122,36 @@ export async function getStaticProps({ params, previewData }) {
   const marquee = await client.getSingle("marquee");
   const settings = await client.getSingle("settings");
 
-  const articles =
-    fetchNews &&
-    (await client.getAllByType("article", {
-      orderings: {
-        field: "my.article.date_published",
-        direction: "desc",
-      },
-      predicates: [prismic.predicate.at("my.article.type", "News")],
-    }));
-
-  const page = await client.getByUID("page", params.uid, {
+  const page = await client.getByUID("page", "sortiment", {
     fetchLinks: links.page,
   });
 
+  const origins = await client.getAllByType("origin");
+
+  const producers = await client.getAllByType("producer", {
+    fetchLinks: links.producers,
+  });
+
+  const wines = await client.getAllByType("wine", { fetchLinks: links.wines });
+
+  const list = origins
+    .map((origin) => ({
+      origin: origin.data,
+      slug: origin.slugs[0],
+      producers: producers.filter(
+        (producer) => producer.data.region_ref.id === origin.id
+      ),
+    }))
+    .filter((a) => a.producers.length > 0)
+    .sort((a, b) => a.origin.region.localeCompare(b.origin.region));
   return {
     props: {
       page,
+      list,
       navigation,
       marquee,
       settings,
-      articles,
+      wines,
     },
-  };
-}
-
-export async function getStaticPaths() {
-  const client = createClient();
-
-  const pages = await client.getAllByType("page");
-  const pagesWithoutHome = pages.filter((a) => a.uid !== "hem");
-
-  return {
-    paths: pagesWithoutHome.map((page) => {
-      return {
-        params: { uid: page.uid },
-      };
-    }),
-    fallback: false,
   };
 }

@@ -89,7 +89,7 @@ const Page = ({
 
 export default Page;
 
-export async function getServerSideProps({ params, previewData }) {
+export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
   const fetchProducers = params.uid === "sortiment";
   const fetchNews = params.uid === "nyheter";
@@ -140,18 +140,15 @@ export async function getServerSideProps({ params, previewData }) {
   };
 }
 
-/*export async function getStaticPaths() {
-  const client = createClient();
-
-  const pages = await client.getAllByType("page");
-  const pagesWithoutHome = pages.filter((a) => a.uid !== "hem");
+export async function getStaticPaths() {
+  const pages = ["nyheter", "flaskpost", "om-oss"];
 
   return {
-    paths: pagesWithoutHome.map((page) => {
+    paths: pages.map((page) => {
       return {
-        params: { uid: page.uid },
+        params: { uid: page },
       };
     }),
     fallback: false,
   };
-}*/
+}

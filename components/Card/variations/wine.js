@@ -74,7 +74,7 @@ export const ListItem = ({ title, body, render = true }) =>
     </Li>
   );
 
-const Resellers = ({ data, render = true }) => {
+const Resellers = ({ data, render = true, size }) => {
   const [preferences] = useAssoCookie();
   if (!render) return null;
 
@@ -91,10 +91,10 @@ const Resellers = ({ data, render = true }) => {
   if (!refinedData.length || incomplete || !render) return null;
 
   return (
-    <Li>
+    <Li className="">
       <Body>
         {refinedData.map((item, i) => (
-          <Reseller key={i} item={item} />
+          <Reseller key={i} item={item} size={size} />
         ))}
       </Body>
     </Li>
@@ -134,7 +134,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
           />
         )}
       </Header>
-      <ul className="relative">
+      <ul className="relative flex flex-col">
         {listProducer && <Producer producer={producer} />}
         <ListItem title="Ursprung" body={origin} />
         <Grapes grapes={grape_composition} />
@@ -142,7 +142,7 @@ const Wine = ({ data, bgColor, size, params, href, listProducer }) => {
         <Method body={method} render={size != "sm" && method.length > 0} />
         <ListItem title="HL/HA" body={hl_ha} render={size != "sm"} />
         <Alcohol title="Alkohol" body={alcohol} render={size != "sm"} />
-        <Resellers data={resellers} render={size != "sm"} />
+        <Resellers data={resellers} size={size} />
       </ul>
     </Container>
   );

@@ -6,7 +6,7 @@ export const Container = ({ children, size, className }) => (
     className={clsx(
       "hyphens",
       size != "sm" && "relative min-h-full p-6 pb-10 sm:p-8",
-      size === "sm" && "absolute inset-0 p-6 pb-8",
+      size === "sm" && "absolute inset-0 p-6",
       className
     )}
   >
@@ -41,8 +41,13 @@ export const Open = ({ href }) => (
   </div>
 );
 
-export const Li = ({ children }) => (
-  <li className="border-b border-dashed py-2 first:pt-0 last:border-0">
+export const Li = ({ children, className }) => (
+  <li
+    className={clsx(
+      "border-b border-dashed py-2 first:pt-0 last:border-0",
+      className
+    )}
+  >
     {children}
   </li>
 );

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import extractDomain from "extract-domain";
 import Button from "../../Button";
 import clsx from "clsx";
+import Image from "next/image";
 
 const Container = ({ children, className, href }) => (
   <motion.div
@@ -16,7 +17,8 @@ const Container = ({ children, className, href }) => (
   </motion.div>
 );
 
-export default function Reseller({ item }) {
+export default function Reseller({ item, size }) {
+  const isSm = size === "sm";
   const { reseller, art_no, link, quantity, price, volume } = item;
 
   const onlyPrice = price && !reseller && !art_no && !volume;
@@ -28,6 +30,38 @@ export default function Reseller({ item }) {
   const artNoAndQuantityAndPrice = price && !reseller && art_no && volume;
 
   const complete = price && reseller && art_no && volume;
+
+  const params = [
+    quantity,
+    volume && `${volume} ml`,
+    price && `${price} SEK`,
+  ].filter(Boolean);
+
+  if (isSm)
+    return (
+      link?.url && (
+        <a href={link?.url} target="_blank">
+          <motion.div
+            className={clsx(
+              "mx-[-.5em] mt-2 flex justify-between gap-2 rounded-md bg-white/60 p-4"
+            )}
+          >
+            <div className="leading-4">
+              {params.join(" / ")}
+              <div className="whitespace-nowrap uppercase">
+                <span className="">{extractDomain(link?.url)}</span>
+              </div>
+            </div>
+            <Image
+              src={"/icons/launch.svg"}
+              alt={"External link"}
+              width="16"
+              height="16"
+            />
+          </motion.div>
+        </a>
+      )
+    );
 
   if (onlyPrice)
     return (

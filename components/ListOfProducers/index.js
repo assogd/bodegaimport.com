@@ -4,7 +4,7 @@ import Carousel from "../Carousel/container";
 import Card from "../Card";
 import * as prismicH from "@prismicio/helpers";
 
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { Select, Option } from "../Select";
 
 import clsx from "clsx";
@@ -26,7 +26,7 @@ export default function ListOfProducers({ list, wines }) {
   const [preferences, setPreferences] = useAssoCookie();
   const [view, setView] = useState("cards");
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     preferences?.producerView && setView(preferences.producerView);
   }, [preferences, setView]);
 
@@ -97,7 +97,7 @@ const ChangeView = ({ state }) => {
   const [preferences, setPreferences] = useAssoCookie();
   const render = useBreakpoints([]).some((n) => n === "lg");
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (preferences?.consent === "all") {
       setPreferences({ ...preferences, producerView: render ? view : "cards" });
     } else if (

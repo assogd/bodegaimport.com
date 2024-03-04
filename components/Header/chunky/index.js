@@ -3,7 +3,6 @@ import Logotype from "../../../public/BODEGA-IMPORT_LOGOTYPE.svg";
 
 import { useInView } from "react-intersection-observer";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLayoutEffect } from "react";
 import useBreakpoints from "../../../lib/hooks/useBreakpoints";
 
 export function Header() {

@@ -2,7 +2,7 @@ import useScrollDirection from "../../../lib/hooks/useScrollDirection";
 import { motion } from "framer-motion";
 import useBreakpoints from "../../../lib/hooks/useBreakpoints";
 import clsx from "clsx";
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const StickyHeader = ({ children, className, secondLevel, placement }) => {

@@ -7,8 +7,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Backdrop from "../../Backdrop";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useAssoCookie from "../../../lib/hooks/useAssoCookie";
 
-export const Collapsible = ({ links, itemsToShow, marquee }) => {
+const Menu = ({ links, itemsToShow, marquee }) => {
   const [isOpen, setOpen] = useState(false);
 
   Object.keys(links).forEach(
@@ -40,7 +41,7 @@ export const Collapsible = ({ links, itemsToShow, marquee }) => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <Backdrop onTap={() => setOpen(false)}>
+          <Backdrop onTap={() => setOpen(false)} key={"backdrop"}>
             <List>
               {links.map((item) => (
                 <ListItem item={item} key={prismicH.asText(item.label)} />
@@ -55,13 +56,16 @@ export const Collapsible = ({ links, itemsToShow, marquee }) => {
 };
 
 const ListItem = ({ item }) => {
+  const shouldRender = useFilterLink(item.link.uid);
+  if (!shouldRender) return null;
+
   return (
     <motion.li
       key={prismicH.asText(item.label)}
       className="whitespace-nowrap text-xl"
-      initial={{ opacity: 0, y: ".25em" }}
+      initial={{ opacity: 0, y: "-.0em" }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: ".25em" }}
+      exit={{ opacity: 0, y: "-.0em" }}
       transition={{ type: "tween", delay: 0, duration: 0.5 }}
     >
       <PrismicLink field={item.link} className="block w-full p-6">
@@ -80,9 +84,9 @@ const List = ({ children }) => {
     <motion.ul
       key={"ul"}
       className={ulClasses}
-      initial={{ y: "100%", opacity: 0 }}
+      initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ y: 100, opacity: 0 }}
       transition={{ type: "tween", duration: ".25" }}
     >
       {children}
@@ -123,9 +127,12 @@ const Item = ({ link }) => {
   const [isActive, setActive] = useState(false);
   const { asPath } = useRouter();
   useEffect(() => setActive(link.link.url === asPath), [link.link.url, asPath]);
+  const shouldRender = useFilterLink(link.link.uid);
+
+  if (!shouldRender) return null;
 
   return (
-    <div className="relative flex h-12 items-center justify-center">
+    <motion.div className="relative flex h-12 items-center justify-center">
       {isActive && (
         <motion.div
           layoutId="active"
@@ -140,6 +147,18 @@ const Item = ({ link }) => {
           <PrismicText field={link.label} />
         </Button>
       </Link>
-    </div>
+    </motion.div>
   );
 };
+
+const useFilterLink = (linkUid) => {
+  const [{ consumer } = {}] = useAssoCookie();
+  const filters = {
+    private: ["systemet"],
+    restaurant: ["flaskpost"],
+  };
+
+  return !filters[consumer]?.includes(linkUid);
+};
+
+export default Menu;

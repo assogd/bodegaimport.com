@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { useWindowWidth } from "@react-hook/window-size/throttled";
-import { Collapsible } from "./variants";
-
+import dynamic from "next/dynamic";
+const Collapsible = dynamic(() => import("./variants"), {
+  ssr: false,
+});
 export default function Navigation({ links, marquee }) {
   const onlyWidth = useWindowWidth();
   const [windowWidth, setWindowWidth] = useState(0);

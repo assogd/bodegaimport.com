@@ -27,7 +27,7 @@ export default function Reseller({ item, size }) {
       >
         <motion.div
           className={clsx(
-            "mt-2 flex justify-between gap-2 rounded-lg bg-white/60 p-4 backdrop-blur"
+            "mt-2 flex items-center justify-between gap-2 rounded-lg bg-white/60 p-4 backdrop-blur"
           )}
         >
           <div className="leading-5">
@@ -41,6 +41,7 @@ export default function Reseller({ item, size }) {
             alt={"External link"}
             width="16"
             height="16"
+            className="h-4 w-4"
           />
         </motion.div>
       </a>

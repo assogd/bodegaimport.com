@@ -53,7 +53,7 @@ const Asset = ({ data, priority, inView, dir }) => {
           alt={alt ?? "Ingen beskrivning tillgänglig"}
           className={clsx("h-full object-contain align-text-bottom")}
           priority={priority}
-          onLoadingComplete={(e) => setLoaded(true)}
+          onLoad={(e) => setLoaded(true)}
         />
       </LoadingAssetAnimation>
       <Caption data={data.caption} />
@@ -233,7 +233,7 @@ export default function MultipleImages({ data, size, aboveFold }) {
               size === "sm" && "h-full object-cover"
             )}
             priority={aboveFold}
-            onLoadingComplete={(e) => setLoaded(true)}
+            onLoad={(e) => setLoaded(true)}
           />
           <Expand onTap={() => setOverlay(true)}>
             {data.items.length > 1 ? `${data.items.length} bilder` : `Förstora`}

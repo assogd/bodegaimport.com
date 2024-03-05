@@ -37,7 +37,7 @@ const ImageWithInternalLink = ({ data, size, aboveFold }) => {
             "Ingen beskrivning tillgänglig"
           }
           priority={aboveFold}
-          onLoadingComplete={(e) => setLoaded(true)}
+          onLoad={(e) => setLoaded(true)}
         />
       </LoadingAssetAnimation>
       <Figcaption link={link} size={size} />

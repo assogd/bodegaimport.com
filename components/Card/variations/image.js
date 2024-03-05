@@ -54,7 +54,7 @@ const Image = ({ data, size, i, params, aboveFold }) => {
             size === "sm" ? "h-full object-cover" : "h-full object-cover"
           )}
           priority={aboveFold}
-          onLoadingComplete={(e) => setLoaded(true)}
+          onLoad={(e) => setLoaded(true)}
         />
         <Caption render={caption && size != "sm"} caption={caption} />
         <CTA

@@ -43,7 +43,7 @@ export const Card = ({ data }) => {
             layout="responsive"
             alt={picture.alt}
             className="rounded-md bg-paleYellow mix-blend-multiply grayscale"
-            onLoadingComplete={() => setLoaded(true)}
+            onLoad={() => setLoaded(true)}
           />
         </LoadingAssetAnimation>
       ) : (

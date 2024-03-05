@@ -39,7 +39,7 @@ const Image = ({ slice, index }) => {
           height={image.dimensions.height}
           alt={image.alt ?? "Ingen beskrivning tillgänglig"}
           className={clsx(!query.aid && "h-full rounded-sm object-cover")}
-          onLoadingComplete={(e) => setLoaded(true)}
+          onLoad={(e) => setLoaded(true)}
         />
         {caption && (
           <figcaption

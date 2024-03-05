@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import clsx from "clsx";
 import { isMobile } from "react-device-detect";
 import { AnimateInView } from "../Animations";
+import Link from "next/link";
 
 export default function Articles({ articles }) {
   const [isStateMobile, setStateMobile] = useState(false);
+  const [isHover, setHover] = useState(null);
   useEffect(() => setStateMobile(isMobile), []);
 
   const className = {
@@ -20,16 +22,24 @@ export default function Articles({ articles }) {
   return (
     <AnimateInView className={className.section}>
       {articles.map((article, i) => (
-        <Article key={i} article={article} />
+        <motion.article
+          key={article.uid}
+          className="relative grid gap-2 text-center"
+          onMouseEnter={() => setHover(i)}
+        >
+          <Article
+            article={article}
+            renderImage={i === isHover}
+            mobileState={[isStateMobile, setStateMobile]}
+          />
+        </motion.article>
       ))}
     </AnimateInView>
   );
 }
 
-const Article = ({ article }) => {
-  const [isHover, setHover] = useState(false);
-  const [isStateMobile, setStateMobile] = useState(false);
-  useEffect(() => setStateMobile(isMobile), []);
+const Article = ({ article, mobileState, renderImage }) => {
+  const [isStateMobile, setStateMobile] = mobileState;
 
   const {
     date_published: date,
@@ -53,13 +63,13 @@ const Article = ({ article }) => {
   };
 
   return (
-    <article className="relative grid gap-2 text-center">
+    <>
       <motion.figure
         initial={{ opacity: 0 }}
-        animate={isHover || isStateMobile ? { opacity: 1 } : { opacity: 0 }}
+        animate={renderImage || isStateMobile ? { opacity: 1 } : { opacity: 0 }}
         className={className.figure}
       >
-        <A href={`/nyhet/${article.uid}`}>
+        <Link href={`/nyhet/${article.uid}`}>
           <Image
             src={image.sm.url}
             width={image.sm.dimensions.width}
@@ -67,39 +77,18 @@ const Article = ({ article }) => {
             alt={image.alt ?? "Ingen beskrivning tillgänglig"}
             className="rounded-sm"
           />
-        </A>
+        </Link>
       </motion.figure>
       <header className="relative">
-        <motion.h2
-          className="inline-block pb-1 text-lg sm:text-xxl"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <A href={`/nyhet/${article.uid}`}>
+        <motion.h2 className="inline-block pb-1 text-lg sm:text-xxl">
+          <Link href={`/nyhet/${article.uid}`}>
             <PrismicRichText field={title} />
-          </A>
+          </Link>
         </motion.h2>
         <div role="doc-subtitle" className="font-mono">
           {new Date(date).toLocaleDateString("sv", options)}
         </div>
       </header>
-    </article>
-  );
-};
-
-const A = ({ children, href }) => {
-  const { push } = useRouter();
-
-  return (
-    <a
-      onClick={() =>
-        push(href, undefined, {
-          shallow: true,
-        })
-      }
-      className="cursor-pointer"
-    >
-      {children}
-    </a>
+    </>
   );
 };

@@ -141,7 +141,7 @@ export async function getStaticProps({ params, previewData }) {
 }
 
 export async function getStaticPaths() {
-  const pages = ["nyheter", "flaskpost", "om-oss"];
+  const pages = ["flaskpost"];
 
   return {
     paths: pages.map((page) => {

@@ -84,9 +84,7 @@ export default function App({ Component, pageProps, router }) {
       richTextComponents={richTextComponents}
     >
       <PrismicPreview repositoryName={repositoryName}>
-        <AnimatePresence mode="wait" initial={false}>
-          <Component {...pageProps} key={generateKey} />
-        </AnimatePresence>
+        <Component {...pageProps} />
       </PrismicPreview>
     </PrismicProvider>
   );

@@ -5,7 +5,7 @@ import Image from "next/image";
 import clsx from "clsx";
 import { useWindowWidth } from "@react-hook/window-size/throttled";
 import dynamic from "next/dynamic";
-const Collapsible = dynamic(() => import("./variants"), {
+const Menu = dynamic(() => import("./variants"), {
   ssr: false,
 });
 export default function Navigation({ links, marquee }) {
@@ -15,7 +15,5 @@ export default function Navigation({ links, marquee }) {
 
   const itemsToShow = Math.round((windowWidth - 100) / 100);
 
-  return (
-    <Collapsible links={links} marquee={marquee} itemsToShow={itemsToShow} />
-  );
+  return <Menu links={links} marquee={marquee} itemsToShow={itemsToShow} />;
 }

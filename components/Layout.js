@@ -6,11 +6,12 @@ import Alerts from "./Alerts/";
 import useAssoCookie from "../lib/hooks/useAssoCookie";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
+import ContextProvider from "../lib/context";
+import Slideshow from "./Slideshow/";
 
 export const Layout = ({
   navigation,
   marquee,
-  settings,
   children,
   disableScroll,
   className = "pt-12",
@@ -32,7 +33,7 @@ export const Layout = ({
   );
 
   return (
-    <>
+    <ContextProvider>
       <div className={containerClasses}>
         <main className={clsx(className)}>
           <Header settings={logotype} />
@@ -46,6 +47,7 @@ export const Layout = ({
         <Alerts />
         <Footer />
       </div>
-    </>
+      <Slideshow />
+    </ContextProvider>
   );
 };

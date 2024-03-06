@@ -21,6 +21,7 @@
     "@prismicio/react": "^2.5.0",
     "@prismicio/slice-simulator-react": "^0.2.2",
     "@react-hook/window-size": "^3.1.1",
+    "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^1.2.1",
     "copy-to-clipboard": "^3.3.2",
     "extract-domain": "^2.4.8",

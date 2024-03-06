@@ -154,8 +154,8 @@ const Item = ({ link }) => {
 const useFilterLink = (linkUid) => {
   const [{ consumer } = {}] = useAssoCookie();
   const filters = {
-    private: ["systemet"],
-    restaurant: ["flaskpost"],
+    restaurant: ["systemet"],
+    private: ["flaskpost"],
   };
 
   return !filters[consumer]?.includes(linkUid);

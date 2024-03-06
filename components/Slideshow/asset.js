@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { LoadingAssetAnimation } from "../Animations";
 import clsx from "clsx";
 import Image from "next/image";
+import { PrismicRichText } from "@prismicio/react";
 
 const Asset = ({ data, priority, inView, dir }) => {
   const [loaded, setLoaded] = useState(false);

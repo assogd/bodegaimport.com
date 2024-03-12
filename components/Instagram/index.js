@@ -32,7 +32,7 @@ export default function Instagram() {
         className="flex flex-col items-center justify-center gap-2 p-8 text-center sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
         onClick={() => setActive(null)}
       >
-        <h2 className="text-lg">Senaste från socialen</h2>
+        <h2 className="text-lg">Postat på Instagram</h2>
         <Button
           size="xs"
           className="font-mono"
@@ -126,7 +126,7 @@ const Entry = ({ entry, state, i }) => {
                 transition={{ type: "tween" }}
                 className="flex h-full flex-col justify-end gap-1"
               >
-                <div className="relative shrink overflow-y-scroll rounded-md bg-white/70 py-3 px-4 text-center font-mono backdrop-blur-lg">
+                <div className="relative shrink overflow-y-scroll rounded-md bg-white/70 px-4 py-3 text-center font-mono backdrop-blur-lg">
                   {caption}
                 </div>
                 <Button href={permalink} size="lg" className="bg-yellow">

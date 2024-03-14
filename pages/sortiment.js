@@ -137,13 +137,14 @@ export async function getStaticProps({ params, previewData }) {
   const list = origins
     .map((origin) => ({
       origin: origin.data,
-      slug: origin.slugs[0],
+      slug: origin.slugs[0] !== undefined ? origin.slugs[0] : null,
       producers: producers.filter(
         (producer) => producer.data.region_ref.id === origin.id
       ),
     }))
     .filter((a) => a.producers.length > 0)
     .sort((a, b) => a.origin.region.localeCompare(b.origin.region));
+
   return {
     props: {
       page,

@@ -6,7 +6,7 @@ export const getPageQuery = `
         ... on Section {
           id
           body
-          cta {
+          links {
             ... on Link {
               id
               href
@@ -14,6 +14,22 @@ export const getPageQuery = `
             }
           }
         }
+        ... on Gallery {
+        id
+        assets {
+          ... on Image {
+            id
+            caption
+            file {
+              height
+              width
+              url(
+                transformation: {document: {output: {format: webp}}, image: {quality: {value: 80}, resize: {fit: max, height: 1200, width: 1200}}}
+              )
+            }
+          }
+        }
+      }
       }
       seo {
         description

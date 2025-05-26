@@ -8,6 +8,7 @@ export interface Section {
   id: string
   body: string
   cta?: Link
+  links?: Link[]
 }
 
 export interface SEO {
@@ -18,7 +19,25 @@ export interface SEO {
   }
 }
 
+export interface ImageAsset {
+  id: string;
+  caption?: string;
+  file: {
+    url: string;
+    width?: number;
+    height?: number;
+  };
+}
+
+export interface Gallery {
+  id: string;
+  assets: ImageAsset[];
+}
+
+export type SectionOrGallery = Section | Gallery;
+
 export interface Page {
-  content?: Section[]
-  seo?: SEO
+  content?: SectionOrGallery[];
+  seo?: SEO;
+  marquee?: string;
 } 

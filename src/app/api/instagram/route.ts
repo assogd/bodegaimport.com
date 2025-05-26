@@ -7,6 +7,28 @@ const INSTAGRAM_USER_ID = process.env.INSTAGRAM_USER_ID;
 // Cache duration in seconds (24 hours)
 const CACHE_DURATION = 24 * 3600;
 
+interface InstagramMedia {
+  id: string;
+  media_type: 'IMAGE' | 'VIDEO' | 'CAROUSEL_ALBUM';
+  media_url: string;
+  thumbnail_url?: string;
+  permalink: string;
+  caption?: string;
+  username?: string;
+  children?: {
+    data: Array<{
+      id: string;
+      media_type: 'IMAGE' | 'VIDEO';
+      media_url: string;
+      thumbnail_url?: string;
+    }>;
+  };
+}
+
+interface InstagramResponse {
+  data: InstagramMedia[];
+}
+
 export async function GET() {
   if (!INSTAGRAM_ACCESS_TOKEN || !INSTAGRAM_USER_ID) {
     return NextResponse.json({ error: 'Instagram credentials not configured' }, { status: 500 });
@@ -32,11 +54,11 @@ export async function GET() {
       throw new Error(`Failed to fetch Instagram posts: ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as InstagramResponse;
     console.log('Raw Instagram data:', JSON.stringify(data.data, null, 2));
 
     // Process posts to handle carousel items
-    const processedPosts = data.data.map((post: any) => {
+    const processedPosts = data.data.map((post: InstagramMedia) => {
       console.log('Processing post:', {
         id: post.id,
         media_type: post.media_type,
@@ -44,7 +66,11 @@ export async function GET() {
       });
 
       // If it's a carousel post, use the first child's media
-      if (post.media_type === 'CAROUSEL_ALBUM' && post.children?.data?.length > 0) {
+      if (
+        post.media_type === 'CAROUSEL_ALBUM' &&
+        post.children?.data &&
+        post.children.data.length > 0
+      ) {
         const firstChild = post.children.data[0];
         console.log('Carousel post first child:', {
           id: post.id,
@@ -62,7 +88,7 @@ export async function GET() {
 
     // Filter for both image and video posts and take only the first 4
     const mediaPosts = processedPosts
-      .filter((post: any) => {
+      .filter((post: InstagramMedia) => {
         const isMedia = post.media_type === 'IMAGE' || post.media_type === 'VIDEO';
         console.log('Filtering post:', {
           id: post.id,
@@ -75,7 +101,7 @@ export async function GET() {
 
     console.log(
       'Final filtered posts:',
-      mediaPosts.map((post: any) => ({
+      mediaPosts.map((post: InstagramMedia) => ({
         id: post.id,
         media_type: post.media_type,
       }))
@@ -89,17 +115,10 @@ export async function GET() {
 }
 
 // Webhook handler for Instagram
-export async function POST(request: Request) {
+export async function POST() {
   try {
-    const body = await request.json();
-
-    // Verify the webhook is from Instagram
-    // You should implement proper verification here
-    // https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests
-
     // Revalidate the Instagram feed
     revalidatePath('/');
-
     return NextResponse.json({ revalidated: true, now: Date.now() });
   } catch (error) {
     console.error('Error handling webhook:', error);

@@ -59,14 +59,15 @@ export default function InstagramFeed() {
       }
     );
 
-    slideRefs.current.forEach(slide => {
+    const currentRefs = slideRefs.current;
+    currentRefs.forEach(slide => {
       if (slide) {
         observer.observe(slide);
       }
     });
 
     return () => {
-      slideRefs.current.forEach(slide => {
+      currentRefs.forEach(slide => {
         if (slide) {
           observer.unobserve(slide);
         }

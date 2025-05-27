@@ -41,7 +41,7 @@ const MarqueeBar: React.FC<MarqueeBarProps> = ({ content }) => {
                   alt="separator"
                   width={20} // Adjust width as needed
                   height={20} // Adjust height as needed
-                  className="w-auto h-7" // Add some margin around the image
+                  className="w-auto h-7 mt-[.15em]" // Add some margin around the image
                 />
               )}
             </React.Fragment>

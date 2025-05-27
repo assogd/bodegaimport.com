@@ -112,17 +112,17 @@ export default async function Home() {
               <Image
                 src="/BIRD_01.svg"
                 alt="Bird decoration"
-                width={137}
-                height={177}
-                className="md:absolute md:-left-44 md:-top-24 w-auto h-auto"
+                width={110}
+                height={142}
+                className="md:absolute md:-left-44 md:-top-24 w-36 h-auto"
                 priority
               />
               <Image
                 src="/BIRD_02.svg"
                 alt="Bird decoration"
-                width={179}
-                height={158}
-                className="ml-auto md:absolute md:-right-44 md:-top-28 md:-translate-y-1/2 w-auto h-auto"
+                width={143}
+                height={126}
+                className="ml-auto md:absolute md:-right-44 md:-top-28 md:-translate-y-1/2 w-28 h-auto"
                 priority
               />
             </div>

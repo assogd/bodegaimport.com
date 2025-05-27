@@ -54,7 +54,10 @@ export default async function Home() {
   function renderContent(section: Section | Gallery, i: number) {
     if (isGallery(section)) {
       return (
-        <div key={section.id} className="col-span-full w-full max-w-4xl mx-auto sm:pt-16 pb-16">
+        <div
+          key={section.id}
+          className="col-span-full w-full max-w-4xl mx-auto pt-0 sm:pt-20 pb-16"
+        >
           <div className="w-full flex flex-col gap-12">
             {section.assets.map((img, idx) => {
               const isPortrait = (img.file.height || 0) >= (img.file.width || 0);
@@ -97,7 +100,7 @@ export default async function Home() {
                 <a
                   key={link.id || idx}
                   href={link.href}
-                  className="w-full sm:w-44 inline-block font-mono uppercase border border-black border-[.05em] rounded-lg px-4 pt-4 pb-3 text-center"
+                  className="w-full sm:w-44 inline-block font-mono uppercase border border-black border-[.05em] rounded-lg px-4 pt-[.85em] pb-3 text-center"
                 >
                   {link.value}
                 </a>
@@ -107,21 +110,20 @@ export default async function Home() {
           {section.id === 'cmb0ssfo4brn608mdsbw3361u' && (
             <div className="relative w-full">
               <Image
-                src="/BIRD_01.png"
+                src="/BIRD_01.svg"
                 alt="Bird decoration"
-                width={260}
-                height={260}
-                className="ml-auto md:absolute md:-right-40 md:-top-28 md:-translate-y-1/2 w-32 h-auto"
+                width={137}
+                height={177}
+                className="md:absolute md:-left-44 md:-top-24 w-auto h-auto"
                 priority
               />
               <Image
-                src="/BIRD_02.png"
+                src="/BIRD_02.svg"
                 alt="Bird decoration"
-                width={150}
-                height={150}
-                className="md:absolute md:-left-40 md:-top-24 w-36 h-auto"
+                width={179}
+                height={158}
+                className="ml-auto md:absolute md:-right-44 md:-top-28 md:-translate-y-1/2 w-auto h-auto"
                 priority
-                quality={80}
               />
             </div>
           )}

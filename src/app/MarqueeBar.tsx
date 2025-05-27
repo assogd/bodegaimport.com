@@ -10,10 +10,8 @@ interface MarqueeBarProps {
 const MarqueeBar: React.FC<MarqueeBarProps> = ({ content }) => {
   const contentToRender = Array.isArray(content) ? content : [content];
 
-  console.log(contentToRender);
-
   return (
-    <div className="fixed top-0 left-0 w-screen z-50 bg-[#F6E27A] font-mono h-10 flex items-center overflow-hidden">
+    <div className="fixed top-0 left-0 w-screen z-50 bg-[#F6E27A] font-mono h-12 sm:h-10 flex items-center overflow-hidden">
       <Marquee gradient={false} speed={40} pauseOnHover>
         <div className="flex gap-8 mr-8">
           {contentToRender.map((item, idx) => (

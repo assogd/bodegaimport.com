@@ -6,8 +6,9 @@ import Image from 'next/image';
 import RootLayout from './layout';
 import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
-import LogotypeWall from './LogotypeWall';
+import LogotypeWall from './components/LogotypeWall';
 import RevalidateButton from './components/RevalidateButton';
+import InstagramFeed from './components/InstagramFeed';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await hygraph.request<{ pages: Page[] }>(getPageQuery);
@@ -53,7 +54,7 @@ export default async function Home() {
   function renderContent(section: Section | Gallery, i: number) {
     if (isGallery(section)) {
       return (
-        <div key={section.id} className="col-span-full w-full max-w-4xl mx-auto pt-16 pb-16">
+        <div key={section.id} className="col-span-full w-full max-w-4xl mx-auto sm:pt-16 pb-16">
           <div className="w-full flex flex-col gap-12">
             {section.assets.map((img, idx) => {
               const isPortrait = (img.file.height || 0) >= (img.file.width || 0);
@@ -69,7 +70,7 @@ export default async function Home() {
                     height={img.file.height || 400}
                     sizes="(max-width: 640px) 100vw, 384px"
                     className="w-full"
-                    priority={false}
+                    priority={idx === 0}
                   />
                   {img.caption && (
                     <figcaption className="text-left text-xs uppercase mt-1">
@@ -108,16 +109,19 @@ export default async function Home() {
               <Image
                 src="/BIRD_01.png"
                 alt="Bird decoration"
-                width={130}
-                height={130}
-                className="ml-auto md:absolute md:-right-40 md:-top-28 md:-translate-y-1/2"
+                width={260}
+                height={260}
+                className="ml-auto md:absolute md:-right-40 md:-top-28 md:-translate-y-1/2 w-32 h-auto"
+                priority
               />
               <Image
                 src="/BIRD_02.png"
                 alt="Bird decoration"
                 width={150}
                 height={150}
-                className="md:absolute md:-left-40 md:-top-24"
+                className="md:absolute md:-left-40 md:-top-24 w-36 h-auto"
+                priority
+                quality={80}
               />
             </div>
           )}
@@ -143,6 +147,7 @@ export default async function Home() {
             alt="Bodega Import"
             width={150}
             height={150}
+            priority
           />
           <h1 className="font-serif text-2xl">Bodega Import</h1>
           <div className="flex flex-col gap-4">
@@ -159,6 +164,15 @@ export default async function Home() {
           </div>
         </header>
         {page.content?.map(renderContent)}
+        <div className="col-span-full w-full mx-auto my-12">
+          <div className="flex justify-between uppercase">
+            <div>Instagram</div>
+            <div>
+              <a href={'https://www.instagram.com/bodega.import'}>@bodega.import</a>
+            </div>
+          </div>
+          <InstagramFeed />
+        </div>
         <footer className="col-span-full grid gap-4 mb-8 mt-24">
           <Image
             className="mx-auto"

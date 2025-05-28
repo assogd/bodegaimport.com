@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['eu-west-2.graphassets.com', '*.cdninstagram.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'eu-west-2.graphassets.com',
+        port: '',
+        pathname: '/\**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.cdninstagram.com',
+        port: '',
+        pathname: '/\**',
+      },
+    ],
   },
 };
 

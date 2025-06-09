@@ -67,4 +67,4 @@ The application is deployed on Netlify. Any changes pushed to the main branch wi
 
 ## License
 
-Private - All rights reserved
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

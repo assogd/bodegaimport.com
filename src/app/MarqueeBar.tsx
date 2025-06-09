@@ -2,7 +2,9 @@
 import Marquee from 'react-fast-marquee';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
+import MarqueeSeparator1 from './assets/svg/MarqueeSeparator1';
+import MarqueeSeparator2 from './assets/svg/MarqueeSeparator2';
+import MarqueeSeparator3 from './assets/svg/MarqueeSeparator3';
 
 interface MarqueeBarProps {
   content: string | string[];
@@ -10,7 +12,7 @@ interface MarqueeBarProps {
 
 const MarqueeBar: React.FC<MarqueeBarProps> = ({ content }) => {
   const contentToRender = Array.isArray(content) ? content : [content];
-  const separatorImages = ['/MARQUEE_01.svg', '/MARQUEE_02.svg', '/MARQUEE_03.svg'];
+  const separators = [MarqueeSeparator1, MarqueeSeparator2, MarqueeSeparator3];
 
   return (
     <div className="fixed top-0 left-0 w-screen z-50 bg-[#F6E27A] font-mono h-12 sm:h-10 flex items-center overflow-hidden">
@@ -34,16 +36,9 @@ const MarqueeBar: React.FC<MarqueeBarProps> = ({ content }) => {
                   {item}
                 </ReactMarkdown>
               </span>
-              {/* Add separator image after each message */}
-              {idx < contentToRender.length - 0 && (
-                <Image
-                  src={separatorImages[idx % separatorImages.length]}
-                  alt="separator"
-                  width={20} // Adjust width as needed
-                  height={20} // Adjust height as needed
-                  className="w-auto h-7 mt-[.15em]" // Add some margin around the image
-                />
-              )}
+              {/* Add separator SVG after each message */}
+              {idx < contentToRender.length - 0 &&
+                React.createElement(separators[idx % separators.length])}
             </React.Fragment>
           ))}
         </div>

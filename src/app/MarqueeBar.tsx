@@ -15,7 +15,7 @@ const MarqueeBar: React.FC<MarqueeBarProps> = ({ content }) => {
   return (
     <div className="fixed top-0 left-0 w-screen z-50 bg-[#F6E27A] font-mono h-12 sm:h-10 flex items-center overflow-hidden">
       <Marquee gradient={false} speed={40} pauseOnHover>
-        <div className="flex items-center gap-3 mr-3">
+        <div className="flex items-center gap-4 mr-4">
           {contentToRender.map((item, idx) => (
             <React.Fragment key={`marquee-${idx}-${item.substring(0, 10)}`}>
               <span>

@@ -51,7 +51,6 @@ function isSection(section: Section | Gallery): section is Section {
   return 'body' in section;
 }
 
-
 export default async function Home() {
   const data = await hygraph.request<{ pages: Page[] }>(getPageQuery);
   const page = data.pages[0];

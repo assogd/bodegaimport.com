@@ -194,48 +194,48 @@ export default function InstagramFeed() {
       <div className="relative">
         {/* Mobile carousel */}
         <div className="sm:hidden relative overflow-hidden py-2">
-        <div
-          ref={carouselRef}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x"
-          style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch',
-          }}
-        >
-          {posts.map((post, index) => (
-            <div
-              key={post.id}
-              ref={el => {
-                slideRefs.current[index] = el;
-              }}
-              className="min-w-full flex-shrink-0 snap-center"
-            >
-              {renderPost(post)}
-            </div>
-          ))}
-        </div>
-
-        {/* Dots indicator */}
-        <div className="flex gap-2 my-6 justify-center">
-          {posts
-            .map((post, i) => ({ post, i }))
-            .filter(({ post }) => !failedImages.has(post.id))
-            .map(({ i }) => (
-              <button
-                key={i}
-                onClick={() => scrollToSlide(i)}
-                className={`w-2 h-2 rounded-full transition-colors border border-black ${
-                  i === currentSlide ? 'bg-black' : ''
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
+          <div
+            ref={carouselRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {posts.map((post, index) => (
+              <div
+                key={post.id}
+                ref={el => {
+                  slideRefs.current[index] = el;
+                }}
+                className="min-w-full flex-shrink-0 snap-center"
+              >
+                {renderPost(post)}
+              </div>
             ))}
+          </div>
+
+          {/* Dots indicator */}
+          <div className="flex gap-2 my-6 justify-center">
+            {posts
+              .map((post, i) => ({ post, i }))
+              .filter(({ post }) => !failedImages.has(post.id))
+              .map(({ i }) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToSlide(i)}
+                  className={`w-2 h-2 rounded-full transition-colors border border-black ${
+                    i === currentSlide ? 'bg-black' : ''
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+          </div>
         </div>
-      </div>
 
         {/* Desktop grid */}
         <div className="hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">

@@ -138,15 +138,7 @@ export default async function Home() {
           </div>
         </header>
         {page.content?.map(renderContent)}
-        <div className="col-span-full w-full mx-auto my-12">
-          <div className="flex justify-between uppercase">
-            <div>Instagram</div>
-            <div>
-              <a href={'https://www.instagram.com/bodega.import'}>@bodega.import</a>
-            </div>
-          </div>
-          <InstagramFeed />
-        </div>
+        <InstagramFeed />
         <footer className="col-span-full grid gap-4 mb-8 mt-24">
           <Logotype />
           <h1 className="font-serif text-2xl">Bodega Import</h1>

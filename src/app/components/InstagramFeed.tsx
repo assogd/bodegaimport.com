@@ -184,9 +184,16 @@ export default function InstagramFeed() {
   }
 
   return (
-    <div className="relative">
-      {/* Mobile carousel */}
-      <div className="sm:hidden relative overflow-hidden py-2">
+    <div className="col-span-full w-full mx-auto my-12">
+      <div className="flex justify-between uppercase">
+        <div>Instagram</div>
+        <div>
+          <a href={'https://www.instagram.com/bodega.import'}>@bodega.import</a>
+        </div>
+      </div>
+      <div className="relative">
+        {/* Mobile carousel */}
+        <div className="sm:hidden relative overflow-hidden py-2">
         <div
           ref={carouselRef}
           onTouchStart={handleTouchStart}
@@ -230,11 +237,10 @@ export default function InstagramFeed() {
         </div>
       </div>
 
-      {/* Desktop grid */}
-      <div className="hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
-        {posts
-          .filter(post => !failedImages.has(post.id))
-          .map(post => renderPost(post))}
+        {/* Desktop grid */}
+        <div className="hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
+          {posts.filter(post => !failedImages.has(post.id)).map(post => renderPost(post))}
+        </div>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export default function InstagramFeed() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
   const carouselRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -110,44 +111,57 @@ export default function InstagramFeed() {
     }
   };
 
-  const renderPost = (post: InstagramPost) => (
-    <a
-      key={post.id}
-      href={post.permalink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative aspect-[3/4] overflow-hidden group block w-full h-full"
-    >
-      {post.media_type === 'VIDEO' ? (
-        <>
+  const handleImageError = (postId: string) => {
+    setFailedImages(prev => new Set(prev).add(postId));
+  };
+
+  const renderPost = (post: InstagramPost) => {
+    // Don't render posts with failed images
+    if (failedImages.has(post.id)) {
+      return null;
+    }
+
+    return (
+      <a
+        key={post.id}
+        href={post.permalink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative aspect-[3/4] overflow-hidden group block w-full h-full"
+      >
+        {post.media_type === 'VIDEO' ? (
+          <>
+            <Image
+              src={post.thumbnail_url || post.media_url}
+              alt={post.caption || 'Instagram video'}
+              className="object-cover w-full h-full select-none"
+              width={300}
+              height={400}
+              draggable={false}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              onError={() => handleImageError(post.id)}
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-opacity">
+              <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </>
+        ) : (
           <Image
-            src={post.thumbnail_url || post.media_url}
-            alt={post.caption || 'Instagram video'}
+            src={post.media_url}
+            alt={post.caption || 'Instagram post'}
             className="object-cover w-full h-full select-none"
             width={300}
             height={400}
             draggable={false}
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            onError={() => handleImageError(post.id)}
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-opacity">
-            <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        </>
-      ) : (
-        <Image
-          src={post.media_url}
-          alt={post.caption || 'Instagram post'}
-          className="object-cover w-full h-full select-none"
-          width={300}
-          height={400}
-          draggable={false}
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        />
-      )}
-    </a>
-  );
+        )}
+      </a>
+    );
+  };
 
   if (error) {
     console.warn('Error loading Instagram feed:', error);
@@ -162,6 +176,11 @@ export default function InstagramFeed() {
         ))}
       </div>
     );
+  }
+
+  // Hide component if no posts are available or all images have failed to load
+  if (!posts || posts.length === 0 || failedImages.size >= posts.length) {
+    return null;
   }
 
   return (
@@ -195,22 +214,27 @@ export default function InstagramFeed() {
 
         {/* Dots indicator */}
         <div className="flex gap-2 my-6 justify-center">
-          {posts.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => scrollToSlide(i)}
-              className={`w-2 h-2 rounded-full transition-colors border border-black ${
-                i === currentSlide ? 'bg-black' : ''
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+          {posts
+            .map((post, i) => ({ post, i }))
+            .filter(({ post }) => !failedImages.has(post.id))
+            .map(({ i }) => (
+              <button
+                key={i}
+                onClick={() => scrollToSlide(i)}
+                className={`w-2 h-2 rounded-full transition-colors border border-black ${
+                  i === currentSlide ? 'bg-black' : ''
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
         </div>
       </div>
 
       {/* Desktop grid */}
       <div className="hidden sm:grid grid-cols-2 sm:grid-cols-4 gap-4 py-2">
-        {posts.map(post => renderPost(post))}
+        {posts
+          .filter(post => !failedImages.has(post.id))
+          .map(post => renderPost(post))}
       </div>
     </div>
   );

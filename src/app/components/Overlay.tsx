@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import type { LinkGroup } from '@/types/hygraph';
+import Plausible from 'plausible-tracker';
 
 interface OverlayProps {
   isOpen: boolean;
@@ -22,6 +23,20 @@ function isExternalLink(href: string): boolean {
 }
 
 export default function Overlay({ isOpen, linkGroup, onClose }: OverlayProps) {
+  const { trackEvent } = Plausible();
+
+  const trackLinkClick = (link: { value: string; href: string }) => {
+    trackEvent('Link Clicked', {
+      props: {
+        linkText: link.value,
+        linkUrl: link.href,
+        isExternal: isExternalLink(link.href),
+        fromOverlay: true,
+        linkGroup: linkGroup?.value || 'unknown',
+      },
+    });
+  };
+
   // Lock body scroll when overlay is open
   useEffect(() => {
     if (isOpen) {
@@ -60,7 +75,10 @@ export default function Overlay({ isOpen, linkGroup, onClose }: OverlayProps) {
               key={link.id || idx}
               href={link.href}
               className="grow h-full w-full uppercase border border-black border-[.05em] rounded-lg px-4 pt-[.85em] pb-3 text-center flex items-center justify-center hover:text-lg"
-              onClick={onClose}
+              onClick={() => {
+                trackLinkClick(link);
+                onClose();
+              }}
               {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
             >
               {link.value}

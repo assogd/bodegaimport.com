@@ -5,7 +5,6 @@ import MarqueeBar from './MarqueeBar';
 import { hygraph } from '@/lib/hygraph';
 import { getPageQuery } from '@/lib/queries';
 import type { Page } from '@/types/hygraph';
-import PlausibleProvider from 'plausible-tracker';
 
 const mono = localFont({
   src: [
@@ -45,6 +44,13 @@ export default async function RootLayout({
   }
   return (
     <html lang="sv">
+      <head>
+        <script
+          defer
+          data-domain="bodegaimport.com"
+          src="https://plausible.io/js/script.js"
+        />
+      </head>
       <body
         className={`${mono.variable} font-mono antialiased`}
         style={
@@ -53,10 +59,8 @@ export default async function RootLayout({
           } as React.CSSProperties
         }
       >
-        <PlausibleProvider domain="bodegaimport.com">
-          {marqueeContent && <MarqueeBar content={marqueeContent} />}
-          {children}
-        </PlausibleProvider>
+        {marqueeContent && <MarqueeBar content={marqueeContent} />}
+        {children}
       </body>
     </html>
   );

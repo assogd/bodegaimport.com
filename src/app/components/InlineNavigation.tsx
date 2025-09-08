@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { Section, Link, LinkGroup } from '@/types/hygraph';
 import Overlay from './Overlay';
+import Plausible from 'plausible-tracker';
 
 interface InlineNavigationProps {
   section: Section;
@@ -29,13 +30,25 @@ function isExternalLink(href: string): boolean {
 }
 
 export default function InlineNavigation({ section }: InlineNavigationProps) {
+  const { trackEvent } = Plausible();
   const [overlayData, setOverlayData] = useState<{ isOpen: boolean; linkGroup: LinkGroup | null }>({
     isOpen: false,
     linkGroup: null,
   });
 
   const openOverlay = (linkGroup: LinkGroup) => {
+    trackEvent('LinkGroup Opened', { props: { linkGroup: linkGroup.value } });
     setOverlayData({ isOpen: true, linkGroup });
+  };
+
+  const trackLinkClick = (link: Link) => {
+    trackEvent('Link Clicked', {
+      props: {
+        linkText: link.value,
+        linkUrl: link.href,
+        isExternal: isExternalLink(link.href),
+      },
+    });
   };
 
   const closeOverlay = () => {
@@ -65,6 +78,7 @@ export default function InlineNavigation({ section }: InlineNavigationProps) {
                   href={item.href}
                   className="w-full sm:w-44 inline-block font-mono uppercase border border-black border-[.05em] rounded-lg px-4 pt-[.85em] pb-3 text-center"
                   {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
+                  onClick={() => trackLinkClick(item)}
                 >
                   {item.value}
                 </a>

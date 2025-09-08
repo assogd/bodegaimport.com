@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { hygraph } from '@/lib/hygraph';
 import { getPageQuery } from '@/lib/queries';
-import type { Page, Section, Gallery, Link, LinkGroup } from '@/types/hygraph';
+import type { Page, Section, Gallery } from '@/types/hygraph';
 import Image from 'next/image';
 import RootLayout from './layout';
 import ReactMarkdown from 'react-markdown';
@@ -51,13 +51,6 @@ function isSection(section: Section | Gallery): section is Section {
   return 'body' in section;
 }
 
-function isLinkGroup(item: Link | LinkGroup): item is LinkGroup {
-  return 'links' in item && Array.isArray(item.links);
-}
-
-function isLink(item: Link | LinkGroup): item is Link {
-  return 'href' in item && 'value' in item;
-}
 
 export default async function Home() {
   const data = await hygraph.request<{ pages: Page[] }>(getPageQuery);

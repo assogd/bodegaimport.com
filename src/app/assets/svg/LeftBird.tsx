@@ -14,7 +14,7 @@ const LeftBird: React.FC<LeftBirdProps> = ({
   return (
     <svg
       width={width}
-      height={158}
+      height={height}
       className={className}
       viewBox="0 0 179 158"
       fill="none"

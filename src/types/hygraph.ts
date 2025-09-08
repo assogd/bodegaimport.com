@@ -1,22 +1,28 @@
 export interface Link {
-  id: string
-  href: string
-  value: string
+  id: string;
+  href: string;
+  value: string;
+}
+
+export interface LinkGroup {
+  id: string;
+  value: string;
+  links: Link[];
 }
 
 export interface Section {
-  id: string
-  body: string
-  cta?: Link
-  links?: Link[]
+  id: string;
+  body: string;
+  cta?: Link;
+  links?: (Link | LinkGroup)[];
 }
 
 export interface SEO {
-  title: string
-  description: string
+  title: string;
+  description: string;
   image?: {
-    url: string
-  }
+    url: string;
+  };
 }
 
 export interface ImageAsset {
@@ -40,4 +46,4 @@ export interface Page {
   content?: SectionOrGallery[];
   seo?: SEO;
   marquee?: string;
-} 
+}

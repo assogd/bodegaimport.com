@@ -1,14 +1,18 @@
 import { Metadata } from 'next';
 import { hygraph } from '@/lib/hygraph';
 import { getPageQuery } from '@/lib/queries';
-import type { Page, Section, Gallery } from '@/types/hygraph';
+import type { Page, Section, Gallery, Link, LinkGroup } from '@/types/hygraph';
 import Image from 'next/image';
 import RootLayout from './layout';
 import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
 import LogotypeWall from './components/LogotypeWall';
+import InlineNavigation from './components/InlineNavigation';
 import RevalidateButton from './components/RevalidateButton';
 import InstagramFeed from './components/InstagramFeed';
+import LeftBird from './assets/svg/LeftBird';
+import RightBird from './assets/svg/RightBird';
+import Logotype from './assets/svg/Logotype';
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await hygraph.request<{ pages: Page[] }>(getPageQuery);
@@ -45,6 +49,14 @@ function isGallery(section: Section | Gallery): section is Gallery {
 
 function isSection(section: Section | Gallery): section is Section {
   return 'body' in section;
+}
+
+function isLinkGroup(item: Link | LinkGroup): item is LinkGroup {
+  return 'links' in item && Array.isArray(item.links);
+}
+
+function isLink(item: Link | LinkGroup): item is Link {
+  return 'href' in item && 'value' in item;
 }
 
 export default async function Home() {
@@ -94,37 +106,11 @@ export default async function Home() {
           className={clsx('col-span-full grid gap-4', i < 3 ? 'max-w-sm' : 'max-w-4xl')}
         >
           <ReactMarkdown>{section.body}</ReactMarkdown>
-          {section.links && Array.isArray(section.links) && (
-            <nav className="p-1 flex flex-col sm:flex-row gap-x-4 gap-y-2 justify-center items-center">
-              {section.links.map((link, idx) => (
-                <a
-                  key={link.id || idx}
-                  href={link.href}
-                  className="w-full sm:w-44 inline-block font-mono uppercase border border-black border-[.05em] rounded-lg px-4 pt-[.85em] pb-3 text-center"
-                >
-                  {link.value}
-                </a>
-              ))}
-            </nav>
-          )}
+          <InlineNavigation section={section} />
           {section.id === 'cmb0ssfo4brn608mdsbw3361u' && (
             <div className="relative w-full">
-              <Image
-                src="/BIRD_01.svg"
-                alt="Bird decoration"
-                width={110}
-                height={142}
-                className="md:absolute md:-left-44 md:-top-24 w-36 h-auto"
-                priority
-              />
-              <Image
-                src="/BIRD_02.svg"
-                alt="Bird decoration"
-                width={143}
-                height={126}
-                className="ml-auto md:absolute md:-right-44 md:-top-28 md:-translate-y-1/2 w-28 h-auto"
-                priority
-              />
+              <LeftBird />
+              <RightBird />
             </div>
           )}
         </section>
@@ -143,14 +129,7 @@ export default async function Home() {
       )}
       <main className="p-4 sm:p-8 !pt-36 grid grid-cols-12 gap-y-8 justify-items-center text-center">
         <header className="col-span-full grid gap-4 mb-8">
-          <Image
-            className="mx-auto"
-            src="/BODEGA-IMPORT_LOGOTYPE.svg"
-            alt="Bodega Import"
-            width={150}
-            height={150}
-            priority
-          />
+          <Logotype />
           <h1 className="font-serif text-2xl">Bodega Import</h1>
           <div className="flex flex-col gap-4">
             <p>
@@ -176,13 +155,7 @@ export default async function Home() {
           <InstagramFeed />
         </div>
         <footer className="col-span-full grid gap-4 mb-8 mt-24">
-          <Image
-            className="mx-auto"
-            src="/BODEGA-IMPORT_LOGOTYPE.svg"
-            alt="Bodega Import"
-            width={150}
-            height={150}
-          />
+          <Logotype />
           <h1 className="font-serif text-2xl">Bodega Import</h1>
           <div className="flex flex-col gap-4">
             <p>

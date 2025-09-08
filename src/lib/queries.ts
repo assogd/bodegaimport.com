@@ -12,6 +12,15 @@ export const getPageQuery = `
               href
               value
             }
+            ... on LinkGroup {
+              id
+              value
+              links {
+                id
+                href
+                value
+              }
+            }
           }
         }
         ... on Gallery {
@@ -42,4 +51,4 @@ export const getPageQuery = `
       }
     }
   }
-` 
+`;
